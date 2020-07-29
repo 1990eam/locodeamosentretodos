@@ -2,7 +2,7 @@
 
 LoCodeamos es una plataforma donde las personas pueden conectarse y sumarse a colaborar en torno a un proyecto, sugiriendo cambios y codeando para desarrollar las distintas features que se hayan propuesto.
 
-[Database Schema](app/assets/images/LoCodeamos db.jpeg)
+[Database Schema](app/assets/images/LoCodeamosDb.jpeg)
 
 ## Core User Stories
 
