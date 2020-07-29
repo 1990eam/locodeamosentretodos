@@ -16,3 +16,9 @@ LoCodeamos es una plataforma donde las personas pueden conectarse y sumarse a co
 * Como un usuario voy a tener determinados **skills**.
 * Los **skills** estan compuestos de una **tecnologìa** y un **skill level**.
 * Como un usuario puedo solicitar unirme a un proyecto, a travès de una **Application** para cubrir un Role que estè abierto en el proyecto.
+
+**Applications:**
+* Las applications pueden pensarse como una especie de búsqueda laboral: un Developer aplica para cubrir un Role como parte de un Project, lo cual inicia una application. 
+* Esta application queda en status "Pending Review from Project Owner" hasta que el mismo decide rechazarla o aceptarla. 
+* Una vez aceptada, pasa a quedar "Pending Review from Developer" para que sea algo similar a la firma de un contrato de trabajo luego de una entrevista, instando al Developer a poner la "firma final".
+* Una vez aceptada la application por ambas partes, el Developer pasa a cubrir el Role, hasta ese momento vacante.
