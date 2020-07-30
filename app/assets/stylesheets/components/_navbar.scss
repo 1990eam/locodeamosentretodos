@@ -10,3 +10,31 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-toggler-icon {
+
+}
+
+
+/*Smallest device*/
+@media (min-width: 100px) and (max-width: 575px) {
+  .navbar-lewagon .navbar-brand img {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .navbar-lewagon .navbar-brand img {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
