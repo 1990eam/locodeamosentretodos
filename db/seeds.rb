@@ -1,6 +1,6 @@
 puts "Creating Users"
 
-user = User.new(first_name: "ElRey", last_name: "DelCodeo", email: "test@test.com", password:"test1234")
+user = User.new(first_name: "ElRey", last_name: "DelCodeo", email: "test@test.com", password:"test1234", admin: true)
 user.save
 
 user = User.new(first_name: "Samid", last_name: "Carnaza", email: "test2@test.com", password:"test1234")
