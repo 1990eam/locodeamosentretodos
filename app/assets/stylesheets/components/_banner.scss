@@ -1,6 +1,7 @@
 #main-banner {
   background-size: cover;
   background-position: center;
+  display: flex;
   height: 100vh;
   padding: 150px 0;
 }
@@ -20,6 +21,37 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-#banner-buttons {
 
+
+/*Smallest device*/
+@media (min-width: 100px) and (max-width: 575px) {
+  #main-banner {
+    padding: 40px 0;
+  }
+  #main-banner p {
+    font-size: 12px;
+  }
+  #main-banner h1 {
+    font-size: 20px;
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  #main-banner p {
+    font-size: 18px;
+  }
+  #main-banner h1 {
+    font-size: 28px;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 1200px) {
+  #main-banner p {
+    font-size: 32px;
+  }
+  #main-banner h1 {
+    font-size: 44px;
+  }
 }
