@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]
 
+  def index
+    @projects = policy_scope(Project)
+  end
+
   def new
     @project = Project.new
     authorize @project
