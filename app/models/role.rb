@@ -1,4 +1,6 @@
 class Role < ApplicationRecord
-   belongs_to :role
-   belongs_to :user
+  belongs_to :project
+  has_many :collaborators
+  has_many :users, through: :collaborators
+  validates :name, presence: true
 end
