@@ -3,8 +3,11 @@
   <div class="grid-index-container mt-5">
     <div class="my-feed"></div>
     <div class="index-projects">
-      <% 10.times do %>
-        <div class="index-project-card"></div>
+      <% @projects.each do |project| %>
+        <div class="index-project-card">
+          <%= link_to "Apply to this project", new_project_application_request_path(project) %>
+          <%= render "application_requests/modal_window", project: project %>
+        </div>
       <% end %>
     </div>
     <div class="my-profile-card"></div>
