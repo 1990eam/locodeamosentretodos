@@ -1,0 +1,12 @@
+<div class="container mt-5">
+    <div class="form-group">
+      <%= simple_form_for(@project, remote: true) do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :name, placeholder: "Nombre del Proyecto" %>
+      <%= f.input :description, as: :text, placeholder: "Describe tu proyecto" %>
+      <%= f.input :photo, as: :file, required: true %>
+      <%= f.button :submit, class: "btn-primary" %>
+      <%= f.button :button, "Cancelar", type: "reset", class: "btn btn-danger" %>
+    <% end %>
+    </div>
+</div>
