@@ -1,10 +1,9 @@
-# puts "Cleaning DB"
-# User.destroy_all
-# Project.destroy_all
-# Role.destroy_all
-# Technology.destroy_all
-# Level.destroy_all
-
+puts "Cleaning DB"
+User.destroy_all
+Project.destroy_all
+Role.destroy_all
+Level.destroy_all
+Technology.destroy_all
 
 puts "Creating Users..."
 user = User.new(first_name: "ElRey", last_name: "DelCodeo", email: "test@test.com", password:"test1234", admin: true)
@@ -17,6 +16,27 @@ user.save
 user.save
 user = User.new(first_name: "Hackerman", last_name: "Coder", email: "test4@test.com", password:"test1234")
 user.save
+puts "done"
+
+puts "Creating Projects..."
+project = Project.new(name: "Lo Codeamos", description: "El mejor proyecto final de LeWagon #384")
+project.user = User.first
+project.save
+project = Project.new(name: "Donde Estan los ATM?", description: "Accede a la ubicacion de los cajeros con guita")
+project.user = User.second
+project.save
+puts "done"
+
+puts "Creating Roles..."
+role = Role.new(name: "Backend Dev")
+role.project_id = Project.first.id
+role.save
+role = Role.new(name: "Frontend Dev")
+role.project_id = Project.first.id
+role.save
+role = Role.new(name: "Project Manager")
+role.project_id = Project.first.id
+role.save
 puts "done"
 
 puts "Creating levels"
@@ -41,27 +61,6 @@ tech = Technology.new(name: "Python")
 tech.save
 tech = Technology.new(name: "React")
 tech.save
-puts "done"
-
-puts "Creating Projects..."
-project = Project.new(name: "Lo Codeamos", description: "El mejor proyecto final de LeWagon #384")
-project.user = User.first
-project.save
-project = Project.new(name: "Donde Estan los ATM?", description: "Accede a la ubicacion de los cajeros con guita")
-project.user = User.second
-project.save
-puts "done"
-
-puts "Creating Roles..."
-role = Role.new(name: "Backend Dev")
-role.project_id = Project.first.id
-role.save
-role = Role.new(name: "Frontend Dev")
-role.project_id = Project.first.id
-role.save
-role = Role.new(name: "Project Manager")
-role.project_id = Project.first.id
-role.save
 puts "done"
 
 puts "Creating Requirements"
