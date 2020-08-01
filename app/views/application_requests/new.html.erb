@@ -1,4 +1,11 @@
-<h1>ApplicationRequests#new</h1>
-<p>Find me in app/views/application_requests/new.html.erb</p>
+<h1>You are applying to <%= @project.name %></h1>
+<h5><%= @project.description %></h5>
 
-<!-- El funcionamiento basico de aplicar se hace desde el modal. Si se implementa una pantalla dedicada para aplicar iria aca -->
+<div class="application-request-container">
+<%= simple_form_for [ @project, @application ] do |f| %>
+  <%= f.input :about_me, placeholder: "Please tell us why we should let you in" %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
+</div>
+
+
