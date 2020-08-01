@@ -6,6 +6,11 @@ class Project < ApplicationRecord
   validates :description, presence: true, length: { in: 6..20 }
   validates :description, presence: true
   validates :name, uniqueness: true
+  # validate :photo_present
 
-
+  # def photo_present
+  #   unless photo.attached?
+  #     photo.attach(io: File.open(Dir.getwd + "/app/assets/images/project-defaut.png"), filename: "default.png", content_type: 'image/png')
+  #   end
+  # end
 end
