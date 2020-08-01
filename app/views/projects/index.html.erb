@@ -18,14 +18,12 @@
     <div class="index-project-card col-6 mb-3">
 
       <!-- Large modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Apply</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Apply to this project</button>
 
-      <%= render "application_requests/modal_window" %>
-
+      <%= render "application_requests/modal_window", project: project %>
 
     </div>
     <div class="col-3"></div>
-
 
     <% end %>
   </div>

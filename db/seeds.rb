@@ -5,27 +5,21 @@ Project.destroy_all
 # Level.destroy_all
 # Technology.destroy_all
 
-# puts "Creating Users..."
-# user = User.new(first_name: "ElRey", last_name: "DelCodeo", email: "test@test.com", password:"test1234", admin: true)
-# user.save
-# user = User.new(first_name: "Samid", last_name: "Carnaza", email: "test2@test.com", password:"test1234")
-# user.save
-# user.save
-# user = User.new(first_name: "Diego", last_name: "Armando", email: "test3@test.com", password:"test1234")
-# user.save
-# user.save
-# user = User.new(first_name: "Hackerman", last_name: "Coder", email: "test4@test.com", password:"test1234")
-# user.save
-# puts "done"
+puts "Creating Users..."
+User.create!(first_name: "ElRey", last_name: "DelCodeo", email: "test@test.com", password:"test1234", admin: true)
+User.create!(first_name: "Samid", last_name: "Carnaza", email: "test2@test.com", password:"test1234")
+User.create!(first_name: "Diego", last_name: "Armando", email: "test3@test.com", password:"test1234")
+User.create!(first_name: "Hackerman", last_name: "Coder", email: "test4@test.com", password:"test1234")
+puts "done"
 
-# puts "Creating Projects..."
-# project = Project.new(name: "Lo Codeamos", description: "El mejor proyecto final de LeWagon #384")
-# project.user = User.first
-# project.save
-# project = Project.new(name: "Donde Estan los ATM?", description: "Accede a la ubicacion de los cajeros con guita")
-# project.user = User.second
-# project.save
-# puts "done"
+puts "Creating Projects..."
+project = Project.new(name: "Lo Codeamos", description: "El mejor proyecto final de LeWagon #384")
+project.user = User.first
+project.save
+project = Project.new(name: "Donde Estan los ATM?", description: "Accede a la ubicacion de los cajeros con guita")
+project.user = User.second
+project.save
+puts "done"
 
 # puts "Creating Roles..."
 # role = Role.new(name: "Backend Dev")
