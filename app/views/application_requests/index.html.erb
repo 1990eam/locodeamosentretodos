@@ -1,0 +1,10 @@
+<h1>Your current applications:</h1>
+<% @applications.each do |application| %>
+  <div class="application-index-container">
+    <h1><%= application.role.project.name %></h1>
+    <h5><%= application.role.project.description %></h5>
+    <p>Role: <%= application.role.name %></p>
+    <p>About me: <%= application.about_me %></p>
+    <p>Status <%= application.status %></p>
+  </div>
+<% end %>

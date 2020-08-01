@@ -1,7 +1,7 @@
 class ApplicationRequestsController < ApplicationController
 
   def index
-    @applications = policy_scope(ApplicationRequest).order(created_at: :asc)
+    @applications = policy_scope(ApplicationRequest)
   end
 
   def new
