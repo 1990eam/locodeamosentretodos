@@ -9,5 +9,5 @@ class User < ApplicationRecord
   has_many :skills
   has_many :technologies, through: :skills
   has_many :levels, through: :skills
-
+  has_many :application_requests
 end
