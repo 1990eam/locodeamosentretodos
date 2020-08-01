@@ -1,25 +1,16 @@
-<div class="main-container">
-  <div class="search-bar my-3">
+<div class="container mt-5">
+  <div class="search-bar"></div>
+  <div class="grid-index-container mt-5">
+    <div class="my-feed"></div>
+    <div class="index-projects">
+      <% @projects.each do |project| %>
+        <div class="index-project-card">
+          <%= link_to "Apply to this project", new_project_application_request_path(project) %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Apply to this project</button>
+          <%= render "application_requests/modal_window", project: project %>
+        </div>
+      <% end %>
+    </div>
+    <div class="my-profile-card"></div>
   </div>
-  <div class="row d-flex justify-content-between">
-    <div class="my-feed col-2"></div>
-    <div class="index-project-card col-6"></div>
-    <div class="my-profile-card col-2"></div>
-  </div>
-
-  <div class="row d-flex justify-content-center wrap mt-3">
-    <div class="col-3"></div>
-    <div class="index-project-card col-6 mb-3"></div>
-    <div class="col-3"></div>
-    <div class="col-3"></div>
-    <div class="index-project-card col-6 mb-3"></div>
-    <div class="col-3"></div>
-    <div class="col-3"></div>
-    <div class="index-project-card col-6 mb-3"></div>
-    <div class="col-3"></div>
-    <div class="col-3"></div>
-    <div class="index-project-card col-6 mb-3"></div>
-    <div class="col-3"></div>
-  </div>
-
 </div>

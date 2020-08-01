@@ -1,5 +1,9 @@
 class ApplicationRequestsController < ApplicationController
 
+  def index
+    @applications = policy_scope(ApplicationRequest)
+  end
+
   def new
     @application = ApplicationRequest.new
     @project = Project.find(params[:project_id])
@@ -14,6 +18,6 @@ class ApplicationRequestsController < ApplicationController
   private
 
   def application_params
-    params.require(:application_request).permit(:about_me, :user_id, :role_id)
+    params.require(:application_request).permit(:about_me)
   end
 end
