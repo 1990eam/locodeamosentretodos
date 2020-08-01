@@ -9,5 +9,4 @@ class ApplicationRequestPolicy < ApplicationPolicy
     true
   end
 
-
 end
