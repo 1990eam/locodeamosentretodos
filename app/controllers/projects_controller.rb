@@ -21,7 +21,9 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    authorize @project
+  end
 
   private
 
@@ -30,7 +32,6 @@ class ProjectsController < ApplicationController
   end
 
   def set_project
-    @proyect = Project.find(params[:id])
-    authorize @proyect
+    @project = Project.find(params[:id])
   end
 end
