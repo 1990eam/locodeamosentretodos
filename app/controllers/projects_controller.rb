@@ -1,5 +1,9 @@
 class ProjectsController < ApplicationController
 
+  def index
+    @projects = Project.all
+    authorize @projects
+  end
 
   def new
     @project = Project.new

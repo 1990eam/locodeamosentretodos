@@ -5,7 +5,6 @@ class ProjectPolicy < ApplicationPolicy
     end
   end
 
-
   def new?
     true
   end
@@ -13,7 +12,5 @@ class ProjectPolicy < ApplicationPolicy
   def create?
     true
   end
-
-
 
 end
