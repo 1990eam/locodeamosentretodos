@@ -6,16 +6,10 @@ Project.destroy_all
 # Technology.destroy_all
 
 puts "Creating Users..."
-user = User.new(first_name: "ElRey", last_name: "DelCodeo", email: "test@test.com", password:"test1234", admin: true)
-user.save
-user = User.new(first_name: "Samid", last_name: "Carnaza", email: "test2@test.com", password:"test1234")
-user.save
-user.save
-user = User.new(first_name: "Diego", last_name: "Armando", email: "test3@test.com", password:"test1234")
-user.save
-user.save
-user = User.new(first_name: "Hackerman", last_name: "Coder", email: "test4@test.com", password:"test1234")
-user.save
+User.create!(first_name: "ElRey", last_name: "DelCodeo", email: "test@test.com", password:"test1234", admin: true)
+User.create!(first_name: "Samid", last_name: "Carnaza", email: "test2@test.com", password:"test1234")
+User.create!(first_name: "Diego", last_name: "Armando", email: "test3@test.com", password:"test1234")
+User.create!(first_name: "Hackerman", last_name: "Coder", email: "test4@test.com", password:"test1234")
 puts "done"
 
 puts "Creating Projects..."
