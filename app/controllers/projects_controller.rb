@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     @projects = policy_scope(Project)

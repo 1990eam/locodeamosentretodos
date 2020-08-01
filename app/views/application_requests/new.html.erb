@@ -1,0 +1,11 @@
+<h1>You are applying to <%= @project.name %></h1>
+<h5><%= @project.description %></h5>
+
+<div class="application-request-container">
+<%= simple_form_for [ @project, @application ] do |f| %>
+  <%= f.input :about_me, placeholder: "Please tell us why we should let you in" %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
+</div>
+
+
