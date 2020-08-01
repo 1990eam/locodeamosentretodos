@@ -1,6 +1,9 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :roles, dependent: :destroy
+  # Revisar
+  has_many :requirements, through: :roles
+  # --------
   has_one_attached :photo
   validates :name, presence: true
   validates :description, presence: true, length: { in: 6..500 }
