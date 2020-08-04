@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
     @project.user = current_user
     authorize @project
     if @project.save!
-      redirect_to @project
+      redirect_to projects_path
     else
       render :new
     end
