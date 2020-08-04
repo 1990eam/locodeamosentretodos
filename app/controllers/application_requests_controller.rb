@@ -11,7 +11,7 @@ class ApplicationRequestsController < ApplicationController
   end
 
   def create
-    @application = ApplicationRequest.new
+    @application = ApplicationRequest.new(application_params)
     authorize @application
   end
 

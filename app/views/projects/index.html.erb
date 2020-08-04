@@ -5,6 +5,8 @@
     <div class="index-projects">
       <% @projects.each do |project| %>
         <div class="index-project-card">
+          <div><%= project.name %></div>
+          <div><%= project.description %></div>
           <%= link_to "Apply to this project", new_project_application_request_path(project) %>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Apply to this project</button>
           <%= render "application_requests/modal_window", project: project %>
