@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:new, :create, :index, :show] do
     resources :application_requests, only: [:new, :create]
+    resources :roles, only: [:new, :create]
   end
+
+  resources :roles, only: :destroy
 
 end
