@@ -12,12 +12,6 @@
   grid-column: 2;
 }
 
-.index-project-card {
-  background-color: $yellow;
-  height: 40vh;
-  margin-bottom: 16px;
-}
-
 .my-profile-card {
   background-color: $orange;
   height: 100px;
@@ -28,12 +22,50 @@
   grid-column: 3;
 }
 
+.index-project-card {
+  position: relative;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 16px;
+  height: 300px;
+  width: 600px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  h2 {
+    font-size: 0.9rem;
+  }
+}
+
+.project-card-logo {
+  height: 60px;
+  width: 60px;
+}
+
+.project-card-sponsored {
+  position: absolute;
+  right: 32px;
+  top: 24px;
+}
+
+.card-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.open-positions {
+  background-color: #20C1F7;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+
 .grid-index-container {
   display: grid;
   grid-gap: 16px;
   grid-template-columns: 1fr 3fr 1fr;
 }
-
 
 .main-index-container {
   display: flex;
