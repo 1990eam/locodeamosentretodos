@@ -20,7 +20,7 @@ class ApplicationRequestsController < ApplicationController
     else
       # definir @project si se usa render, sino el view no encuentra @project y crashea
       @project = Project.find(params[:project_id])
-      render :action => "new"
+      render :new
     end
   end
 
