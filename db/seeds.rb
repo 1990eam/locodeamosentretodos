@@ -36,7 +36,8 @@ role.save
 puts "done creating Roles"
 
 puts "Creating applications"
-application = ApplicationRequest.new(status: "Pending", user_id: User.first.id)
+# default status for applications is now "pending"
+application = ApplicationRequest.new(user_id: User.first.id)
 application.role_id = Role.first.id
 application.about_me = "Please let me in, I need money for weed"
 application.save
