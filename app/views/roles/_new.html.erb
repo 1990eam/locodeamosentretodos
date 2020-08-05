@@ -1,0 +1,5 @@
+<h4>Agregá un nuevo rol</h4>
+<%= simple_form_for([ @project, @role ], remote: true) do |f| %>
+  <%= f.input :name %>
+  <%= f.submit "Submit role", class: "btn btn-primary" %>
+<% end %>
