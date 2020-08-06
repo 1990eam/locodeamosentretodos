@@ -1,6 +1,7 @@
 class RolesController < ApplicationController
 
   def new
+    @project_roles = Project.find(params[:project_id]).roles
     @role = Role.new
     @project = Project.find(params[:project_id])
     @role.project = @project
