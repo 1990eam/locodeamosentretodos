@@ -13,4 +13,8 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
+  def my_projects?
+    true
+  end
+
 end
