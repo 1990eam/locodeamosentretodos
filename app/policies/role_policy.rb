@@ -1,4 +1,4 @@
-class ProjectPolicy < ApplicationPolicy
+class RolePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -6,15 +6,12 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    record.project.user == user
   end
 
   def create?
-    true
+    new?
   end
 
-  def my_projects?
-    true
-  end
 
 end
