@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   resources :roles, only: :destroy
 
+  get "my_projects", to: "projects#my_projects", as: "my_projects"
+
 end
