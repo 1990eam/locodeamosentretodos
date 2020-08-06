@@ -1,17 +1,36 @@
-.new-role-container {
+.new-role-form-container {
 
   margin: 0 auto;
 
 }
 
-.new-role-title {
+h2 {
 
   text-decoration: underline;
   margin: 0 auto;
+  text-align: center;
+  margin-bottom: 25px;
 
 }
 
 .role-card {
+  border: 10px solid #8bbbf9;
+  width: 180px;
+  height: 200px;
+  margin-left: 8px;
+  margin-right: 8px;
 
+  .role-title {
+
+    text-align: center;
+
+  }
+
+}
+
+.roles {
+
+  display: flex;
+  justify-content: center;
 
 }

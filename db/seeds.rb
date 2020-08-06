@@ -3,8 +3,9 @@ User.destroy_all
 Project.destroy_all
 Role.destroy_all
 ApplicationRequest.destroy_all
-# Level.destroy_all
-# Technology.destroy_all
+Level.destroy_all
+Technology.destroy_all
+Requirement.destroy_all
 puts "done cleaning"
 
 puts "Creating Users..."
@@ -55,36 +56,36 @@ application.role_id = Role.third.id
 application.save
 puts "done creating Applications"
 
-# puts "Creating levels"
-# level = Level.new(name: "Junior")
-# level.save
-# level = Level.new(name: "Semi senior")
-# level.save
-# level = Level.new(name: "Senior")
-# level.save
-# puts "done"
+puts "Creating levels"
+level = Level.new(name: 0)
+level.save
+level = Level.new(name: 1)
+level.save
+level = Level.new(name: 2)
+level.save
+puts "done"
 
-# puts "Creating Technologies..."
-# tech = Technology.new(name: "Ruby")
-# tech.save
-# tech = Technology.new(name: "Javascript")
-# tech.save
-# tech = Technology.new(name: "CSS")
-# tech.save
-# tech = Technology.new(name: "Java")
-# tech.save
-# tech = Technology.new(name: "Python")
-# tech.save
-# tech = Technology.new(name: "React")
-# tech.save
-# puts "done"
+puts "Creating Technologies..."
+tech = Technology.new(name: "Ruby")
+tech.save
+tech = Technology.new(name: "Javascript")
+tech.save
+tech = Technology.new(name: "CSS")
+tech.save
+tech = Technology.new(name: "Java")
+tech.save
+tech = Technology.new(name: "Python")
+tech.save
+tech = Technology.new(name: "React")
+tech.save
+puts "done"
 
-# puts "Creating Requirements"
-# requirement = Requirement.new(role_id: Role.first.id, technology_id: Technology.first.id, level_id: Level.first.id)
-# requirement.save
-# requirement = Requirement.new(role_id: Role.second.id, technology_id: Technology.first.id, level_id: Level.first.id)
-# requirement.save
-# puts "done"
+puts "Creating Requirements"
+requirement = Requirement.new(role_id: Role.first.id, technology_id: Technology.first.id, level_id: Level.first.id)
+requirement.save
+requirement = Requirement.new(role_id: Role.second.id, technology_id: Technology.first.id, level_id: Level.first.id)
+requirement.save
+puts "done"
 
 
 # puts "Creating collaborators"

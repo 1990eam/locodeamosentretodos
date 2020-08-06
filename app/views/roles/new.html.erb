@@ -1,8 +1,9 @@
-<div>
-  <h2 class="new-role-title">Roles de este proyecto</h2>
+<h2>Roles de este proyecto</h2>
+<div class="roles">
   <% @project_roles.each do |role| %>
     <div class="role-card">
-      <%= role.name %>
+      <p class="role-title"><%= role.name %></p>
+      <p><%= role.open? %></p>
 
     </div>
   <% end %>
@@ -10,7 +11,7 @@
 </div>
 
 
-<div class="new-role-container">
+<div class="new-role-form-container">
 
   <h4>Agregá un nuevo rol</h4>
   <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
