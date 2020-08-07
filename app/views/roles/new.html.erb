@@ -1,31 +1,41 @@
-<h2>Roles de este proyecto</h2>
-<div class="roles">
-  <% @project_roles.each do |role| %>
-    <div class="role-card">
-      <p class="role-title"><%= role.name %></p>
-      <p><%= role.open? %></p>
-      <div><% role.requirements.each do |requirement| %>
-        <p><%= requirement.technology.name %></p>
-        <p><%= requirement.level.name %></p>
-        <% end %>
-      </div>
+<div class="container">
 
-    </div>
+  <h2>Project Roles</h2>
+
+
+  <div class="card-wrapper">
+
+  <% @project_roles.each do |role| %>
+
+      <div class="role-card">
+        <p class="role-title"><%= role.name %></p>
+        <div class="tech-images">
+          <%= image_tag "ruby-icon.jpeg", alt: "ruby-icon", class:"tech-image" %>
+          <%= image_tag "ruby-icon.jpeg", alt: "ruby-icon", class:"tech-image" %>
+        </div>
+        <p class="role.status">Open: <%= role.open? %></p>
+        <p class="tech-description">Mantain the mainframe with Rails</p>
+        <div><% role.requirements.each do |requirement| %>
+          <p class="role-tech-name"><%= requirement.technology.name %></p>
+          <p class="role-tech-level"><%= requirement.level.name %></p>
+          <% end %>
+        </div>
+        <button type="button" class="btn btn-primary">Apply to this role</button>
+
+
+      </div>
   <% end %>
 
-
-</div>
-
-  <div class="new-roles">
-
-    <div class="new-role-form-container">
-      <!-- <h4>Agregá un nuevo rol</h4> -->
-      <div class="new-role-card">
+      <div class="role-card">
+        <p class="role-title">New role</p>
         <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
           <%= f.input :name %>
           <%= f.submit "Submit role", class: "btn btn-primary" %>
         <% end %>
-
       </div>
+
+
   </div>
-  </div>
+
+
+</div>
