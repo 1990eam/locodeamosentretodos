@@ -13,18 +13,19 @@
     </div>
   <% end %>
 
+
 </div>
 
+  <div class="new-roles">
 
-<div class="new-role-form-container">
-  <h4>Agregá un nuevo rol</h4>
-  <div class="new-role-card">
-    <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
-      <%= f.input :name %>
-      <%= f.submit "Submit role", class: "btn btn-primary" %>
-    <% end %>
+    <div class="new-role-form-container">
+      <!-- <h4>Agregá un nuevo rol</h4> -->
+      <div class="new-role-card">
+        <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
+          <%= f.input :name %>
+          <%= f.submit "Submit role", class: "btn btn-primary" %>
+        <% end %>
 
+      </div>
   </div>
-
-
-</div>
+  </div>
