@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_01_180945) do
+ActiveRecord::Schema.define(version: 2020_08_04_230701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_08_01_180945) do
   create_table "application_requests", force: :cascade do |t|
     t.bigint "role_id", null: false
     t.bigint "user_id", null: false
-    t.string "status"
+    t.string "status", default: "pending"
     t.text "about_me"
     t.index ["role_id"], name: "index_application_requests_on_role_id"
     t.index ["user_id"], name: "index_application_requests_on_user_id"

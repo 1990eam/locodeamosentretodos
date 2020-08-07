@@ -3,8 +3,8 @@
     <h1>¡CodeSourcea tu emprendimiento a la vida!</h1>
     <p>Comienza un proyecto tech o colabora con otros developers en sus emprendimientos.</p>
     <div id="banner-buttons-large">
-      <a class="btn btn-primary mr-3" href="/projects">Explora Proyectos</a>
-      <a class="btn btn-primary" href="#">Crea tu Proyecto</a>
+      <%= link_to "Explorar Proyectos", projects_path, class: "btn btn-primary mr-3" %>
+      <%= link_to "Crear Proyecto", new_project_path, class: "btn btn-primary mr-3" %>
     </div>
   </div>
 </div>

@@ -7,6 +7,11 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:new, :create, :index, :show] do
     resources :application_requests, only: [:new, :create]
+    resources :roles, only: [:new, :create]
   end
+
+  resources :roles, only: :destroy
+
+  get "my_projects", to: "projects#my_projects", as: "my_projects"
 
 end
