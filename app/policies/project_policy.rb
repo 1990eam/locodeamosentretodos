@@ -13,7 +13,13 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
+
   def show?
     true
   end
+
+  def my_projects?
+    true
+  end
+
 end

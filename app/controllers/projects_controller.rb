@@ -15,8 +15,8 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user = current_user
     authorize @project
-    if @project.save!
-      redirect_to @project
+    if @project.save
+      redirect_to project_path(@project)
     else
       render :new
     end
@@ -24,6 +24,11 @@ class ProjectsController < ApplicationController
 
   def show
     authorize @project
+  end
+
+  def my_projects
+    @projects = current_user.projects
+    authorize @projects
   end
 
   private
@@ -34,5 +39,6 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
+    authorize @project
   end
 end
