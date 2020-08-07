@@ -22,12 +22,14 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def show
+    authorize @project
+  end
+
   def my_projects
     @projects = current_user.projects
     authorize @projects
   end
-
-  def show; end
 
   private
 
