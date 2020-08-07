@@ -57,11 +57,11 @@ application.save
 puts "done creating Applications"
 
 puts "Creating levels"
-level = Level.new(name: 0)
+level = Level.new(name: "junior")
 level.save
-level = Level.new(name: 1)
+level = Level.new(name: "semisenior")
 level.save
-level = Level.new(name: 2)
+level = Level.new(name: "senior")
 level.save
 puts "done"
 
@@ -87,6 +87,11 @@ requirement = Requirement.new(role_id: Role.second.id, technology_id: Technology
 requirement.save
 puts "done"
 
+puts "Creating Skills"
+skill = Skill.create!(user: User.first, technology: Technology.first, level: Level.first)
+skill = Skill.create!(user: User.first, technology: Technology.second, level: Level.second)
+skill = Skill.create!(user: User.second, technology: Technology.first, level: Level.third)
+puts "done"
 
 # puts "Creating collaborators"
 # collab = Collaborator.new

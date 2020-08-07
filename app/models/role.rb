@@ -3,7 +3,7 @@ class Role < ApplicationRecord
   has_many :collaborators, dependent: :destroy
   has_many :application_requests, dependent: :destroy
   has_many :users, through: :collaborators
-  has_many :requirements
+  has_many :requirements, dependent: :destroy
   validates :name, presence: true
 
 
