@@ -1,6 +1,6 @@
 <div class="index-project-card border rounded aos-init" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="500">
     <div class="d-flex">
-      <%= cl_image_tag project.photo.key, alt: "alttext", class: "project-card-logo mr-3 ml-2" %>
+      <%= cl_image_tag project.photo.key, alt: "alttext", crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
       <div>
         <h2><%= project.name %></h2>
         <p class="text-muted"><%= project.description %></p>
@@ -19,9 +19,9 @@
         <div>
           <% if project.link_1 != nil %>
             <%= link_to "http://#{project.link_1}" do %>
-              <div class="d-flex">
-                <i class="fab fa-github-square"></i>
-                <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1 align-middle">
+              <div class="d-flex align-items-center mb-2">
+                <%= sanitize pick_url_icon(project.link_1) %>
+                <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1">
                   <%= project.link_1.length > 24 ? "#{project.link_1[0...24]}..." : project.link_1 %>
                 </div>
               </div>
@@ -29,9 +29,9 @@
           <% end %>
           <% if project.link_2 != nil %>
             <%= link_to "http://#{project.link_2}" do %>
-              <div class="d-flex">
-                <i class="fas fa-globe"></i>
-                <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1 align-middle"><%= project.link_2 %></div>
+              <div class="d-flex align-items-center">
+                <%= sanitize pick_url_icon(project.link_2) %>
+                <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1"><%= project.link_2 %></div>
               </div>
             <% end %>
           <% end %>
