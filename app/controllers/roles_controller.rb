@@ -14,7 +14,7 @@ class RolesController < ApplicationController
     @role.project = Project.find(params[:project_id])
     authorize @role
     if @role.save
-      redirect_to projects_path(Project.find(params[:project_id]))
+      redirect_to new_project_role_path(Project.find(params[:project_id]))
     else
       render :new
     end
@@ -28,7 +28,7 @@ class RolesController < ApplicationController
   private
 
   def role_params
-    params.require(:role).permit(:name)
+    params.require(:role).permit(:name, :description)
   end
 
 end

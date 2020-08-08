@@ -1,4 +1,4 @@
-<div class="container">
+<div class="roles-container">
 
   <h2>Project Roles</h2>
 
@@ -14,7 +14,7 @@
           <%= image_tag "ruby-icon.jpeg", alt: "ruby-icon", class:"tech-image" %>
         </div>
         <p class="role.status">Open: <%= role.open? %></p>
-        <p class="tech-description">Mantain the mainframe with Rails</p>
+        <p class="role-description"><%= role.description %></p>
         <div><% role.requirements.each do |requirement| %>
           <p class="role-tech-name"><%= requirement.technology.name %></p>
           <p class="role-tech-level"><%= requirement.level.name %></p>
@@ -30,6 +30,7 @@
         <p class="role-title">New role</p>
         <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
           <%= f.input :name %>
+          <%= f.input :description %>
           <%= f.submit "Submit role", class: "btn btn-primary" %>
         <% end %>
       </div>
