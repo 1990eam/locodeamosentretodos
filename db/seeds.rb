@@ -34,7 +34,7 @@ role = Role.new(name: "Backend Dev", description: "Mantain the backend of the pl
 role.project_id = Project.first.id
 role.save
 role = Role.new(name: "Frontend Dev", description: "Spice up the frontend with magic")
-role.project_id = Project.first.id
+role.project_id = Project.second.id
 role.save
 role = Role.new(name: "Project Manager", description: "Asignar features a los colaboradores")
 role.project_id = Project.first.id
@@ -95,9 +95,17 @@ puts "done"
 puts "Creating Requirements"
 requirement = Requirement.new(role_id: Role.first.id, technology_id: Technology.first.id, level_id: Level.first.id)
 requirement.save
-requirement = Requirement.new(role_id: Role.second.id, technology_id: Technology.first.id, level_id: Level.first.id)
+requirement = Requirement.new(role_id: Role.second.id, technology_id: Technology.second.id, level_id: Level.second.id)
+requirement.save
+requirement = Requirement.new(role_id: Role.third.id, technology_id: Technology.third.id, level_id: Level.first.id)
 requirement.save
 requirement = Requirement.new(role_id: Role.fourth.id, technology_id: Technology.last.id, level_id: Level.third.id)
+requirement.save
+requirement = Requirement.new(role_id: Role.first.id, technology_id: Technology.fourth.id, level_id: Level.second.id)
+requirement.save
+requirement = Requirement.new(role_id: Role.fourth.id, technology_id: Technology.fourth.id, level_id: Level.second.id)
+requirement.save
+requirement = Requirement.new(role_id: Role.second.id, technology_id: Technology.fifth.id, level_id: Level.second.id)
 requirement.save
 puts "done"
 
