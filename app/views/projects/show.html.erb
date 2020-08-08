@@ -13,14 +13,17 @@
               <p><%= @project.description %></p>
             </div>
           </div>
+
           <div class="project-collaborators">
             <h5> Colaboradores </h5>
-            <%= @project.user.first_name %>
-             <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
+            <div class="project-owner">
+               <% if @project.user.photo.attached? %>
+                <%= cl_image_tag @project.user.photo.key, class: "avatar dropdown-toggle" %>
+              <% else %>
+                <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
+              <% end %>
+              <%= @project.user.first_name %>
+            </div>
             <p>Tomas Hergott</p>
             <p>Amy Camacho</p>
             <p>Pablo Andrizzi</p>
