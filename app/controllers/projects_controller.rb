@@ -24,6 +24,9 @@ class ProjectsController < ApplicationController
 
   def show
     authorize @project
+    @project_roles = @project.roles
+    @role = Role.new
+    authorize @role
   end
 
   def my_projects
