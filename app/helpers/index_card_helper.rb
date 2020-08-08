@@ -1,0 +1,2 @@
+module IndexCardHelper
+end
