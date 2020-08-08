@@ -8,10 +8,24 @@
             <%= image_tag "ruby-icon", class:"tech-image" %>
           </div>
           <div class="description-container">
-            <h5> Acerca del Proyecto </h5>
-<!--             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, similique, maxime. Sapiente nesciunt adipisci qui ad eos placeat doloremque quos dignissimos, laboriosam sint ducimus! Voluptatem laudantium architecto omnis, veritatis dolores.</p> -->
+            <h5> Descripciòn </h5>
+            <div class="project-description">
+              <p><%= @project.description %></p>
+            </div>
           </div>
-          <h5> Colaboradores </h5>
+          <div class="project-collaborators">
+            <h5> Colaboradores </h5>
+            <%= @project.user.first_name %>
+             <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
+            <p>Tomas Hergott</p>
+            <p>Amy Camacho</p>
+            <p>Pablo Andrizzi</p>
+            <p>Elian Magni</p>
+          </div>
         </div>
 
 

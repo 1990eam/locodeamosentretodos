@@ -13,7 +13,7 @@
 
 .project-overview {
   border-radius: 0.8rem;
-  width: 48vw;
+  width: 40vw;
   display: flex;
   flex-direction: column;
   background-color: $white;
@@ -37,7 +37,6 @@
 .tech-images {
   display: flex;
   justify-content: center;
-  align-items: center;
 
 }
 
@@ -51,6 +50,19 @@
 
 .description-container {
   height: auto;
+  h5 {
+
+    text-align: center;
+
+  }
+}
+
+.project-collaborators {
+
+  h5{
+    text-align: center;
+  }
+
 }
 
 
