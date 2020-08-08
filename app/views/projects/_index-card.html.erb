@@ -1,0 +1,57 @@
+<div class="index-project-card border rounded aos-init" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="500">
+    <div class="d-flex">
+      <%= image_tag "new hardcode logo", alt: "alttext", class: "project-card-logo mr-3 ml-2" %>
+      <div>
+        <h2>Cocina En Casa</h2>
+        <p class="text-muted">Una plataforma que conecta los mejores platos de los restaurants con clientes que buscan cocinar el plato desde cero.</p>
+      </div>
+      <div class="badge badge-pill badge-info project-card-sponsored d-flex justify-content-between">
+        <i class="fa fa-heart" aria-hidden="true" style="color: #da64ab;"></i>
+        <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block ml-1">Sponsored</div>
+      </div>
+    </div>
+
+    <div class="d-flex">
+      <div class="card-links mr-3">
+        <h3>Links</h3>
+        <div>
+          <%= link_to "#" do %>
+            <div class="d-flex">
+              <i class="fab fa-github-square"></i>
+              <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1 align-middle">elreydelcodeo.com</div>
+            </div>
+          <% end %>
+          <%= link_to "#" do %>
+            <div class="d-flex">
+              <i class="fas fa-globe"></i>
+              <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1 align-middle">loteriadesanluis.ar</div>
+            </div>
+          <% end %>
+        </div>
+        <div class="open-positions rounded">
+          <p>2 positions open</p>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <h3>Tags</h3>
+          <div class="d-flex flex-wrap">
+            <p class="mr-2 mb-0"><i class="fab fa-html5" style="color: orange;"></i> HTML</p>
+            <p class="mr-2 mb-0"><i class="fab fa-css3-alt" style="color: blue;"></i> CSS</p>
+            <p class="mr-2 mb-0"><i class="fas fa-gem" style="color: red;"></i> Ruby</p>
+            <p class="mr-2 mb-0"><i class="fab fa-js-square" style="color:teal;"></i> JScript</p>
+            <p class="mr-2 mb-0"><i class="fas fa-cookie-bite" style="color: brown;"></i> Cooking!</p>
+          </div>
+        </div>
+
+        <div class="mt-2">
+          <h3>Contributors <span class="badge badge-pill badge-light">4</span></h3>
+            <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar-small mr-2" %>
+            <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar-small mr-2" %>
+            <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar-small mr-2" %>
+            <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar-small mr-2" %>
+        </div>
+      </div>
+    </div>
+  </div>

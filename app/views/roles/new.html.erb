@@ -1,0 +1,42 @@
+<div class="roles-container">
+
+  <h2>Project Roles</h2>
+
+
+  <div class="card-wrapper">
+
+  <% @project_roles.each do |role| %>
+
+      <div class="role-card">
+        <p class="role-title"><%= role.name %></p>
+        <div class="tech-images">
+          <%= image_tag "ruby-icon.jpeg", alt: "ruby-icon", class:"tech-image" %>
+          <%= image_tag "ruby-icon.jpeg", alt: "ruby-icon", class:"tech-image" %>
+        </div>
+        <p class="role.status">Open: <%= role.open? %></p>
+        <p class="role-description"><%= role.description %></p>
+        <div><% role.requirements.each do |requirement| %>
+          <p class="role-tech-name"><%= requirement.technology.name %></p>
+          <p class="role-tech-level"><%= requirement.level.name %></p>
+          <% end %>
+        </div>
+        <button type="button" class="btn btn-primary">Apply to this role</button>
+
+
+      </div>
+  <% end %>
+
+      <div class="role-card">
+        <p class="role-title">New role</p>
+        <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.submit "Submit role", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+
+  </div>
+
+
+</div>

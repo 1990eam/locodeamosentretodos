@@ -12,12 +12,6 @@
   grid-column: 2;
 }
 
-.index-project-card {
-  background-color: $yellow;
-  height: 40vh;
-  margin-bottom: 16px;
-}
-
 .my-profile-card {
   background-color: $orange;
   height: 100px;
@@ -32,16 +26,6 @@
   display: grid;
   grid-gap: 16px;
   grid-template-columns: 1fr 3fr 1fr;
-}
-
-
-.main-index-container {
-  display: flex;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
@@ -73,3 +57,5 @@
     grid-column: 1;
   }
 }
+
+

@@ -3,8 +3,9 @@ User.destroy_all
 Project.destroy_all
 Role.destroy_all
 ApplicationRequest.destroy_all
-# Level.destroy_all
-# Technology.destroy_all
+Level.destroy_all
+Technology.destroy_all
+Requirement.destroy_all
 puts "done cleaning"
 
 puts "Creating Users..."
@@ -24,13 +25,13 @@ project.save
 puts "done creating Projects"
 
 puts "Creating Roles..."
-role = Role.new(name: "Backend Dev")
+role = Role.new(name: "Backend Dev", description: "Mantain the backend of the platform with Rails")
 role.project_id = Project.first.id
 role.save
-role = Role.new(name: "Frontend Dev")
+role = Role.new(name: "Frontend Dev", description: "Spice up the frontend with magic")
 role.project_id = Project.first.id
 role.save
-role = Role.new(name: "Project Manager")
+role = Role.new(name: "Project Manager", description: "Asignar features a los colaboradores")
 role.project_id = Project.first.id
 role.save
 puts "done creating Roles"
@@ -55,37 +56,42 @@ application.role_id = Role.third.id
 application.save
 puts "done creating Applications"
 
-# puts "Creating levels"
-# level = Level.new(name: "Junior")
-# level.save
-# level = Level.new(name: "Semi senior")
-# level.save
-# level = Level.new(name: "Senior")
-# level.save
-# puts "done"
+puts "Creating levels"
+level = Level.new(name: "junior")
+level.save
+level = Level.new(name: "semisenior")
+level.save
+level = Level.new(name: "senior")
+level.save
+puts "done"
 
-# puts "Creating Technologies..."
-# tech = Technology.new(name: "Ruby")
-# tech.save
-# tech = Technology.new(name: "Javascript")
-# tech.save
-# tech = Technology.new(name: "CSS")
-# tech.save
-# tech = Technology.new(name: "Java")
-# tech.save
-# tech = Technology.new(name: "Python")
-# tech.save
-# tech = Technology.new(name: "React")
-# tech.save
-# puts "done"
+puts "Creating Technologies..."
+tech = Technology.new(name: "Ruby")
+tech.save
+tech = Technology.new(name: "Javascript")
+tech.save
+tech = Technology.new(name: "CSS")
+tech.save
+tech = Technology.new(name: "Java")
+tech.save
+tech = Technology.new(name: "Python")
+tech.save
+tech = Technology.new(name: "React")
+tech.save
+puts "done"
 
-# puts "Creating Requirements"
-# requirement = Requirement.new(role_id: Role.first.id, technology_id: Technology.first.id, level_id: Level.first.id)
-# requirement.save
-# requirement = Requirement.new(role_id: Role.second.id, technology_id: Technology.first.id, level_id: Level.first.id)
-# requirement.save
-# puts "done"
+puts "Creating Requirements"
+requirement = Requirement.new(role_id: Role.first.id, technology_id: Technology.first.id, level_id: Level.first.id)
+requirement.save
+requirement = Requirement.new(role_id: Role.second.id, technology_id: Technology.first.id, level_id: Level.first.id)
+requirement.save
+puts "done"
 
+puts "Creating Skills"
+skill = Skill.create!(user: User.first, technology: Technology.first, level: Level.first)
+skill = Skill.create!(user: User.first, technology: Technology.second, level: Level.second)
+skill = Skill.create!(user: User.second, technology: Technology.first, level: Level.third)
+puts "done"
 
 # puts "Creating collaborators"
 # collab = Collaborator.new
