@@ -1,0 +1,88 @@
+.project-container {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  display: flex;
+  height: 80vh;
+
+}
+
+.tabs-container {
+  flex-grow: 1;
+  padding-left: 1rem;
+}
+
+.project-overview {
+  border-radius: 0.8rem;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.02);
+
+  h5 {
+    margin: 16px;
+  }
+
+}
+
+.project-image {
+
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+  max-width: 100%;
+  height: auto;
+}
+
+// images div
+.tech-images {
+  display: flex;
+  justify-content: center;
+
+}
+
+// actual image
+.tech-image {
+
+  height: 1rem;
+  width: 1rem;
+
+}
+
+.description-container {
+  height: auto;
+  h5 {
+
+    text-align: center;
+
+  }
+}
+
+.project-collaborators {
+
+  h5{
+    text-align: center;
+  }
+
+}
+
+
+
+
+
+.card {
+  display: flex;
+}
+
+
+.btn {
+  border-radius: 12px;
+  padding-left: 21px;
+  padding-right: 21px;
+}
+
+
+.btn-action {
+  border-radius: 30px;
+  margin-left: 30px;
+  padding: 12px;
+}
