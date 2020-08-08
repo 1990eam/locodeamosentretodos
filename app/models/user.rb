@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :projects, dependent: :destroy
   has_many :collaborators
   has_many :roles, through: :collaborators
-  has_many :skills
+  has_many :skills, dependent: :destroy
   has_many :technologies, through: :skills
   has_many :levels, through: :skills
   has_many :application_requests

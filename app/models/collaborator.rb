@@ -1,5 +1,5 @@
 class Collaborator < ApplicationRecord
   belongs_to :role
   belongs_to :user
-  validates :status, presence: true, inclusion: { in: ["active", "paused"] }
+  validates :status, presence: true, inclusion: { in: ["active", "paused", "finished"] }
 end
