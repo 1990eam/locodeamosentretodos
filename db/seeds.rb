@@ -25,13 +25,13 @@ project.save
 puts "done creating Projects"
 
 puts "Creating Roles..."
-role = Role.new(name: "Backend Dev")
+role = Role.new(name: "Backend Dev", description: "Mantain the backend of the platform with Rails")
 role.project_id = Project.first.id
 role.save
-role = Role.new(name: "Frontend Dev")
+role = Role.new(name: "Frontend Dev", description: "Spice up the frontend with magic")
 role.project_id = Project.first.id
 role.save
-role = Role.new(name: "Project Manager")
+role = Role.new(name: "Project Manager", description: "Asignar features a los colaboradores")
 role.project_id = Project.first.id
 role.save
 puts "done creating Roles"
