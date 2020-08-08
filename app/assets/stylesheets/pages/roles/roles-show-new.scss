@@ -1,17 +1,18 @@
-.role-container *{
+// .roles-container *{
 
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+//   display: grid;
 
-}
+
+// }
 
 .card-wrapper {
 
-  display: flex;
-  align-items: center;
-  align-content: center;
-  flex-direction: column;
+  display: inline-grid;
+  grid-template-rows: 25% auto;
+  grid-template-columns: auto;
+  // align-items: center;
+  // align-content: center;
+  // flex-direction: column;
 
 }
 
