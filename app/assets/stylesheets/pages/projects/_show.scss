@@ -1,11 +1,19 @@
 .project-container {
-
+  margin-top: 1rem;
+  margin-left: 1rem;
   display: flex;
   height: 80vh;
 
 }
 
+.tabs-container {
+
+  padding-left: 1rem;
+}
+
 .project-overview {
+  border-radius: 0.8rem;
+  width: 48vw;
   display: flex;
   flex-direction: column;
   background-color: $white;
@@ -17,8 +25,32 @@
 
 }
 
-.text-container {
-  height: 180px;
+.project-image {
+
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+  max-width: 100%;
+  height: auto;
+}
+
+// images div
+.tech-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+// actual image
+.tech-image {
+
+  height: 1rem;
+  width: 1rem;
+
+}
+
+.description-container {
+  height: auto;
 }
 
 

@@ -1,7 +1,16 @@
-<h1 class='text-center'> <%= @project.name %></h1>
 <div class='project-container mr-5'>
 
         <div class='project-overview'>
+          <%= image_tag "project-default", class:"project-image" %>
+          <h4 class='text-center'> <%= @project.name %></h4>
+          <div class="tech-images">
+            <%= image_tag "ruby-icon", class:"tech-image" %>
+            <%= image_tag "ruby-icon", class:"tech-image" %>
+          </div>
+          <div class="description-container">
+            <h5> Acerca del Proyecto </h5>
+<!--             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, similique, maxime. Sapiente nesciunt adipisci qui ad eos placeat doloremque quos dignissimos, laboriosam sint ducimus! Voluptatem laudantium architecto omnis, veritatis dolores.</p> -->
+          </div>
           <h5> Colaboradores </h5>
         </div>
 
@@ -50,10 +59,7 @@
 
             </div>
 
-          <div class="text-container">
-            <h5> Acerca del Proyecto </h5>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, similique, maxime. Sapiente nesciunt adipisci qui ad eos placeat doloremque quos dignissimos, laboriosam sint ducimus! Voluptatem laudantium architecto omnis, veritatis dolores.</p>
-          </div>
+
 
           </div>
 
