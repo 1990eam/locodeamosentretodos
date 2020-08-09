@@ -16,43 +16,17 @@
   display: grid;
   grid-row: 1 / 4;
   background-color: $white;
-  box-shadow: 5px 5px rgba(0, 0, 0, 0.02);
-
+  border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card {
   display: flex;
   height: 350px;
   width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
    * { cursor:pointer; }
-
-
-//   input[type="radio"] {
-//   display: none;
-//   &:not(:disabled) ~ label {
-//     cursor: pointer;
-//   }
-//   &:disabled ~ label {
-//     color: hsla(150, 5%, 75%, 1);
-//     border-color: hsla(150, 5%, 75%, 1);
-//     box-shadow: none;
-//     cursor: not-allowed;
-//   }
-//   }
-
-//   label {
-//   height: 100%;
-//   display: block;
-//   background: white;
-//   border: 2px solid hsla(150, 75%, 50%, 1);
-//   border-radius: 20px;
-//   padding: 1rem;
-//   margin-bottom: 1rem;
-//   //margin: 1rem;
-//   text-align: center;
-//   box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
-//   position: relative;
-// }
 
 .btn {
   border-radius: 12px;
@@ -62,8 +36,14 @@
   bottom: 10px;
   right: 70px;
 }
-
 }
+
+.card:hover {
+  background-color: #eeeeee;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2)
+}
+
 
 .card-project h5 {
   margin: 16px;
