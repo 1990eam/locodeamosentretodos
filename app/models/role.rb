@@ -4,6 +4,8 @@ class Role < ApplicationRecord
   has_many :application_requests, dependent: :destroy
   has_many :users, through: :collaborators
   has_many :requirements, dependent: :destroy
+  has_many :technologies, through: :requirements
+  has_many :levels, through: :requirements
   validates :name, presence: true
 
 

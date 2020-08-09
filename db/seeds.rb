@@ -16,11 +16,16 @@ User.create!(first_name: "Hackerman", last_name: "Coder", email: "test4@test.com
 puts "done creating Users"
 
 puts "Creating Projects..."
-project = Project.new(name: "Lo Codeamos", description: "El mejor proyecto final de LeWagon #384")
+project = Project.new(name: "Lo Codeamos", description: "El mejor proyecto final de LeWagon #384", link_1: "http://github.com/1990eam/locodeamosentretodos/", link_2: "www.loteriadesanluis.com", sponsored: true)
 project.user = User.first
 project.save
 project = Project.new(name: "Donde Estan los ATM?", description: "Accede a la ubicacion de los cajeros con guita")
 project.user = User.second
+project.photo.attach(io:URI.open("https://pbs.twimg.com/profile_images/1271104593951408134/6gNhxW4h_400x400.jpg"), filename: "#{project.name}.png", content_type: 'image/png')
+project.save
+project = Project.new(name: "La Liga", description: "Apreta en las subastas judiciales con nosotros y gana maravillosos premios", link_1: "awesomeopensource.com/project/danielbayerlein/dashboard", sponsored: true)
+project.user = User.third
+project.photo.attach(io:URI.open("https://infocielo.com/uploads/noticias/imagenes/a/2020/06/20200609161507_grondona.jpg"), filename: "#{project.name}.png", content_type: 'image/png')
 project.save
 puts "done creating Projects"
 
@@ -29,10 +34,13 @@ role = Role.new(name: "Backend Dev", description: "Mantain the backend of the pl
 role.project_id = Project.first.id
 role.save
 role = Role.new(name: "Frontend Dev", description: "Spice up the frontend with magic")
-role.project_id = Project.first.id
+role.project_id = Project.second.id
 role.save
 role = Role.new(name: "Project Manager", description: "Asignar features a los colaboradores")
 role.project_id = Project.first.id
+role.save
+role = Role.new(name: "Patotero", description: "Fajar a los que se hacen los piolas")
+role.project_id = Project.third.id
 role.save
 puts "done creating Roles"
 
@@ -63,6 +71,8 @@ level = Level.new(name: "semisenior")
 level.save
 level = Level.new(name: "senior")
 level.save
+level = Level.new(name: "master")
+level.save
 puts "done"
 
 puts "Creating Technologies..."
@@ -78,12 +88,24 @@ tech = Technology.new(name: "Python")
 tech.save
 tech = Technology.new(name: "React")
 tech.save
+tech = Technology.new(name: "Plain Old Violence")
+tech.save
 puts "done"
 
 puts "Creating Requirements"
 requirement = Requirement.new(role_id: Role.first.id, technology_id: Technology.first.id, level_id: Level.first.id)
 requirement.save
-requirement = Requirement.new(role_id: Role.second.id, technology_id: Technology.first.id, level_id: Level.first.id)
+requirement = Requirement.new(role_id: Role.second.id, technology_id: Technology.second.id, level_id: Level.second.id)
+requirement.save
+requirement = Requirement.new(role_id: Role.third.id, technology_id: Technology.third.id, level_id: Level.first.id)
+requirement.save
+requirement = Requirement.new(role_id: Role.fourth.id, technology_id: Technology.last.id, level_id: Level.third.id)
+requirement.save
+requirement = Requirement.new(role_id: Role.first.id, technology_id: Technology.fourth.id, level_id: Level.second.id)
+requirement.save
+requirement = Requirement.new(role_id: Role.fourth.id, technology_id: Technology.fourth.id, level_id: Level.second.id)
+requirement.save
+requirement = Requirement.new(role_id: Role.second.id, technology_id: Technology.fifth.id, level_id: Level.second.id)
 requirement.save
 puts "done"
 
@@ -93,13 +115,3 @@ skill = Skill.create!(user: User.first, technology: Technology.second, level: Le
 skill = Skill.create!(user: User.second, technology: Technology.first, level: Level.third)
 puts "done"
 
-# puts "Creating collaborators"
-# collab = Collaborator.new
-# collab.role_id = Role.first.id
-# collab.user_id = User.second.id
-# collab.save
-# collab = Collaborator.new
-# collab.role_id = Role.first.id
-# collab.user_id = User.fourth.id
-# collab.save
-# puts "done"

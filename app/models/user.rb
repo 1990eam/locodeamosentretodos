@@ -10,6 +10,13 @@ class User < ApplicationRecord
   has_many :technologies, through: :skills
   has_many :levels, through: :skills
   has_many :application_requests
-  validates :first_name, :last_name, presence: true
   has_one_attached :photo
+  validates :first_name, :last_name, presence: true
+  validate :photo_present
+
+  def photo_present
+    unless photo.attached?
+      photo.attach(io: File.open(Dir.getwd + "/app/assets/images/default-user-img.png"), filename: "default.png", content_type: 'image/png')
+    end
+  end
 end

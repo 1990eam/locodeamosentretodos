@@ -1,35 +1,43 @@
 <div class="index-project-card border rounded aos-init" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="500">
     <div class="d-flex">
-      <%= image_tag "new hardcode logo", alt: "alttext", class: "project-card-logo mr-3 ml-2" %>
+      <%= cl_image_tag project.photo.key, alt: "alttext", crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
       <div>
-        <h2>Cocina En Casa</h2>
-        <p class="text-muted">Una plataforma que conecta los mejores platos de los restaurants con clientes que buscan cocinar el plato desde cero.</p>
+        <h2><%= project.name %></h2>
+        <p class="text-muted"><%= project.description %></p>
       </div>
-      <div class="badge badge-pill badge-info project-card-sponsored d-flex justify-content-between">
-        <i class="fa fa-heart" aria-hidden="true" style="color: #da64ab;"></i>
-        <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block ml-1">Sponsored</div>
-      </div>
+      <% if project.sponsored %>
+        <div class="badge badge-pill badge-info project-card-sponsored d-flex justify-content-between">
+          <i class="fa fa-heart" aria-hidden="true" style="color: #da64ab;"></i>
+          <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block ml-1">Sponsored</div>
+        </div>
+      <% end %>
     </div>
 
     <div class="d-flex">
       <div class="card-links mr-3">
         <h3>Links</h3>
         <div>
-          <%= link_to "#" do %>
-            <div class="d-flex">
-              <i class="fab fa-github-square"></i>
-              <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1 align-middle">elreydelcodeo.com</div>
-            </div>
+          <% if project.link_1 != nil %>
+            <%= link_to "http://#{project.link_1}" do %>
+              <div class="d-flex align-items-center mb-2">
+                <%= sanitize pick_url_icon(project.link_1) %>
+                <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1">
+                  <%= project.link_1.length > 24 ? "#{project.link_1[0...24]}..." : project.link_1 %>
+                </div>
+              </div>
+            <% end %>
           <% end %>
-          <%= link_to "#" do %>
-            <div class="d-flex">
-              <i class="fas fa-globe"></i>
-              <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1 align-middle">loteriadesanluis.ar</div>
-            </div>
+          <% if project.link_2 != nil %>
+            <%= link_to "http://#{project.link_2}" do %>
+              <div class="d-flex align-items-center">
+                <%= sanitize pick_url_icon(project.link_2) %>
+                <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1"><%= project.link_2 %></div>
+              </div>
+            <% end %>
           <% end %>
         </div>
         <div class="open-positions rounded">
-          <p>2 positions open</p>
+          <p><%= project.roles.count { |role| role.open? } %> positions open</p>
         </div>
       </div>
 
@@ -46,11 +54,10 @@
         </div>
 
         <div class="mt-2">
-          <h3>Contributors <span class="badge badge-pill badge-light">4</span></h3>
-            <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar-small mr-2" %>
-            <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar-small mr-2" %>
-            <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar-small mr-2" %>
-            <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar-small mr-2" %>
+          <h3>Contributors <span class="badge badge-pill badge-light"><%= project.collaborators.count { |x| x.status = "active" } %></span></h3>
+            <% project.collaborators.each do |collaborator| %>
+              <%= cl_image_tag collaborator.user.photo.key, class: "avatar-small mr-2" %>
+            <% end %>
         </div>
       </div>
     </div>
