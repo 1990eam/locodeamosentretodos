@@ -1,15 +1,8 @@
-// .roles-container *{
-
-//   display: grid;
-
-
-// }
-
 .card-wrapper {
 
-  display: inline-grid;
-  grid-template-rows: 25% auto;
-  grid-template-columns: auto;
+  display: grid;
+  grid-template-rows: 50% auto;
+  grid-template-columns: 1fr 1fr 1fr;
   // align-items: center;
   // align-content: center;
   // flex-direction: column;
@@ -28,7 +21,7 @@
   justify-content: center;
   margin: 2rem 0;
   box-shadow: .5rem .5rem 3rem rgba(0,0,0,0.2);
-
+  height: 350px;
 
 }
 
