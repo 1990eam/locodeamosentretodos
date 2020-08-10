@@ -13,6 +13,7 @@ class RolesController < ApplicationController
     @role = Role.new(role_params)
     @role.project = Project.find(params[:project_id])
     authorize @role
+    # el redirect desde el tab de role habria que sacarlo
     if @role.save
       redirect_to new_project_role_path(Project.find(params[:project_id]))
     else

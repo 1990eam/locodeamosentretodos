@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_08_08_182120) do
     t.string "name"
     t.text "description"
     t.bigint "user_id", null: false
-    t.text "link"
+    t.text "links"
     t.boolean "sponsored", default: false
     t.string "link_1"
     t.string "link_2"
