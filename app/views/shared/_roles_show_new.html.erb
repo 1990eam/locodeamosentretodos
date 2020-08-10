@@ -27,16 +27,20 @@
       </div>
       <% end %>
 
-      <div class="card">
-        <h5 class="card-title">New role</h5>
-        <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
-          <%= f.input :name %>
-          <%= f.input :description %>
-          <%= f.submit "Submit role", class: "btn btn-primary" %>
-        <% end %>
+      <div class="card clickable-card">
+        <div class="card-body text-center">
+          <h5 class="card-title">New role</h5>
+          <div class="container">
+
+            <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
+              <%= f.input :name %>
+              <%= f.input :description %>
+              <%= f.submit "Add role", class: "btn btn-primary" %>
+            <% end %>
+
+          </div>
+        </div>
       </div>
-
-
   </div>
 </div>
 
