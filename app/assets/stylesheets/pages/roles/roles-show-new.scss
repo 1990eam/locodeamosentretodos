@@ -1,126 +1,70 @@
+.container h2 {
+  text-align: center;
+
+}
+
 .card-wrapper {
 
   display: grid;
   grid-template-rows: 50% auto;
   grid-template-columns: 1fr 1fr 1fr;
-  // align-items: center;
-  // align-content: center;
-  // flex-direction: column;
 
 }
 
-.role-card {
-  font-size: 12px;
-  border: .5rem solid rgba(0,0,0,0.5);
-  padding: .5rem;
-  width: 16rem;
-  background-color: #ebeef8;
+.card {
+  h5{
+    text-align: center;
+  }
+
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem 0;
-  box-shadow: .5rem .5rem 3rem rgba(0,0,0,0.2);
   height: 350px;
+  width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   * { cursor:pointer; }
 
+.btn {
+  border-radius: 12px;
+  padding-left: 21px;
+  padding-right: 21px;
+  position: absolute;
+  bottom: 10px;
+  right: 70px;
+}
 }
 
-.role-title {
-
-  font-size: 1.5rem;
-}
-
-// div
-.role-card-tech-images {
-  justify-content: space-evenly;
-}
-
-// actual image
-.tech-image {
-
-  height: 1.5rem;
-  width: 1.5rem;
-
-}
-
-.role-card .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: .5rem .5rem 2rem rgba(0,0,0,.2)
+.card:hover {
+  background-color: #eeeeee;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2)
 }
 
 
-// Media Queries
-@media screen and (min-width: 700px){
-  .card-wrapper{
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
+.card-roles {
+  display:grid;
+  grid-gap: 16px;
+  grid-template-columns: 1fr 1fr 1fr;
 
-  .role-card{
-    margin: 2rem;
-  }
 }
 
 
+.text-container {
+  height: 180px;
+}
 
+.file-container {
+  height: 180px;
+}
 
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
 
-
-
-
-
-// .new-role-form-container {
-
-//   margin: 0 auto;
-
-// }
-
-// h2 {
-
-//   text-decoration: underline;
-//   margin: 0 auto;
-//   text-align: center;
-//   margin-bottom: 25px;
-
-// }
-
-// .role-card {
-//   border: 10px solid #8bbbf9;
-//   width: 180px;
-//   height: 200px;
-//   margin-left: 8px;
-//   margin-right: 8px;
-
-//   .role-title {
-
-//     text-align: center;
-
-//   }
-
-// }
-
-// .roles {
-
-//   display: flex;
-//   justify-content: center;
-
-// }
-
-// .new-role-card {
-
-//   border: 10px solid #8bbbf9;
-//   width: 180px;
-//   height: 200px;
-//   margin-left: 8px;
-//   margin-right: 8px;
-
-// }
-
-// .new-roles {
-//   margin-top: 16px;
-//   display: flex;
-//   justify-content: center;
-
-// }
+.btn-action {
+  border-radius: 30px;
+  margin-left: 30px;
+  padding: 12px;
+}
