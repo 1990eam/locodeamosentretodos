@@ -1,9 +1,8 @@
 .project-container {
   margin-top: 1rem;
   margin-left: 1rem;
-  display: flex;
-  height: 80vh;
-
+  display: grid;
+  grid-template-columns: 1fr 5fr;
 }
 
 .tabs-container {
@@ -13,7 +12,7 @@
 
 .project-overview {
   border-radius: 0.8rem;
-  min-width: 20vw;
+  min-width: 16vw;
   max-width: min-content;
   display: flex;
   flex-direction: column;
@@ -83,3 +82,7 @@
   margin-left: 30px;
   padding: 12px;
 }
+
+// Griddation
+
+
