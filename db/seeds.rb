@@ -88,6 +88,8 @@ tech = Technology.new(name: "Python")
 tech.save
 tech = Technology.new(name: "React")
 tech.save
+tech = Technology.new(name: "HTML")
+tech.save
 tech = Technology.new(name: "Plain Old Violence")
 tech.save
 puts "done"

@@ -22,16 +22,18 @@
               <div class="d-flex align-items-center mb-2">
                 <%= sanitize pick_url_icon(project.link_1) %>
                 <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1">
-                  <%= project.link_1.length > 24 ? "#{project.link_1[0...24]}..." : project.link_1 %>
+                  <%= truncate(project.link_1, length: 24)  %>
                 </div>
               </div>
             <% end %>
           <% end %>
           <% if project.link_2 != nil %>
             <%= link_to "http://#{project.link_2}" do %>
-              <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center mb-2">
                 <%= sanitize pick_url_icon(project.link_2) %>
-                <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1"><%= project.link_2 %></div>
+                <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1">
+                  <%= truncate(project.link_2, length: 24) %>
+                </div>
               </div>
             <% end %>
           <% end %>
@@ -45,11 +47,12 @@
         <div>
           <h3>Tags</h3>
           <div class="d-flex flex-wrap">
-            <p class="mr-2 mb-0"><i class="fab fa-html5" style="color: orange;"></i> HTML</p>
-            <p class="mr-2 mb-0"><i class="fab fa-css3-alt" style="color: blue;"></i> CSS</p>
-            <p class="mr-2 mb-0"><i class="fas fa-gem" style="color: red;"></i> Ruby</p>
-            <p class="mr-2 mb-0"><i class="fab fa-js-square" style="color:teal;"></i> JScript</p>
-            <p class="mr-2 mb-0"><i class="fas fa-cookie-bite" style="color: brown;"></i> Cooking!</p>
+            <% project.technologies.uniq.each do |technology| %>
+              <p class="mr-2 mb-0">
+                <%= sanitize pick_tech_icon(technology.name) %>
+                <%= technology.name %>
+              </p>
+            <% end %>
           </div>
         </div>
 
