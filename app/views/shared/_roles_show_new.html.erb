@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>Project Roles</h2>
+  <div class="card-wrapper">
+
+    <% @project.roles.each do |role| %>
+      <div class="card clickable-card" data-target="<%= role.id %>" data-delete="<%= role.id %>">
+        <div class="card-body text-center">
+          <h5 class="card-title"><%= role.name %></h5>
+          <div class="d-flex flex-wrap">
+            <p class="mr-2 mb-0"><i class="fab fa-html5" style="color: orange;"></i> HTML</p>
+            <p class="mr-2 mb-0"><i class="fab fa-css3-alt" style="color: blue;"></i> CSS</p>
+            <p class="mr-2 mb-0"><i class="fas fa-gem" style="color: red;"></i> Ruby</p>
+            <p class="mr-2 mb-0"><i class="fab fa-js-square" style="color:teal;"></i> JScript</p>
+            <p class="mr-2 mb-0"><i class="fas fa-cookie-bite" style="color: brown;"></i> Cooking!</p>
+          </div>
+          <!-- role.status indica si una posicion esta cubierta o no -->
+          <p class="role.status">Covered: <%= role.open? %></p>
+           <% role.requirements.each do |requirement|%>
+          <h6 class='rol text-left'> <i class="fas fa-gem" style="color: red"></i> <%= requirement.technology.name %> </h6>
+          <% end %>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p class="card-text"><%= role.description %></p>
+          <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i> Apply </button>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="card clickable-card">
+        <div class="card-body text-center">
+          <h5 class="card-title">New role</h5>
+          <div class="container">
+
+            <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
+              <%= f.input :name %>
+              <%= f.input :description %>
+              <%= f.submit "Add role", class: "btn btn-primary" %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+

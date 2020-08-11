@@ -14,6 +14,9 @@ class ApplicationRequestsController < ApplicationController
   def create
     @application = ApplicationRequest.new(application_params)
     authorize @application
+    @application.user = current_user
+    role = Role.find(params[:role_id])
+    @application.role = role
 
     if @application.save
       redirect_to application_requests_path

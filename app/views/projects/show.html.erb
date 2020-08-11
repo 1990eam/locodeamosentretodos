@@ -1,54 +1,81 @@
-<div class='container mt-5'>
-  <h1 class='text-center'> <%= @project.name %></h1>
-   <div class='container mt-5'>
-      <div class='grid-show'>
-        <div class='card-project'>
-          <h5> Colaboradores </h5>
-        </div>
-          <div class="card-roles" >
-              <div class="card">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Rol title</h5>
-                  <h6 > <i class="fab fa-css3-alt"></i> Nombre lenguaje </h6>
-                  <p class="card-text">Description breve del puesto a cubrir </p>
-                  <button class="btn btn-secondary"> <i class="fas fa-plus-circle primary "></i> Select </button>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Rol title</h5>
-                  <h6><i class="fab fa-js-square"></i> Nombre Lenguaje</h6>
-                  <p class="card-text">Description breve del puesto a cubrir</p>
-                  <button class="btn btn-secondary"> <i class="fas fa-plus-circle primary "></i> Select </button>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Rol title</h5>
-                  <h6><i class="fab fa-js-square"></i> Nombre Lenguaje</h6>
-                  <p class="card-text">Description breve del puesto a cubrir</p>
-                  <button class="btn btn-secondary"> <i class="fas fa-plus-circle primary "></i> Select </button>
-                </div>
-              </div>
+<div class='project-container mr-5'>
+
+        <div class='project-overview'>
+          <%= image_tag "project-default", class:"project-image" %>
+          <h4 class='text-center'> <%= @project.name %></h4>
+          <div class="tech-images">
+            <%= image_tag "ruby-icon", class:"tech-image" %>
+            <%= image_tag "ruby-icon", class:"tech-image" %>
           </div>
-          <div class='file-container'>
-            <h5> Subir archivos de propuesta</h5>
-            <p> <i class="fas fa-plus"></i> Añadir archivo </p>
-            <input type="file" id="files" >
+          <div class="description-container">
+            <h5> Descripciòn </h5>
+            <div class="project-description">
+              <p><%= @project.description %></p>
+            </div>
           </div>
-          <div class="text-container">
-            <h5> Acerca del Proyecto </h5>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, similique, maxime. Sapiente nesciunt adipisci qui ad eos placeat doloremque quos dignissimos, laboriosam sint ducimus! Voluptatem laudantium architecto omnis, veritatis dolores.</p>
-          </div>
-      </div>
-        <div class="form-group mt-5">
-          <label for="exampleFormControlTextarea1">Algo sobre ti</label>
-          <div class="input-group">
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          <button type="submit" class="btn-action btn-primary mb-2"> <i class="fas fa-plus"></i> Action</button>
+
+          <div class="project-collaborators">
+            <h5> Colaboradores </h5>
+            <div class="project-owner">
+               <% if @project.user.photo.attached? %>
+                <%= cl_image_tag @project.user.photo.key, class: "avatar dropdown-toggle" %>
+              <% else %>
+                <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
+              <% end %>
+              <%= @project.user.first_name %>
+            </div>
+            <p>Tomas Hergott</p>
+            <p>Amy Camacho</p>
+            <p>Pablo Andrizzi</p>
+            <p>Elian Magni</p>
           </div>
         </div>
-  </div>
+
+          <div class="tabs-container" >
+            <!-- Tabs https://getbootstrap.com/docs/4.0/components/navs/#javascript-behavior-->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Applications</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Roles</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Evolution</a>
+              </li>
+            </ul>
+
+            <!-- Tab content -->
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <%= render "shared/roles_show_new" %>
+              </div>
+
+              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+
 </div>
 
 
