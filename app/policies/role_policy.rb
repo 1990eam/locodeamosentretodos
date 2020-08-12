@@ -6,8 +6,7 @@ class RolePolicy < ApplicationPolicy
   end
 
   def new?
-    # record.project.user == user
-    true
+    record.project.nil? || record.project.user == user
   end
 
   def create?
