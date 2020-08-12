@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show]
+  before_action :set_project, only: [:show, :destroy]
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
@@ -20,6 +20,11 @@ class ProjectsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @project.destroy
+    redirect_to projects_path
   end
 
   def show
