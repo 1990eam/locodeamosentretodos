@@ -13,7 +13,6 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
-
   def show?
     true
   end
@@ -21,5 +20,4 @@ class ProjectPolicy < ApplicationPolicy
   def my_projects?
     true
   end
-
 end
