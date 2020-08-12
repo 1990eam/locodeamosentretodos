@@ -11,6 +11,9 @@
 }
 
 .project-overview {
+  height: 80vh;
+  position: sticky;
+  top: 30px;
   border-radius: 0.8rem;
   min-width: 16vw;
   max-width: min-content;
