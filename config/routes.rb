@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
+
+  # Some setup you must do manually if you haven't yet:
+
+  #   Ensure you have overridden routes for generated controllers in your routes.rb.
+  #   For example:
+
+  #     Rails.application.routes.draw do
+  #       devise_for :users, controllers: {
+  #         sessions: 'users/sessions'
+  #       }
+  #     end
   devise_for :users
+
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :application_requests, only: [:index]
 

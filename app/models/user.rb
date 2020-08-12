@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :application_requests
   has_one_attached :photo
   validates :first_name, :last_name, presence: true
-  validate :photo_present
+  # validate :photo_present
 
   def photo_present
     unless photo.attached?
