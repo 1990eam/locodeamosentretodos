@@ -6,5 +6,15 @@
     <p>Role: <%= application.role.name %></p>
     <p>About me: <%= application.about_me %></p>
     <p>Status <%= application.status %></p>
+    <div>
+      <% case application.status %>
+      <% when "pending" %>
+      <p style="color: #e59500; font-weight: bolder">Pending</p>
+      <% when "accepted" %>
+      <p style="color: green; font-weight: bolder">Accepted</p>
+      <% when "declined" %>
+      <p style="color: red; font-weight: bolder">Declined</p>
+      <% end %>
+    </div>
   </div>
 <% end %>
