@@ -1,0 +1,22 @@
+<!-- https://medium.com/@theresamorelli/collection-select-what-the-heck-4e1cabc4be4b -->
+
+<!-- renderizar current skills cards? -->
+
+
+<div class="container">
+
+  <%= simple_form_for [ @user, @skill ] do |f| %>
+    <p>Select Tech</p>
+    <div>
+      <%= f.collection_select :technology_id, @techs, :id, :name%>
+    </div>
+    <p>Select Level</p>
+    <div>
+      <%= f.collection_select :level_id, @levels, :id, :name%>
+    </div>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+
+
+</div>
+

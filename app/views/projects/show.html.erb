@@ -4,11 +4,15 @@
           <%= image_tag "project-default", class:"project-image" %>
           <h4 class='text-center'> <%= @project.name %></h4>
           <div class="tech-images">
-            <%= image_tag "ruby-icon", class:"tech-image" %>
-            <%= image_tag "ruby-icon", class:"tech-image" %>
+            <% @project.technologies.uniq.each do |technology| %>
+              <p class="mr-2 mb-0">
+                <%= sanitize pick_tech_icon(technology.name) %>
+                <%= technology.name %>
+              </p>
+            <% end %>
           </div>
           <div class="description-container">
-            <h5> Descripciòn </h5>
+            <h5> Descripción </h5>
             <div class="project-description">
               <p><%= @project.description %></p>
             </div>

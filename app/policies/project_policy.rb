@@ -13,7 +13,6 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
-
   def show?
     true
   end
@@ -22,4 +21,7 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
+  def destroy?
+    record.user == user
+  end
 end

@@ -1,18 +1,58 @@
+<%= render "shared/add_skill_modal" %>
 <div class="container mt-5">
-  <div class="search-bar"></div>
+  <nav class="nav nav-pills justify-content-between search-bar border m-0 px-2 rounded bg-white">
+  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ordenar Por</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Skills</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separat      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>ed link</a>
+    </div>
+  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Estado</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Experiencia</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</nav>
   <div class="grid-index-container mt-5">
     <div class="my-feed"></div>
     <div class="index-projects">
       <% @projects.each do |project| %>
-        <div class="index-project-card">
-          <div><%= project.name %></div>
-          <div><%= project.description %></div>
-          <%= link_to "Apply to this project", new_project_application_request_path(project) %>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Apply to this project</button>
-          <%= render "application_requests/modal_window", project: project %>
-        </div>
+        <%= link_to project_path(project) do %>
+            <%#= link_to "Apply to this project", new_project_application_request_path(project) %>
+<!--              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Apply to this project</button> -->            <%#= render "application_requests/modal_window", project: project %>
+            <%= render "projects/index-card", project: project %>
+        <% end %>
       <% end %>
     </div>
     <div class="my-profile-card"></div>
   </div>
 </div>
+
+<div id="user-skills" style="display: none;">
+  <% if @user %>
+    <%= @user.skills.count %>
+  <% end %>
+</div>
+

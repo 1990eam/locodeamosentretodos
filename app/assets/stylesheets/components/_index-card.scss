@@ -3,7 +3,7 @@
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 16px;
-  min-height: 260px;
+  min-height: 220px;
   width: 100%;
   margin-bottom: 16px;
   margin-top: 16px;
@@ -19,6 +19,10 @@
   }
 }
 
+.index-project-card a:hover {
+  text-decoration: none;
+}
+
 .project-card-logo {
   height: 60px;
   width: 60px;
@@ -31,11 +35,10 @@
 }
 
 .card-links {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 60%;
+  width: 50%;
 }
 
 .open-positions {
