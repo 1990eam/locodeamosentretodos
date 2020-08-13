@@ -4,12 +4,16 @@
     <%= f.error_notification %>
     <%= f.input :name, placeholder: "Nombre del Proyecto" %>
     <%= f.input :description, as: :text, placeholder: "Describe tu proyecto" %>
-    <%= f.input :link_1, as: :text, placeholder: "Linkea tu GitHub, LinkedIn o lo que creas necesario" %>
-    <%= f.input :link_2, as: :text, placeholder: "Linkea tu GitHub, LinkedIn o lo que creas necesario" %>
-    <%= f.input :photo, as: :file, required: true %>
+    <%= f.input :link_1, as: :text, placeholder: "Agrega links a tu proyecto! (GitHub, LinkedIn, website...)" %>
+    <%= f.input :link_2, as: :text, placeholder: "Agrega links a tu proyecto! (GitHub, LinkedIn, website...)" %>
+    <%= f.input :photo, as: :file %>
+    <%= simple_fields_for @role do |r| %>
+      <%= r.label "Crea tu rol dentro del proyecto" %>
+      <%= r.input :name, placeholder: "Nombre de tu rol" %>
+      <%= r.input :description, placeholder: "Descripción de tu rol" %>
+    <% end %>
     <%= f.button :submit, "Crear Proyecto", class: "btn-primary" %>
     <%= f.button :button, "Cancelar", type: "reset", class: "btn btn-danger" %>
     <% end %>
   </div>
-
 </div>

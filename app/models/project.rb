@@ -1,10 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :roles, dependent: :destroy
-  # Revisar
   has_many :requirements, through: :roles
   has_many :technologies, through: :requirements
-  # --------
   has_many :collaborators, through: :roles
   has_many :application_requests, through: :roles
   has_one_attached :photo

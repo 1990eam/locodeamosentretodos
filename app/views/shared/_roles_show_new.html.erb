@@ -14,7 +14,7 @@
             <p class="mr-2 mb-0"><i class="fas fa-cookie-bite" style="color: brown;"></i> Cooking!</p>
           </div>
           <!-- role.status indica si una posicion esta cubierta o no -->
-          <p class="role.status">Covered: <%= role.open? %></p>
+          <p class="role.status">Covered: <%= !role.open? %></p>
            <% role.requirements.each do |requirement|%>
           <h6 class='rol text-left'> <i class="fas fa-gem" style="color: red"></i> <%= requirement.technology.name %> </h6>
           <% end %>
