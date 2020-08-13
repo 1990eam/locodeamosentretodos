@@ -13,4 +13,22 @@ class SkillsController < ApplicationController
     authorize @skill
   end
 
+  def create
+    @user = current_user
+    @skill = current_user.skills.new(skill_params)
+    authorize @skill
+    if @skill.save
+      redirect_to user_skills_path(current_user)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def skill_params
+    params.require(:skill).permit(:technology_id, :level_id)
+  end
+
+
 end
