@@ -1,0 +1,8 @@
+<%= simple_form_for [ @user, @skill ] do |f| %>
+  <p>Select Tech</p>
+  <%= f.collection_select :technology, @techs, :id, :name, include_blank: true %>
+  <p>Select Level</p>
+  <%= f.collection_select :level, @levels, :id, :name, include_blank: true %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
+

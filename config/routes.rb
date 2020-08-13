@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
 
+  resources :users do
+    resources :skills, only: [:index, :new, :create]
+  end
+
   root to: 'pages#home'
 
   resources :application_requests, only: [:index]
