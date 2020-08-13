@@ -1,6 +1,6 @@
 class ApplicationRequestsController < ApplicationController
   before_action :authenticate_user!
-
+  skip_after_action :verify_authorized, only: [:my_project_request]
   def index
     @applications = policy_scope(ApplicationRequest)
   end
@@ -25,6 +25,24 @@ class ApplicationRequestsController < ApplicationController
       @project = Project.find(params[:project_id])
       render :new
     end
+  end
+
+  def my_project_request
+    @projects = current_user.projects
+  end
+
+  def accept
+    @application = ApplicationRequest.find(params[:project_id])
+    authorize @application
+    @application.update(status: "accepted")
+    redirect_to application_requests_path
+  end
+
+  def decline
+    @application = ApplicationRequest.find(params[:project_id])
+    authorize @application
+    @application.update(status: "declined")
+    redirect_to application_requests_path
   end
 
   private

@@ -5,6 +5,15 @@
     <h5><%= application.role.project.description %></h5>
     <p>Role: <%= application.role.name %></p>
     <p>About me: <%= application.about_me %></p>
-    <p>Status <%= application.status %></p>
+    <div>
+      <% case application.status %>
+      <% when "pending" %>
+      <p style="color: #e59500; font-weight: bolder">Status: Pending</p>
+      <% when "accepted" %>
+      <p style="color: green; font-weight: bolder">Status: Accepted</p>
+      <% when "declined" %>
+      <p style="color: red; font-weight: bolder">Status: Declined</p>
+      <% end %>
+    </div>
   </div>
 <% end %>
