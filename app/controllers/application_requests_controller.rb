@@ -35,14 +35,14 @@ class ApplicationRequestsController < ApplicationController
     @application = ApplicationRequest.find(params[:project_id])
     authorize @application
     @application.update(status: "accepted")
-    redirect_to application_request_path
+    redirect_to application_requests_path
   end
 
   def decline
     @application = ApplicationRequest.find(params[:project_id])
     authorize @application
     @application.update(status: "declined")
-    redirect_to application_request_path
+    redirect_to application_requests_path
   end
 
   private

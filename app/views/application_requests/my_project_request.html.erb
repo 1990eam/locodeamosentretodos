@@ -1,20 +1,23 @@
 <div class="container">
   <h1> My request</h1>
 
-  <div class="card-request">
+
+    <% @projects.each do |project| %>
+    <% project.application_requests.each do |application| %>
+    <div class="card-request bg-secondary mt-3" style="width: 800px;">
     <div class="d-flex">
-      <% @projects.each do |project| %>
-      <%= cl_image_tag project.photo.key, alt: "alttext", crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
+      <img src=<%= cl_image_path application.role.project.photo.key, alt: "alttext",  width: 50, height:50, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %> >
      <div>
-        <h3> <%= project.name %> </h3>
-        <p> <%= project.description %> </p>
+        <h3 class="ml-2"> <%= project.name %> </h3>
+        <p class="ml-2"> <%= project.description %> </p>
      </div>
     </div>
 
-    <div class="d-flex">
-      <% project.application_requests.each do |application| %>
-      <div class="container">
-        <p> Role: <%= application.role.name  %></p>
+    <div class="d-flex m-2 justify-content-between">
+
+      <div class="">
+        <h5> Role: <%= application.role.name  %></h5>
+        <p> Description: <%= application.role.description %> </p>
         <% case application.status %>
           <% when "pending" %>
             <p style="color: #e59500; font-weight: bolder">Pending response</p>
@@ -25,15 +28,19 @@
           <% when "declined" %>
             <p style="color: red; font-weight: bolder">Declined</p>
           <% end %>
-      <% end %>
+
 
       </div>
       <div>
-        <p> Applicant Information</p>
+        <h5> Applicant Information</h5>
+        <p> Name: <%= application.user.first_name %></p>
+        <p> About me: <%= application.about_me %></p>
       </div>
     </div>
-    <% end %>
+
   </div>
+  <% end %>
+    <% end %>
   <div>
 
   </div>
