@@ -1,0 +1,48 @@
+<div class="container">
+  <h1> My request</h1>
+
+
+    <% @projects.each do |project| %>
+    <% project.application_requests.each do |application| %>
+    <div class="card-request bg-secondary mt-3" style="width: 800px;">
+    <div class="d-flex">
+      <img src=<%= cl_image_path application.role.project.photo.key, alt: "alttext",  width: 50, height:50, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %> >
+     <div>
+        <h3 class="ml-2"> <%= project.name %> </h3>
+        <p class="ml-2"> <%= project.description %> </p>
+     </div>
+    </div>
+
+    <div class="d-flex m-2 justify-content-between">
+
+      <div class="">
+        <h5> Role: <%= application.role.name  %></h5>
+        <p> Description: <%= application.role.description %> </p>
+        <% case application.status %>
+          <% when "pending" %>
+            <p style="color: #e59500; font-weight: bolder">Pending response</p>
+            <%= link_to "Accept", accept_path(application), method: :put, remote: true, class:"btn btn-success" %>
+            <%= link_to "Decline", decline_path(application), method: :put, remote: true, class:"btn btn-danger" %>
+          <% when "accepted" %>
+            <p style="color: green; font-weight: bolder">Accepted</p>
+          <% when "declined" %>
+            <p style="color: red; font-weight: bolder">Declined</p>
+          <% end %>
+
+
+      </div>
+      <div>
+        <h5> Applicant Information</h5>
+        <p> Name: <%= application.user.first_name %></p>
+        <p> About me: <%= application.about_me %></p>
+      </div>
+    </div>
+
+  </div>
+  <% end %>
+    <% end %>
+  <div>
+
+  </div>
+
+</div>

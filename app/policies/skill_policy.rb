@@ -1,4 +1,4 @@
-class ApplicationRequestPolicy < ApplicationPolicy
+class SkillPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.where(user: @user)
@@ -10,14 +10,6 @@ class ApplicationRequestPolicy < ApplicationPolicy
   end
 
   def create?
-    true
-  end
-
-  def accept?
-    record.user
-  end
-
-  def decline?
-    record.user
+    new?
   end
 end

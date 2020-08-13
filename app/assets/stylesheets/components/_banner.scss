@@ -21,7 +21,15 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
+.btn-primary {
+  background-color: #07889b;
+  border-color: white;
+}
 
+.btn-primary:hover {
+  background-color: #09aac2;
+  border-color: white;
+}
 
 @media (min-width: 100px) and (max-width: 575px) {
   #main-banner {
