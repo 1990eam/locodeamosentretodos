@@ -1,8 +1,9 @@
-<div class="index-project-card border rounded aos-init" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="500">
+<%= link_to new_project_application_request_path(project) do %>
+  <div class="index-project-card border rounded">
     <div class="d-flex">
       <%= cl_image_tag project.photo.key, alt: "alttext", crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
       <div>
-        <h2><%= project.name %></h2>
+        <h2 class="text-left"><%= project.name %></h2>
         <p class="text-muted"><%= project.description %></p>
       </div>
       <% if project.sponsored %>
@@ -65,3 +66,5 @@
       </div>
     </div>
   </div>
+
+<% end %>

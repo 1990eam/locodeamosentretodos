@@ -4,13 +4,11 @@
     <div class="my-feed"></div>
     <div class="index-projects">
       <% @projects.each do |project| %>
-        <div class="index-project-card">
-          <div><%= project.name %></div>
-          <div><%= project.description %></div>
-          <%= link_to "Apply to this project", new_project_application_request_path(project) %>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Apply to this project</button>
-          <%= render "application_requests/modal_window", project: project %>
-        </div>
+        <%= link_to project_path(project) do %>
+            <%#= link_to "Apply to this project", new_project_application_request_path(project) %>
+<!--              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Apply to this project</button> -->            <%#= render "application_requests/modal_window", project: project %>
+            <%= render "projects/index-card", project: project %>
+        <% end %>
       <% end %>
     </div>
     <div class="my-profile-card"></div>
