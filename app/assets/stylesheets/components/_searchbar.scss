@@ -1,9 +1,8 @@
 .search-bar {
-  background-color: $green;
   position: sticky;
   height: 50px;
   top: 0;
-  z-index: 1;
+  z-index: 3;
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
