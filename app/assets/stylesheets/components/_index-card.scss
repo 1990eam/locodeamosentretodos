@@ -19,6 +19,10 @@
   }
 }
 
+.index-project-card a:hover {
+  text-decoration: none;
+}
+
 .project-card-logo {
   height: 60px;
   width: 60px;
@@ -35,10 +39,6 @@
   flex-direction: column;
   justify-content: space-between;
   width: 50%;
-}
-
-.card-links a:hover {
-  text-decoration: none;
 }
 
 .open-positions {
