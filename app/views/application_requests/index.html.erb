@@ -1,31 +1,45 @@
-<div class="container mb-3">
-<h2 class="text-center mt-3">Proyectos a los que aplicaste:</h2>
   <div class="container">
-  <% @applications.each do |application| %>
-
-    <div class="d-flex">
-        <%= cl_image_tag application.role.project.photo.key, alt: "alttext", crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
-        <div>
-          <h2><%= application.role.project.name %></h2>
-          <p class="text-muted"><%= application.role.project.description %></p>
-        </div>
-        <% if application.role.project.sponsored %>
-          <div class="badge badge-pill badge-info project-card-sponsored d-flex justify-content-between">
-            <i class="fa fa-heart" aria-hidden="true" style="color: #da64ab;"></i>
-            <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block ml-1">Sponsored</div>
+    <h1 class="mb-5">Proyectos a los que aplicaste</h1>
+    <% @applications.each do |application| %>
+      <div class="rounded shadow mb-2" style="width: 600px;">
+        <div class="d-flex px-3 pt-3 pb-1">
+          <img src="https://picsum.photos/80/80" alt="" class="flex-grow-0 rounded-circle">
+          <div class="flex-grow-1 ml-3">
+            <h2 class="h4 m-0"><%= application.project.name %></h2>
+            <p class="m-0 text-muted"><%= application.project.description %></p>
           </div>
-        <% end %>
+          <div class="flex-grow-0">
+            <div class="d-flex align-items-center mx-3 bg-warning rounded text-white py-1 px-3"><i class="fas fa-heart text-danger"></i><p class="m-0 ml-1 h6">SPONSOR</p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex p-3 pt-0 ">
+          <div class="d-flex flex-column pr-3 w-50">
+            <h3 class="h5 m-0 flex-grow-0 mb-2">Link</h3>
+            <div class="flex-grow-1">
+              <a class="d-flex align-items-center py-1 pr-3 m-1 text-decoration-none pointer"><%= application.project.link %><i class="fab fa-github text-dark"></i><p class="m-0 ml-1 h6">lewagon/fullstack</p>
+              </a>
+              <a class="d-flex align-items-center py-1 pr-3 m-1 text-decoration-none pointer"><%= application.project.link %><i class="fas fa-globe text-dark"></i><p class="m-0 ml-1 h6">www.lewagon.com</p>
+              </a>
+            </div>
+            <p class="text-center flex-grow-0 align-items-center m-0 w-100 mx-auto bg-primary rounded text-white py-1 px-3 mt-2">1 position open</p>
+          </div>
+          <div class="d-flex flex-column pl-3 w-50">
+            <h3 class="h5 m-0 flex-grow-0 mb-2">Tags</h3>
+            <div class="d-flex">
+              <p class="m-0 d-flex align-items-center mr-2"><i class="fab fa-html5 mr-1 text-warning"></i>HTML</p>
+              <p class="m-0 d-flex align-items-center mr-2"><i class="fab fa-css3 mr-1 text-info"></i>CSS</p>
+              <p class="m-0 d-flex align-items-center mr-2"><i class="fab fa-js-square mr-1 text-primary"></i>JS</p>
+              <p class="m-0 d-flex align-items-center mr-2"><i class="fas fa-gem mr-1 text-danger"></i>Ruby</p>
+            </div>
+            <h3 class="h5 m-0 flex-grow-0 d-flex align-items-center my-2">Contributors <small class="ml-1 rounded-circle py-1 px-2 bg-danger text-white">3</small></h3>
+            <div class="d-flex align-items-center">
+              <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" alt="" class="rounded-circle mr-2" width="40">
+              <img src="https://kitt.lewagon.com/placeholder/users/sbuffose" alt="" class="rounded-circle mr-2" width="40">
+              <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="" class="rounded-circle mr-2" width="40">
+            </div>
+          </div>
+        </div>
       </div>
-
-    <div class="card">
-      <div class="d-flex">
-      <h3><%= application.role.project.name %></h3>
-      <h5><%= application.role.project.description %></h5>
-      <p>Role: <%= application.role.name %></p>
-      <p>About me: <%= application.about_me %></p>
-      <p>Status <%= application.status %></p>
-    </div>
-  <% end %>
-
+    <% end %>
   </div>
-</div>
