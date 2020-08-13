@@ -1,10 +1,31 @@
-<h1>Your current applications:</h1>
-<% @applications.each do |application| %>
-  <div class="application-index-container">
-    <h1><%= application.role.project.name %></h1>
-    <h5><%= application.role.project.description %></h5>
-    <p>Role: <%= application.role.name %></p>
-    <p>About me: <%= application.about_me %></p>
-    <p>Status <%= application.status %></p>
+<div class="container mb-3">
+<h2 class="text-center mt-3">Proyectos a los que aplicaste:</h2>
+  <div class="container">
+  <% @applications.each do |application| %>
+
+    <div class="d-flex">
+        <%= cl_image_tag application.role.project.photo.key, alt: "alttext", crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
+        <div>
+          <h2><%= application.role.project.name %></h2>
+          <p class="text-muted"><%= application.role.project.description %></p>
+        </div>
+        <% if application.role.project.sponsored %>
+          <div class="badge badge-pill badge-info project-card-sponsored d-flex justify-content-between">
+            <i class="fa fa-heart" aria-hidden="true" style="color: #da64ab;"></i>
+            <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block ml-1">Sponsored</div>
+          </div>
+        <% end %>
+      </div>
+
+    <div class="card">
+      <div class="d-flex">
+      <h3><%= application.role.project.name %></h3>
+      <h5><%= application.role.project.description %></h5>
+      <p>Role: <%= application.role.name %></p>
+      <p>About me: <%= application.about_me %></p>
+      <p>Status <%= application.status %></p>
+    </div>
+  <% end %>
+
   </div>
-<% end %>
+</div>
