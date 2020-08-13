@@ -30,9 +30,13 @@ import AOS from "aos";
 // import { initSelect2 } from '../components/init_select2';
 
 import '../components/banner.js';
+import '../pages/projects/index.js';
+
+import { showModal } from '../pages/projects/index.js';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   AOS.init();
+  showModal();
 });
