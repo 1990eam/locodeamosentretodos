@@ -1,3 +1,4 @@
+<%= render "shared/add_skill_modal" %>
 <div class="container mt-5">
   <div class="search-bar"></div>
   <div class="grid-index-container mt-5">
@@ -17,6 +18,7 @@
   </div>
 </div>
 
-<div class="user-skills">
-  <% @user.skills.count %>
+<div id="user-skills" style="display: none;">
+  <%= @user.skills.count %>
 </div>
+
