@@ -2,6 +2,7 @@ class ApplicationRequest < ApplicationRecord
   after_commit :save_user_as_collaborator, on: [:update, :create]
 
   belongs_to :role
+  has_one :project, through: :role
   belongs_to :user
   validates :about_me, presence: true, length: { in: 10..300 }
 
