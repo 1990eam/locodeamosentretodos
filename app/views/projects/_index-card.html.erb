@@ -1,5 +1,6 @@
-<%= link_to new_project_application_request_path(project) do %>
+
   <div class="index-project-card border rounded">
+    <%= link_to new_project_application_request_path(project) do %>
     <div class="d-flex">
       <%= cl_image_tag project.photo.key, alt: "alttext", crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
       <div>
@@ -65,6 +66,7 @@
         </div>
       </div>
     </div>
+    <% end %>
   </div>
 
-<% end %>
+
