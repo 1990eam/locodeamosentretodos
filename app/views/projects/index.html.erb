@@ -19,6 +19,8 @@
 </div>
 
 <div id="user-skills" style="display: none;">
-  <%= @user.skills.count %>
+  <% if @user %>
+    <%= @user.skills.count %>
+  <% end %>
 </div>
 
