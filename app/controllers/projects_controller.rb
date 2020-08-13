@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    @user = current_user
     @projects = policy_scope(Project)
   end
 
