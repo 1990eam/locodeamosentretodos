@@ -14,7 +14,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.user == user
   end
 
   def my_projects?
