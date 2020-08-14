@@ -40,7 +40,7 @@ role = Role.new(name: "Frontend Dev", description: "Spice up the frontend with m
 role.project_id = Project.second.id
 role.save
 role = Role.new(name: "Project Manager", description: "Asignar features a los colaboradores")
-role.project_id = Project.first.id
+role.project_id = Project.second.id
 role.save
 role = Role.new(name: "Patotero", description: "Fajar a los que se hacen los piolas")
 role.project_id = Project.third.id

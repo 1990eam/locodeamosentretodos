@@ -35,14 +35,6 @@ class ApplicationRequestsController < ApplicationController
     @application = ApplicationRequest.find(params[:application_request_id])
     authorize @application
     @application.update(status: "accepted")
-
-    new_collaborator = Collaborator.new()
-    new_collaborator.role = @application.role
-    new_collaborator.user = @application.user
-    authorize new_collaborator
-    new_collaborator.status = "active"
-    new_collaborator.save
-
     redirect_to my_project_request_path
   end
 
