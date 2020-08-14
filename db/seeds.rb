@@ -19,11 +19,11 @@ puts "Creating Projects..."
 project = Project.new(name: "Lo Codeamos", description: "El mejor proyecto final de LeWagon #384", link_1: "http://github.com/1990eam/locodeamosentretodos/", link_2: "www.loteriadesanluis.com", sponsored: true)
 project.user = User.first
 project.save
-project = Project.new(name: "Donde Estan los ATM?", description: "Accede a la ubicacion de los cajeros con guita")
+project = Project.new(name: "Donde Estan los ATM?", description: "Accede a la ubicacion de los cajeros con guita", link_1: "http://github.com/1990eam/locodeamosentretodos/", link_2: "www.loteriadesanluis.com")
 project.user = User.second
 project.photo.attach(io:URI.open("https://pbs.twimg.com/profile_images/1271104593951408134/6gNhxW4h_400x400.jpg"), filename: "#{project.name}.png", content_type: 'image/png')
 project.save
-project = Project.new(name: "La Liga", description: "Apreta en las subastas judiciales con nosotros y gana maravillosos premios", link_1: "awesomeopensource.com/project/danielbayerlein/dashboard", sponsored: true)
+project = Project.new(name: "La Liga", description: "Apreta en las subastas judiciales con nosotros y gana maravillosos premios", link_1: "http://github.com/1990eam/locodeamosentretodos/", link_2: "www.loteriadesanluis.com", sponsored: true)
 project.user = User.third
 project.photo.attach(io:URI.open("https://infocielo.com/uploads/noticias/imagenes/a/2020/06/20200609161507_grondona.jpg"), filename: "#{project.name}.png", content_type: 'image/png')
 project.save
