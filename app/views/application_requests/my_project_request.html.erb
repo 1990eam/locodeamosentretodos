@@ -21,8 +21,8 @@
         <% case application.status %>
           <% when "pending" %>
             <p style="color: #e59500; font-weight: bolder">Pending response</p>
-            <%= link_to "Accept", accept_path(application), method: :put, remote: true, class:"btn btn-success" %>
-            <%= link_to "Decline", decline_path(application), method: :put, remote: true, class:"btn btn-danger" %>
+            <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
+            <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
           <% when "accepted" %>
             <p style="color: green; font-weight: bolder">Accepted</p>
           <% when "declined" %>
