@@ -31,12 +31,16 @@ import AOS from "aos";
 
 import '../components/banner.js';
 import '../pages/projects/index.js';
+import '../shared/avatar_tooltips.js';
 
 import { showModal } from '../pages/projects/index.js';
+import { avatarTooltips } from '../shared/avatar_tooltips.js';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   AOS.init();
   showModal();
+  avatarTooltips();
 });

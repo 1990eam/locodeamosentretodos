@@ -1,5 +1,5 @@
 const showModal = () => {
-  // console.log("File loaded")
+  // console.log("showModal loaded")
   const page = document.getElementsByClassName("index-projects");
   const skills = document.getElementById("user-skills").innerHTML
 
