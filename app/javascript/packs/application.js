@@ -32,12 +32,15 @@ import AOS from "aos";
 
 import '../components/banner.js';
 import '../pages/projects/index.js';
+import '../pages/application_requests/new.js';
 
 import { showModal } from '../pages/projects/index.js';
+import { clickableCard } from '../pages/application_requests/new.js';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   AOS.init();
   showModal();
+  clickableCard();
 });
