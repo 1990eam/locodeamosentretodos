@@ -148,6 +148,7 @@ project.save
 puts "Done creating Projects"
 puts ""
 
+
 puts "Creating Roles..."
 first_role = Role.find_or_create_by!(name: "Backend Dev",
                         description: "Mantener el back-end de la plataforma utilizando Rails, JS, Ruby y más",

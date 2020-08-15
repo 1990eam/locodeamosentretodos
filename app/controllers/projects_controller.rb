@@ -6,7 +6,18 @@ class ProjectsController < ApplicationController
     if user_signed_in?
       @user = current_user
     end
-    @projects = policy_scope(Project)
+
+      if params[:query].present?
+        sql_query = " \
+        projects.name @@ :query \
+        OR roles.name @@ :query \
+        OR technologies.name @@ :query \
+       "
+
+      @projects = policy_scope(Project).joins(:roles, :technologies).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @projects = policy_scope(Project)
+    end
   end
 
   def new

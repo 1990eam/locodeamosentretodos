@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :projects, dependent: :destroy
-  has_many :collaborators
+  has_many :collaborators, dependent: :destroy
   has_many :roles, through: :collaborators
   has_many :skills, dependent: :destroy
   has_many :technologies, through: :skills

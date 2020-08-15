@@ -3,6 +3,7 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+require("jquery")
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
@@ -31,12 +32,19 @@ import AOS from "aos";
 
 import '../components/banner.js';
 import '../pages/projects/index.js';
+import '../pages/application_requests/new.js';
+import '../shared/avatar_tooltips.js';
 
 import { showModal } from '../pages/projects/index.js';
+import { avatarTooltips } from '../shared/avatar_tooltips.js';
+import { clickableCard } from '../pages/application_requests/new.js';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   AOS.init();
   showModal();
+  avatarTooltips(); // dejar dentro y fuera de turbolinks load
+  clickableCard();
 });
+  avatarTooltips(); // dejar dentro y fuera de turbolinks load

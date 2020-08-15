@@ -1,6 +1,7 @@
 
   <div class="index-project-card border rounded">
-    <%= link_to new_project_application_request_path(project) do %>
+    <%= link_to (project.user == current_user || project.collaborators.any? { |collaborator| collaborator.user == current_user } ?  project_path(project) : new_project_application_request_path(project)) do %>
+
     <div class="d-flex">
       <%= cl_image_tag project.photo.key, alt: "alttext", width: 300, height: 300, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
       <div>
@@ -61,11 +62,12 @@
         <div class="mt-2">
           <h3>Contributors <span class="badge badge-pill badge-light"><%= project.collaborators.count { |x| x.status = "active" } %></span></h3>
             <% project.collaborators.each do |collaborator| %>
-              <%= cl_image_tag collaborator.user.photo.key, class: "avatar-small mr-2" %>
+              <%= cl_image_tag collaborator.user.photo.key, class: "avatar-small mr-2", data: { toggle: 'tooltip' }, title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
             <% end %>
         </div>
       </div>
     </div>
+
     <% end %>
   </div>
 
