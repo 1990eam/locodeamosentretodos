@@ -42,5 +42,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   AOS.init();
   showModal();
-  avatarTooltips();
+  avatarTooltips(); // dejar dentro y fuera de turbolinks load
+
 });
+  avatarTooltips(); // dejar dentro y fuera de turbolinks load
