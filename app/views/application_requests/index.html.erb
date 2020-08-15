@@ -24,20 +24,21 @@
             <div class="flex-grow-1">
               <% case application.status %>
               <% when "pending response from applicant" %>
-              <p style="color: #E59500; font-weight: bolder"><%= application.project.name %> is waiting your response</p>
+                <p style="color: #E59500; font-weight: bolder"><%= application.project.name %> is waiting your response</p>
               <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
               <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
-              <p style="color: green; font-weight: bolder">Status: Your application has been Accepted</p>
+                <p style="color: green; font-weight: bolder">Status: Your application has been Accepted</p>
               <% when "declined by owner" %>
-              <p style="color: red; font-weight: bolder">Status: Your application has been Declined</p>
+                <p style="color: red; font-weight: bolder">Status: Your application has been Declined</p>
               <% end %>
+
               <% case application.status %>
               <% when "pending" %>
-              <p style="color: #E59500; font-weight: bolder"> Pending</p>
+                <p style="color: #E59500; font-weight: bolder"> Pending</p>
               <% when "accepted" %>
-              <p style="color: green; font-weight: bolder"> Congratiulations! You are part of <%= application.project.name %> team</p>
+                <p style="color: green; font-weight: bolder"> Congratiulations! You are part of <%= application.project.name %> team</p>
               <% when "declined by user" %>
-              <p style="color: red; font-weight: bolder"> You Declined <%= application.project.name %>'s invitation. </p>
+                <p style="color: red; font-weight: bolder"> You Declined <%= application.project.name %>'s invitation. </p>
               <% end %>
             </div>
           </div>

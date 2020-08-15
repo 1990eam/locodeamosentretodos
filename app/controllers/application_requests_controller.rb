@@ -47,10 +47,10 @@ class ApplicationRequestsController < ApplicationController
     @application = ApplicationRequest.find(params[:application_id])
     authorize @application
     if current_user == @application.user
-      @application.update(status: "declined")
+      @application.update(status: "declined by user")
       redirect_to application_requests_path
     else
-      @application.update(owner_status: "declined")
+      @application.update(status: "declined by owner")
       redirect_to my_project_request_path
     end
   end
