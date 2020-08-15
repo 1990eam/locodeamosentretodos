@@ -14,6 +14,24 @@
             <p class="mr-2 mb-0"><i class="fas fa-cookie-bite" style="color: brown;"></i> Cooking!</p>
           </div>
           <!-- role.status indica si una posicion esta cubierta o no -->
+          <% if !role.open? %>
+
+            <% @project.collaborators.each do |collaborator| %>
+              <% if collaborator.role == role %>
+
+                  <% if collaborator.user.photo.attached? %>
+                    <%= cl_image_tag collaborator.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
+
+                  <% else %>
+                    <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
+                  <% end %>
+
+
+
+              <% end %>
+            <% end %>
+
+          <% end %>
           <p class="role.status">Covered: <%= !role.open? %></p>
            <% role.requirements.each do |requirement|%>
           <h6 class='rol text-left'> <i class="fas fa-gem" style="color: red"></i> <%= requirement.technology.name %> </h6>
@@ -22,7 +40,10 @@
             <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <p class="card-text"><%= role.description %></p>
-          <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i> Apply </button>
+           <% if role.open? %>
+            <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i> Apply </button>
+
+           <% end %>
         </div>
       </div>
       <% end %>
