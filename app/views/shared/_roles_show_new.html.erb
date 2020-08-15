@@ -13,7 +13,8 @@
             <p class="mr-2 mb-0"><i class="fab fa-js-square" style="color:teal;"></i> JScript</p>
             <p class="mr-2 mb-0"><i class="fas fa-cookie-bite" style="color: brown;"></i> Cooking!</p>
           </div>
-          <!-- role.status indica si una posicion esta cubierta o no -->
+          <!-- logica avatars/mensaje si el role esta ocupado o vacante -->
+          <!-- si esta ocupado -->
           <% if !role.open? %>
 
             <% @project.collaborators.each do |collaborator| %>
@@ -25,14 +26,15 @@
                   <% else %>
                     <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
                   <% end %>
-
-
+                  <p class="role.status" style="color: red;">This position is taken</p>
 
               <% end %>
             <% end %>
+            <!-- si esta vacante -->
+          <% else %>
 
+            <p class="role.status" style="color: green;">This position is open</p>
           <% end %>
-          <p class="role.status">Covered: <%= !role.open? %></p>
            <% role.requirements.each do |requirement|%>
           <h6 class='rol text-left'> <i class="fas fa-gem" style="color: red"></i> <%= requirement.technology.name %> </h6>
           <% end %>

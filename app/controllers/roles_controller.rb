@@ -10,13 +10,16 @@ class RolesController < ApplicationController
   end
 
   def create
+    @project = Project.find(params[:project_id])
     @role = Role.new(role_params)
-    @role.project = Project.find(params[:project_id])
+    @role.project = @project
     authorize @role
     # el redirect desde el tab de role habria que sacarlo
     if @role.save
-      redirect_to new_project_role_path(Project.find(params[:project_id]))
+      flash[:notice] = "Role succesfully created"
+      render :new
     else
+      flash[:alert] = "Something went wrong, try again"
       render :new
     end
   end
