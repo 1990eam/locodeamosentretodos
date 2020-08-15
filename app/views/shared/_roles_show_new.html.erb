@@ -37,8 +37,10 @@
             <p class="role.status" style="color: green;">This position is open</p>
           <% end %>
 
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="skill-level">
+            <% role.requirements.each do |requirement| %>
+              <p><%= requirement.level.name %></p>
+            <% end %>
           </div>
           <p class="card-text"><%= role.description %></p>
            <% if role.open? %>
