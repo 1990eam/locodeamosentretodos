@@ -20,18 +20,25 @@
 
           <div class="project-collaborators">
             <h5> Colaboradores </h5>
-            <div class="project-owner">
-               <% if @project.user.photo.attached? %>
-                <%= cl_image_tag @project.user.photo.key, class: "avatar dropdown-toggle" %>
+            <div>
+              <!-- project owner -->
+              <% if @project.user.photo.attached? %>
+                <%= cl_image_tag @project.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{@project.user.first_name} / Project Owner" %>
+
               <% else %>
                 <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
               <% end %>
-              <%= @project.user.first_name %>
+              <!-- collaborators -->
+            <% @project.collaborators.each do |collaborator| %>
+              <% if collaborator.user.photo.attached? %>
+                <%= cl_image_tag collaborator.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
+
+              <% else %>
+                <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
+              <% end %>
+            <% end %>
             </div>
-            <p>Tomas Hergott</p>
-            <p>Amy Camacho</p>
-            <p>Pablo Andrizzi</p>
-            <p>Elian Magni</p>
+
           </div>
         </div>
 
@@ -81,5 +88,3 @@
 
 
 </div>
-
-
