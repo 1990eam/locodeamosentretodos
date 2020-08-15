@@ -10,7 +10,7 @@ class ApplicationRequestPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    new?
   end
 
   def accept?
