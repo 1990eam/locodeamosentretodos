@@ -27,6 +27,8 @@ gem 'cloudinary', '~> 1.12.0'
 #renderizar errores
 gem 'turbolinks_render'
 
+gem 'jquery-rails'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

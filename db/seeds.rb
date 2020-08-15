@@ -6,13 +6,15 @@ ApplicationRequest.destroy_all
 Level.destroy_all
 Technology.destroy_all
 Requirement.destroy_all
+Collaborator.destroy_all
+Skill.destroy_all
 puts "done cleaning"
 
 puts "Creating Users..."
 User.create!(first_name: "ElRey", last_name: "DelCodeo", email: "test@test.com", password:"test1234", admin: true)
 User.create!(first_name: "Samid", last_name: "Carnaza", email: "test2@test.com", password:"test1234")
-User.create!(first_name: "Diego", last_name: "Armando", email: "test3@test.com", password:"test1234")
-User.create!(first_name: "Hackerman", last_name: "Coder", email: "test4@test.com", password:"test1234")
+User.create!(first_name: "Collab1", last_name: "Armando", email: "test3@test.com", password:"test1234")
+User.create!(first_name: "Collab2", last_name: "Coder", email: "test4@test.com", password:"test1234")
 puts "done creating Users"
 
 puts "Creating Projects..."
@@ -29,6 +31,7 @@ project.photo.attach(io:URI.open("https://infocielo.com/uploads/noticias/imagene
 project.save
 puts "done creating Projects"
 
+
 puts "Creating Roles..."
 role = Role.new(name: "Backend Dev", description: "Mantain the backend of the platform with Rails")
 role.project_id = Project.first.id
@@ -37,7 +40,7 @@ role = Role.new(name: "Frontend Dev", description: "Spice up the frontend with m
 role.project_id = Project.second.id
 role.save
 role = Role.new(name: "Project Manager", description: "Asignar features a los colaboradores")
-role.project_id = Project.first.id
+role.project_id = Project.second.id
 role.save
 role = Role.new(name: "Patotero", description: "Fajar a los que se hacen los piolas")
 role.project_id = Project.third.id
@@ -46,23 +49,36 @@ puts "done creating Roles"
 
 puts "Creating applications"
 # default status for applications is now "pending"
-application = ApplicationRequest.new(user_id: User.first.id)
+application = ApplicationRequest.new(user_id: User.third.id)
 application.role_id = Role.first.id
 application.about_me = "Please let me in, I need money for weed"
 application.save
-application = ApplicationRequest.new(status: "Accepted", user_id: User.second.id)
+application = ApplicationRequest.new(user_id: User.fourth.id)
 application.role_id = Role.second.id
 application.about_me = "I'm the best dev you can get for the money"
 application.save
-application = ApplicationRequest.new(status: "Accepted", user_id: User.third.id)
+application = ApplicationRequest.new(user_id: User.third.id)
 application.role_id = Role.third.id
 application.about_me = "I learned from the bests @ LeWagon"
 application.save
-application = ApplicationRequest.new(status: "Declined", user_id: User.fourth.id)
+application = ApplicationRequest.new(status: "declined", user_id: User.fourth.id)
 application.about_me = "Hello, this would be my first job"
 application.role_id = Role.third.id
 application.save
 puts "done creating Applications"
+
+# puts "Creating collaborators..."
+# collab = Collaborator.new
+# collab.user = User.third
+# collab.role = Role.first
+# collab.status = "active"
+# collab.save
+# collab = Collaborator.new
+# collab.user = User.fourth
+# collab.role = Role.third
+# collab.status = "active"
+# collab.save
+# puts "done"
 
 puts "Creating levels"
 level = Level.new(name: "junior")

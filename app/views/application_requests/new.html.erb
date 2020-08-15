@@ -59,31 +59,6 @@
         <% end %>
       </div>
 
-      <!-- Mover? -->
-        <script>
-          const clickables = document.querySelectorAll('.clickable-card')
-          const role_id_field = document.querySelector('.role_field')
-
-            clickables.forEach((element) => {
-              // console.log(element.dataset.target)
-            element.addEventListener('click', event => {
-              role_id_field.value = element.dataset.target;
-              clickables.forEach((card) => {
-                card.classList.remove("clicked_card")
-              })
-              element.classList.add("clicked_card");
-            })
-          })
-        </script>
-      <!-- Mover? -->
-        <style>
-          .clicked_card {
-            background-color: #eeeeee;
-            transform: translateY(-5px);
-            box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2)
-          }
-        </style>
-
 <!--
         <div class="form-group mt-5">
           <label for="exampleFormControlTextarea1">Algo sobre ti</label>
