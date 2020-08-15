@@ -30,11 +30,10 @@
                   <h5 class="card-title"><%= role.name %></h5>
                    <% role.requirements.each do |requirement|%>
                   <h6 class='rol text-left'> <i class="fas fa-gem" style="color: red"></i> <%= requirement.technology.name %> </h6>
+                  <h6 class='text-left'>Experience: <%= requirement.level.name %></h6>
                   <% end %>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <p class="card-text"><%= role.description %></p>
+
+                  <p class="card-text mt-4"><%= role.description %></p>
                   <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i> Apply </button>
                 </div>
               </div>
