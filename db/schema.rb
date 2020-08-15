@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_08_13_232632) do
 
   # These are extensions that must be enabled in order to support this database
@@ -65,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_08_13_232632) do
     t.string "name"
     t.text "description"
     t.bigint "user_id", null: false
-    t.text "link"
+    t.text "links"
     t.boolean "sponsored", default: false
     t.string "link_1"
     t.string "link_2"

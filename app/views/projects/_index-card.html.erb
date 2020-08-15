@@ -41,9 +41,15 @@
             <% end %>
           <% end %>
         </div>
-        <div class="open-positions rounded">
-          <p><%= project.roles.count { |role| role.open? } %> positions open</p>
+        <% if project.roles.count { |role| role.open? } == 0  %>
+        <div class="no-positions rounded">
+          <p>This project is fully covered <i class="fas fa-heart-broken ml-1"></i></p>
         </div>
+        <% else %>
+        <div class="open-positions rounded">
+          <p><%= pluralize(project.roles.count { |role| role.open? }, "position") %> open</p>
+        </div>
+        <% end %>
       </div>
 
       <div class="w-50">

@@ -60,6 +60,14 @@ module IndexCardHelper
       "<i class='fas fa-utensils'></i>"
     when tech_name.match?(/Health/i)
       "<i class='far fa-hospital'></i>"
+    when tech_name.match?(/AI/i)
+      "<i class='fas fa-brain'></i>"
+    when tech_name.match?(/Logistics/i)
+      "<i class='fas fa-people-carry'></i>"
+    when tech_name.match?(/HR/i)
+      "<i class='fas fa-users'></i>"
+    when tech_name.match?(/Data Science/i)
+      "<i class='fas fa-flask'></i>"
     else
       "<i class='fas fa-laptop-code'></i>"
     end
