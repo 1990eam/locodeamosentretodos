@@ -7,7 +7,7 @@ class ApplicationRequest < ApplicationRecord
   validates :about_me, presence: true, length: { in: 10..300 }
 
   def save_user_as_collaborator
-    if status == "Accepted"
+    if status == "accepted"
       collaborator = Collaborator.new(role_id: role_id, user_id: user_id, status: "active")
       collaborator.save!
     end

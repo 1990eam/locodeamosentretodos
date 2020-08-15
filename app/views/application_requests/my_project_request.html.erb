@@ -4,10 +4,10 @@
 
     <% @projects.each do |project| %>
     <% project.application_requests.each do |application| %>
-    <div class="card-request bg-secondary mt-3" style="width: 800px;">
-    <div class="d-flex">
+    <div class="rounded shadow mt-2" style="width: 800px;">
+    <div class="d-flex px-3 pt-3 pb-1"">
       <img src=<%= cl_image_path application.role.project.photo.key, alt: "alttext",  width: 50, height:50, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %> >
-     <div>
+     <div class="flex-grow-1 ml-3">
         <h3 class="ml-2"> <%= project.name %> </h3>
         <p class="ml-2"> <%= project.description %> </p>
      </div>
@@ -20,15 +20,24 @@
         <p> Description: <%= application.role.description %> </p>
         <% case application.status %>
           <% when "pending" %>
-            <p style="color: #e59500; font-weight: bolder">Pending response</p>
-            <%= link_to "Accept", accept_path(application), method: :put, remote: true, class:"btn btn-success" %>
-            <%= link_to "Decline", decline_path(application), method: :put, remote: true, class:"btn btn-danger" %>
-          <% when "accepted" %>
-            <p style="color: green; font-weight: bolder">Accepted</p>
-          <% when "declined" %>
-            <p style="color: red; font-weight: bolder">Declined</p>
+            <p style="color: #e59500; font-weight: bolder">The applicant is waiting your response</p>
+            <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
+            <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
+          <% when "pending response from applicant" %>
+            <p style="color: green; font-weight: bolder">You have Accepted <%= application.user.first_name %></p>
+            <p style="color: #e59500; font-weight: bolder">Pending response from applicant</p>
+          <% when "declined by owner" %>
+            <p style="color: red; font-weight: bolder">You have Declined <%= application.user.first_name %></p>
           <% end %>
 
+          <% case application.status %>
+            <% when "pending" %>
+              <p style="color: #e59500; font-weight: bolder"></p>
+            <% when "accepted" %>
+              <p style="color: green; font-weight: bolder">The applicant <%= application.user.first_name %> accepted </p>
+            <% when "declined by user" %>
+              <p style="color: red; font-weight: bolder">The applicant <%= application.user.first_name %> Declined</p>
+            <% end %>
 
       </div>
       <div>
