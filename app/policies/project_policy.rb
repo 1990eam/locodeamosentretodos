@@ -14,7 +14,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user == user || record.collaborators.any? { |collaborator| collaborator.user.id == user.id }
+    record.user == user || record.collaborators.any? { |collaborator| collaborator.user == user }
   end
 
   def my_projects?
