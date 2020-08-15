@@ -27,4 +27,15 @@ class Project < ApplicationRecord
       link_2.match?(regex) ? link_2.gsub!(regex, '') : link_2
     end
   end
+
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [:name],
+    associated_against: {
+      roles: [:name],
+      technologies: [:name]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end
