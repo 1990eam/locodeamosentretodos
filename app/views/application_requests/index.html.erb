@@ -1,66 +1,62 @@
-  <div class="container">
+<div class="container">
     <h1 class="mb-5">Proyectos a los que aplicaste</h1>
     <% @applications.each do |application| %>
-      <div class="rounded shadow mt-2" style="width: 600px;">
+        <%= link_to (application.status == "accepted" ? project_path(application.project) : "") do %>
+      <div class="application-card rounded shadow mb-2" style="width: 600px;">
         <div class="d-flex px-3 pt-3 pb-1">
-          <img src=<%= cl_image_path application.role.project.photo.key, alt: "alttext",  width: 50, height:50, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %> >
+          <img src="https://picsum.photos/80/80" alt="" class="flex-grow-0 rounded-circle">
           <div class="flex-grow-1 ml-3">
             <h2 class="h4 m-0"><%= application.project.name %></h2>
             <p class="m-0 text-muted"><%= application.project.description %></p>
-            <p> Role: <%= application.role.name %></p>
-            <p> About me: <%= application.about_me %></p>
-
-          <% case application.status %>
-          <% when "pending response from applicant" %>
-              <p style="color: #e59500; font-weight: bolder"><%= application.project.name %> is waiting your response</p>
-            <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
-            <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
-              <p style="color: green; font-weight: bolder">Status: Your application has been Accepted</p>
-          <% when "declined by owner" %>
-            <p style="color: red; font-weight: bolder">Status: Your application has been Declined</p>
-          <% end %>
-
-          <% case application.status %>
-            <% when "pending" %>
-              <p style="color: #e59500; font-weight: bolder">Status: Pending</p>
-            <% when "accepted" %>
-              <p style="color: green; font-weight: bolder">Status: Congratiulations! You are part of <%= application.project.name %> team</p>
-            <% when "declined by user" %>
-              <p style="color: red; font-weight: bolder">Status: You Declined <%= application.project.name %>'s invitation. </p>
-            <% end %>
-          <!-- </div>
+          </div>
           <div class="flex-grow-0">
-            <div class="d-flex align-items-center mx-3 bg-warning rounded text-white py-1 px-3"><i class="fas fa-heart text-danger"></i><p class="m-0 ml-1 h6">SPONSOR</p>
+            <div class="d-flex align-items-center mx-3 bg-warning rounded text-white py-1 px-3"><i class="fas fa-heart text-danger"></i><p class="m-0 ml-1 h6">SPONSORED</p>
             </div>
           </div>
         </div>
-        <div class="d-flex p-3 pt-0 ">
-          <div class="d-flex flex-column pr-3 w-50">
-            <h3 class="h5 m-0 flex-grow-0 mb-2">Link</h3>
-            <div class="flex-grow-1">
-              <a class="d-flex align-items-center py-1 pr-3 m-1 text-decoration-none pointer"><%= application.project.link_1 %><i class="fab fa-github text-dark"></i><p class="m-0 ml-1 h6"></p>
-              </a>
-              <a class="d-flex align-items-center py-1 pr-3 m-1 text-decoration-none pointer"><%= application.project.link_2 %><i class="fas fa-globe text-dark"></i><p class="m-0 ml-1 h6"></p>
-              </a>
+        <div class="d-flex p-3 pt-0 justify-content-between">
+          <div class="d-flex flex-column pr-3">
+            <h3 class="h5 m-0 flex-grow-0 mb-2">Rol aplicado</h3>
+            <div class="flex-grow-1 mb-2">
+            <%= application.role.name %>
             </div>
-            <p class="text-center flex-grow-0 align-items-center m-0 w-100 mx-auto bg-primary rounded text-white py-1 px-3 mt-2">1 position open</p>
+            <h4 class="h6 m-0 flex-grow-0 mb-2">Status</h4>
+            <div class="flex-grow-1">
+              <% case application.status %>
+              <% when "pending response from applicant" %>
+              <p style="color: #E59500; font-weight: bolder"><%= application.project.name %> is waiting your response</p>
+              <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
+              <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
+              <p style="color: green; font-weight: bolder">Status: Your application has been Accepted</p>
+              <% when "declined by owner" %>
+              <p style="color: red; font-weight: bolder">Status: Your application has been Declined</p>
+              <% end %>
+              <% case application.status %>
+              <% when "pending" %>
+              <p style="color: #E59500; font-weight: bolder"> Pending</p>
+              <% when "accepted" %>
+              <p style="color: green; font-weight: bolder"> Congratiulations! You are part of <%= application.project.name %> team</p>
+              <% when "declined by user" %>
+              <p style="color: red; font-weight: bolder"> You Declined <%= application.project.name %>'s invitation. </p>
+              <% end %>
+            </div>
           </div>
           <div class="d-flex flex-column pl-3 w-50">
             <h3 class="h5 m-0 flex-grow-0 mb-2">Tags</h3>
             <div class="d-flex">
-              <p class="m-0 d-flex align-items-center mr-2"><i class="fab fa-html5 mr-1 text-warning"></i>HTML</p>
-              <p class="m-0 d-flex align-items-center mr-2"><i class="fab fa-css3 mr-1 text-info"></i>CSS</p>
-              <p class="m-0 d-flex align-items-center mr-2"><i class="fab fa-js-square mr-1 text-primary"></i>JS</p>
-              <p class="m-0 d-flex align-items-center mr-2"><i class="fas fa-gem mr-1 text-danger"></i>Ruby</p>
+              <% application.technologies.each do |tech| %>
+              <p class="m-0 d-flex align-items-center mr-2"><i class="fab fa-html5 mr-1 text-warning"></i><%= tech %></p>
+              <% end %>
             </div>
-            <h3 class="h5 m-0 flex-grow-0 d-flex align-items-center my-2">Contributors <small class="ml-1 rounded-circle py-1 px-2 bg-danger text-white">3</small></h3>
+            <h3 class="h6 m-0 flex-grow-0 d-flex align-items-center my-2">Contributors <small class="ml-1 rounded-circle py-1 px-2 bg-danger text-white">3</small></h3>
             <div class="d-flex align-items-center">
-              <img src="https://kitt.lewagon.com/placeholder/users/arthur-littm" alt="" class="rounded-circle mr-2" width="40">
-              <img src="https://kitt.lewagon.com/placeholder/users/sbuffose" alt="" class="rounded-circle mr-2" width="40">
-              <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="" class="rounded-circle mr-2" width="40">
+            <a href="http://www.<%= application.project.link_1 %>">
+            <p class="text-center text-warning flex-grow-0 align-items-center m-0 w-100 mx-auto bg-primary rounded text-white py-1 px-3 mt-2">Link del Proyecto</p>
+            </a>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
+      <% end %>
     <% end %>
   </div>
