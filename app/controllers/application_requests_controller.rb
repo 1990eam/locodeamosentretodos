@@ -39,7 +39,7 @@ class ApplicationRequestsController < ApplicationController
       redirect_to application_requests_path
     else
       @application.update(status: "pending response from applicant")
-      redirect_to my_project_request_path
+      redirect_to project_path(@project, tab: "profile")
     end
   end
 
