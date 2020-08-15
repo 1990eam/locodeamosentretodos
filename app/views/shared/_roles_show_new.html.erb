@@ -7,11 +7,12 @@
         <div class="card-body text-center">
           <h5 class="card-title"><%= role.name %></h5>
           <div class="d-flex flex-wrap">
-            <p class="mr-2 mb-0"><i class="fab fa-html5" style="color: orange;"></i> HTML</p>
-            <p class="mr-2 mb-0"><i class="fab fa-css3-alt" style="color: blue;"></i> CSS</p>
-            <p class="mr-2 mb-0"><i class="fas fa-gem" style="color: red;"></i> Ruby</p>
-            <p class="mr-2 mb-0"><i class="fab fa-js-square" style="color:teal;"></i> JScript</p>
-            <p class="mr-2 mb-0"><i class="fas fa-cookie-bite" style="color: brown;"></i> Cooking!</p>
+            <% role.requirements.each do |requirement|%>
+            <p class="mr-1">
+              <%= sanitize pick_tech_icon(requirement.technology.name) %>
+              <%= requirement.technology.name %>
+            </p>
+            <% end %>
           </div>
           <!-- logica avatars/mensaje si el role esta ocupado o vacante -->
           <!-- si esta ocupado -->
@@ -35,9 +36,7 @@
 
             <p class="role.status" style="color: green;">This position is open</p>
           <% end %>
-           <% role.requirements.each do |requirement|%>
-          <h6 class='rol text-left'> <i class="fas fa-gem" style="color: red"></i> <%= requirement.technology.name %> </h6>
-          <% end %>
+
           <div class="progress">
             <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
