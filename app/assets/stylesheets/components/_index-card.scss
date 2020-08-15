@@ -34,15 +34,16 @@
   top: 16px;
 }
 
-.card-links {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 50%;
-}
-
 .open-positions {
   background-color: #20C1F7;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  height: 20px;
+}
+
+.no-positions {
+  background-color: #fc3737;
   color: white;
   text-align: center;
   font-weight: bold;

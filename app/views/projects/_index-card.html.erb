@@ -3,7 +3,7 @@
     <%= link_to (project.user == current_user || project.collaborators.any? { |collaborator| collaborator.user == current_user } ?  project_path(project) : new_project_application_request_path(project)) do %>
 
     <div class="d-flex">
-      <%= cl_image_tag project.photo.key, alt: "alttext", crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
+      <%= cl_image_tag project.photo.key, alt: "alttext", width: 300, height: 300, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
       <div>
         <h2 class="text-left"><%= project.name %></h2>
         <p class="text-muted"><%= project.description %></p>
@@ -17,7 +17,7 @@
     </div>
 
     <div class="d-flex">
-      <div class="card-links mr-3">
+      <div class="d-flex flex-column justify-content-between w-50 mr-3">
         <h3>Links</h3>
         <div>
           <% if project.link_1 != nil %>
@@ -41,12 +41,18 @@
             <% end %>
           <% end %>
         </div>
-        <div class="open-positions rounded">
-          <p><%= project.roles.count { |role| role.open? } %> positions open</p>
+        <% if project.roles.count { |role| role.open? } == 0  %>
+        <div class="no-positions rounded">
+          <p>This project is fully covered <i class="fas fa-heart-broken ml-1"></i></p>
         </div>
+        <% else %>
+        <div class="open-positions rounded">
+          <p><%= pluralize(project.roles.count { |role| role.open? }, "position") %> open</p>
+        </div>
+        <% end %>
       </div>
 
-      <div>
+      <div class="w-50">
         <div>
           <h3>Tags</h3>
           <div class="d-flex flex-wrap">

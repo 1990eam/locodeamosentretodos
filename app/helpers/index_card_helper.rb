@@ -15,6 +15,10 @@ module IndexCardHelper
       "<i class='fab fa-linkedin'></i>"
     when url.match?(/twitter/i)
       "<i class='fab fa-twitter-square'></i>"
+    when url.match?(/wikipedia/i)
+      "<i class='fab fa-wikipedia-w'></i>"
+    when url.match?(/wagon/i)
+      "<i class='fas fa-truck-moving'></i>"
     else
       "<i class='fas fa-globe'></i>"
     end
@@ -38,8 +42,32 @@ module IndexCardHelper
       "<i class='fab fa-python'></i>"
     when tech_name.match?(/React/i)
       "<i class='fab fa-react'style='color:teal;'></i>"
-    when tech_name.match?(/Plain Old Violence/i)
+    when tech_name.match?(/Violence/i)
       "<i class='fas fa-hand-rock'></i>"
+    when tech_name.match?(/Intimidation/i)
+      "<i class='fas fa-dumbbell'></i>"
+    when tech_name.match?(/Rails/i)
+      "<i class='fas fa-train'></i>"
+    when tech_name.match?(/People skills/i)
+      "<i class='fas fa-people-arrows'></i>"
+    when tech_name.match?(/Agile/i)
+      "<i class='fas fa-tasks'></i>"
+    when tech_name.match?(/Scrum/i)
+      "<i class='fas fa-tasks'></i>"
+    when tech_name.match?(/Accounting/i)
+      "<i class='fas fa-calculator'></i>"
+    when tech_name.match?(/Nutrition/i)
+      "<i class='fas fa-utensils'></i>"
+    when tech_name.match?(/Health/i)
+      "<i class='far fa-hospital'></i>"
+    when tech_name.match?(/AI/i)
+      "<i class='fas fa-brain'></i>"
+    when tech_name.match?(/Logistics/i)
+      "<i class='fas fa-people-carry'></i>"
+    when tech_name.match?(/HR/i)
+      "<i class='fas fa-users'></i>"
+    when tech_name.match?(/Data Science/i)
+      "<i class='fas fa-flask'></i>"
     else
       "<i class='fas fa-laptop-code'></i>"
     end
