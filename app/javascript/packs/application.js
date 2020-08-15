@@ -33,8 +33,10 @@ import AOS from "aos";
 import '../components/banner.js';
 import '../pages/projects/index.js';
 import '../pages/application_requests/new.js';
+import '../shared/avatar_tooltips.js';
 
 import { showModal } from '../pages/projects/index.js';
+import { avatarTooltips } from '../shared/avatar_tooltips.js';
 import { clickableCard } from '../pages/application_requests/new.js';
 
 document.addEventListener('turbolinks:load', () => {
@@ -42,5 +44,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   AOS.init();
   showModal();
+  avatarTooltips(); // dejar dentro y fuera de turbolinks load
   clickableCard();
 });
+  avatarTooltips(); // dejar dentro y fuera de turbolinks load

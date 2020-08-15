@@ -1,4 +1,8 @@
 const showModal = () => {
+  // console.log("showModal loaded")
+  const page = document.getElementsByClassName("index-projects");
+  const skills = document.getElementById("user-skills").innerHTML
+
 
   $(function(){
     if($('div').hasClass("index-projects")){
