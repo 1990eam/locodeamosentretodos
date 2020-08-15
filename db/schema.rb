@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_182120) do
+ActiveRecord::Schema.define(version: 2020_08_11_224542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 2020_08_08_182120) do
     t.string "name"
     t.text "description"
     t.bigint "user_id", null: false
-    t.text "links"
     t.boolean "sponsored", default: false
     t.string "link_1"
     t.string "link_2"

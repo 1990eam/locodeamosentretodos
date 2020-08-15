@@ -13,13 +13,15 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
-
   def show?
-    true
+    record.user == user || record.collaborators.any? { |collaborator| collaborator.user.first_name == user.first_name }
   end
 
   def my_projects?
     true
   end
 
+  def destroy?
+    record.user == user
+  end
 end

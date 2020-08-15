@@ -1,4 +1,4 @@
-  <div class="container">
+<div class="container">
     <h1 class="mb-5">Proyectos a los que aplicaste</h1>
     <% @applications.each do |application| %>
       <div class="rounded shadow mb-2" style="width: 600px;">
@@ -18,21 +18,21 @@
             <h3 class="h5 m-0 flex-grow-0 mb-2">Status</h3>
             <div class="flex-grow-1">
               <% case application.status %>
-              <% when “pending response from applicant” %>
-              <p style=“color: #E59500; font-weight: bolder”><%= application.project.name %> is waiting your response</p>
-              <%= link_to “Accept”, accept_path(application), method: :put, class:“btn btn-success” %>
-              <%= link_to “Decline”, decline_path(application), method: :put, class:“btn btn-danger” %>
-              <p style=“color: green; font-weight: bolder”>Status: Your application has been Accepted</p>
-              <% when “declined by owner” %>
-              <p style=“color: red; font-weight: bolder”>Status: Your application has been Declined</p>
+              <% when "pending response from applicant" %>
+              <p style="color: #E59500; font-weight: bolder"><%= application.project.name %> is waiting your response</p>
+              <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
+              <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
+              <p style="color: green; font-weight: bolder">Status: Your application has been Accepted</p>
+              <% when "declined by owner" %>
+              <p style="color: red; font-weight: bolder">Status: Your application has been Declined</p>
               <% end %>
               <% case application.status %>
-              <% when “pending” %>
-              <p style=“color: #E59500; font-weight: bolder”>Status: Pending</p>
-              <% when “accepted” %>
-              <p style=“color: green; font-weight: bolder”>Status: Congratiulations! You are part of <%= application.project.name %> team</p>
-              <% when “declined by user” %>
-              <p style=“color: red; font-weight: bolder”>Status: You Declined <%= application.project.name %>’s invitation. </p>
+              <% when "pending" %>
+              <p style="color: #E59500; font-weight: bolder">Status: Pending</p>
+              <% when "accepted" %>
+              <p style="color: green; font-weight: bolder">Status: Congratiulations! You are part of <%= application.project.name %> team</p>
+              <% when "declined by user" %>
+              <p style="color: red; font-weight: bolder">Status: You Declined <%= application.project.name %>'s invitation. </p>
               <% end %>
             </div>
             <p class="text-center flex-grow-0 align-items-center m-0 w-100 mx-auto bg-primary rounded text-white py-1 px-3 mt-2">1 position open</p>

@@ -13,4 +13,11 @@ class ApplicationRequestPolicy < ApplicationPolicy
     true
   end
 
+  def accept?
+    record.user
+  end
+
+  def decline?
+    record.user
+  end
 end
