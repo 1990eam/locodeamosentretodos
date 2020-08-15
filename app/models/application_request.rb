@@ -12,4 +12,12 @@ class ApplicationRequest < ApplicationRecord
       collaborator.save!
     end
   end
+
+  def technologies
+    technologies = []
+    self.role.requirements.each do |requirement|
+      technologies << requirement.technology.name
+    end
+    return technologies
+  end
 end

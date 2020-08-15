@@ -64,6 +64,10 @@ class ProjectsController < ApplicationController
 
   private
 
+  def collaborators_counter
+    @colaborator_count = Project.collaborators.count
+  end
+
   def project_params
     params.require(:project).permit(:name, :description, :photo)
   end
