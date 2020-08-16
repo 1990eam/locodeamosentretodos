@@ -273,7 +273,7 @@ ApplicationRequest.find_or_create_by!(status: "accepted", user_id: mauricio.id,
 puts "Done creating Applications"
 puts ""
 
-# 1 3 6 8 11 13
+# 1 2 3 5 6 8 10 11 13 16 17 19
 
 puts "Creating Levels..."
 Level.find_or_create_by!(name: "junior")
