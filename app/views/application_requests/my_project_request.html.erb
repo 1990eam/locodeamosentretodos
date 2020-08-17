@@ -4,8 +4,8 @@
 
     <% @projects.each do |project| %>
     <% project.application_requests.each do |application| %>
-    <div class="rounded shadow mt-2" style="width: 800px;">
-    <div class="d-flex px-3 pt-3 pb-1"">
+    <div class="card-project">
+    <div class="d-flex px-3 pt-3 pb-1">
       <img src=<%= cl_image_path application.role.project.photo.key, alt: "alttext",  width: 50, height:50, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %> >
      <div class="flex-grow-1 ml-3">
         <h3 class="ml-2"> <%= project.name %> </h3>
@@ -15,8 +15,8 @@
 
     <div class="d-flex m-2 justify-content-between">
 
-      <div class="">
-        <h5> Role: <%= application.role.name  %></h5>
+      <div class="ml-3">
+        <h5 class="ml-0"> Role: <%= application.role.name  %></h5>
         <p> Description: <%= application.role.description %> </p>
         <% case application.status %>
           <% when "pending" %>
@@ -38,10 +38,9 @@
             <% when "declined by user" %>
               <p style="color: red; font-weight: bolder">The applicant <%= application.user.first_name %> Declined</p>
             <% end %>
-
       </div>
       <div>
-        <h5> Applicant Information</h5>
+        <h5 class="ml-0"> Applicant Information</h5>
         <p> Name: <%= application.user.first_name %></p>
         <p> About me: <%= application.about_me %></p>
       </div>
