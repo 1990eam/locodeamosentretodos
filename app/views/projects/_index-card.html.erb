@@ -25,7 +25,7 @@
               <div class="d-flex align-items-center mb-2">
                 <%= sanitize pick_url_icon(project.link_1) %>
                 <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1">
-                  <%= truncate(project.link_1, length: 24)  %>
+                  <%= truncate(shorten_url(project.link_1), length: 30)  %>
                 </div>
               </div>
             <% end %>
@@ -35,7 +35,7 @@
               <div class="d-flex align-items-center mb-2">
                 <%= sanitize pick_url_icon(project.link_2) %>
                 <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1">
-                  <%= truncate(project.link_2, length: 24) %>
+                  <%= truncate(shorten_url(project.link_2), length: 30) %>
                 </div>
               </div>
             <% end %>
@@ -43,11 +43,11 @@
         </div>
         <% if project.roles.count { |role| role.open? } == 0  %>
         <div class="no-positions rounded">
-          <p>This project is fully covered <i class="fas fa-heart-broken ml-1"></i></p>
+          <p>Este proyecto está cubierto <i class="fas fa-heart-broken ml-1"></i></p>
         </div>
         <% else %>
         <div class="open-positions rounded">
-          <p><%= pluralize(project.roles.count { |role| role.open? }, "position") %> open</p>
+          <p><%= pluralize(project.roles.count { |role| role.open? }, "posición abierta", plural: "posiciones abiertas") %></p>
         </div>
         <% end %>
       </div>
@@ -58,7 +58,7 @@
           <div class="d-flex flex-wrap">
             <% project.technologies.uniq.each do |technology| %>
               <p class="mr-2 mb-0">
-                <%= sanitize pick_tech_icon(technology.name) %>
+                <%= sanitize pick_tech_icon(technology.name), tags: %w(i), attributes: %w(class style) %>
                 <%= technology.name %>
               </p>
             <% end %>
