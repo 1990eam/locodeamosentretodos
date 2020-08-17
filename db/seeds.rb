@@ -243,7 +243,7 @@ puts "Creating applications..."
 ApplicationRequest.find_or_create_by!(status: "accepted", user_id: pablo.id,
                                       role_id: second_role.id,
                                       about_me: "Soy el mejor Dev que podes pagar :)")
-ApplicationRequest.find_or_create_by!(status: "accepted", user_id: elian.id,
+ApplicationRequest.find_or_create_by!(status: "accepted", user_id: tomas.id,
                                       role_id: fourth_role.id,
                                       about_me: "Trabajé mucho en management de proyectos en Somalia")
 ApplicationRequest.find_or_create_by!(status: "pending response from applicant", user_id: ernesto.id,

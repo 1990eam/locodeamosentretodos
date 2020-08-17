@@ -40,14 +40,12 @@ body {
   padding-bottom: 10vh;
 }
 
-
-/*Smallest device*/
 @media (min-width: 100px) and (max-width: 575px) {
   body {
-    padding-bottom: 18vh;
+    padding-bottom: 15vh;
   }
   #footer {
-    height: 18vh;
+    height: 15vh;
   }
   .footer-links a {
     font-size: 0.9em;
@@ -57,20 +55,7 @@ body {
   }
 }
 
-/*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) and (max-width: 768px) {
-  body {
-    padding-bottom: 15vh;
-  }
-  #footer {
-    height: 15vh;
-  }
-  .footer-links a {
-    font-size: 1em;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1200px) {
   body {
     padding-bottom: 12vh;
   }
@@ -82,12 +67,17 @@ body {
   }
 }
 
-/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 1200px) {
+  .footer-links a {
+    font-size: 1em;
+  }
+}
+
 @media (min-width: 1200px) {
   body {
-    padding-bottom: 8vh;
+    padding-bottom: 10vh;
   }
   #footer {
-    height: 8vh;
+    height: 10vh;
   }
 }
