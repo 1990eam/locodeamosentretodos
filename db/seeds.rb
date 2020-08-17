@@ -210,6 +210,9 @@ nineteenth_role = Role.find_or_create_by!(name: "Project Manager",
 twentieth_role = Role.find_or_create_by!(name: "Back and Front-End Dev",
                         description: "Mantener el Back-End de la plataforma y conocimientos básicos de diseño",
                         project_id: Project.third.id)
+twentyfirst_role = Role.find_or_create_by!(name: "Investment Management",
+                        description: "Manejar las relaciones con nuestros potenciales inversores a futuro",
+                        project_id: Project.first.id)
 
 puts "Done creating Roles"
 puts ""
@@ -237,43 +240,61 @@ puts "Done assigning"
 puts ""
 
 puts "Creating applications..."
-ApplicationRequest.find_or_create_by!(status: "accepted", user_id: nadia.id,
+ApplicationRequest.find_or_create_by!(status: "accepted", user_id: pablo.id,
                                       role_id: second_role.id,
                                       about_me: "Soy el mejor Dev que podes pagar :)")
-ApplicationRequest.find_or_create_by!(status: "declined by owner", user_id: elian.id,
+ApplicationRequest.find_or_create_by!(status: "accepted", user_id: elian.id,
                                       role_id: fourth_role.id,
                                       about_me: "Trabajé mucho en management de proyectos en Somalia")
 ApplicationRequest.find_or_create_by!(status: "pending response from applicant", user_id: ernesto.id,
                                       role_id: fourth_role.id,
                                       about_me: "Fui mano derecha de Mark Zuckerberg por tres años")
-ApplicationRequest.find_or_create_by!(status: "accepted", user_id: mauricio.id,
+ApplicationRequest.find_or_create_by!(status: "accepted", user_id: juanpablo.id,
                                       role_id: fifth_role.id,
                                       about_me: "Certificado como PMI-ACP")
 ApplicationRequest.find_or_create_by!(status: "pending response from applicant", user_id: juanpablo.id,
                                       role_id: seventh_role.id,
                                       about_me: "Trabajé para Coppel yendo a cobrar a Jose C Paz y Paso del Rey")
-ApplicationRequest.find_or_create_by!(status: "declined by user", user_id: mauricio.id,
+ApplicationRequest.find_or_create_by!(status: "accepted", user_id: mauricio.id,
                                       role_id: ninth_role.id,
                                       about_me: "Demasiado prendido para este mundo")
-ApplicationRequest.find_or_create_by!(status: "accepted", user_id: armando.id,
+ApplicationRequest.find_or_create_by!(user_id: juanpablo.id,
+                                      role_id: ninth_role.id,
+                                      about_me: "Soy un genio de Javascript. Flatpicker? Lo inventé yo. Las facturas con pastelera? Obvio que yo también.")
+ApplicationRequest.find_or_create_by!(user_id: armando.id,
                                       role_id: tenth_role.id,
                                       about_me: "Ex Scrum Master en Globant por varios años")
-ApplicationRequest.find_or_create_by!(user_id: armando.id,
+ApplicationRequest.find_or_create_by!(status: "accepted", user_id: juanpablo.id,
                                       role_id: twelfth_role.id,
                                       about_me: "Ex alumno de Cormillot")
-ApplicationRequest.find_or_create_by!(status: "accepted", user_id: juanpablo.id,
+ApplicationRequest.find_or_create_by!(status: "pending response from applicant", user_id: ernesto.id,
+                                      role_id: fourteenth_role.id,
+                                      about_me: "Me encantan los niños y soy el fan número 1 de Fran Drescher!")
+ApplicationRequest.find_or_create_by!(status: "accepted", user_id: armando.id,
+                                      role_id: fifteenth_role.id,
+                                      about_me: "Co-fundador de Skynet. Beep boop.")
+ApplicationRequest.find_or_create_by!(status: "accepted", user_id: ernesto.id,
                                       role_id: sixteenth_role.id,
                                       about_me: "Científico de datos de renombre")
-ApplicationRequest.find_or_create_by!(status: "accepted", user_id: pablo.id,
+ApplicationRequest.find_or_create_by!(status: "declined by owner", user_id: ernesto.id,
+                                      role_id: seventeenth_role.id,
+                                      about_me: "Futuro licenciado de HR con pasión por los datos y la programación")
+ApplicationRequest.find_or_create_by!(user_id: pablo.id,
                                       role_id: eighteenth_role.id,
                                       about_me: "Científico de datos de renombre")
 ApplicationRequest.find_or_create_by!(status: "accepted", user_id: mauricio.id,
                                       role_id: nineteenth_role.id,
                                       about_me: "Ex Scrum Master en Globant por varios años")
+ApplicationRequest.find_or_create_by!(user_id: ernesto.id,
+                                      role_id: twentieth_role.id,
+                                      about_me: "El fullstack dev más balanceado del mercado")
+ApplicationRequest.find_or_create_by!(status: "accepted", user_id: amy.id,
+                                      role_id: twentyfirst_role.id,
+                                      about_me: "Ex associate de Y Combinator")
 puts "Done creating Applications"
 puts ""
 
-# 1 3 6 8 11 13
+# 1 2 3 5 6 8 10 11 13 16 18 19
 
 puts "Creating Levels..."
 Level.find_or_create_by!(name: "junior")
@@ -514,6 +535,16 @@ Requirement.find_or_create_by!(role_id: twentieth_role.id,
 Requirement.find_or_create_by!(role_id: twentieth_role.id,
                                technology_id: html.id,
                                level_id: Level.second.id)
+
+Requirement.find_or_create_by!(role_id: twentyfirst_role.id,
+                               technology_id: people.id,
+                               level_id: Level.third.id)
+Requirement.find_or_create_by!(role_id: twentyfirst_role.id,
+                               technology_id: accounting.id,
+                               level_id: Level.third.id)
+Requirement.find_or_create_by!(role_id: twentyfirst_role.id,
+                               technology_id: data.id,
+                               level_id: Level.third.id)
 
 puts "Done creating requirements"
 puts ""
