@@ -36,4 +36,6 @@ Rails.application.routes.draw do
   put "application_requests/:application_id/accept", to: "application_requests#accept", as: "accept"
   put "application_requests/:application_id/decline", to: "application_requests#decline", as: "decline"
 
+  get "about", to: "pages#about", as: "about"
+
 end
