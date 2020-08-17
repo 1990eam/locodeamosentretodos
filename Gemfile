@@ -44,6 +44,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 
+gem 'sanitize'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
