@@ -1,8 +1,5 @@
 const showModal = () => {
-  // console.log("showModal loaded")
-  const page = document.getElementsByClassName("index-projects");
-  const skills = document.getElementById("user-skills").innerHTML
-
+  // no agregar estas dos lineas fuera de $(function) por favor
 
   $(function(){
     if($('div').hasClass("index-projects")){
