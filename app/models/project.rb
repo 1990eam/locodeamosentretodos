@@ -32,7 +32,7 @@ class Project < ApplicationRecord
     @matches = []
 
     @projects.each do |project|
-      @matches << project if project.technologies.any? { |technology| technology == user.technologies }
+      @matches << project if project.technologies.any? { |project_tech| user.technologies.any? { |user_tech| user_tech == project_tech } }
     end
     return @matches
   end
