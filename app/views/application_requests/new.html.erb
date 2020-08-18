@@ -1,5 +1,6 @@
 <div class='container mt-5'>
   <h1 class='text-center'> You are applying to <%= @project.name %></h1>
+  <h6 class='text-center'>This are the open roles in this project</h6>
    <div class='container mt-5'>
       <div class='grid-application'>
 
@@ -36,22 +37,24 @@
 
           <div class="card-roles">
             <% @project.roles.each do |role| %>
-              <div class="card clickable-card" data-target="<%= role.id %>" data-delete="<%= role.id %>">
-                <div class="card-body text-center">
-                  <h5 class="card-title"><%= role.name %></h5>
-                   <% role.requirements.each do |requirement|%>
-                   <div class="d-flex flex-wrap m-0">
-                    <p class=" text-left mr-2 mb-0">
-                      <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
-                      <%= requirement.technology.name %>
-                    </p>
-                    <p class='mb-0'><%= requirement.level.name %></p>
-                   </div>
-                    <% end %>
-                  <p class="card-text mt-4"><%= role.description %></p>
-                  <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i> Apply </button>
+              <% if role.open? %>
+                <div class="card clickable-card" data-target="<%= role.id %>" data-delete="<%= role.id %>">
+                  <div class="card-body text-center">
+                    <h5 class="card-title"><%= role.name %></h5>
+                     <% role.requirements.each do |requirement|%>
+                     <div class="d-flex flex-wrap m-0">
+                      <p class=" text-left mr-2 mb-0">
+                        <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
+                        <%= requirement.technology.name %>
+                      </p>
+                      <p class='mb-0'><%= requirement.level.name %></p>
+                     </div>
+                      <% end %>
+                    <p class="card-text mt-4"><%= role.description %></p>
+                    <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i> Apply </button>
+                  </div>
                 </div>
-              </div>
+              <% end %>
               <% end %>
           </div>
 
