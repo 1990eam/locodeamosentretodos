@@ -1,12 +1,13 @@
 .my-feed {
   background-color: #E6E6E6;
   border-radius: 5px;
-  height: 500px;
+  height: fit-content;
   position: sticky;
   top: 12vh;
   padding: 0;
   z-index: 1;
   grid-column: 1;
+  text-align: center;
 }
 
 .index-projects {

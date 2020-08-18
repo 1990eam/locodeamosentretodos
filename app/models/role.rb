@@ -9,7 +9,14 @@ class Role < ApplicationRecord
   validates :name, presence: true
 
 
-  # scope :open_roles, -> { where(collaborators: nil) }
+  # scope :open, -> { where(collaborator_id: nil) }
+
+
+  scope :vacant, -> { joins(:collaborators).
+      select('roles.id, count(collaborators.id) AS n_collaborators').
+      group('roles.id').
+      having('n_collaborators = 0') }
+
 
   def open?
     self.collaborators.empty?

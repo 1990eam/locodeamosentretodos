@@ -37,10 +37,9 @@
 </nav>
   <div class="grid-index-container mt-5">
     <div class="my-feed">
-      <h6 style="text-align: center;">Ordenar proyectos</h6>
-
-
-
+      <h6 style="text-align: center;">Filtrar proyectos</h6>
+      <p><%= link_to "With Open Roles", projects_path(:with_open_roles => "true"), class:"btn btn-primary" %></p>
+      <p><%= link_to "That match my skills", projects_path(:skill_match => "true"), class:"btn btn-primary" %></p>
     </div>
 
 

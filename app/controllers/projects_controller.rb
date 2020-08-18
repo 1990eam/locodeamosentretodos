@@ -4,16 +4,11 @@ class ProjectsController < ApplicationController
 
   def index
 
-    @tech_search = Technology.all
-
-
-
-
     if user_signed_in?
       @user = current_user
     end
 
-      if params[:query].present?
+    if params[:query].present?
         sql_query = " \
         projects.name @@ :query \
         OR roles.name @@ :query \
@@ -24,7 +19,16 @@ class ProjectsController < ApplicationController
     else
       @projects = policy_scope(Project)
     end
+
+    #filtros
+    if params[:with_open_roles]
+      @projects = Project.with_open_positions
+    elsif params[:skill_match]
+      @projects = Project.that_match_my_skills(current_user)
+    end
+
   end
+
 
   def new
     @project = Project.new
@@ -86,4 +90,5 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     authorize @project
   end
+
 end
