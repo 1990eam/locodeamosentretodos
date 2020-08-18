@@ -3,6 +3,7 @@ class ApplicationRequest < ApplicationRecord
 
   belongs_to :role
   has_one :project, through: :role
+  has_one :chatroom
   belongs_to :user
   validates :about_me, presence: true, length: { in: 10..300 }
   validates :status, inclusion: { in: ['pending', 'accepted', 'declined by user', 'declined by owner', 'pending response from applicant'] }

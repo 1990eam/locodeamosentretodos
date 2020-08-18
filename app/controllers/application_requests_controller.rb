@@ -17,8 +17,10 @@ class ApplicationRequestsController < ApplicationController
     @application.user = current_user
     role = Role.find(params[:role_id])
     @application.role = role
-
     if @application.save
+      @chatroom = Chatroom.new(name: "#{@application.user.first_name} #{@application.user.last_name}'s application")
+      @chatroom.application_request = @application
+      @chatroom.save!
       redirect_to application_requests_path
     else
       # definir @project si se usa render, sino el view no encuentra @project y crashea
