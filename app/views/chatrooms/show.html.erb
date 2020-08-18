@@ -9,3 +9,7 @@
       <%= f.input :content, label: false, placeholder: "Your messsage here..." %>
   <% end %>
 </div>
+
+<%= @application.user.first_name %>
+<%= @application.project.name %>
+<%= @application.project.user.first_name %>

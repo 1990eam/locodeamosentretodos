@@ -6,6 +6,6 @@ class ChatroomPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user == record.application_request.user || user == record.application_request.project.user
   end
 end
