@@ -3,7 +3,7 @@
     <%= link_to (project.user == current_user || project.collaborators.any? { |collaborator| collaborator.user == current_user } ?  project_path(project) : new_project_application_request_path(project)) do %>
 
     <div class="d-flex">
-      <%= cl_image_tag project.photo.key, alt: "alttext", crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
+      <%= cl_image_tag project.photo.key, alt: "alttext", width: 300, height: 300, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
       <div>
         <h2 class="text-left"><%= project.name %></h2>
         <p class="text-muted"><%= project.description %></p>
@@ -11,21 +11,21 @@
       <% if project.sponsored %>
         <div class="badge badge-pill badge-info project-card-sponsored d-flex justify-content-between">
           <i class="fa fa-heart" aria-hidden="true" style="color: #da64ab;"></i>
-          <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block ml-1">Sponsored</div>
+          <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block ml-1">Sponsored</div>
         </div>
       <% end %>
     </div>
 
-    <div class="d-flex">
-      <div class="card-links mr-3">
+    <div class="d-lg-flex d-block">
+      <div class="d-flex flex-column justify-content-between w-100 w-lg-50 mr-3">
         <h3>Links</h3>
         <div>
           <% if project.link_1 != nil %>
             <%= link_to "http://#{project.link_1}" do %>
               <div class="d-flex align-items-center mb-2">
                 <%= sanitize pick_url_icon(project.link_1) %>
-                <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1">
-                  <%= truncate(project.link_1, length: 24)  %>
+                <div class="d-inline ml-1">
+                  <%= truncate(shorten_url(project.link_1), length: 30)  %>
                 </div>
               </div>
             <% end %>
@@ -34,25 +34,31 @@
             <%= link_to "http://#{project.link_2}" do %>
               <div class="d-flex align-items-center mb-2">
                 <%= sanitize pick_url_icon(project.link_2) %>
-                <div class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline ml-1">
-                  <%= truncate(project.link_2, length: 24) %>
+                <div class="d-inline ml-1">
+                  <%= truncate(shorten_url(project.link_2), length: 30) %>
                 </div>
               </div>
             <% end %>
           <% end %>
         </div>
-        <div class="open-positions rounded">
-          <p><%= project.roles.count { |role| role.open? } %> positions open</p>
+        <% if project.roles.count { |role| role.open? } == 0  %>
+        <div class="no-positions rounded mb-2 mb-lg-0">
+          <p>Este proyecto está cubierto <i class="fas fa-heart-broken ml-1"></i></p>
         </div>
+        <% else %>
+        <div class="open-positions rounded mb-2 mb-lg-0">
+          <p><%= pluralize(project.roles.count { |role| role.open? }, "posición abierta", plural: "posiciones abiertas") %></p>
+        </div>
+        <% end %>
       </div>
 
-      <div>
+      <div class="w-100 w-lg-50">
         <div>
           <h3>Tags</h3>
           <div class="d-flex flex-wrap">
             <% project.technologies.uniq.each do |technology| %>
               <p class="mr-2 mb-0">
-                <%= sanitize pick_tech_icon(technology.name) %>
+                <%= sanitize pick_tech_icon(technology.name), tags: %w(i), attributes: %w(class style) %>
                 <%= technology.name %>
               </p>
             <% end %>
