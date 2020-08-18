@@ -1,7 +1,7 @@
 // *{
 
-//   margin: 0;
-//   padding: 0;
+  // margin: 0;
+  // padding: 0;
 //   box-sizing: border-box;
 
 // }
@@ -10,36 +10,46 @@
 
 // section{
 //   padding: 10rem 0;
-//   background-color: #fff;
+  // background-color: #fff;
 //   html {
 //     font-size: 10px;
 //   }
 
 // }
 
+.about-container{
+  background-color: #fff;
+  padding: 5rem;
+  box-sizing: border-box;
+  margin: 0;
+}
+
 .about-container html{
   font-size: 10px;
+
 
 }
 
 .heading{
   text-transform: uppercase;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   letter-spacing: 3px;
   margin-right: -3px;
-  margin-bottom: 5rem;
+  margin-bottom: 2.5rem;
   text-align: center;
   color: #333;
   position: relative;
 }
 
-.heading::after {
+.heading::after{
+  display: block;
+  margin: 0 auto;
   content: "";
   width: 10rem;
   height: .8rem;
   background-color: #45e19f;
   bottom: -2rem;
-  left: 50%;
+  // left: 50%;
   transform: translateX(-50%);
   border-radius: 2rem;
 }
