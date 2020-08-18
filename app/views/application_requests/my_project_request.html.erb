@@ -62,8 +62,8 @@
           <p class="ml-2 mt-1"> Name: <%= application.user.first_name %></p>
         </div>
         <p> About me: <%= application.about_me %></p>
-        <% if application.status != "declined by user" || "declined by owner" %>
-          <%= link_to application_request_chatroom_path(application.id) %>
+        <% if application.status == "pending" || "pending response from applicant" %>
+          <%= link_to "Contact the applicant", application_request_chatroom_path(application.id, application.chatroom) %>
         <% end %>
       </div>
 
