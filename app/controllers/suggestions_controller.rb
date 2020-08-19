@@ -18,7 +18,11 @@ class SuggestionsController < ApplicationController
     authorize @suggestion
     @suggestion.project = @project
     @suggestion.collaborator = Collaborator.find(current_user.id)
-    @suggestion.save
+    if @suggestion.save
+      redirect_to project_path(@project)
+    else
+      render :new
+    end
   end
 
   private

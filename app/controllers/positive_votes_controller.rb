@@ -1,2 +1,0 @@
-class PositiveVotesController < ApplicationController
-end

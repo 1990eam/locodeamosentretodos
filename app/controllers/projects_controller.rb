@@ -55,6 +55,8 @@ class ProjectsController < ApplicationController
     @project_roles = @project.roles
     @role = Role.new
     authorize @role
+    @suggestion = Suggestion.new
+    authorize @suggestion
   end
 
   def my_projects
