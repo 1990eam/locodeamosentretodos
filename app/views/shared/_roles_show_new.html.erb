@@ -6,14 +6,6 @@
       <div class="card clickable-card" data-target="<%= role.id %>" data-delete="<%= role.id %>">
         <div class="card-body text-center">
           <h5 class="card-title"><%= role.name %></h5>
-          <div class="d-flex flex-wrap" style="justify-content: center;">
-            <% role.requirements.each do |requirement|%>
-            <p class="mr-1">
-              <%= sanitize pick_tech_icon(requirement.technology.name) %>
-              <%= requirement.technology.name %>
-            </p>
-            <% end %>
-          </div>
           <!-- logica avatars/mensaje si el role esta ocupado o vacante -->
           <!-- si esta ocupado -->
           <% if !role.open? %>
@@ -27,26 +19,31 @@
                   <% else %>
                     <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
                   <% end %>
-                  <p class="role.status" style="color: red;">This position is taken</p>
+                  <p class="role.status mb-2" style="color: red;">This position is taken</p>
 
               <% end %>
             <% end %>
             <!-- si esta vacante -->
           <% else %>
 
-            <p class="role.status" style="color: green;">This position is open</p>
+            <p class="role.status mb-2" style="color: green;">This position is open</p>
           <% end %>
 
-          <div class="skill-level">
+          <div class="skill-level mt-0">
             <% role.requirements.each do |requirement| %>
-              <p><%= requirement.technology.name %> <%= requirement.level.name %></p>
+              <div class="d-flex flex-wrap m-0">
+                <p class=" text-left mr-2 mb-0">
+                  <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
+                  <%= requirement.technology.name %>
+                </p>
+                <p class='mb-0'><%= requirement.level.name.capitalize %></p>
+              </div>
             <% end %>
           </div>
-          <p class="card-text"><%= role.description %></p>
-           <% if role.open? %>
-            <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i> Apply </button>
-
-           <% end %>
+          <div>
+            <h6 class="mb-0 mt-3"> Funciones del puesto </h6>
+            <p class="card-text"><%= role.description %></p>
+          </div>
         </div>
       </div>
       <% end %>

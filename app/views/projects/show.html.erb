@@ -6,19 +6,19 @@
     <div class="tech-images">
       <% @project.technologies.uniq.each do |technology| %>
       <p class="mr-2 mb-0">
-        <%= sanitize pick_tech_icon(technology.name) %>
+        <%= sanitize pick_tech_icon(technology.name), tags: %w(i), attributes: %w(class style) %>
         <%= technology.name %>
       </p>
       <% end %>
     </div>
     <div class="description-container">
       <h5> Descripción </h5>
-      <div class="project-description">
+      <div class="project-description mx-3">
         <p><%= @project.description %></p>
       </div>
     </div>
 
-    <div class="project-collaborators">
+    <div class="project-collaborators text-center">
       <h5> Colaboradores </h5>
       <div>
         <!-- project owner -->
