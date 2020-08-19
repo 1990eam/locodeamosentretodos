@@ -18,7 +18,7 @@ class ApplicationRequestsController < ApplicationController
     role = Role.find(params[:role_id])
     @application.role = role
 
-    if @application.save
+    if @application.save!
       redirect_to application_requests_path
     else
       # definir @project si se usa render, sino el view no encuentra @project y crashea
@@ -58,6 +58,6 @@ class ApplicationRequestsController < ApplicationController
   private
 
   def application_params
-    params.require(:application_request).permit(:about_me)
+    params.require(:application_request).permit(:about_me, :file)
   end
 end
