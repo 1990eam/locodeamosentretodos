@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:new, :create, :index, :show, :destroy] do
     resources :application_requests, only: [:new, :create]
     resources :roles, only: [:new, :create]
+    resources :suggestions, only: [:index, :new, :create]
   end
 
   resources :roles, only: :destroy
