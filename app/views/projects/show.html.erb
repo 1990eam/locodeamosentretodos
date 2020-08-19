@@ -6,7 +6,7 @@
           <div class="tech-images">
             <% @project.technologies.uniq.each do |technology| %>
               <p class="mr-2 mb-0">
-                <%= sanitize pick_tech_icon(technology.name) %>
+                <%= sanitize pick_tech_icon(technology.name), tags: %w(i), attributes: %w(class style) %>
                 <%= technology.name %>
               </p>
             <% end %>
@@ -54,6 +54,9 @@
               <li class="nav-item">
                 <a class="nav-link" id="evolution-tab" data-toggle="tab" href="#evolution" role="tab" aria-controls="evolution" aria-selected="false">Evolution</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" id="suggestions-tab" data-toggle="tab" href="#suggestions" role="tab" aria-controls="suggestions" aria-selected="false">Suggestions</a>
+              </li>
             </ul>
 
             <!-- Tab content -->
@@ -67,6 +70,15 @@
               </div>
 
               <div class="tab-pane fade" id="evolution" role="tabpanel" aria-labelledby="evolution-tab">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+
+              <div class="tab-pane fade" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
