@@ -54,7 +54,7 @@
               <p class="text-center text-warning flex-grow-0 align-items-center m-0 w-100 mx-auto bg-primary rounded text-white py-1 px-3 mt-2">Link del Proyecto</p>
             </a>
             <% if application.status == "pending" || application.status == "pending response from applicant" %>
-              <%= link_to "Contact the project owner", application_request_chatroom_path(application.id, application.chatroom) %>
+              <%= link_to "Contact the project owner", application_request_chatroom_path(application.id) %>
             <% end %>
             </div>
           </div>

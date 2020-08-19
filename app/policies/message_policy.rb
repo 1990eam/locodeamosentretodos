@@ -5,6 +5,10 @@ class MessagePolicy < ApplicationPolicy
     end
   end
 
+  def chatroom?
+    true
+  end
+
   def create?
     true
   end

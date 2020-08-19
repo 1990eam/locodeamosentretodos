@@ -5,7 +5,7 @@ class ChatroomPolicy < ApplicationPolicy
     end
   end
 
-  def show?
+  def chatroom?
     user == record.application_request.user || user == record.application_request.project.user
   end
 end
