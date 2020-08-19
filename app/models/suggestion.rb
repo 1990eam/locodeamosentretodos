@@ -4,5 +4,7 @@ class Suggestion < ApplicationRecord
   has_many :positive_votes
   has_many :negative_votes
 
+  validates :description, presence: :true
+
 
 end
