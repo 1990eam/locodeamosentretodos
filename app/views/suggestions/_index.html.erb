@@ -5,22 +5,16 @@
       <p><%= suggestion.description %></p>
       <p>Suggested by: <%= suggestion.collaborator.user.first_name %></p>
       <% suggestion.average_rating.to_i.times do  %>
-       <span class="fas fa-star"></span>
+       <span class="fas fa-star current-rating"></span>
       <% end %>
       <p>Vote</p>
-      <span class="fas fa-star vote-rating" data-rating="1"></span>
-      <span class="fas fa-star vote-rating" data-rating="2"></span>
-      <span class="fas fa-star vote-rating" data-rating="3"></span>
-      <span class="fas fa-star vote-rating" data-rating="4"></span>
-      <span class="fas fa-star vote-rating" data-rating="5"></span>
 
-
-      <!-- usar datasets con 5 estrellas, del 1 a 5 y recuperar ese valor con js? -->
+      <!-- el suggestion id va a ir en el hidden input como params -->
       <div class="input mt-5">
-        <%= simple_form_for [@project, @vote] do |f| %>
-        <input type="" hidden="true" name='rating_value' value="rating" class="rating_field">
-
-        <%= f.submit "Votar", class: "btn btn-primary" %>
+        <%= simple_form_for [@project, @vote], html: { class: "vote-form" }, remote: :true do |f| %>
+        <input type="" hidden="true" name='suggestion_id' value="<%= suggestion.id %>" class="suggestion_field">
+        <%= f.input :rating, collection: (1..5).to_a, label: "Rate this feature" %>
+        <%= f.submit "Votar", class: "btn btn-primary d-none" %>
         <% end %>
       </div>
 

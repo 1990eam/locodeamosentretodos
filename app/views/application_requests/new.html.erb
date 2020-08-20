@@ -64,6 +64,7 @@
       </div>
       <div class="input mt-5">
         <%= simple_form_for [@project, @application] do |f| %>
+        <!-- el hidden input es para mandar el role id en params -->
         <input type="" hidden="true" name='role_id' value="role" class="role_field">
         <%= f.input :about_me %>
         <%= f.submit class: "btn btn-primary" %>
