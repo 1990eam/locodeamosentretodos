@@ -4,5 +4,10 @@ class Suggestion < ApplicationRecord
   has_many :suggestion_votes
   validates :description, presence: :true
 
+  def average_rating
+    ratings = self.suggestion_votes
+    return ratings.average(:rating)
+  end
+
 
 end

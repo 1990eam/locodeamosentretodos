@@ -17,7 +17,7 @@ class SuggestionsController < ApplicationController
     @suggestion = Suggestion.new(suggestion_params)
     authorize @suggestion
     @suggestion.project = @project
-    @suggestion.collaborator = Collaborator.find(current_user.id)
+    @suggestion.collaborator = @project.collaborators.find_by(user_id: current_user.id)
     if @suggestion.save
       redirect_to project_path(@project)
     else

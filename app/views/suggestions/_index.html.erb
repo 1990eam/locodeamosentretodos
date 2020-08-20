@@ -1,5 +1,29 @@
+<div class="suggestions-wrapper">
 <% @project.suggestions.each do |suggestion| %>
-  <div>
-    <%= suggestion.description %>
-  </div>
+    <div class="suggestion-card" data-target="<%= suggestion.id %>">
+      <p style="text-align: center;">Feature</p>
+      <p><%= suggestion.description %></p>
+      <p>Suggested by: <%= suggestion.collaborator.user.first_name %></p>
+      <% suggestion.average_rating.to_i.times do  %>
+       <span class="fas fa-star"></span>
+      <% end %>
+      <p>Vote</p>
+      <span class="fas fa-star vote-rating" data-rating="1"></span>
+      <span class="fas fa-star vote-rating" data-rating="2"></span>
+      <span class="fas fa-star vote-rating" data-rating="3"></span>
+      <span class="fas fa-star vote-rating" data-rating="4"></span>
+      <span class="fas fa-star vote-rating" data-rating="5"></span>
+
+
+      <!-- usar datasets con 5 estrellas, del 1 a 5 y recuperar ese valor con js? -->
+      <div class="input mt-5">
+        <%= simple_form_for [@project, @vote] do |f| %>
+        <input type="" hidden="true" name='rating_value' value="rating" class="rating_field">
+
+        <%= f.submit "Votar", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+    </div>
 <% end %>
+</div>

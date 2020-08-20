@@ -57,6 +57,8 @@ class ProjectsController < ApplicationController
     authorize @role
     @suggestion = Suggestion.new
     authorize @suggestion
+    @vote = SuggestionVote.new
+    authorize @vote
   end
 
   def my_projects
