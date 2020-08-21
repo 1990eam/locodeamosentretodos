@@ -1,13 +1,5 @@
 class SuggestionVotesController < ApplicationController
 
-
-  # suggestion_id:  va en params
-  # collaborator_id: find?
-  # created_at: nil,
-  # updated_at: nil,
-  # rating: va en params
-
-
   def create
     @vote = SuggestionVote.new
     authorize @vote
@@ -18,11 +10,11 @@ class SuggestionVotesController < ApplicationController
     @vote.collaborator = @collaborator
     @vote.suggestion = Suggestion.find(params[:suggestion_id])
     @vote.rating = vote_params[:rating]
-    # raise
     if @vote.save
-      redirect_to project_path(@project)
-      else
-      redirect_to projects_path
+      flash[:notice] = "Votaste correctamente"
+      redirect_to project_path(@project, tab: "suggestions", anchor: "suggestion-#{params[:suggestion_id]}")
+    else
+      flash[:alert] = "Algo salio mal"
     end
   end
 
@@ -32,7 +24,5 @@ class SuggestionVotesController < ApplicationController
   def vote_params
     params.require(:suggestion_vote).permit(:rating, :suggestion_id)
   end
-
-
 
 end

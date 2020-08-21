@@ -49,13 +49,13 @@
                 <a class="nav-link <%= params[:tab] == nil ? "active" : "" %> " id="applications-tab" data-toggle="tab" href="#applications" role="tab" aria-controls="applications" aria-selected="true">Applications</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link <%= params[:tab] == nil ? "" : "active" %> " id="roles-tab" data-toggle="tab" href="#roles" role="tab" aria-controls="roles" aria-selected="false">Roles</a>
+                <a class="nav-link <%= params[:tab] == "roles" ? "active" : "" %> " id="roles-tab" data-toggle="tab" href="#roles" role="tab" aria-controls="roles" aria-selected="false">Roles</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="evolution-tab" data-toggle="tab" href="#evolution" role="tab" aria-controls="evolution" aria-selected="false">Evolution</a>
+                <a class="nav-link <%= params[:tab] == "suggestions" ? "active" : "" %>" id="suggestions-tab" data-toggle="tab" href="#suggestions" role="tab" aria-controls="suggestions" aria-selected="false">Suggestions</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="suggestions-tab" data-toggle="tab" href="#suggestions" role="tab" aria-controls="suggestions" aria-selected="false">Suggestions</a>
+                <a class="nav-link <%= params[:tab] == "evolution" ? "active" : "" %>" id="evolution-tab" data-toggle="tab" href="#evolution" role="tab" aria-controls="evolution" aria-selected="false">Evolution</a>
               </li>
             </ul>
 
@@ -65,7 +65,9 @@
                 <%= render "shared/applications_show" %>
               </div>
 
-              <div class="tab-pane fade  <%= params[:tab] == nil ? "" : "show active" %>" id="roles" role="tabpanel" aria-labelledby="roles-tab">
+              <div class="tab-pane fade  <%= params[:tab] == nil ? "" : "show active" %>" id="ceptaciòn de los colaboradores
+
+   roles" role="tabpanel" aria-labelledby="roles-tab">
                 <%= render "shared/roles_show_new" %>
               </div>
 
@@ -82,12 +84,6 @@
 
                 <%= render "suggestions/index" %>
                 <%= render "suggestions/new_suggestion" %>
-
-
-
-
-
-
 
               </div>
 
