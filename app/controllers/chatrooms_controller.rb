@@ -1,9 +1,8 @@
 class ChatroomsController < ApplicationController
   before_action :authenticate_user!
 
-  def show
-    @chatroom = Chatroom.find(params[:id])
-    @application = @chatroom.application_request
+  def chatroom
+    @chatroom = ApplicationRequest.find(params[:application_request_id]).chatroom
     @message = Message.new
     authorize @chatroom
     authorize @message

@@ -33,25 +33,25 @@
         </div>
 
         <% case application.status %>
-          <% when "pending" %>
-            <p style="color: #e59500; font-weight: bolder">The applicant is waiting your response</p>
-            <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
-            <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
-          <% when "pending response from applicant" %>
-            <p style="color: green; font-weight: bolder">You have Accepted <%= application.user.first_name %></p>
-            <p style="color: #e59500; font-weight: bolder">Pending response from applicant</p>
-          <% when "declined by owner" %>
-            <p style="color: red; font-weight: bolder">You have Declined <%= application.user.first_name %></p>
-          <% end %>
+        <% when "pending" %>
+          <p style="color: #e59500; font-weight: bolder">The applicant is waiting your response</p>
+          <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
+          <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
+        <% when "pending response from applicant" %>
+          <p style="color: green; font-weight: bolder">You have Accepted <%= application.user.first_name %></p>
+          <p style="color: #e59500; font-weight: bolder">Pending response from applicant</p>
+        <% when "declined by owner" %>
+          <p style="color: red; font-weight: bolder">You have Declined <%= application.user.first_name %></p>
+        <% end %>
 
           <% case application.status %>
-            <% when "pending" %>
-              <p style="color: #e59500; font-weight: bolder"></p>
-            <% when "accepted" %>
-              <p style="color: green; font-weight: bolder">The applicant <%= application.user.first_name %> accepted </p>
-            <% when "declined by user" %>
-              <p style="color: red; font-weight: bolder">The applicant <%= application.user.first_name %> Declined</p>
-            <% end %>
+          <% when "pending" %>
+            <p style="color: #e59500; font-weight: bolder"></p>
+          <% when "accepted" %>
+            <p style="color: green; font-weight: bolder">The applicant <%= application.user.first_name %> accepted </p>
+          <% when "declined by user" %>
+            <p style="color: red; font-weight: bolder">The applicant <%= application.user.first_name %> Declined</p>
+          <% end %>
       </div>
       <div class="ml-3 w-50">
         <h5> Applicant Information</h5>
