@@ -22,7 +22,7 @@
             </div>
             <h4 class="h6 m-0 flex-grow-0 mb-2">Status</h4>
             <div class="flex-grow-1">
-              <% case application.status %>
+              <% case application.status.downcase %>
               <% when "pending response from applicant" %>
               <p style="color: #E59500; font-weight: bolder"><%= application.project.name %> is waiting your response</p>
               <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
@@ -31,7 +31,7 @@
               <% when "declined by owner" %>
               <p style="color: red; font-weight: bolder">Status: Your application has been Declined</p>
               <% end %>
-              <% case application.status %>
+              <% case application.status.downcase %>
               <% when "pending" %>
               <p style="color: #E59500; font-weight: bolder"> Pending</p>
               <% when "accepted" %>

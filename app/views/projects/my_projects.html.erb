@@ -1,15 +1,28 @@
-<div class='container'>
+<div class="container">
+  <div class="row">
+    <% @projects.each do |project| %>
+    <div class="card-request">
+      <div class="d-flex px-3 pt-3 pb-1">
+        <div>
+          <img src=<%= cl_image_path project.photo.key, alt: "alttext",  width: 150, height:150, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %> >
+       </div>
+         <div class="flex-grow-1 ml-3">
+            <h3 class="ml-2"> <%= project.name %> </h3>
+            <p class="ml-2 text-muted"> <%= project.description %> </p>
+          <div class="flex-container">
+            <div class="d-flex">
+              <p class="btn btn-gradient"><strong><%= link_to "Ver Proyecto", project_path(project) %></strong></p>
+              <p class="btn btn-edit"><strong><%= link_to "Editar Proyecto", edit_project_path(project) %></strong></p>
+            </div>
+            <div class="d-flex">
+                <p class="btn-role"><%= link_to  "Nuevo rol", new_project_role_path(project) %></p>
+                <p class="btn-delete"><%= link_to "Eliminar Proyecto", project_path(project), method: :delete, data: { confirm: 'Eliminar este Proyecto?' } %></p>
+            </div>
+          </div>
+        </div>
 
-  <div class="my-projects-card mt-4 mb-2">
-  <% @projects.each do |project| %>
-    <p><%= link_to "#{project.name}", project_path(project) %></p>
-    <p><%= project.description %></p>
-    <p><%= link_to "Editar Proyecto", edit_project_path(project) %></p>
-    <p><%= link_to  "Nuevo rol", new_project_role_path(project) %></p>
-    <p><%= link_to "Ver Proyecto", project_path(project) %></p>
-    <%= link_to "Eliminar Proyecto", project_path(project), method: :delete, data: { confirm: 'Are you certain you want to delete this Project?' } %>
-
+      </div>
   </div>
   <% end %>
+  </div>
 </div>
-
