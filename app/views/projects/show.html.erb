@@ -18,31 +18,31 @@
             </div>
           </div>
 
-          <div class="project-collaborators">
-            <h5> Colaboradores </h5>
-            <div>
-              <!-- project owner -->
-              <% if @project.user.photo.attached? %>
-                <%= cl_image_tag @project.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{@project.user.first_name} / Project Owner" %>
+    <div class="project-collaborators">
+      <h5> Colaboradores </h5>
+      <div>
+        <!-- project owner -->
+        <% if @project.user.photo.attached? %>
+        <%= cl_image_tag @project.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{@project.user.first_name} / Project Owner" %>
 
-              <% else %>
-                <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
-              <% end %>
-              <!-- collaborators -->
-            <% @project.collaborators.each do |collaborator| %>
-              <% if collaborator.user.photo.attached? %>
-                <%= cl_image_tag collaborator.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
+        <% else %>
+        <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
+        <% end %>
+        <!-- collaborators -->
+        <% @project.collaborators.each do |collaborator| %>
+        <% if collaborator.user.photo.attached? %>
+        <%= cl_image_tag collaborator.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
 
-              <% else %>
-                <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
-              <% end %>
-            <% end %>
-            </div>
+        <% else %>
+        <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
+        <% end %>
+        <% end %>
+      </div>
 
-          </div>
-        </div>
+    </div>
+  </div>
 
-          <div class="tabs-container" >
+   <div class="tabs-container" >
             <!-- Tabs https://getbootstrap.com/docs/4.0/components/navs/#javascript-behavior-->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item">
@@ -59,11 +59,12 @@
               </li>
             </ul>
 
-            <!-- Tab content -->
-            <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade <%= params[:tab] == nil ? "show active" : "" %>" id="applications" role="tabpanel" aria-labelledby="home-tab">
-                <%= render "shared/applications_show" %>
-              </div>
+
+    <!-- Tab content -->
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade <%= params[:tab] == nil ? "show active" : "" %>" id="applications" role="tabpanel" aria-labelledby="home-tab">
+        <%= render "shared/applications_show" %>
+      </div>
 
               <div class="tab-pane fade  <%= params[:tab] == nil ? "" : "show active" %>" id="ceptaciòn de los colaboradores
 
@@ -71,14 +72,15 @@
                 <%= render "shared/roles_show_new" %>
               </div>
 
-              <div class="tab-pane fade" id="evolution" role="tabpanel" aria-labelledby="evolution-tab">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </div>
+
+      <div class="tab-pane fade" id="evolution" role="tabpanel" aria-labelledby="evolution-tab">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
 
               <div class="tab-pane fade" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab">
 
@@ -91,7 +93,8 @@
 
 
 
-          </div>
+
+  </div>
 
 
 </div>

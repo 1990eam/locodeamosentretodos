@@ -39,7 +39,7 @@
 
           <div class="skill-level">
             <% role.requirements.each do |requirement| %>
-              <p><%= requirement.level.name %></p>
+              <p><%= requirement.technology.name %> <%= requirement.level.name %></p>
             <% end %>
           </div>
           <p class="card-text"><%= role.description %></p>
@@ -65,7 +65,6 @@
           </div>
         </div>
       </div>
-
   </div>
 </div>
 

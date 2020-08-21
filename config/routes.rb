@@ -32,6 +32,12 @@ Rails.application.routes.draw do
 
   resources :roles, only: :destroy
 
+  resources :application_requests do
+    resources :chatrooms, only: [:show, :new, :create] do
+      resources :messages, only: :create
+    end
+  end
+
   get "my_projects", to: "projects#my_projects", as: "my_projects"
   get "my_project_request", to: "application_requests#my_project_request"
 
