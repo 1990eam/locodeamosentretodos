@@ -27,12 +27,13 @@ Rails.application.routes.draw do
     resources :roles, only: [:new, :create]
   end
 
+   resources :collaborators, only: [:destroy]
+
   resources :roles, only: :destroy
 
   resources :application_requests do
     resources :chatrooms, only: [:show, :new, :create] do
       resources :messages, only: :create
-        resources :collaborators, only: :destroy
     end
   end
 
