@@ -5,6 +5,7 @@ class Project < ApplicationRecord
   has_many :technologies, through: :requirements
   has_many :collaborators, through: :roles
   has_many :application_requests, through: :roles
+  has_many :chatrooms, through: :application_requests
   has_one_attached :photo
   validates :name, presence: true
   validates :description, presence: true, length: { in: 6..500 }

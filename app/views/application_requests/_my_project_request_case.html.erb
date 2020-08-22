@@ -1,0 +1,15 @@
+<% case application.status %>
+<% when "pending" %>
+  <p style="color: #e59500; font-weight: bolder">The applicant is waiting your response</p>
+  <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
+  <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
+<% when "pending response from applicant" %>
+  <p style="color: green; font-weight: bolder">You have accepted <%= application.user.first_name %></p>
+  <p style="color: #e59500; font-weight: bolder">Pending response from applicant</p>
+<% when "declined by owner" %>
+  <p style="color: red; font-weight: bolder">You have declined <%= application.user.first_name %>'s application</p>
+<% when "accepted" %>
+  <p style="color: green; font-weight: bolder">The applicant accepted</p>
+<% when "declined by user" %>
+  <p style="color: red; font-weight: bolder">The applicant declined</p>
+<% end %>
