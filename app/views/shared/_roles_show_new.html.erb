@@ -20,14 +20,12 @@
           <% else %>
             <p class="role.status mb-2" style="color: green;">This position is open</p>
           <% end %>
-          <div class="skill-level">
+          <div class="skill-level d-flex">
             <% role.requirements.each do |requirement| %>
               <div class="d-flex flex-wrap m-0">
-                <p class=" text-left mr-2 mb-0">
+                <p class=" text-left mr-2 mb-0" data-toggle="tooltip" title="<%= requirement.technology.name %> <%= requirement.level.name.capitalize %>">
                   <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
-                  <%= requirement.technology.name %>
                 </p>
-                <p class='mb-0'><%= requirement.level.name.capitalize %></p>
               </div>
             <% end %>
           </div>
@@ -45,8 +43,13 @@
           <div class="container">
 
             <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
-              <%= f.input :name %>
-              <%= f.input :description %>
+              <%= simple_fields_for :requirement do |ff| %>
+                <%= ff.input :technology_id, collection: Technology.all, label:false, prompt: "Tecnología" %>
+                <%= ff.input :level_id, collection: Level.all, label:false, prompt: "Nivel" %>
+              <% end %>
+
+              <%= f.input :name, label:false, placeholder: "Nombre del rol" %>
+              <%= f.input :description, label:false, placeholder: "Descripción" %>
               <%= f.submit "Add role", class: "btn btn-primary" %>
             <% end %>
 
