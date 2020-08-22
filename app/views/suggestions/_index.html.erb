@@ -12,31 +12,41 @@
       <% end %>
     </div>
     <p class="suggestion-description"><%= suggestion.description %></p>
-    <div class="average-rating">
+
+    <div class="current-rating">
       <% if suggestion.average_rating.to_i == 0 %>
-        <p style="font-size: 0.8rem;" class="text-muted text-center">Nadie ha votado todavìa</p>
-        <% else %>
-          <p>Aceptaciòn de los colaboradores</p>
+      <p style="font-size: 0.8rem;" class="text-muted text-center">Nadie ha votado todavía</p>
+      <% else %>
+        <p class="suggestion-collaborator">Aceptaciòn de los colaboradores</p>
+        <p>
           <% suggestion.average_rating.to_i.times do  %>
-          <span class="fas fa-star current-rating"></span>
+          <span class="fas fa-star" style="color: #e5c212;"></span>
           <% end %>
+        </p>
       <% end %>
 
     </div>
 
     <!-- logica para no permitir votar màs de una vez -->
     <% if suggestion.user_vote(current_user) %>
-        <p>Votaste <%= suggestion.user_vote(current_user) %> </p>
-        <% else %>
+    <div class="user-vote">
+      <p class="suggestion-collaborator">Tu voto </p>
+      <p>
+        <% suggestion.user_vote(current_user).to_i.times do  %>
+        <span class="fas fa-star" style="color: #ede0a3;"></span>
+        <% end %>
+      </p>
+    </div>
+    <% else %>
 
-          <!-- el suggestion id va a ir en el hidden input como params -->
-          <div id="suggestion-<%= suggestion.id %>" class="input mt-5">
-            <%= simple_form_for [@project, @vote], html: { class: "vote-form form-target#{suggestion.id}" }, remote: :true do |f| %>
-            <input type="" hidden="true" name='suggestion_id' value="<%= suggestion.id %>" class="suggestion_field">
-            <%= f.input :rating, collection: (1..5).to_a, label: "Vota esta feature", class:"vote-form", :input_html => { :id => "target_#{suggestion.id}" } %>
-            <%= f.submit "Votar", class: "btn btn-primary d-none" %>
-            <% end %>
-          </div>
+    <!-- el suggestion id va a ir en el hidden input como params -->
+    <div id="suggestion-<%= suggestion.id %>" class="input mt-5">
+      <%= simple_form_for [@project, @vote], html: { class: "vote-form form-target#{suggestion.id}" }, remote: :true do |f| %>
+      <input type="" hidden="true" name='suggestion_id' value="<%= suggestion.id %>" class="suggestion_field">
+      <%= f.input :rating, collection: (1..5).to_a, label: "Vota esta feature", class:"vote-form", :input_html => { :id => "target_#{suggestion.id}" } %>
+      <%= f.submit "Votar", class: "btn btn-primary d-none" %>
+      <% end %>
+    </div>
 
     <% end %>
 
@@ -48,8 +58,8 @@
     <p style="font-weight: bolder;">Explica brevemente la feature a implementar:</p>
 
     <%= simple_form_for [ @project, @suggestion ], remote: true do |f| %>
-      <%= f.input :description %>
-      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <%= f.input :description %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
 
 
