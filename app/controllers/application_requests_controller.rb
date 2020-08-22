@@ -17,7 +17,6 @@ class ApplicationRequestsController < ApplicationController
     @application.user = current_user
     role = Role.find(params[:role_id])
     @application.role = role
-
     if @application.save
       redirect_to application_requests_path
     else
@@ -58,6 +57,6 @@ class ApplicationRequestsController < ApplicationController
   private
 
   def application_params
-    params.require(:application_request).permit(:about_me)
+    params.require(:application_request).permit(:about_me, :file)
   end
 end

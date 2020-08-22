@@ -38,6 +38,7 @@ import '../shared/avatar_tooltips.js';
 import { showModal } from '../pages/projects/index.js';
 import { avatarTooltips } from '../shared/avatar_tooltips.js';
 import { clickableCard } from '../pages/application_requests/new.js';
+import { initChatroomCable } from '../channels/chatroom_channel.js';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -46,5 +47,6 @@ document.addEventListener('turbolinks:load', () => {
   showModal();
   avatarTooltips(); // dejar dentro y fuera de turbolinks load
   clickableCard();
+  initChatroomCable();
 });
   avatarTooltips(); // dejar dentro y fuera de turbolinks load

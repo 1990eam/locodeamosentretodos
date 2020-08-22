@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
         OR technologies.name @@ :query \
        "
 
-      @projects = policy_scope(Project).joins(:roles, :technologies).where(sql_query, query: "%#{params[:query]}%")
+      @projects = policy_scope(Project).joins(:roles, :technologies).where(sql_query, query: "%#{params[:query]}%").uniq
     else
       @projects = policy_scope(Project)
     end
