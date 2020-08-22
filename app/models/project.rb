@@ -12,11 +12,41 @@ class Project < ApplicationRecord
   validate :photo_present
   validate :links_with_httpwww_removed
 
+  # scope :with_open, -> { joins(:roles).merge(Role.vacant) }
+  # scope :open_roles, -> { left_outer_joins(:collaborators).where(role: { collaborator_id: nil })}
+
+  #filtro
+  def self.with_open_positions
+    @projects = []
+
+    Project.all.each do |project|
+      @projects << project if project.roles.count { |role| role.open? } > 0
+    end
+    return @projects
+  end
+
+
+  def self.that_match_my_skills(current_user)
+    user = current_user
+    @projects = with_open_positions
+    @matches = []
+
+    @projects.each do |project|
+      @matches << project if project.technologies.any? { |project_tech| user.technologies.any? { |user_tech| user_tech == project_tech } }
+    end
+    return @matches
+  end
+
+
+
+
+
   def photo_present
     unless photo.attached?
       photo.attach(io: File.open(Dir.getwd + "/app/assets/images/new hardcode logo.png"), filename: "project-default.png", content_type: 'image/png')
     end
   end
+
 
   def links_with_httpwww_removed
     regex = %r{^(?:https?:\/\/)?(?:www\.)?}i

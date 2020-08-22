@@ -97,6 +97,7 @@ GEM
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.13.1)
+    filterrific (5.2.1)
     font-awesome-sass (5.13.0)
       sassc (>= 1.11)
     globalid (0.4.2)
@@ -279,6 +280,7 @@ DEPENDENCIES
   cloudinary (~> 1.12.0)
   devise
   dotenv-rails
+  filterrific
   font-awesome-sass
   jbuilder (~> 2.7)
   jquery-rails
