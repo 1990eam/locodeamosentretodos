@@ -1,0 +1,57 @@
+.chat-messages {
+  overflow: scroll;
+  height: 75.7vh;
+}
+
+.message-content {
+  overflow-wrap: anywhere;
+}
+
+.message-side-timestamp {
+  visibility: hidden;
+}
+
+.chat-message:hover {
+  background-color: ivory;
+  .message-side-timestamp {
+    visibility: visible;
+  }
+}
+
+.chat-message img {
+  width: 40px;
+  height: 40px;
+}
+
+.chat-message p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.chat-brand {
+  width: 40px;
+  height: 40px;
+}
+
+.sidebar {
+  background-color: blue;
+  color: white;
+  text-align: left;
+  width: 200px;
+}
+
+.sidebar h1 {
+  font-size: 24px;
+}
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .chat-messages {
+    height: 70.7vh;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .chat-messages {
+    height: 72.7vh;
+  }
+}

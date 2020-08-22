@@ -46,6 +46,11 @@
 
 .application-card {
   text-decoration: none;
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
 }
 
 .application-card:hover {

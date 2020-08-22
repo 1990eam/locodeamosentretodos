@@ -22,7 +22,7 @@
             </div>
             <h4 class="h6 m-0 flex-grow-0 mb-2">Status</h4>
             <div class="flex-grow-1">
-              <% case application.status %>
+              <% case application.status.downcase %>
               <% when "pending response from applicant" %>
               <p style="color: #E59500; font-weight: bolder"><%= application.project.name %> is waiting your response</p>
               <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
@@ -31,7 +31,7 @@
               <% when "declined by owner" %>
               <p style="color: red; font-weight: bolder">Status: Your application has been Declined</p>
               <% end %>
-              <% case application.status %>
+              <% case application.status.downcase %>
               <% when "pending" %>
               <p style="color: #E59500; font-weight: bolder"> Pending</p>
               <% when "accepted" %>
@@ -51,10 +51,10 @@
             <h3 class="h6 m-0 flex-grow-0 d-flex align-items-center my-2">Contributors <small class="ml-1 rounded-circle py-1 px-2 bg-danger text-white">3</small></h3>
             <div class="d-flex align-items-center">
             <a href="http://www.<%= application.project.link_1 %>">
-              <p class="text-center text-warning flex-grow-0 align-items-center m-0 w-100 mx-auto bg-primary rounded text-white py-1 px-3 mt-2">Link del Proyecto</p>
+            <p class="text-center text-white flex-grow-0 align-items-center m-0 w-100 mx-auto bg-primary rounded text-white py-1 px-3 mt-2">Link del Proyecto</p>
             </a>
             <% if application.status == "pending" || application.status == "pending response from applicant" %>
-              <%= link_to "Contact the project owner", application_request_chatroom_path(application.id, application.chatroom) %>
+              <%= link_to "Contact the project owner", application_request_chatroom_path(application.id) %>
             <% end %>
             </div>
           </div>

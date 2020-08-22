@@ -28,14 +28,23 @@
             <!-- si esta vacante -->
           <% else %>
 
-            <p class="role.status" style="color: green;">This position is open</p>
+            <p class="role.status mb-2" style="color: green;">This position is open</p>
           <% end %>
           <div class="skill-level">
             <% role.requirements.each do |requirement| %>
-              <p><%= requirement.technology.name %> <%= requirement.level.name %></p>
+              <div class="d-flex flex-wrap m-0">
+                <p class=" text-left mr-2 mb-0">
+                  <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
+                  <%= requirement.technology.name %>
+                </p>
+                <p class='mb-0'><%= requirement.level.name.capitalize %></p>
+              </div>
             <% end %>
           </div>
-          <p class="card-text"><%= role.description %></p>
+          <div>
+            <h6 class="mb-0 mt-3"> Funciones del puesto </h6>
+            <p class="card-text"><%= role.description %></p>
+          </div>
         </div>
       </div>
       <% end %>

@@ -3,74 +3,76 @@
 
 
     <% @projects.each do |project| %>
-    <% project.application_requests.each do |application| %>
+      <% project.application_requests.each do |application| %>
 
-    <div class="card-request">
-    <div class="d-flex px-3 pt-3 pb-1">
-      <div>
-       <img src=<%= cl_image_path application.role.project.photo.key, alt: "alttext",  width: 70, height:70, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %> >
-      </div>
-     <div class="flex-grow-1 ml-3">
-        <h3 class="ml-2"> <%= project.name %> </h3>
-        <p class="ml-2 text-muted"> <%= project.description %> </p>
-     </div>
-    </div>
-
-    <div class="d-flex m-2 justify-content-between">
-      <div class="mx-2 w-50">
-        <h5> Role: <%= application.role.name  %></h5>
-        <p class="text-muted"> Description: <%= application.role.description %> </p>
-        <div class="d-flex flex-wrap">
-          <% application.role.requirements.each do |requirement|%>
+      <div class="card-request">
+        <div class="d-flex px-3 pt-3 pb-1">
           <div>
-            <p class="mr-2 mb-1">
-                <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
-                <%= requirement.technology.name %>
-              </p>
-              <p> <%= requirement.level.name.capitalize %></p>
+           <img src=<%= cl_image_path application.role.project.photo.key, alt: "alttext",  width: 70, height:70, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %> >
           </div>
-          <% end %>
+         <div class="flex-grow-1 ml-3">
+            <h3 class="ml-2"> <%= project.name %> </h3>
+            <p class="ml-2 text-muted"> <%= project.description %> </p>
+         </div>
         </div>
 
-        <% case application.status %>
-          <% when "pending" %>
-            <p style="color: #e59500; font-weight: bolder">The applicant is waiting your response</p>
-            <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
-            <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
-          <% when "pending response from applicant" %>
-            <p style="color: green; font-weight: bolder">You have Accepted <%= application.user.first_name %></p>
-            <p style="color: #e59500; font-weight: bolder">Pending response from applicant</p>
-          <% when "declined by owner" %>
-            <p style="color: red; font-weight: bolder">You have Declined <%= application.user.first_name %></p>
-          <% end %>
+        <div class="d-flex m-2 justify-content-between">
+          <div class="mx-2 w-50">
+            <h5> Rol: <%= application.role.name  %></h5>
+            <p class="text-muted"> Description: <%= application.role.description %> </p>
+            <div class="d-flex flex-wrap">
+              <% application.role.requirements.each do |requirement|%>
+                <div>
+                  <p class="mr-2 mb-1">
+                    <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
+                    <%= requirement.technology.name %>
+                  </p>
+                  <p> <%= requirement.level.name.capitalize %></p>
+                </div>
+              <% end %>
+            </div>
 
-          <% case application.status %>
-            <% when "pending" %>
-              <p style="color: #e59500; font-weight: bolder"></p>
-            <% when "accepted" %>
-              <p style="color: green; font-weight: bolder">The applicant <%= application.user.first_name %> accepted </p>
-            <% when "declined by user" %>
-              <p style="color: red; font-weight: bolder">The applicant <%= application.user.first_name %> Declined</p>
+            <% case application.status %>
+              <% when "pending" %>
+                <p style="color: #e59500; font-weight: bolder">The applicant is waiting your response</p>
+                <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
+                <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
+              <% when "pending response from applicant" %>
+                <p style="color: green; font-weight: bolder">You have Accepted <%= application.user.first_name %></p>
+                <p style="color: #e59500; font-weight: bolder">Pending response from applicant</p>
+              <% when "declined by owner" %>
+                <p style="color: red; font-weight: bolder">You have Declined <%= application.user.first_name %></p>
             <% end %>
-      </div>
-      <div class="ml-3 w-50">
-        <h5> Applicant Information</h5>
-        <div class="d-flex">
-          <div>
-            <%= cl_image_tag application.user.photo.key, class: "avatar-small mr-2"%>
+
+            <% case application.status %>
+              <% when "pending" %>
+                <p style="color: #e59500; font-weight: bolder"></p>
+              <% when "accepted" %>
+                <p style="color: green; font-weight: bolder">The applicant <%= application.user.first_name %> accepted </p>
+              <% when "declined by user" %>
+                <p style="color: red; font-weight: bolder">The applicant <%= application.user.first_name %> Declined</p>
+            <% end %>
           </div>
-          <p class="ml-2 mt-1"> Name: <%= application.user.first_name %></p>
+          <div class="ml-3 w-50">
+            <h5> Información del solicitante </h5>
+            <div class="d-flex">
+              <div>
+                <%= cl_image_tag application.user.photo.key, class: "avatar-small mr-2"%>
+              </div>
+              <p class="ml-2 mt-1"> Nombre: <%= application.user.first_name %></p>
+            </div>
+            <p> Acerca del candidato: <%= application.about_me %></p>
+            <div>
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop_<%= application.id  %>">
+                  Explora la propuesta del candidato
+                </button>
+                <%= render "application_requests/modal_file", application: application %>
+
+            </div>
+          </div>
         </div>
-        <p> About me: <%= application.about_me %></p>
-        <% if application.status == "pending" || "pending response from applicant" %>
-          <%= link_to "Contact the applicant", application_request_chatroom_path(application.id, application.chatroom) %>
-        <% end %>
       </div>
-
-    </div>
-  </div>
+    <% end %>
   <% end %>
-<% end %>
-
-
 </div>
