@@ -1,49 +1,63 @@
-<div class="container">
+<div class="container px-0 my-3">
     <h1 class="mb-5">Proyectos a los que aplicaste</h1>
+
     <% @applications.each do |application| %>
+    <div class="row justify-content-around">
+      <div class="col-6">
         <%= link_to (application.status == "accepted" ? project_path(application.project) : "") do %>
-      <div class="application-card rounded shadow mb-2" style="width: 600px;">
-        <div class="d-flex px-3 pt-3 pb-1">
-          <img src="https://picsum.photos/80/80" alt="" class="flex-grow-0 rounded-circle">
-          <div class="flex-grow-1 ml-3">
-            <h2 class="h4 m-0"><%= application.project.name %></h2>
-            <p class="m-0 text-muted"><%= application.project.description %></p>
-          </div>
-          <div class="flex-grow-0">
-            <div class="d-flex align-items-center mx-3 bg-warning rounded text-white py-1 px-3"><i class="fas fa-heart text-danger"></i><p class="m-0 ml-1 h6">SPONSORED</p>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex p-3 pt-0 justify-content-between">
-          <div class="d-flex flex-column pr-3">
-            <h3 class="h5 m-0 flex-grow-0 mb-2">Rol aplicado</h3>
-            <div class="flex-grow-1 mb-2">
-            <%= application.role.name %>
-            </div>
-            <h4 class="h6 m-0 flex-grow-0 mb-2">Status</h4>
-            <div class="flex-grow-1">
-              <%= render "application_requests/index_case", application: application %>
-            </div>
-          </div>
-          <div class="d-flex flex-column pl-3 w-50">
-            <h3 class="h5 m-0 flex-grow-0 mb-2">Tags</h3>
-            <div class="d-flex">
-              <% application.technologies.each do |tech| %>
-              <p class="m-0 d-flex align-items-center mr-2"><i class="fab fa-html5 mr-1 text-warning"></i><%= tech %></p>
+          <div class="app-card rounded shadow mb-2" style="width: 600px;">
+            <div class="d-flex px-3 pt-3 pb-1">
+           <img src=<%= cl_image_path application.role.project.photo.key, alt: "alttext",  width: 70, height:70, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %> >
+              <div class="d-flex ml-3">
+                <div>
+                  <h2 class="h4 m-0 text-left"><%= application.project.name %></h2>
+                  <p class="m-0 text-muted"><%= application.project.description %></p>
+                </div>
+
+                <% if application.project.sponsored %>
+                <div class="badge badge-pill badge-info project-card-sponsored d-flex justify-content-between">
+                  <i class="fa fa-heart" aria-hidden="true" style="color: #da64ab;"></i>
+                  <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block ml-1">Sponsored</div>
+                </div>
               <% end %>
+              </div>
             </div>
-            <h3 class="h6 m-0 flex-grow-0 d-flex align-items-center my-2">Contributors <small class="ml-1 rounded-circle py-1 px-2 bg-danger text-white">3</small></h3>
-            <div class="d-flex align-items-center">
-            <a class="project-link" href="http://www.<%= application.project.link_1 %>">
-            <p class="project-link text-center text-warning flex-grow-0 align-items-center m-0 w-100 mx-auto rounded text-white py-1 px-3 mt-2">Link del Proyecto</p>
-            </a>
-            <% if application.status == "pending" || application.status == "pending response from applicant" %>
-              <%= link_to "Contacta al project owner", application_request_chatroom_path(application.id) %>
-            <% end %>
+            <div class="d-flex p-3 pt-0 justify-content-between">
+              <div class="d-flex flex-column pr-3">
+                <h3 class="h5 m-0 flex-grow-0 mb-2">Rol aplicado</h3>
+                <div class="flex-grow-1 mb-2">
+                <%= application.role.name %>
+                </div>
+                <h4 class="h6 m-0 flex-grow-0 mb-2">Status</h4>
+                <div class="flex-grow-1">
+                  <%= render "application_requests/index_case", application: application %>
+                </div>
+              </div>
+              <div class="d-flex flex-column pl-3 w-50">
+                <h3 class="h5 m-0 flex-grow-0 mb-2">Tags</h3>
+                <div class="d-flex">
+                  <% application.role.requirements.each do |requirement| %>
+                  <p class="mr-3">
+                   <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style), title: "#{requirement.technology.name}" %>
+                  </p>
+                  <% end %>
+                </div>
+                <h3 class="h6 m-0 flex-grow-0 d-flex align-items-center my-2">Contributors <small class="ml-1 rounded-circle py-1 px-2 bg-danger text-white">3</small></h3>
+                <div class="d-flex align-items-center">
+                <a class="project-link" href="http://www.<%= application.project.link_1 %>">
+                <p class="project-link text-center text-warning flex-grow-0 align-items-center m-0 w-100 mx-auto rounded text-white py-1 px-3 mt-2">Link del Proyecto</p>
+                </a>
+                <% if application.status == "pending" || application.status == "pending response from applicant" %>
+                  <%= link_to "Contacta al project owner", application_request_chatroom_path(application.id) %>
+                <% end %>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
       </div>
-      <% end %>
-    <% end %>
+
+     </div>
+
+          <% end %>
+       <% end %>
   </div>

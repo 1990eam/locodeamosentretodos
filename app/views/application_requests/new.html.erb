@@ -2,8 +2,7 @@
   <h1 class='text-center'> Está aplicando a <%= @project.name %></h1>
   <h6 class='text-center'>Estas son las posiciones disponibles en este proyecto</h6>
    <div class='application-request-container mt-5'>
-      <div class='grid-application'>
-
+      <div class='grid-solicitudes'>
         <div class='card-project'>
           <div>
             <h5 class='text-center'> Información sobre el proyecto </h5>
@@ -55,21 +54,18 @@
               <% end %>
               <% end %>
           </div>
-
-        <%= simple_form_for [@project, @application] do |f| %>
-          <div class='file-container mt-2 ml-2'>
-            <h5> Subir archivos de propuesta</h5>
-            <%= f.input :file, label: "Adjuntar archivo pdf", as: :file %>
-          </div>
-          <div class="input mb-4 text-left">
-            <input type="" hidden="true" name='role_id' value="role" class="role_field">
-              <%= f.input :about_me %>
-              <%= f.submit class: "btn btn-primary"%>
+          <%= simple_form_for [@project, @application] do |f| %>
+            <div class='file-container mt-2 ml-2'>
+              <h5> Subir archivos de propuesta</h5>
+              <%= f.input :file, label: "Adjuntar archivo pdf", as: :file %>
             </div>
-        <% end %>
-          </div>
-
+            <div class="input mb-4 text-left">
+              <input type="" hidden="true" name='role_id' value="role" class="role_field">
+                <%= f.input :about_me %>
+                <%= f.submit class: "btn btn-primary"%>
+              </div>
+          <% end %>
         </div>
-
+      </div>
   </div>
 </div>
