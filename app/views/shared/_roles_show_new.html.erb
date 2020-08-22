@@ -43,6 +43,11 @@
           <div class="container">
 
             <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
+              <%= simple_fields_for :requirement do |ff| %>
+                <%= ff.input :technology_id, collection: Technology.all %>
+                <%= ff.input :level_id, collection: Level.all %>
+              <% end %>
+
               <%= f.input :name %>
               <%= f.input :description %>
               <%= f.submit "Add role", class: "btn btn-primary" %>

@@ -23,14 +23,23 @@
       <% end %>
 
     </div>
-    <!-- el suggestion id va a ir en el hidden input como params -->
-    <div id="suggestion-<%= suggestion.id %>" class="input mt-5">
-      <%= simple_form_for [@project, @vote], html: { class: "vote-form form-target#{suggestion.id}" }, remote: :true do |f| %>
-      <input type="" hidden="true" name='suggestion_id' value="<%= suggestion.id %>" class="suggestion_field">
-      <%= f.input :rating, collection: (1..5).to_a, label: "Vota esta feature", class:"vote-form", :input_html => { :id => "target_#{suggestion.id}" } %>
-      <%= f.submit "Votar", class: "btn btn-primary d-none" %>
-      <% end %>
-    </div>
+
+    <!-- logica para no permitir votar màs de una vez -->
+    <% if suggestion.user_vote(current_user) %>
+        <p>Votaste <%= suggestion.user_vote(current_user) %> </p>
+        <% else %>
+
+          <!-- el suggestion id va a ir en el hidden input como params -->
+          <div id="suggestion-<%= suggestion.id %>" class="input mt-5">
+            <%= simple_form_for [@project, @vote], html: { class: "vote-form form-target#{suggestion.id}" }, remote: :true do |f| %>
+            <input type="" hidden="true" name='suggestion_id' value="<%= suggestion.id %>" class="suggestion_field">
+            <%= f.input :rating, collection: (1..5).to_a, label: "Vota esta feature", class:"vote-form", :input_html => { :id => "target_#{suggestion.id}" } %>
+            <%= f.submit "Votar", class: "btn btn-primary d-none" %>
+            <% end %>
+          </div>
+
+    <% end %>
+
   </div>
   <% end %>
 

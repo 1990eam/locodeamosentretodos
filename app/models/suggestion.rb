@@ -11,4 +11,13 @@ class Suggestion < ApplicationRecord
   end
 
 
+  def user_vote(user)
+    query = self.suggestion_votes.joins(:collaborator).where("collaborators.user_id = ?", user.id)
+    if query.empty?
+      return nil
+    else
+      return query.first.rating
+    end
+  end
+
 end
