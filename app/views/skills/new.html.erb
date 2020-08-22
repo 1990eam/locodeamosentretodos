@@ -4,11 +4,11 @@
 <div class="container">
 
   <%= simple_form_for [ @user, @skill ] do |f| %>
-    <p>Select Tech</p>
+    <p>Seleccionar Tecnología</p>
     <div>
       <%= f.collection_select :technology_id, @techs, :id, :name%>
     </div>
-    <p>Select Level</p>
+    <p>Seleccionar nivel</p>
     <div>
       <%= f.collection_select :level_id, @levels, :id, :name%>
     </div>

@@ -3,6 +3,10 @@ class SkillsController < ApplicationController
 
   def index
     @skills = policy_scope(Skill)
+    @skill = Skill.new
+    @techs = Technology.all
+    @levels = Level.all
+    @user = current_user
   end
 
   def new
@@ -22,6 +26,14 @@ class SkillsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @skill = Skill.find(params[:id])
+    authorize @skill
+    @user = current_user
+    @skill.destroy
+    redirect_to user_skills_path(current_user)
   end
 
   private
