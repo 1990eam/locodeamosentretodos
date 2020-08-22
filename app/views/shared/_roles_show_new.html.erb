@@ -20,13 +20,12 @@
           <% else %>
             <p class="role.status mb-2" style="color: green;">This position is open</p>
           <% end %>
-          <div class="skill-level">
+          <div class="skill-level d-flex">
             <% role.requirements.each do |requirement| %>
               <div class="d-flex flex-wrap m-0">
-                <p class=" text-left mr-2 mb-0">
-                  <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %> <%= requirement.technology.name %>
+                <p class=" text-left mr-2 mb-0" data-toggle="tooltip" title="<%= requirement.technology.name %> <%= requirement.level.name.capitalize %>">
+                  <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
                 </p>
-                <p class='mb-0'><%= requirement.level.name.capitalize %></p>
               </div>
             <% end %>
           </div>
