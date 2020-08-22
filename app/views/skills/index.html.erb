@@ -6,14 +6,22 @@
         <div class="skill-card col-xs-12 col-sm-4 col-sm-offset-4">
           <div class="skill-content">
             <%= sanitize pick_tech_icon(skill.technology.name), tags: %w(i), attributes: %w(class style) %>
-            <p class="skill-title"><%= skill.technology.name %> <%= skill.level.name %></p>
+            <p class="skill-title"><strong><%= skill.technology.name %></strong> - <%= skill.level.name.capitalize %></p>
             <p><%= link_to "Eliminar", skill_path(skill), method: :delete, data: { confirm: 'Eliminar skill?'}, class: "fas fa-trash-alt px-3 orange", class: "btn btn-warning" %></p>
           </div>
         </div>
         <% end %>
         <div class="skill-card col-xs-12 col-sm-4 col-sm-offset-4">
           <div class="skill-content add-skill-card">
-            <p><%= link_to "Agregar skill", new_user_skill_path, class: "btn btn-primary" %></p>
+            <h5>Agregar Skill</h5>
+            <%= simple_form_for [ @user, @skill ] do |f| %>
+            <p>Seleccionar Tecnología</p>
+              <%= f.collection_select :technology_id, @techs, :id, :name%>
+            <p>Seleccionar nivel</p>
+              <%= f.collection_select :level_id, @levels, :id, :name%>
+              <br>
+              <%= f.submit "Agregar", class: "btn btn-primary skill-submit-btn" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -44,7 +52,7 @@
     text-align: center;
     margin-right: 25px;
     margin-left: 25px;
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
   }
 
   .add-skill-card {
@@ -52,16 +60,33 @@
 
   }
   .add-skill-card p {
-     margin-top: 102px;
-    }
+    margin-top: 22px;
+    margin-bottom: 0px;
+  }
 
   h2 {
     margin-top: 25px;
     margin-bottom: 50px;
 
   }
+
+  .add-skill-card h5 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 184px;
+    border-bottom: 1px solid black;
+    /* text-align: center; */
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  .skill-submit-btn {
+    margin-top: 23px;
+  }
+
   body > div.container > div > div > div > div > i {
     font-size: 130px;
+    margin-top: 8px;
     margin-bottom: 15px;
   }
 </style>

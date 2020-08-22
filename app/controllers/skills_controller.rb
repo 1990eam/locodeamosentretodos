@@ -3,6 +3,10 @@ class SkillsController < ApplicationController
 
   def index
     @skills = policy_scope(Skill)
+    @skill = Skill.new
+    @techs = Technology.all
+    @levels = Level.all
+    @user = current_user
   end
 
   def new
