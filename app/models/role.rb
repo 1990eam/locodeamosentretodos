@@ -1,6 +1,7 @@
 class Role < ApplicationRecord
   belongs_to :project
   has_many :collaborators, dependent: :destroy
+  has_one :active_collaborator, -> { where(status: "active") }, class_name: "Collaborator"
   has_many :application_requests, dependent: :destroy
   has_many :users, through: :collaborators
   has_many :requirements, dependent: :destroy
@@ -9,10 +10,17 @@ class Role < ApplicationRecord
   validates :name, presence: true
 
 
-  # scope :open_roles, -> { where(collaborators: nil) }
+  # scope :open, -> { where(collaborator_id: nil) }
+
+
+  scope :vacant, -> { joins(:collaborators).
+      select('roles.id, count(collaborators.id) AS n_collaborators').
+      group('roles.id').
+      having('n_collaborators = 0') }
+
 
   def open?
-    self.collaborators.empty?
+    collaborators.where(status: "active").empty?
   end
 
 end
