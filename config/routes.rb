@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :skills, only: [:index, :new, :create]
   end
 
+  resources :skills, only: [:destroy]
+
   root to: 'pages#home'
 
   resources :application_requests, only: [:index]

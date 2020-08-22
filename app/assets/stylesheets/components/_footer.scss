@@ -17,7 +17,7 @@
   flex-wrap: wrap;
 }
 .footer-links a {
-  color: #FFFFFF;
+  color: $mint-cream;
   opacity: 1;
   text-decoration: none;
   padding: 0px 10px;
@@ -26,8 +26,8 @@
 .footer-copyright {
   display: flex-inline;
   align-items: center;
-  color: #FFFFFF;
   text-align: center;
+  color: $mint-cream;
  }
 
 .footer-links a:hover {
