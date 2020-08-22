@@ -5,7 +5,7 @@ class ApplicationRequest < ApplicationRecord
   has_one_attached :file
   belongs_to :role
   has_one :project, through: :role
-  has_one :chatroom
+  has_one :chatroom, dependent: :destroy
   belongs_to :user
   validates :about_me, presence: true, length: { in: 10..300 }
   validates :status, inclusion: { in: ['pending', 'accepted', 'declined by user', 'declined by owner', 'pending response from applicant'] }

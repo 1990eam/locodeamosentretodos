@@ -1,38 +1,28 @@
 <div class="d-block d-md-flex">
-  <div class="sidebar p-3">
-    <div class="sidebar-section mt-4">
+  <div class="d-none d-md-block sidebar pt-3">
 
-    </div>
     <div class="sidebar-section mt-3">
-      <p>Conversaciones con project owners</p>
-      <% current_user.chatrooms.select { |x| x.messages.count > 0 }.each do |apprequest| %>
-        <%= link_to application_request_chatroom_path(apprequest.id), class: "chat-message-sidebar" do %>
-          <div class="d-flex align-items-start mt-2 border-bottom pb-2">
-              <%= cl_image_tag apprequest.messages.last.user.photo.key, class: "avatar mr-3" %>
-            <div class="flex-grow-1">
-              <div class="d-flex align-items-center">
-                <p class="mr-2"><strong><%= apprequest.messages.last.user.first_name %></strong> - <%= apprequest.application_request.project.name %> </p>
-              </div>
-                <%= apprequest.messages.last.content %>
-            </div>
-          </div>
+      <p class="pl-3 mb-0 pb-3 border-bottom">Conversaciones con project owners</p>
+      <% if current_user.chatrooms.select { |x| x.messages.count > 0 }.empty? %>
+        <div class="d-flex align-items-start border-bottom p-3 text-muted">
+          No hay conversaciones aún :(
+        </div>
+      <% else %>
+        <% current_user.chatrooms.select { |x| x.messages.count > 0 }.each do |apprequest| %>
+          <%= render "chatrooms/sidebar_message", apprequest: apprequest %>
         <% end %>
       <% end %>
     </div>
     <div class="sidebar-section mt-3">
-      <p>Conversaciones con aplicantes</p>
+      <p class="pl-3 mb-0 pb-3 border-bottom">Conversaciones con aplicantes</p>
       <% current_user.projects.each do |project| %>
-        <% project.chatrooms.select { |x| x.messages.count > 0 }.each do |apprequest| %>
-          <%= link_to application_request_chatroom_path(apprequest.id), class: "chat-message-sidebar" do %>
-            <div class="chat-message-sidebar d-flex align-items-start mt-2 border-bottom pb-2">
-                <%= cl_image_tag apprequest.messages.last.user.photo.key, class: "avatar mr-3" %>
-              <div class="flex-grow-1">
-                <div class="d-flex align-items-center">
-                  <p class="mr-2"><strong><%= apprequest.messages.last.user.first_name %></strong> - <%= apprequest.application_request.project.name %> </p>
-                </div>
-                  <%= apprequest.messages.last.content %>
-              </div>
-            </div>
+        <% if project.chatrooms.select { |x| x.messages.count > 0 }.empty? %>
+          <div class="d-flex align-items-start border-bottom p-3 text-muted">
+            No hay conversaciones aún :(
+          </div>
+        <% else %>
+          <% project.chatrooms.select { |x| x.messages.count > 0 }.each do |apprequest| %>
+            <%= render "chatrooms/sidebar_message", apprequest: apprequest %>
           <% end %>
         <% end %>
       <% end %>
@@ -40,19 +30,20 @@
   </div>
 
   <div class="d-flex flex-grow-1 flex-column justify-content-between">
-      <div style="background-color: ivory" class="p-4">
-
+      <div class="p-4 chat-header">
         <% if @chatroom.application_request.user != current_user %>
           <div>
             <div class="d-flex align-items-center px-3 mt-2">
               <%= cl_image_tag @chatroom.application_request.user.photo.key, class: "avatar-large mr-3" %>
               <div class="flex-grow-1">
                 <div class="d-flex align-items-center">
-                    <p class="mr-2 mb-0"><strong><%= @chatroom.application_request.user.first_name %></strong></p>
+                    <p class="mr-2 mb-0"><strong><%= @chatroom.application_request.user.first_name %> <%= @chatroom.application_request.user.last_name %></strong></p>
                 </div>
-              <small class="mb-3">Aplicando para <%= @chatroom.application_request.role.name %> - <%= @chatroom.application_request.project.name %></small>
+              <small class="mb-3 text-muted">Aplicando para <%= @chatroom.application_request.role.name %> - <%= @chatroom.application_request.project.name %></small>
               </div>
-              <%= render "application_requests/my_project_request_case", application: @chatroom.application_request %>
+              <div>
+                <%= render "application_requests/my_project_request_case", application: @chatroom.application_request %>
+              </div>
             </div>
           </div>
         <% else %>
@@ -61,9 +52,9 @@
               <%= cl_image_tag @chatroom.application_request.project.user.photo.key, class: "avatar-large mr-3" %>
               <div class="flex-grow-1">
                 <div class="d-flex align-items-center">
-                    <p class="mr-2 mb-0"><strong><%= @chatroom.application_request.project.user.first_name %></strong></p>
+                    <p class="mr-2 mb-0"><strong><%= @chatroom.application_request.project.user.first_name %> <%= @chatroom.application_request.project.user.last_name %></strong></p>
                 </div>
-              <small class="mb-3"><%= @chatroom.application_request.project.roles.first.name %> - <%= @chatroom.application_request.project.name %></small>
+              <small class="mb-3 text-muted"><%= @chatroom.application_request.project.roles.first.name %> - <%= @chatroom.application_request.project.name %></small>
               </div>
               <%= render "application_requests/index_case", application: @chatroom.application_request %>
             </div>
@@ -72,7 +63,7 @@
       </div>
     <div class="chat-messages flex-grow-1">
       <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-        <% @chatroom.messages.each do |message| %>
+        <% @chatroom.messages.sort.each do |message| %>
           <%= render "messages/message", message: message %>
         <% end %>
       </div>
