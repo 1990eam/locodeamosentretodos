@@ -1,0 +1,39 @@
+.suggestions-wrapper {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+
+}
+
+.suggestion-card {
+
+  h5{
+    text-align: center;
+  }
+
+  height: 350px;
+  width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   * { cursor:pointer; }
+
+
+}
+
+.feature-title{
+  font-weight: bolder;
+  text-align: center;
+}
+
+.suggestion-collaborator {
+  text-align: center;
+  font-size: 10px;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.input {
+  text-align: center;
+
+}

@@ -17,7 +17,7 @@ class RolesController < ApplicationController
     # el redirect desde el tab de role habria que sacarlo
     if @role.save
       flash[:notice] = "Role succesfully created"
-      redirect_to project_path(@project, tab: "profile")
+      redirect_to project_path(@project, tab: "roles", anchor: "new-role-form")
     else
       flash[:alert] = "Something went wrong, try again"
       render :new

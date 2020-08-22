@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_222403) do
+
+ActiveRecord::Schema.define(version: 2020_08_19_175728) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +80,15 @@ ActiveRecord::Schema.define(version: 2020_08_18_222403) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "positive_votes", force: :cascade do |t|
+    t.bigint "suggestion_id", null: false
+    t.bigint "collaborator_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["collaborator_id"], name: "index_positive_votes_on_collaborator_id"
+    t.index ["suggestion_id"], name: "index_positive_votes_on_suggestion_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -118,6 +129,27 @@ ActiveRecord::Schema.define(version: 2020_08_18_222403) do
     t.index ["user_id"], name: "index_skills_on_user_id"
   end
 
+  create_table "suggestion_votes", force: :cascade do |t|
+    t.bigint "suggestion_id", null: false
+    t.bigint "collaborator_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "rating"
+    t.index ["collaborator_id"], name: "index_suggestion_votes_on_collaborator_id"
+    t.index ["suggestion_id"], name: "index_suggestion_votes_on_suggestion_id"
+  end
+
+  create_table "suggestions", force: :cascade do |t|
+    t.bigint "collaborator_id", null: false
+    t.bigint "project_id", null: false
+    t.string "status"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["collaborator_id"], name: "index_suggestions_on_collaborator_id"
+    t.index ["project_id"], name: "index_suggestions_on_project_id"
+  end
+
   create_table "technologies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -147,6 +179,9 @@ ActiveRecord::Schema.define(version: 2020_08_18_222403) do
   add_foreign_key "collaborators", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "positive_votes", "collaborators"
+  add_foreign_key "positive_votes", "suggestions"
+
   add_foreign_key "projects", "users"
   add_foreign_key "requirements", "levels"
   add_foreign_key "requirements", "roles"
@@ -155,4 +190,8 @@ ActiveRecord::Schema.define(version: 2020_08_18_222403) do
   add_foreign_key "skills", "levels"
   add_foreign_key "skills", "technologies"
   add_foreign_key "skills", "users"
+  add_foreign_key "suggestion_votes", "collaborators"
+  add_foreign_key "suggestion_votes", "suggestions"
+  add_foreign_key "suggestions", "collaborators"
+  add_foreign_key "suggestions", "projects"
 end

@@ -4,6 +4,7 @@ class Project < ApplicationRecord
   has_many :requirements, through: :roles
   has_many :technologies, through: :requirements
   has_many :collaborators, through: :roles
+  has_many :suggestions
   has_many :application_requests, through: :roles
   has_one_attached :photo
   validates :name, presence: true

@@ -38,6 +38,7 @@ import '../shared/avatar_tooltips.js';
 import { showModal } from '../pages/projects/index.js';
 import { avatarTooltips } from '../shared/avatar_tooltips.js';
 import { clickableCard } from '../pages/application_requests/new.js';
+import { initStarRating } from '../plugins/init_star_rating';
 import { initChatroomCable } from '../channels/chatroom_channel.js';
 
 document.addEventListener('turbolinks:load', () => {
@@ -47,6 +48,9 @@ document.addEventListener('turbolinks:load', () => {
   showModal();
   avatarTooltips(); // dejar dentro y fuera de turbolinks load
   clickableCard();
+  initStarRating();
   initChatroomCable();
 });
   avatarTooltips(); // dejar dentro y fuera de turbolinks load
+
+
