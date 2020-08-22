@@ -57,6 +57,6 @@ es:
     am: AM
     pm: PM
     formats:
-      long: '%A %d de %B, %Y %I:%M%p'
+      long: '%A %d de %B, %Y'
       short: '%b %d, %Y'
       only_time: '%I:%M%p'
