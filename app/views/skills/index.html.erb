@@ -1,18 +1,11 @@
 <div class="container">
-  <h2>Skillset</h2>
-
+  <h2>Mis Skills</h2>
   <div class="">
     <% @skills.each do |skill| %>
       <div>
         <p><%= skill.technology.name %> <%= skill.level.name %></p>
       </div>
     <% end %>
-
     <p><%= link_to "Add skill", new_user_skill_path %></p>
-
-
-
   </div>
-
-
 </div>
