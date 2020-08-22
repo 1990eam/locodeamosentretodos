@@ -57,9 +57,8 @@
           <h3>Tags</h3>
           <div class="d-flex flex-wrap">
             <% project.technologies.uniq.each do |technology| %>
-              <p class="mr-2 mb-0">
+              <p class="mr-2 mb-0" data-toggle="tooltip" title="<%= technology.name %>">
                 <%= sanitize pick_tech_icon(technology.name), tags: %w(i), attributes: %w(class style) %>
-                <%= technology.name %>
               </p>
             <% end %>
           </div>

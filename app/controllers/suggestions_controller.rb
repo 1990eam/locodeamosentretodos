@@ -19,9 +19,9 @@ class SuggestionsController < ApplicationController
     @suggestion.project = @project
     @suggestion.collaborator = @project.collaborators.find_by(user_id: current_user.id)
     if @suggestion.save
-      redirect_to project_path(@project)
+      redirect_to project_path(@project, tab: "suggestions", anchor: "new-suggestion-card")
     else
-      render :new
+      redirect_to project_path(@project, tab: "suggestions", anchor: "new-suggestion-card")
     end
   end
 
