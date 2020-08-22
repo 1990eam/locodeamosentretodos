@@ -52,9 +52,9 @@ module IndexCardHelper
       "<i class='fab fa-python'style='color: seagreen;'></i>"
     when tech_name.match?(/React/i)
       "<i class='fab fa-react'style='color:mediumturquoise;'></i>"
-    when tech_name.match?(/Violence/i)
+    when tech_name.match?(/Negotiation/i)
       "<i class='fas fa-hand-rock'></i>"
-    when tech_name.match?(/Intimidation/i)
+    when tech_name.match?(/Physique/i)
       "<i class='fas fa-dumbbell' style='color: maroon;'></i>"
     when tech_name.match?(/Rails/i)
       "<i class='fas fa-train' style='color: orangered;'></i>"

@@ -41,6 +41,7 @@ import { clickableCard } from '../pages/application_requests/new.js';
 import { initStarRating } from '../plugins/init_star_rating';
 import { initChatroomCable } from '../channels/chatroom_channel.js';
 import { submitForm } from '../components/chatroom-form.js';
+import { initUpdateNavbarOnScroll } from '../components/navbar';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -52,6 +53,7 @@ document.addEventListener('turbolinks:load', () => {
   initStarRating();
   initChatroomCable();
   submitForm();
+  initUpdateNavbarOnScroll();
 });
   avatarTooltips(); // dejar dentro y fuera de turbolinks load
 

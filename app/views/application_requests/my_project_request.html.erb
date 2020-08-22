@@ -47,6 +47,9 @@
                   Explora la propuesta del candidato
                 </button>
                 <%= render "application_requests/modal_file", application: application %>
+                <% if application.status == "pending" || application.status == "pending response from applicant" %>
+                  <%= link_to "Contacta al solicitante", application_request_chatroom_path(application.id) %>
+                <% end %>
             </div>
           </div>
         </div>

@@ -50,7 +50,11 @@
                      </div>
                       <% end %>
                     <p class="card-text mt-4"><%= role.description %></p>
-                    <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i> Apply </button>
+                    <% if role.application_requests.any? { |application| application.user != current_user } %>
+                      <button class="btn btn-apprequest btn-primary"> <i class="fas fa-plus-circle primary "></i>Aplicar</button>
+                    <% else %>
+                      <div class="text-muted position-absolute mb-3 fixed-bottom">Ya aplicaste a este proyecto!</div>
+                    <% end %>
                   </div>
                 </div>
               <% end %>
@@ -68,5 +72,6 @@
             <%= f.submit class: "btn btn-primary" %>
             <% end %>
           </div>
+        </div>
   </div>
 </div>

@@ -1,7 +1,9 @@
 #footer {
   background: #81d8d0;
-  height: 10vh;
-  padding: 0px 50px;
+  align-items: center;
+  justify-content: space-between;
+  height: 8vh;
+  padding: 0px 40px;
   color: rgba(0,0,0,0.3);
   position: absolute;
   bottom: 0;
@@ -10,24 +12,22 @@
 }
 .footer-links {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .footer-links a {
   color: #FFFFFF;
   opacity: 1;
   text-decoration: none;
-  font-size: 1.1em;
   padding: 0px 10px;
 }
 
 .footer-copyright {
-  font-size: 1 em;
-  display: flex;
-  justify-content: center;
+  display: flex-inline;
   align-items: center;
   color: #FFFFFF;
+  text-align: center;
  }
 
 .footer-links a:hover {
@@ -42,10 +42,10 @@ body {
 
 @media (min-width: 100px) and (max-width: 575px) {
   body {
-    padding-bottom: 15vh;
+    padding-bottom: 10vh
   }
   #footer {
-    height: 15vh;
+    height: 10vh;
   }
   .footer-links a {
     font-size: 0.9em;
@@ -57,27 +57,19 @@ body {
 
 @media (min-width: 576px) and (max-width: 768px) {
   body {
-    padding-bottom: 12vh;
+    padding-bottom: 8vh;
   }
   #footer {
-    height: 12vh;
-  }
-  .footer-links a {
-    font-size: 1em;
+    height: 8vh;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1200px) {
-  .footer-links a {
-    font-size: 1em;
+@media (min-width: 768px) {
+   body {
+    padding-bottom: 6vh;
+  }
+  #footer {
+    height: 6vh;
   }
 }
 
-@media (min-width: 1200px) {
-  body {
-    padding-bottom: 10vh;
-  }
-  #footer {
-    height: 10vh;
-  }
-}
