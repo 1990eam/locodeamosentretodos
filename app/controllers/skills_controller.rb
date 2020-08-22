@@ -24,6 +24,14 @@ class SkillsController < ApplicationController
     end
   end
 
+  def destroy
+    @skill = Skill.find(params[:id])
+    authorize @skill
+    @user = current_user
+    @skill.destroy
+    redirect_to user_skills_path(current_user)
+  end
+
   private
 
   def skill_params

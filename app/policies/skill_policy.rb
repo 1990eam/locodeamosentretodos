@@ -12,4 +12,8 @@ class SkillPolicy < ApplicationPolicy
   def create?
     new?
   end
+
+  def destroy?
+    record.user == user
+  end
 end
