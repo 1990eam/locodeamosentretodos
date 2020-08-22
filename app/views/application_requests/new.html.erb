@@ -1,12 +1,13 @@
 <div class='container mt-5'>
   <h1 class='text-center'> You are applying to <%= @project.name %></h1>
+  <h6 class='text-center'>Estas son las posiciones disponibles en este proyecto</h6>
    <div class='container mt-5'>
       <div class='grid-application'>
 
         <div class='card-project'>
 
           <div>
-            <h5 class='text-center'> Information about the project </h5>
+            <h5 class='text-center'> Información sobre el proyecto </h5>
               <div class="mx-4">
                 <div>
                   <p class="text-justify"><%= @project.description %></p>
@@ -15,7 +16,7 @@
                     <div>
 
                     </div>
-                    <h5 class="ml-0"> Collaborators </h5>
+                    <h5 class="ml-0"> Colaboradores </h5>
                     <div class="">
                       <% @project.collaborators.each do |collaborator| %>
                         <h6> <%= collaborator.role.name %></h6>
@@ -36,48 +37,40 @@
 
           <div class="card-roles">
             <% @project.roles.each do |role| %>
-              <div class="card clickable-card" data-target="<%= role.id %>" data-delete="<%= role.id %>">
-                <div class="card-body text-center">
-                  <h5 class="card-title"><%= role.name %></h5>
-                   <% role.requirements.each do |requirement|%>
-                   <div class="d-flex flex-wrap m-0">
-                    <p class=" text-left mr-2 mb-0">
-                      <%= sanitize pick_tech_icon(requirement.technology.name) %>
-                      <%= requirement.technology.name %>
-                    </p>
-                    <p class='mb-0'><%= requirement.level.name %></p>
-                   </div>
-                    <% end %>
-                  <p class="card-text mt-4"><%= role.description %></p>
-                  <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i> Apply </button>
+              <% if role.open? %>
+                <div class="card clickable-card" data-target="<%= role.id %>" data-delete="<%= role.id %>">
+                  <div class="card-body text-center">
+                    <h5 class="card-title"><%= role.name %></h5>
+                     <% role.requirements.each do |requirement|%>
+                     <div class="d-flex flex-wrap m-0">
+                      <p class=" text-left mr-2 mb-0">
+                        <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
+                        <%= requirement.technology.name %>
+                      </p>
+                      <p class='mb-0'><%= requirement.level.name %></p>
+                     </div>
+                      <% end %>
+                    <p class="card-text mt-4"><%= role.description %></p>
+                    <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i> Apply </button>
+                  </div>
                 </div>
-              </div>
+              <% end %>
               <% end %>
           </div>
 
-          <div class='file-container'>
-            <h5> Subir archivos de propuesta</h5>
-            <p> <i class="fas fa-plus"></i> Añadir archivo </p>
-            <input type="file" id="files" >
-          </div>
-
-      </div>
-      <div class="input mt-5">
         <%= simple_form_for [@project, @application] do |f| %>
-        <input type="" hidden="true" name='role_id' value="role" class="role_field">
-        <%= f.input :about_me %>
-        <%= f.submit class: "btn btn-primary" %>
+          <div class='file-container mt-2 ml-2'>
+            <h5> Subir archivos de propuesta</h5>
+            <%= f.input :file, label: "Adjuntar archivo pdf", as: :file %>
+          </div>
+          <div class="input mt-5">
+            <input type="" hidden="true" name='role_id' value="role" class="role_field">
+            <%= f.input :about_me %>
+            <%= f.submit class: "btn btn-primary" %>
+          </div>
         <% end %>
       </div>
 
-<!--
-        <div class="form-group mt-5">
-          <label for="exampleFormControlTextarea1">Algo sobre ti</label>
-          <div class="input-group">
-          <textarea class="form-control" placeholder="Please tell us why we should let you in" rows="3"></textarea>
-          <button type="submit" class="btn-action btn-primary mb-2"> <i class="fas fa-plus"></i> Action</button>
-          </div>
-        </div> -->
 
   </div>
 </div>

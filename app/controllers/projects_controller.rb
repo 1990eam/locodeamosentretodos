@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :destroy]
+  before_action :set_project, only: [:show, :destroy, :edit, :update]
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
         OR technologies.name @@ :query \
        "
 
-      @projects = policy_scope(Project).joins(:roles, :technologies).where(sql_query, query: "%#{params[:query]}%")
+      @projects = policy_scope(Project).joins(:roles, :technologies).where(sql_query, query: "%#{params[:query]}%").uniq
     else
       @projects = policy_scope(Project)
     end
@@ -54,6 +54,19 @@ class ProjectsController < ApplicationController
       render :new
     end
   end
+
+
+  def edit; end
+
+  def update
+    @project.update(project_params)
+    if @project.save
+      redirect_to @project
+    else
+      render :edit
+    end
+  end
+
 
   def destroy
     @project.destroy
