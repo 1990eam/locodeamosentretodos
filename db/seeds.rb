@@ -166,7 +166,7 @@ fifth_role = Role.find_or_create_by!(name: "Project Manager",
                         description: "Experiencia en Agile, Scrum y conocimientos básicos de Python",
                         project_id: Project.second.id)
 sixth_role = Role.find_or_create_by!(name: "Seguridad",
-                        description: "Fajar a los que se hacen los piolas",
+                        description: "Necesaria presencia física para negociaciones difíciles",
                         project_id: Project.third.id)
 seventh_role = Role.find_or_create_by!(name: "Cobranzas",
                         description: "Colaborador paciente, creativo y con iniciativa para recuperar capitales difíciles",
@@ -313,8 +313,8 @@ python = Technology.find_or_create_by!(name: "Python")
 react = Technology.find_or_create_by!(name: "React")
 html = Technology.find_or_create_by!(name: "HTML")
 rails = Technology.find_or_create_by!(name: "Rails")
-violence = Technology.find_or_create_by!(name: "Violence")
-intimidation = Technology.find_or_create_by!(name: "Intimidation")
+violence = Technology.find_or_create_by!(name: "Negotiation")
+intimidation = Technology.find_or_create_by!(name: "Physique")
 agile = Technology.find_or_create_by!(name: "Agile")
 scrum = Technology.find_or_create_by!(name: "Scrum")
 people = Technology.find_or_create_by!(name: "People skills")

@@ -22,23 +22,7 @@
             </div>
             <h4 class="h6 m-0 flex-grow-0 mb-2">Status</h4>
             <div class="flex-grow-1">
-              <% case application.status.downcase %>
-              <% when "pending response from applicant" %>
-              <p style="color: #E59500; font-weight: bolder"><%= application.project.name %> is waiting your response</p>
-              <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
-              <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
-              <p style="color: green; font-weight: bolder">Status: Your application has been Accepted</p>
-              <% when "declined by owner" %>
-              <p style="color: red; font-weight: bolder">Status: Your application has been Declined</p>
-              <% end %>
-              <% case application.status.downcase %>
-              <% when "pending" %>
-              <p style="color: #E59500; font-weight: bolder"> Pending</p>
-              <% when "accepted" %>
-              <p style="color: green; font-weight: bolder"> Congratiulations! You are part of <%= application.project.name %> team</p>
-              <% when "declined by user" %>
-              <p style="color: red; font-weight: bolder"> You Declined <%= application.project.name %>'s invitation. </p>
-              <% end %>
+              <%= render "application_requests/index_case", application: application %>
             </div>
           </div>
           <div class="d-flex flex-column pl-3 w-50">
@@ -54,7 +38,7 @@
             <p class="project-link text-center text-warning flex-grow-0 align-items-center m-0 w-100 mx-auto rounded text-white py-1 px-3 mt-2">Link del Proyecto</p>
             </a>
             <% if application.status == "pending" || application.status == "pending response from applicant" %>
-              <%= link_to "Contact the project owner", application_request_chatroom_path(application.id) %>
+              <%= link_to "Contacta al project owner", application_request_chatroom_path(application.id) %>
             <% end %>
             </div>
           </div>
