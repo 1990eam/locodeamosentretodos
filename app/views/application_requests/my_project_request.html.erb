@@ -30,6 +30,7 @@
                 </div>
               <% end %>
             </div>
+
               <% case application.status %>
                 <% when "pending" %>
                   <p style="color: #e59500; font-weight: bolder">The applicant is waiting your response</p>
@@ -50,6 +51,8 @@
                 <% when "declined by user" %>
                   <p style="color: red; font-weight: bolder">The applicant <%= application.user.first_name %> Declined</p>
               <% end %>
+            <%= render "application_requests/my_project_request_case", application: application %>
+
           </div>
 
           <div class="ml-3 w-50">
@@ -67,7 +70,6 @@
                   Explora la propuesta del candidato
                 </button>
                 <%= render "application_requests/modal_file", application: application %>
-
             </div>
           </div>
         </div>

@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
     @projects = policy_scope(Project)
   end
+
+  def about
+
+  end
 end

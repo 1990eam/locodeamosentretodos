@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :technologies, through: :skills
   has_many :levels, through: :skills
   has_many :application_requests, dependent: :destroy
+  has_many :chatrooms, through: :application_requests
   has_one_attached :photo
   validates :first_name, :last_name, presence: true
   validate :photo_present
