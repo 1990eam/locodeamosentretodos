@@ -1,0 +1,11 @@
+.grid-aplicaciones {
+  grid-template-columns: 1fr 1fr;
+  grid-template-row: 60px;
+}
+
+.app-card {
+  a {
+    color: black;
+    text-decoration: none;
+  }
+}

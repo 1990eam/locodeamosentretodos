@@ -9,66 +9,14 @@
     color: white
   }
 
-    .btn-gradient {
-    color: white;
-    padding: 8px 24px;
-    border-radius: 4px;
-    font-weight: bold;
-    background: linear-gradient(#167FFB, #0F60C4);
-    transition: background 0.3s ease;
-    border: 1px solid #0F60C4;
-    margin-right: 16px;
-  }
-
-  .btn-gradient:hover {
-    background: linear-gradient(#147EFF, #0F67DA);
+  .btn-explorar {
+    background-color: #07889b;
     color: white;
   }
 
-  .btn-edit {
-    color: blue;
-    padding: 8px 24px;
-    border-radius: 4px;
-    font-weight: bold;
-    background: linear-gradient(#2d4059, #2d4059);
-    transition: background 0.3s ease;
-    border: 1px;
-  }
-
-  .btn-edit:hover {
-    background: linear-gradient(#222831, #222831);
-    color: gray;
-  }
-
-  .btn-role {
-    color: blue;
-    padding: 8px 24px;
-    border-radius: 4px;
-    font-weight: bold;
-    background: #4b5d67;
-    border: 1px;
-    margin-right: 16px;
-  }
-
-  .btn-role:hover {
-    background: linear-gradient(#222831, #222831);
-    color: gray;
-  }
-
-  .btn-delete {
-    color: blue;
-    padding: 8px 24px;
-    border-radius: 4px;
-    font-weight: bold;
-    background: linear-gradient(#cf1b1b, #cf1b1b);
-    transition: background 0.3s ease;
-    border: 1px;
-    margin-right: 16px;
-  }
-
-  .btn-delete:hover {
-    background: linear-gradient(#ff5f40, #ff5f40);
-    color: #ff5f40;
+  .btn-explorar:hover {
+    background-color: #09aac2;
+    border-color: white;
   }
 
 }

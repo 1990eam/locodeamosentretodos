@@ -2,7 +2,7 @@
   margin-top: 1rem;
   margin-left: 1rem;
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 4fr;
 }
 
 .tabs-container {
@@ -15,7 +15,7 @@
   position: sticky;
   top: 30px;
   border-radius: 0.8rem;
-  min-width: 16vw;
+  min-width: 18vw;
   max-width: min-content;
   display: flex;
   flex-direction: column;

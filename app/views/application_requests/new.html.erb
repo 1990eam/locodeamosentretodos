@@ -1,9 +1,8 @@
 <div class='container mt-5'>
-  <h1 class='text-center'> You are applying to <%= @project.name %></h1>
+  <h1 class='text-center'> Está aplicando a <%= @project.name %></h1>
   <h6 class='text-center'>Estas son las posiciones disponibles en este proyecto</h6>
-   <div class='container mt-5'>
-      <div class='grid-application'>
-
+   <div class='application-request-container mt-5'>
+      <div class='grid-solicitudes'>
         <div class='card-project'>
           <div>
             <h5 class='text-center'> Información sobre el proyecto </h5>
@@ -13,7 +12,6 @@
                 </div>
                   <div>
                     <div>
-
                     </div>
                     <h5 class="ml-0"> Colaboradores </h5>
                     <div class="">
@@ -33,8 +31,8 @@
           </div>
         </div>
 
-
-          <div class="card-roles">
+        <div>
+         <div class="card-roles">
             <% @project.roles.each do |role| %>
               <% if role.open? %>
                 <div class="card clickable-card" data-target="<%= role.id %>" data-delete="<%= role.id %>">
@@ -50,23 +48,24 @@
                      </div>
                       <% end %>
                     <p class="card-text mt-4"><%= role.description %></p>
-                    <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i> Apply </button>
+                    <button class="btn btn-apply"> <i class="fas fa-plus-circle primary "></i> Aplicar </button>
                   </div>
                 </div>
               <% end %>
               <% end %>
           </div>
-
-        <%= simple_form_for [@project, @application] do |f| %>
-          <div class='file-container mt-2 ml-2'>
-            <h5> Subir archivos de propuesta</h5>
-            <%= f.input :file, label: "Adjuntar archivo pdf", as: :file %>
-          </div>
-          <div class="input mt-5">
-            <input type="" hidden="true" name='role_id' value="role" class="role_field">
-            <%= f.input :about_me %>
-            <%= f.submit class: "btn btn-primary" %>
-            <% end %>
-          </div>
+          <%= simple_form_for [@project, @application] do |f| %>
+            <div class='file-container mt-2 ml-2'>
+              <h5> Subir archivos de propuesta</h5>
+              <%= f.input :file, label: "Adjuntar archivo pdf", as: :file %>
+            </div>
+            <div class="input mb-4 text-left">
+              <input type="" hidden="true" name='role_id' value="role" class="role_field">
+                <%= f.input :about_me %>
+                <%= f.submit class: "btn btn-primary"%>
+              </div>
+          <% end %>
+        </div>
+      </div>
   </div>
 </div>
