@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :application_requests, only: [:index]
 
-  resources :projects, only: [:new, :create, :index, :show, :destroy] do
+  resources :projects, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
     resources :application_requests, only: [:new, :create]
     resources :roles, only: [:new, :create]
     resources :suggestions, only: [:index, :new, :create]
@@ -30,11 +30,20 @@ Rails.application.routes.draw do
 
   end
 
+   resources :collaborators, only: [:destroy]
+
   resources :roles, only: :destroy
+
+  resources :chatrooms, only: {} do
+    resources :messages, only: :create
+  end
+
+  # resources :photos, path_names: { new: 'make', edit: 'change' }
 
   get "my_projects", to: "projects#my_projects", as: "my_projects"
   get "my_project_request", to: "application_requests#my_project_request"
 
+  get "application_requests/:application_request_id/chatroom", to: "chatrooms#chatroom", as: "application_request_chatroom"
 
   put "application_requests/:application_id/accept", to: "application_requests#accept", as: "accept"
   put "application_requests/:application_id/decline", to: "application_requests#decline", as: "decline"

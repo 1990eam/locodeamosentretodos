@@ -1,5 +1,6 @@
 const showModal = () => {
-  // no agregar estas dos lineas fuera de $(function) por favor
+  // console.log("showModal loaded")
+  // no agregar lineas 8 y 9 fuera de $(function) por favor
 
   $(function(){
     if($('div').hasClass("index-projects")){

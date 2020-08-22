@@ -1,24 +1,34 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :destroy]
+  before_action :set_project, only: [:show, :destroy, :edit, :update]
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
+
     if user_signed_in?
       @user = current_user
     end
 
-      if params[:query].present?
+    if params[:query].present?
         sql_query = " \
         projects.name @@ :query \
         OR roles.name @@ :query \
         OR technologies.name @@ :query \
        "
 
-      @projects = policy_scope(Project).joins(:roles, :technologies).where(sql_query, query: "%#{params[:query]}%")
+      @projects = policy_scope(Project).joins(:roles, :technologies).where(sql_query, query: "%#{params[:query]}%").uniq
     else
       @projects = policy_scope(Project)
     end
+
+    #filtros
+    if params[:with_open_roles]
+      @projects = Project.with_open_positions
+    elsif params[:skill_match]
+      @projects = Project.that_match_my_skills(current_user)
+    end
+
   end
+
 
   def new
     @project = Project.new
@@ -44,6 +54,19 @@ class ProjectsController < ApplicationController
       render :new
     end
   end
+
+
+  def edit; end
+
+  def update
+    @project.update(project_params)
+    if @project.save
+      redirect_to @project
+    else
+      render :edit
+    end
+  end
+
 
   def destroy
     @project.destroy
@@ -84,4 +107,5 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     authorize @project
   end
+
 end

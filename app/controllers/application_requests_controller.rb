@@ -57,6 +57,6 @@ class ApplicationRequestsController < ApplicationController
   private
 
   def application_params
-    params.require(:application_request).permit(:about_me)
+    params.require(:application_request).permit(:about_me, :file)
   end
 end
