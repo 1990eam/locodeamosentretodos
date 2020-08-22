@@ -1,4 +1,11 @@
-<%= simple_form_for [ @project, @suggestion ] do |f| %>
-  <%= f.input :description %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
-<% end %>
+<div class="new-suggestion-card">
+
+  <p style="font-weight: bolder;">Explica brevemente la feature a implementar:</p>
+
+  <%= simple_form_for [ @project, @suggestion ] do |f| %>
+    <%= f.input :description %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+
+
+</div>
