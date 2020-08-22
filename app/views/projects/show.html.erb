@@ -66,13 +66,13 @@
         <%= render "shared/applications_show" %>
       </div>
 
-    <div class="tab-pane fade  <%= params[:tab] == nil ? "" : "show active" %>" id="roles" role="tabpanel" aria-labelledby="roles-tab">
+    <div class="tab-pane fade  <%= params[:tab] == "roles" ? "show active" : "" %>" id="roles" role="tabpanel" aria-labelledby="roles-tab">
       <%= render "shared/roles_show_new" %>
     </div>
 
 
 
-     <div class="tab-pane fade" id="evolution" role="tabpanel" aria-labelledby="evolution-tab">
+     <div class="<%= params[:tab] == "evolution" ? "show active" : "" %> tab-pane fade" id="evolution" role="tabpanel" aria-labelledby="evolution-tab">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -81,7 +81,7 @@
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </div>
 
-    <div class="tab-pane fade" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab">
+    <div class="<%= params[:tab] == "suggestions" ? "show active" : "" %> tab-pane fade" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab">
 
       <%= render "suggestions/index" %>
 
