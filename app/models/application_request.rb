@@ -2,6 +2,7 @@ class ApplicationRequest < ApplicationRecord
   after_commit :save_user_as_collaborator, on: [:update, :create]
   after_commit :create_chatroom, on: [:create]
 
+  has_one_attached :file
   belongs_to :role
   has_one :project, through: :role
   has_one :chatroom

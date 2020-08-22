@@ -22,13 +22,15 @@ Rails.application.routes.draw do
 
   resources :application_requests, only: [:index]
 
-  resources :projects, only: [:new, :create, :index, :show, :destroy] do
+  resources :projects, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
     resources :application_requests, only: [:new, :create]
     resources :roles, only: [:new, :create]
     resources :suggestions, only: [:index, :new, :create]
     resources :suggestion_votes, only: [:create]
 
   end
+
+   resources :collaborators, only: [:destroy]
 
   resources :roles, only: :destroy
 

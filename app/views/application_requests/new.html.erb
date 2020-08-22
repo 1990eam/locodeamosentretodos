@@ -7,7 +7,7 @@
         <div class='card-project'>
 
           <div>
-            <h5 class='text-center'> Information about the project </h5>
+            <h5 class='text-center'> Información sobre el proyecto </h5>
               <div class="mx-4">
                 <div>
                   <p class="text-justify"><%= @project.description %></p>
@@ -16,7 +16,7 @@
                     <div>
 
                     </div>
-                    <h5 class="ml-0"> Collaborators </h5>
+                    <h5 class="ml-0"> Colaboradores </h5>
                     <div class="">
                       <% @project.collaborators.each do |collaborator| %>
                         <h6> <%= collaborator.role.name %></h6>
@@ -58,10 +58,15 @@
               <% end %>
           </div>
 
-          <div class='file-container'>
+        <%= simple_form_for [@project, @application] do |f| %>
+          <div class='file-container mt-2 ml-2'>
             <h5> Subir archivos de propuesta</h5>
-            <p> <i class="fas fa-plus"></i> Añadir archivo </p>
-            <input type="file" id="files" >
+            <%= f.input :file, label: "Adjuntar archivo pdf", as: :file %>
+          </div>
+          <div class="input mt-5">
+            <input type="" hidden="true" name='role_id' value="role" class="role_field">
+            <%= f.input :about_me %>
+            <%= f.submit class: "btn btn-primary" %>
           </div>
 
       </div>
@@ -73,6 +78,7 @@
         <%= f.submit class: "btn btn-primary" %>
         <% end %>
       </div>
+
 
   </div>
 </div>
