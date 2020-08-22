@@ -1,22 +1,22 @@
 <div class='project-container mr-5'>
 
-        <div class='project-overview'>
-          <%= image_tag "project-default", class:"project-image" %>
-          <h4 class='text-center'> <%= @project.name %></h4>
-          <div class="tech-images">
-            <% @project.technologies.uniq.each do |technology| %>
-              <p class="mr-2 mb-0">
-                <%= sanitize pick_tech_icon(technology.name), tags: %w(i), attributes: %w(class style) %>
-                <%= technology.name %>
-              </p>
-            <% end %>
-          </div>
-          <div class="description-container">
-            <h5> Descripción </h5>
-            <div class="project-description">
-              <p><%= @project.description %></p>
-            </div>
-          </div>
+  <div class='project-overview'>
+    <%= image_tag "project-default", class:"project-image" %>
+    <h4 class='text-center'> <%= @project.name %></h4>
+    <div class="tech-images">
+      <% @project.technologies.uniq.each do |technology| %>
+      <p class="mr-2 mb-0">
+        <%= sanitize pick_tech_icon(technology.name), tags: %w(i), attributes: %w(class style) %>
+        <%= technology.name %>
+      </p>
+      <% end %>
+    </div>
+    <div class="description-container">
+      <h5> Descripción </h5>
+      <div class="project-description">
+        <p><%= @project.description %></p>
+      </div>
+    </div>
 
     <div class="project-collaborators text-center">
       <h5> Colaboradores </h5>
@@ -42,22 +42,22 @@
     </div>
   </div>
 
-   <div class="tabs-container" >
-            <!-- Tabs https://getbootstrap.com/docs/4.0/components/navs/#javascript-behavior-->
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link <%= params[:tab] == nil ? "active" : "" %> " id="applications-tab" data-toggle="tab" href="#applications" role="tab" aria-controls="applications" aria-selected="true">Applications</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link <%= params[:tab] == "roles" ? "active" : "" %> " id="roles-tab" data-toggle="tab" href="#roles" role="tab" aria-controls="roles" aria-selected="false">Roles</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link <%= params[:tab] == "suggestions" ? "active" : "" %>" id="suggestions-tab" data-toggle="tab" href="#suggestions" role="tab" aria-controls="suggestions" aria-selected="false">Suggestions</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link <%= params[:tab] == "evolution" ? "active" : "" %>" id="evolution-tab" data-toggle="tab" href="#evolution" role="tab" aria-controls="evolution" aria-selected="false">Evolution</a>
-              </li>
-            </ul>
+  <div class="tabs-container" >
+    <!-- Tabs https://getbootstrap.com/docs/4.0/components/navs/#javascript-behavior-->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link <%= params[:tab] == nil ? "active" : "" %> " id="applications-tab" data-toggle="tab" href="#applications" role="tab" aria-controls="applications" aria-selected="true">Applications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= params[:tab] == "roles" ? "active" : "" %> " id="roles-tab" data-toggle="tab" href="#roles" role="tab" aria-controls="roles" aria-selected="false">Roles</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= params[:tab] == "suggestions" ? "active" : "" %>" id="suggestions-tab" data-toggle="tab" href="#suggestions" role="tab" aria-controls="suggestions" aria-selected="false">Suggestions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link <%= params[:tab] == "evolution" ? "active" : "" %>" id="evolution-tab" data-toggle="tab" href="#evolution" role="tab" aria-controls="evolution" aria-selected="false">Evolution</a>
+      </li>
+    </ul>
 
 
     <!-- Tab content -->
@@ -66,35 +66,32 @@
         <%= render "shared/applications_show" %>
       </div>
 
-              <div class="tab-pane fade  <%= params[:tab] == nil ? "" : "show active" %>" id="ceptaciòn de los colaboradores
-
-   roles" role="tabpanel" aria-labelledby="roles-tab">
-                <%= render "shared/roles_show_new" %>
-              </div>
-
-
-      <div class="tab-pane fade" id="evolution" role="tabpanel" aria-labelledby="evolution-tab">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <div class="tab-pane fade  <%= params[:tab] == nil ? "" : "show active" %>" id="aceptaciòn de los colaboradores roles" role="tabpanel" aria-labelledby="roles-tab">
+       <%= render "shared/roles_show_new" %>
       </div>
 
-              <div class="tab-pane fade" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab">
 
-                <%= render "suggestions/index" %>
-                <%= render "suggestions/new_suggestion" %>
+     <div class="tab-pane fade" id="evolution" role="tabpanel" aria-labelledby="evolution-tab">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
 
-              </div>
+    <div class="tab-pane fade" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab">
 
-            </div>
+      <%= render "suggestions/index" %>
 
-
-
+    </div>
 
   </div>
+
+
+
+
+</div>
 
 
 </div>

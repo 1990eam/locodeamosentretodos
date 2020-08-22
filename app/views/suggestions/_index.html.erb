@@ -1,5 +1,6 @@
 <div class="suggestions-wrapper">
   <% @project.suggestions.each do |suggestion| %>
+
   <div class="suggestion-card" data-target="<%= suggestion.id %>">
     <p class="feature-title">Feature</p>
     <p class="suggestion-collaborator">Suggested by:</p>
@@ -11,10 +12,14 @@
       <% end %>
     </div>
     <p><%= suggestion.description %></p>
-    <p>Aceptaciòn de los colaboradores</p>
-    <% suggestion.average_rating.to_i.times do  %>
-    <span class="fas fa-star current-rating"></span>
-    <% end %>
+    <div class="average-rating">
+
+      <p>Aceptaciòn de los colaboradores</p>
+      <% suggestion.average_rating.to_i.times do  %>
+      <span class="fas fa-star current-rating"></span>
+      <% end %>
+
+    </div>
     <!-- el suggestion id va a ir en el hidden input como params -->
     <div id="suggestion-<%= suggestion.id %>" class="input mt-5">
       <%= simple_form_for [@project, @vote], html: { class: "vote-form form-target#{suggestion.id}" }, remote: :true do |f| %>
@@ -25,4 +30,17 @@
     </div>
   </div>
   <% end %>
+
+  <div class="new-suggestion-card">
+    <p class="feature-title">Nueva Feature</p>
+    <p style="font-weight: bolder;">Explica brevemente la feature a implementar:</p>
+
+    <%= simple_form_for [ @project, @suggestion ] do |f| %>
+      <%= f.input :description %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+
+
+  </div>
+
 </div>

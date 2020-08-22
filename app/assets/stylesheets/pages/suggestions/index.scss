@@ -7,7 +7,7 @@
 }
 
 .suggestion-card {
-
+  padding: 0.2rem;
   h5{
     text-align: center;
   }
@@ -35,5 +35,38 @@
 
 .input {
   text-align: center;
+
+}
+
+.new-suggestion-card {
+  padding: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+
+  h5{
+    text-align: center;
+  }
+
+  height: 350px;
+  width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   * { cursor:pointer; }
+
+
+}
+
+.input {
+
+  display: flex;
+  justify-content: center;
+
+}
+
+.average-rating span {
+
+  color: #e5c212;
 
 }
