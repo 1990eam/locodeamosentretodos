@@ -44,12 +44,12 @@
 
             <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
               <%= simple_fields_for :requirement do |ff| %>
-                <%= ff.input :technology_id, collection: Technology.all %>
-                <%= ff.input :level_id, collection: Level.all %>
+                <%= ff.input :technology_id, collection: Technology.all, label:false, prompt: "Tecnología" %>
+                <%= ff.input :level_id, collection: Level.all, label:false, prompt: "Nivel" %>
               <% end %>
 
-              <%= f.input :name %>
-              <%= f.input :description %>
+              <%= f.input :name, label:false, placeholder: "Nombre del rol" %>
+              <%= f.input :description, label:false, placeholder: "Descripción" %>
               <%= f.submit "Add role", class: "btn btn-primary" %>
             <% end %>
 
