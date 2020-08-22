@@ -6,14 +6,6 @@
       <div class="card clickable-card">
         <div class="card-body text-center">
           <h5 class="card-title"><%= role.name %></h5>
-          <div class="d-flex flex-wrap" style="justify-content: center;">
-            <% role.requirements.each do |requirement|%>
-              <p class="mr-1">
-                <%= sanitize pick_tech_icon(requirement.technology.name) %>
-                <%= requirement.technology.name %>
-              </p>
-            <% end %>
-          </div>
           <!-- logica avatars/mensaje si el role esta ocupado o vacante -->
           <!-- si esta ocupado -->
           <% if !role.open? %>
@@ -24,10 +16,8 @@
             <% end %>
             <p class="role.status" style="color: red;">This position is taken</p>
             <%= link_to "Delete collaborator", collaborator_path(role.active_collaborator), method: :delete, data: { confirm: 'Estas seguro de eliminar a este colaborador?' } %>
-
             <!-- si esta vacante -->
           <% else %>
-
             <p class="role.status mb-2" style="color: green;">This position is open</p>
           <% end %>
           <div class="skill-level">

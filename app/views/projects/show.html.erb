@@ -66,11 +66,9 @@
         <%= render "shared/applications_show" %>
       </div>
 
-              <div class="tab-pane fade  <%= params[:tab] == nil ? "" : "show active" %>" id="ceptaciòn de los colaboradores
-
-   roles" role="tabpanel" aria-labelledby="roles-tab">
-                <%= render "shared/roles_show_new" %>
-              </div>
+    <div class="tab-pane fade  <%= params[:tab] == nil ? "" : "show active" %>" id="roles" role="tabpanel" aria-labelledby="roles-tab">
+      <%= render "shared/roles_show_new" %>
+    </div>
 
 
       <div class="tab-pane fade" id="evolution" role="tabpanel" aria-labelledby="evolution-tab">
