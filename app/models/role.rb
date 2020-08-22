@@ -1,6 +1,7 @@
 class Role < ApplicationRecord
   belongs_to :project
   has_many :collaborators, dependent: :destroy
+  has_one :active_collaborator, -> { where(status: "active") }, class_name: "Collaborator"
   has_many :application_requests, dependent: :destroy
   has_many :users, through: :collaborators
   has_many :requirements, dependent: :destroy
@@ -12,7 +13,7 @@ class Role < ApplicationRecord
   # scope :open_roles, -> { where(collaborators: nil) }
 
   def open?
-    self.collaborators.empty?
+    collaborators.where(status: "active").empty?
   end
 
 end

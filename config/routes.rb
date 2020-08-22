@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resources :roles, only: [:new, :create]
   end
 
+   resources :collaborators, only: [:destroy]
+
   resources :roles, only: :destroy
 
   resources :chatrooms, only: {} do
