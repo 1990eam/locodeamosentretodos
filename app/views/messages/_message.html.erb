@@ -3,9 +3,9 @@
 
 <% if previous_message.created_at.getlocal.to_date - message.created_at.getlocal.to_date < 0 || @chatroom.messages.find_by(id: message.id - 1).nil? %>
   <div class="d-flex justify-content-center position-relative mt-3">
-    <% if message.created_at.end_of_day == Date.today.end_of_day %>
+    <% if message.created_at.getlocal.end_of_day == Date.today.end_of_day %>
       <div class="btn btn-sm btn-outline-secondary date-float">Hoy</div>
-    <% elsif message.created_at.end_of_day == Date.yesterday.end_of_day %>
+    <% elsif message.created_at.getlocal.end_of_day == Date.yesterday.end_of_day %>
       <div class="btn btn-sm btn-outline-secondary date-float">Ayer</div>
     <% else %>
       <div class="btn btn-sm btn-outline-secondary date-float"><%= l(message.created_at.getlocal, format: :long) %></div>

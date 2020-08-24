@@ -1,24 +1,16 @@
 <%= render "shared/add_skill_modal" %>
 <div class="container mt-3">
-
   <div class="grid-index-container mt-3">
-    <div class="my-feed">
+    <div class="my-feed p-3">
       <h6 style="text-align: center;">Filtrar proyectos</h6>
-      <p><%= link_to "With Open Roles", projects_path(:with_open_roles => "true"), class:"btn btn-primary" %></p>
-      <p><%= link_to "That match my skills", projects_path(:skill_match => "true"), class:"btn btn-primary" %></p>
+      <p><%= link_to "Con posiciones abiertas", projects_path(:with_open_roles => "true"), class:"btn btn-primary" %></p>
+      <p><%= link_to "Que coinciden con mis skills", projects_path(:skill_match => "true"), class:"btn btn-primary" %></p>
     </div>
-
-
-
     <div class="index-projects">
       <% @projects.each do |project| %>
-        <%= link_to project_path(project) do %>
-
-            <%= render "projects/index-card", project: project %>
-        <% end %>
+        <%= render "projects/index-card", project: project %>
       <% end %>
     </div>
-    <div class="my-profile-card"></div>
   </div>
 </div>
 
@@ -27,4 +19,3 @@
     <%= @user.skills.count %>
   <% end %>
 </div>
-

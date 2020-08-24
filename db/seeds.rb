@@ -297,10 +297,10 @@ puts ""
 # 1 2 3 5 6 8 10 11 13 16 18 19
 
 puts "Creating Levels..."
-Level.find_or_create_by!(name: "junior")
-Level.find_or_create_by!(name: "semisenior")
-Level.find_or_create_by!(name: "senior")
-Level.find_or_create_by!(name: "master")
+Level.find_or_create_by!(name: "Junior")
+Level.find_or_create_by!(name: "Semisenior")
+Level.find_or_create_by!(name: "Senior")
+Level.find_or_create_by!(name: "Master")
 puts "Done creating Levels"
 puts ""
 

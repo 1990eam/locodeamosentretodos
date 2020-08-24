@@ -4,7 +4,7 @@
     <div class="sidebar-section mt-3">
       <p class="pl-3 mb-0 pb-3 border-bottom">Conversaciones con project owners</p>
       <% if current_user.chatrooms.select { |x| x.messages.count > 0 }.empty? %>
-        <div class="d-flex align-items-start border-bottom p-3 text-muted">
+        <div class="d-flex align-items-start border-bottom p-3 mint-cream">
           No hay conversaciones aún :(
         </div>
       <% else %>
@@ -17,7 +17,7 @@
       <p class="pl-3 mb-0 pb-3 border-bottom">Conversaciones con aplicantes</p>
       <% current_user.projects.each do |project| %>
         <% if project.chatrooms.select { |x| x.messages.count > 0 }.empty? %>
-          <div class="d-flex align-items-start border-bottom p-3 text-muted">
+          <div class="d-flex align-items-start border-bottom p-3 mint-cream">
             No hay conversaciones aún :(
           </div>
         <% else %>
@@ -39,7 +39,7 @@
                 <div class="d-flex align-items-center">
                     <p class="mr-2 mb-0"><strong><%= @chatroom.application_request.user.first_name %> <%= @chatroom.application_request.user.last_name %></strong></p>
                 </div>
-              <small class="mb-3 text-muted">Aplicando para <%= @chatroom.application_request.role.name %> - <%= @chatroom.application_request.project.name %></small>
+              <small class="mb-3 mint-cream">Aplicando para <%= @chatroom.application_request.role.name %> - <%= @chatroom.application_request.project.name %></small>
               </div>
               <div>
                 <%= render "application_requests/my_project_request_case", application: @chatroom.application_request %>
@@ -54,7 +54,7 @@
                 <div class="d-flex align-items-center">
                     <p class="mr-2 mb-0"><strong><%= @chatroom.application_request.project.user.first_name %> <%= @chatroom.application_request.project.user.last_name %></strong></p>
                 </div>
-              <small class="mb-3 text-muted"><%= @chatroom.application_request.project.roles.first.name %> - <%= @chatroom.application_request.project.name %></small>
+              <small class="mb-3 mint-cream"><%= @chatroom.application_request.project.roles.first.name %> - <%= @chatroom.application_request.project.name %></small>
               </div>
               <%= render "application_requests/index_case", application: @chatroom.application_request %>
             </div>

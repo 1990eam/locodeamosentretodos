@@ -6,12 +6,12 @@
           <% if application.file.attached? %>
           <%= cl_image_tag(application.file.key, :width => 200, :height => 250, :crop => :fill, :page => 1) %>
           <% else %>
-           <p> El solicitante no subió ningun archivo</p>
+           <p>El solicitante no subió ningun archivo</p>
           <% end %>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>

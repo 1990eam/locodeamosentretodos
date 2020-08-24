@@ -22,10 +22,10 @@ class RolesController < ApplicationController
       authorize @requirement
       @requirement.role = @role
       @requirement.save
-      flash[:notice] = "Role succesfully created"
+      flash[:notice] = "Rol creado exitosamente"
       redirect_to project_path(@project, tab: "roles", anchor: "new-role-form")
     else
-      flash[:alert] = "Something went wrong, try again"
+      flash[:alert] = "Algo salió mal, intentalo nuevamente"
       render :new
     end
   end

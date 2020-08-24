@@ -1,11 +1,11 @@
 <div class='container mt-5'>
-  <h1 class='text-center'> Está aplicando a <%= @project.name %></h1>
+  <h1 class='text-center'>Estás aplicando a <%= @project.name %></h1>
   <h6 class='text-center'>Estas son las posiciones disponibles en este proyecto</h6>
    <div class='application-request-container mt-5'>
       <div class='grid-solicitudes'>
         <div class='card-project'>
           <div>
-            <h5 class='text-center'> Información sobre el proyecto </h5>
+            <h5 class='text-center'>Información sobre el proyecto</h5>
               <div class="mx-4">
                 <div>
                   <p class="text-justify"><%= @project.description %></p>
@@ -13,7 +13,7 @@
                   <div>
                     <div>
                     </div>
-                    <h5 class="ml-0"> Colaboradores </h5>
+                    <h5 class="ml-0">Colaboradores</h5>
                     <div class="">
                       <% @project.collaborators.each do |collaborator| %>
                         <h6> <%= collaborator.role.name %></h6>
@@ -51,7 +51,7 @@
                     <% if role.application_requests.any? { |application| application.user != current_user } %>
                       <button class="btn btn-apply btn-primary"> <i class="fas fa-plus-circle primary "></i>Aplicar</button>
                     <% else %>
-                      <div class="text-muted position-absolute mb-3 fixed-bottom">Ya aplicaste a este proyecto!</div>
+                      <div class="text-muted position-absolute mb-3 fixed-bottom">¡Ya aplicaste a este rol!</div>
                     <% end %>
                   </div>
                 </div>
@@ -60,7 +60,7 @@
           </div>
           <%= simple_form_for [@project, @application] do |f| %>
             <div class='file-container mt-2 ml-2'>
-              <h5> Subir archivos de propuesta</h5>
+              <h5>Subir archivos de propuesta</h5>
               <%= f.input :file, label: "Adjuntar archivo pdf", as: :file %>
             </div>
             <div class="input mb-4 text-left">

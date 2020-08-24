@@ -5,17 +5,17 @@
 
 // General style
 $font-family-sans-serif:  $body-font;
-$headings-font-family:    $headers-font;
+$headings-font-family:    $body-font;
 $body-bg: $mint-cream;
 $font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $red-salsa;
-$success:    $green;
-$info:       $yellow;
-$danger:     $red;
-$warning:    $orange;
+$primary:    $shadow-blue;
+$success:    $forest-green;
+$info:       $mint-cream;
+$danger:     $red-salsa;
+$warning:    $honey-yellow;
 
 // Buttons & inputs' radius
 $border-radius:    2px;

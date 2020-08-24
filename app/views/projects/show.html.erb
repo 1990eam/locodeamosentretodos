@@ -1,49 +1,36 @@
 <div class='project-container mr-5'>
-  <div class='project-overview'>
+  <div class='project-overview mx-3'>
     <%= image_tag "project-default", class:"project-image" %>
-    <h4 class='text-center'> <%= @project.name %></h4>
+    <h4 class='text-center mt-3'> <%= @project.name %></h4>
     <div class="tech-images">
       <% @project.technologies.uniq.each do |technology| %>
-      <p class="mr-2 mb-0">
+      <p class="ml-3 mb-0">
         <%= sanitize pick_tech_icon(technology.name), tags: %w(i), attributes: %w(class style) %>
         <%= technology.name %>
       </p>
       <% end %>
     </div>
-
     <div class="project-collaborators text-center">
-      <h5> Colaboradores </h5>
-
       <div class="description-container">
         <h5> Descripción </h5>
         <div class="project-description">
-          <p class="ml-2"><%= @project.description %></p>
+          <p class="mx-3"><%= @project.description %></p>
         </div>
       </div>
       <div class="project-collaborators text-center">
-        <h5> Colaboradores </h5>
+        <h5>Colaboradores</h5>
         <div>
-          <!-- project owner -->
-          <% if @project.user.photo.attached? %>
-          <%= cl_image_tag @project.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{@project.user.first_name} / Project Owner" %>
-
-          <% else %>
-          <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
-          <% end %>
-          <!-- collaborators -->
           <% @project.collaborators.each do |collaborator| %>
             <% if collaborator.user.photo.attached? %>
-            <%= cl_image_tag collaborator.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
-
+              <%= cl_image_tag collaborator.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle mx-2", title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
             <% else %>
-            <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
+              <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle mx-2" %>
             <% end %>
-        </div>
           <% end %>
-
+          </div>
       </div>
     </div>
-
+  </div>
     <div class="tabs-container" >
       <!-- Tabs https://getbootstrap.com/docs/4.0/components/navs/#javascript-behavior-->
       <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -83,9 +70,7 @@
         <div class="<%= params[:tab] == "suggestions" ? "show active" : "" %> tab-pane fade" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab">
           <%= render "suggestions/index" %>
         </div>
-
       </div>
     </div>
-  </div>
 </div>
 

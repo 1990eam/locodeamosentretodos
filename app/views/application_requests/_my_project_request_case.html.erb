@@ -1,15 +1,16 @@
 <% case application.status %>
 <% when "pending" %>
-  <p style="color: #e59500; font-weight: bolder">The applicant is waiting your response</p>
-  <%= link_to "Accept", accept_path(application), method: :put, class:"btn btn-success" %>
-  <%= link_to "Decline", decline_path(application), method: :put, class:"btn btn-danger" %>
+  <p class="honey-yellow" style="font-weight: bolder">El candidato está esperando respuesta de <%= application.project.user.first_name %></p>
+  <% if current_user == application.project.user %>
+    <%= link_to "Aceptar", accept_path(application), method: :put, class:"btn btn-success mb-3" %>
+    <%= link_to "Declinar", decline_path(application), method: :put, class:"btn btn-danger mb-3" %>
+  <% end %>
 <% when "pending response from applicant" %>
-  <p style="color: green; font-weight: bolder">You have accepted <%= application.user.first_name %></p>
-  <p style="color: #e59500; font-weight: bolder">Pending response from applicant</p>
+  <p class="honey-yellow" style="font-weight: bolder">La aplicación de <%= application.user.first_name %> fue aceptada y está pendiente de respuesta del candidato</p>
 <% when "declined by owner" %>
-  <p style="color: red; font-weight: bolder">You have declined <%= application.user.first_name %>'s application</p>
+  <p class="red-salsa" style="font-weight: bolder">Has declinado la aplicación de <%= application.user.first_name %></p>
 <% when "accepted" %>
-  <p style="color: green; font-weight: bolder">The applicant accepted</p>
+  <p style="color: green; font-weight: bolder">¡El candidato ha aceptado y forma parte del equipo!</p>
 <% when "declined by user" %>
-  <p style="color: red; font-weight: bolder">The applicant declined</p>
+  <p class="red-salsa" style="font-weight: bolder">El candidato ha declinado</p>
 <% end %>

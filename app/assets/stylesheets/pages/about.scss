@@ -18,7 +18,6 @@
 // }
 
 .about-container{
-  background-color: #fff;
   padding: 5rem;
   box-sizing: border-box;
   margin: 0;
@@ -26,13 +25,11 @@
 
 .about-container html{
   font-size: 10px;
-
-
 }
 
 .heading{
   text-transform: uppercase;
-  text-decoration: underline #45e19f;
+  text-decoration: underline $red-salsa;
   text-underline-position: under;
   font-size: 2.5rem;
   letter-spacing: 3px;
@@ -66,7 +63,6 @@
 
 .about-card {
   width: 16rem;
-  background-color: #ebeef8;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,7 +92,6 @@
 .about-card h1{
   font-size: 1.25rem;
   color: #333;
-  margin: 0.75rem 0;
 }
 
 .job-title{
@@ -107,7 +102,7 @@
 
 .about{
   font-size: 0.75rem;
-  margin: 0.75rem 0;
+  height: 4ch;
   font-style: italic;
   text-align: center;
   color: #333;
@@ -115,7 +110,7 @@
 
 .about-card .btn {
   padding: 0.5rem 1.25rem;
-  background-color: #445ae3;
+  background-color: $red-salsa;
   border-radius: 1rem;
   margin: 0.5rem 0;
   text-transform: uppercase;
