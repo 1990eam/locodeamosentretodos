@@ -12,7 +12,7 @@
 }
 
 .chat-message:hover {
-  background-color: ivory;
+  background-color: #e8ffe8;
   .message-side-timestamp {
     visibility: visible;
   }
@@ -48,7 +48,7 @@
 }
 
 .sidebar {
-  background-color: ivory;
+  background-color: $shadow-blue;
   color: black;
   text-align: left;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -56,7 +56,7 @@
 }
 
 .chat-header {
-  background-color: ivory;
+  background-color: $shadow-blue;
   height: 132px;
 }
 

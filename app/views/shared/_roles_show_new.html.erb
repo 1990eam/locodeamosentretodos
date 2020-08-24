@@ -23,7 +23,7 @@
           <div class="skill-level d-flex">
             <% role.requirements.each do |requirement| %>
               <div class="d-flex flex-wrap m-0">
-                <p class=" text-left mr-2 mb-0" data-toggle="tooltip" title="<%= requirement.technology.name %> <%= requirement.level.name.capitalize %>">
+                <p class=" text-left mr-2 mb-0" data-toggle="tooltip" title="<%= requirement.technology.name %> - <%= requirement.level.name.capitalize %>">
                   <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
                 </p>
               </div>

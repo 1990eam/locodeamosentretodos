@@ -1,24 +1,13 @@
 .card-request {
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 800px;
+  width: 100%;
   margin-top: 1.5em;
 
   a {
     text-decoration: none;
     color: white
   }
-
-  .btn-explorar {
-    background-color: #07889b;
-    color: white;
-  }
-
-  .btn-explorar:hover {
-    background-color: #09aac2;
-    border-color: white;
-  }
-
 }
 
 

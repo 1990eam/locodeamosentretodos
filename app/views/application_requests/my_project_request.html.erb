@@ -1,61 +1,9 @@
 <div class="container my-2">
-  <h1>Mis solicitudes</h1>
-
+  <h2>Mis solicitudes</h2>
     <% @projects.each do |project| %>
-      <% project.application_requests.each do |application| %>
-
-      <div class="card-request">
-        <div class="d-flex px-3 pt-3 pb-1">
-          <div>
-           <img src=<%= cl_image_path application.role.project.photo.key, alt: "alttext",  width: 70, height:70, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %> >
-          </div>
-         <div class="flex-grow-1 ml-3">
-            <h3 class="ml-2"> <%= project.name %> </h3>
-            <p class="ml-2 text-muted"> <%= project.description %> </p>
-         </div>
-        </div>
-
-        <div class="d-flex m-2 justify-content-between">
-          <div class="mx-2 w-50">
-            <h5> Rol: <%= application.role.name  %></h5>
-            <p class="text-muted"> Description: <%= application.role.description %> </p>
-            <div class="d-flex flex-wrap">
-              <% application.role.requirements.each do |requirement|%>
-                <div>
-                  <p class="mr-2 mb-1">
-                    <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
-                    <%= requirement.technology.name %>
-                  </p>
-                  <p> <%= requirement.level.name.capitalize %></p>
-                </div>
-              <% end %>
-            </div>
-
-            <%= render "application_requests/my_project_request_case", application: application %>
-
-          </div>
-
-          <div class="ml-3 w-50">
-            <h5>Información del solicitante</h5>
-            <div class="d-flex">
-              <div>
-                <%= cl_image_tag application.user.photo.key, class: "avatar-small mr-2"%>
-              </div>
-              <p class="ml-2 mt-1"> <strong>Nombre:</strong>  <%= application.user.first_name %></p>
-            </div>
-            <p> Acerca del candidato: <%= application.about_me %></p>
-            <div>
-                <button type="button" class="btn btn-primary btn-explorar" data-toggle="modal" data-target="#staticBackdrop_<%= application.id  %>">
-                  Explora la propuesta del candidato
-                </button>
-                <%= render "application_requests/modal_file", application: application %>
-                <% if application.status == "pending" || application.status == "pending response from applicant" %>
-                  <%= link_to "Contacta al solicitante", application_request_chatroom_path(application.id) %>
-                <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
+      <h3 class="ml-2">Candidatos a <%= project.name %> </h3>
+        <% project.application_requests.each do |application| %>
+            <%= render "application_requests/application_request_partial", application: application %>
+        <% end %>
   <% end %>
 </div>

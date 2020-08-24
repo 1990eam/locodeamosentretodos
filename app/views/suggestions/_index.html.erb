@@ -1,9 +1,9 @@
-<div class="suggestions-wrapper">
+<div class="suggestions-wrapper m-3">
   <% @project.suggestions.each do |suggestion| %>
 
   <div class="suggestion-card" data-target="<%= suggestion.id %>">
     <p class="feature-title">Feature</p>
-    <p class="suggestion-collaborator">Suggested by:</p>
+    <p class="suggestion-collaborator">Sugerido por:</p>
     <div class="suggestion-collaborator">
       <% if suggestion.collaborator.user.photo.attached? %>
       <%= cl_image_tag suggestion.collaborator.user.photo.key, data: { toggle: 'tooltip' }, class: "suggestion-collaborator avatar dropdown-toggle", title: "#{suggestion.collaborator.user.first_name} / #{suggestion.collaborator.role.name}" %>
@@ -17,7 +17,7 @@
       <% if suggestion.average_rating.to_i == 0 %>
       <p style="font-size: 0.8rem;" class="text-muted text-center">Nadie ha votado todavía</p>
       <% else %>
-        <p class="suggestion-collaborator">Aceptaciòn de los colaboradores</p>
+        <p class="suggestion-collaborator">Aceptación de los colaboradores</p>
         <p>
           <% suggestion.average_rating.to_i.times do  %>
           <span class="fas fa-star" style="color: #e5c212;"></span>
@@ -30,7 +30,7 @@
     <!-- logica para no permitir votar màs de una vez -->
     <% if suggestion.user_vote(current_user) %>
     <div class="user-vote">
-      <p class="suggestion-collaborator">Tu voto </p>
+      <p class="suggestion-collaborator">Tu voto</p>
       <p>
         <% suggestion.user_vote(current_user).to_i.times do  %>
         <span class="fas fa-star" style="color: #ede0a3;"></span>
@@ -55,11 +55,9 @@
 
   <div class="new-suggestion-card">
     <p class="feature-title">Nueva Feature</p>
-    <p style="font-weight: bolder;">Explica brevemente la feature a implementar:</p>
-
     <%= simple_form_for [ @project, @suggestion ], remote: true do |f| %>
-    <%= f.input :description %>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
+    <%= f.input :description, label: "Explica brevemente la idea a implementar:" %>
+    <%= f.submit "Enviar", class: "btn btn-primary" %>
     <% end %>
 
 

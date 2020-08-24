@@ -51,7 +51,7 @@
                     <% if role.application_requests.any? { |application| application.user != current_user } %>
                       <button class="btn btn-apply btn-primary"> <i class="fas fa-plus-circle primary "></i>Aplicar</button>
                     <% else %>
-                      <div class="text-muted position-absolute mb-3 fixed-bottom">Ya aplicaste a este proyecto!</div>
+                      <div class="text-muted position-absolute mb-3 fixed-bottom">¡Ya aplicaste a este rol!</div>
                     <% end %>
                   </div>
                 </div>

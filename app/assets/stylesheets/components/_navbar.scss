@@ -3,8 +3,13 @@
   background-color: $indigo-blue;
 }
 
-.nav-link {
+.navbar-light .navbar-nav .nav-link {
   color: $mint-cream !important;
+  transition: ease 0.5s;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  opacity: 0.7;
 }
 
 .navbar-lewagon .navbar-collapse {

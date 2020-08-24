@@ -1,44 +1,6 @@
 <div class="container">
-  <h2 class="text-left mt-3"> Mis solicitudes</h2>
-
-    <% @project.application_requests.each do |application| %>
- <div class="card-request ">
-    <div class="d-flex m-2 justify-content-between">
-      <div class="mx-2 w-50">
-        <h5 class="mt-3"> Rol: <%= application.role.name  %></h5>
-        <p class="text-muted mb-0"> <%= application.role.description %> </p>
-        <div class="d-flex flex-wrap">
-          <% application.role.requirements.each do |requirement|%>
-          <div>
-            <p class="mr-2 mb-1">
-                <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
-                <%= requirement.technology.name %>
-              </p>
-              <p> <%= requirement.level.name.capitalize %></p>
-          </div>
-          <% end %>
-        </div>
-        <%= render "application_requests/my_project_request_case", application: application %>
-      </div>
-      <div class="ml-3 w-50">
-        <h5 class="mt-3"> Información del solicitante</h5>
-        <div class="d-flex">
-          <div>
-            <%= cl_image_tag application.user.photo.key, class: "avatar-small mr-2"%>
-          </div>
-          <p class="ml-2 mt-1"> Name: <%= application.user.first_name %></p>
-        </div>
-        <p> About me: <%= application.about_me %></p>
-        <div>
-          <button type="button" class="btn btn-explorar" data-toggle="modal" data-target="#staticBackdrop_<%= application.id  %>">
-            Explora la propuesta del candidato
-          </button>
-          <%= render "application_requests/modal_file", application: application %>
-        </div>
-      </div>
-    </div>
-
-  </div>
-<% end %>
+  <% @project.application_requests.each do |application| %>
+    <%= render "application_requests/application_request_partial", application: application %>
+  <% end %>
 </div>
 

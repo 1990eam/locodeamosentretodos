@@ -14,23 +14,46 @@ $red-salsa: #EA5455;
 $forest-green: #57A773;
 $mint-cream: #F7FFF7;
 $shadow-blue: #7A93AC;
+$honey-yellow: #FBAF00;
 
 .forest-green {
   color: $forest-green;
+}
+.forest-green-bg {
+  background-color: $forest-green;
 }
 
 .red-salsa {
   color: $red-salsa;
 }
+.red-salsa-bg {
+  background-color: $red-salsa;
+}
 
 .indigo-blue {
   color :$indigo-blue;
+}
+.indigo-blue-bg {
+  background-color: $indigo-blue;
 }
 
 .shadow-blue {
   color: $shadow-blue;
 }
+.shadow-blue-bg {
+  background-color: $shadow-blue;
+}
 
 .mint-cream {
   color: $mint-cream;
+}
+.mint-cream-bg {
+  background-color: $mint-cream;
+}
+
+.honey-yellow {
+  color: $honey-yellow;
+}
+.honey-yellow-bg {
+  background-color: $honey-yellow;
 }
