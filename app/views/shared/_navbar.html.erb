@@ -38,6 +38,9 @@
         <li class="nav-item">
           <%= link_to "Mis Aplicaciones", application_requests_path, class: "nav-link" %>
         </li>
+        <li>
+          <%= link_to "Nuevo Proyecto", new_project_path, class: "nav-link" %>
+        </li>
         <li class="btn p-0 nav-item dropdown ml-2">
            <% if current_user.photo.attached? %>
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
