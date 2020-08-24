@@ -16,7 +16,7 @@ class RolesController < ApplicationController
     authorize @role
 
 
-
+    # los skills de un rol no son propios del role sino que estan asociados a un requirement
     if @role.save
       @requirement = Requirement.new(requirement_params)
       authorize @requirement

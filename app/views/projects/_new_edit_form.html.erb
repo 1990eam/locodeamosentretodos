@@ -1,6 +1,7 @@
 <div class="container mt-4">
   <div class=>
     <div class="form-group">
+      <!-- project -->
       <%= simple_form_for(@project, remote: true) do |f| %>
       <%= f.error_notification %>
       <%= f.input :name, label: "Nombre", placeholder: "Nombre del Proyecto" %>
@@ -8,10 +9,17 @@
       <%= f.input :link_1, as: :text, placeholder: "Agrega links a tu proyecto! (GitHub, LinkedIn, website...)" %>
       <%= f.input :link_2, as: :text, placeholder: "Agrega links a tu proyecto! (GitHub, LinkedIn, website...)" %>
       <%= f.input :photo, as: :file, label: "Adjunta un logo" %>
+      <!-- role -->
       <%= simple_fields_for @role do |r| %>
-        <%= r.label "Crea tu rol dentro del proyecto" %>
-        <%= r.input :name, placeholder: "Nombre de tu rol", label: "Nombre del rol" %>
-        <%= r.input :description, placeholder: "Descripción de tu rol", label: "Descripción" %>
+      <%= r.label "Crea tu rol dentro del proyecto" %>
+      <%= r.input :name, placeholder: "Nombre de tu rol", label: "Nombre del rol" %>
+      <%= r.input :description, placeholder: "Descripción de tu rol", label: "Descripción" %>
+
+      <!-- requirement -->
+      <%= simple_fields_for :requirement do |ff| %>
+      <%= ff.input :technology_id, collection: Technology.all, label:false, prompt: "Tecnología" %>
+      <%= ff.input :level_id, collection: Level.all, label:false, prompt: "Nivel" %>
+      <% end %>
       <% end %>
       <%= f.button :submit, "Aceptar", class: "btn-primary" %>
       <%= f.button :button, "Cancelar", type: "reset", class: "btn btn-danger" %>
