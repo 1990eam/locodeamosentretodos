@@ -1,5 +1,4 @@
-<div class="container">
-  <h2>Project Roles</h2>
+<div class="container mt-3">
   <div class="card-wrapper">
 
     <% @project.roles.each do |role| %>
@@ -39,7 +38,7 @@
 
       <div id="new-role-form" class="card clickable-card">
         <div class="card-body text-center">
-          <h5 class="card-title">New role</h5>
+          <h5 class="card-title">Nuevo rol</h5>
           <div class="container">
 
             <%= simple_form_for([ @project, @role ], remote: true) do |f| %>
@@ -50,7 +49,7 @@
 
               <%= f.input :name, label:false, placeholder: "Nombre del rol" %>
               <%= f.input :description, label:false, placeholder: "Descripción" %>
-              <%= f.submit "Add role", class: "btn btn-primary" %>
+              <%= f.submit "Agregar rol", class: "btn btn-primary" %>
             <% end %>
 
           </div>
