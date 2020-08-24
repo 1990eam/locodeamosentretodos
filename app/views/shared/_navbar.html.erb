@@ -3,17 +3,19 @@
   <% if user_signed_in? %>
     <%= link_to projects_path, class: "navbar-brand" do %>
       <%= image_tag "logo.png" %>
+      TeamAppsis
     <% end %>
   <% else %>
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo.png" %>
+      TeamAppsis
     <% end %>
   <% end %>
       <%= form_tag projects_path, method: :get, class: "d-none d-sm-flex flex-nowrap mt-3" do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control mb-3 navbar-search",
-          placeholder: "Search..."%>
+          placeholder: "Busca proyectos!"%>
         <%= button_tag type: 'submit', class: "search-button" do %>
           <i class="fas fa-search"></i>
         <% end %>
@@ -28,7 +30,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li>
-          <%= link_to "Mis Proyetos", my_projects_path, class: "nav-link" %>
+          <%= link_to "Mis Proyectos", my_projects_path, class: "nav-link" %>
         </li>
         <li>
           <%= link_to "Mis Solicitudes", my_project_request_path, class: "nav-link" %>
@@ -43,22 +45,22 @@
             <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "My Skills", user_skills_path(current_user), class: "dropdown-item text-muted" %>
-            <%= link_to "Edit my profile", edit_user_registration_path, class: "dropdown-item text-muted" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item text-muted" %>
+            <%= link_to "Mis skills", user_skills_path(current_user), class: "dropdown-item text-muted" %>
+            <%= link_to "Editar perfil", edit_user_registration_path, class: "dropdown-item text-muted" %>
+            <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item text-muted" %>
           </div>
         </li>
-        <div class="navbar-text ml-2">
+        <div class="nav-link ml-2">
           <% if current_user.first_name.nil? %>
-            Hello <%= current_user.email.split('@').first.capitalize %>
+            Hola <%= current_user.email.split('@').first.capitalize %>
           <% else  %>
-            Hello <%= current_user.first_name %>
+            Hola <%= current_user.first_name %>
           <% end %>
         </div>
       <% else %>
         <li class="nav-item d-flex">
-          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link"  %>
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Crear cuenta", new_user_registration_path, class: "nav-link"  %>
+          <%= link_to "Iniciar sesión", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>

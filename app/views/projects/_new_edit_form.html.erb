@@ -1,19 +1,21 @@
-<div class="container mt-5">
-  <div class="form-group">
-    <%= simple_form_for(@project, remote: true) do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :name, placeholder: "Nombre del Proyecto" %>
-    <%= f.input :description, as: :text, placeholder: "Describe tu proyecto" %>
-    <%= f.input :link_1, as: :text, placeholder: "Agrega links a tu proyecto! (GitHub, LinkedIn, website...)" %>
-    <%= f.input :link_2, as: :text, placeholder: "Agrega links a tu proyecto! (GitHub, LinkedIn, website...)" %>
-    <%= f.input :photo, as: :file %>
-    <%= simple_fields_for @role do |r| %>
-      <%= r.label "Crea tu rol dentro del proyecto" %>
-      <%= r.input :name, placeholder: "Nombre de tu rol" %>
-      <%= r.input :description, placeholder: "Descripción de tu rol" %>
-    <% end %>
-    <%= f.button :submit, "Aceptar", class: "btn-primary" %>
-    <%= f.button :button, "Cancelar", type: "reset", class: "btn btn-danger" %>
-    <% end %>
+<div class="container mt-4">
+  <div class=>
+    <div class="form-group">
+      <%= simple_form_for(@project, remote: true) do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :name, label: "Nombre", placeholder: "Nombre del Proyecto" %>
+      <%= f.input :description, as: :text, placeholder: "Describe tu proyecto", label: "Descripción" %>
+      <%= f.input :link_1, as: :text, placeholder: "Agrega links a tu proyecto! (GitHub, LinkedIn, website...)" %>
+      <%= f.input :link_2, as: :text, placeholder: "Agrega links a tu proyecto! (GitHub, LinkedIn, website...)" %>
+      <%= f.input :photo, as: :file, label: "Adjunta un logo" %>
+      <%= simple_fields_for @role do |r| %>
+        <%= r.label "Crea tu rol dentro del proyecto" %>
+        <%= r.input :name, placeholder: "Nombre de tu rol", label: "Nombre del rol" %>
+        <%= r.input :description, placeholder: "Descripción de tu rol", label: "Descripción" %>
+      <% end %>
+      <%= f.button :submit, "Aceptar", class: "btn-primary" %>
+      <%= f.button :button, "Cancelar", type: "reset", class: "btn btn-danger" %>
+      <% end %>
+    </div>
   </div>
 </div>

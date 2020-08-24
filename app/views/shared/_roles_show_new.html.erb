@@ -14,11 +14,11 @@
             <% else %>
               <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
             <% end %>
-            <p class="role.status" style="color: red;">This position is taken</p>
+            <p class="role.status" style="color: red;">Esta posición está ocupada</p>
             <%= link_to "Delete collaborator", collaborator_path(role.active_collaborator), method: :delete, data: { confirm: 'Estas seguro de eliminar a este colaborador?' } %>
             <!-- si esta vacante -->
           <% else %>
-            <p class="role.status mb-2" style="color: green;">This position is open</p>
+            <p class="role.status mb-2" style="color: $forest-green;">Esta posición está vacante</p>
           <% end %>
           <div class="skill-level d-flex">
             <% role.requirements.each do |requirement| %>

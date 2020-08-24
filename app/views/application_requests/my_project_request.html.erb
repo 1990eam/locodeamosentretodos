@@ -1,5 +1,5 @@
 <div class="container my-2">
-  <h1> Mis solicitudes</h1>
+  <h1>Mis solicitudes</h1>
 
     <% @projects.each do |project| %>
       <% project.application_requests.each do |application| %>
@@ -36,7 +36,7 @@
           </div>
 
           <div class="ml-3 w-50">
-            <h5> Información del solicitante </h5>
+            <h5>Información del solicitante</h5>
             <div class="d-flex">
               <div>
                 <%= cl_image_tag application.user.photo.key, class: "avatar-small mr-2"%>

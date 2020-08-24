@@ -1,4 +1,4 @@
-<div class='container'>
+<div class='container mb-3'>
   <div class="row d-flex justify-content-center">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <div class="form-login">
@@ -11,19 +11,21 @@
           <%= f.input :first_name,
           required: true,
           autofocus: true,
-          input_html: { autocomplete: "First Name" }%>
+          input_html: { autocomplete: "Nombre" },
+          label: "Nombre"%>
           <%= f.input :last_name,
           required: true,
           autofocus: true,
-          input_html: { autocomplete: "Last Name" }%>
+          input_html: { autocomplete: "Apellido" },
+          label: "Apellido"%>
           <%= f.input :email,
           required: true,
           autofocus: true,
-          input_html: { autocomplete: "email" }%>
-          <%= f.input :photo, as: :file %>
+          input_html: { autocomplete: "Email" }%>
+          <%= f.input :photo, as: :file, label: "Sube una foto de perfil" %>
           <%= f.input :password,
           required: true,
-          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+          hint: ("#{@minimum_password_length} caracteres como mínimo" if @minimum_password_length),
           input_html: { autocomplete: "new-password" } %>
           <%= f.input :password_confirmation,
           required: true,
@@ -33,7 +35,6 @@
         <div class="form-actions">
           <%= f.button :submit, "Registrarse", class: "btn btn-primary" %>
         </div>
-        <%= render "devise/shared/links" %>
         <% end %>
       </div>
     </div>
