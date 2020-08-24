@@ -29,6 +29,15 @@
           <% end %>
           </div>
       </div>
+      <div class="links">
+        <% if @project.link_1 %>
+          <h5>Links y archivos</h5>
+          <p><a href="<%= @project.link_1 %>"><%= sanitize pick_url_icon(@project.link_1) %> <%= @project.link_1 %></a></p>
+        <% end %>
+        <% if @project.link_2 %>
+          <p><a href="<%= @project.link_2 %>"><%= sanitize pick_url_icon(@project.link_2) %> <%= @project.link_2 %></a></p>
+        <% end %>
+      </div>
     </div>
   </div>
     <div class="tabs-container" >
