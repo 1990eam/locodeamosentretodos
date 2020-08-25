@@ -20,31 +20,25 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card {
+.clickable_card {
   display: flex;
   height: 350px;
   width: 250px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
    * { cursor:pointer; }
-
-.btn-apply {
-  background-color: #07889b;
-  color: white;
-  border-radius: 12px;
-  padding-left: 21px;
-  padding-right: 21px;
-  position: absolute;
-  bottom: 10px;
-  right: 70px;
-}
 }
 
-.card:hover {
+.clickable_card:hover {
   background-color: #eeeeee;
   transform: translateY(-5px);
   box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
   text-decoration: none;
+}
+
+.form-apply {
+  background: linear-gradient( #2D4059,  #3d5879);
+  border-radius: 8px;
 }
 
 .application-card {
