@@ -9,6 +9,19 @@ class RolesController < ApplicationController
     authorize @project
   end
 
+  def edit
+    # @project = params[:project_id] por que no va esto? no lo necesita el form?
+    # por que usa la ruta de role que no esta nesteada?
+    @role = Role.find(params[:id])
+    authorize @role
+  end
+
+  def update
+    @role = Role.find(params[:id])
+    @role.update(role_params)
+    authorize @role
+  end
+
   def create
     @project = Project.find(params[:project_id])
     @role = Role.new(role_params)
@@ -16,7 +29,7 @@ class RolesController < ApplicationController
     authorize @role
 
 
-
+    # los skills de un rol no son propios del role sino que estan asociados a un requirement
     if @role.save
       @requirement = Requirement.new(requirement_params)
       authorize @requirement
@@ -31,8 +44,11 @@ class RolesController < ApplicationController
   end
 
   def destroy
+    @role = Role.find(params[:id])
+    authorize @role
+    @project = @role.project
     @role.destroy
-    redirect_to projects_path
+    redirect_to project_path(@project, tab: "roles")
   end
 
   private

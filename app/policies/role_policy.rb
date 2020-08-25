@@ -12,4 +12,16 @@ class RolePolicy < ApplicationPolicy
   def create?
     new?
   end
+
+  def edit?
+    record.project.user == user
+  end
+
+  def update?
+    edit?
+  end
+
+  def destroy?
+    edit?
+  end
 end
