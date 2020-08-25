@@ -6,8 +6,8 @@
     <div class="suggestion-card" data-target="<%= suggestion.id %>">
       <p class="feature-title">Feature</p>
       <p class="suggestion-collaborator">Sugerido por:</p>
-      <!-- <%= suggestion.collaborator.user == @project.user ? "avatar-bordered mx-2" : "" %> -->
-      <div class="suggestion-collaborator">
+
+      <div class="suggestion-collaborator <%= suggestion.collaborator.user == @project.user ? "avatar-bordered mx-auto" : "" %>">
         <% if suggestion.collaborator.user.photo.attached? %>
         <%= cl_image_tag suggestion.collaborator.user.photo.key, data: { toggle: 'tooltip' }, class: "suggestion-collaborator avatar dropdown-toggle", title: "#{suggestion.collaborator.user.first_name} / #{suggestion.collaborator.role.name}" %>
         <% else %>
