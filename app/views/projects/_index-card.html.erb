@@ -62,7 +62,7 @@
       </div>
 
       <div class="mt-2">
-        <h3>Contributors <span class="badge badge-pill badge-light"><%= project.collaborators.count { |x| x.status = "active" } %></span></h3>
+        <h3>Colaboradores <span class="badge badge-pill badge-light"><%= project.collaborators.count { |x| x.status = "active" } %></span></h3>
           <% project.collaborators.each do |collaborator| %>
             <%= cl_image_tag collaborator.user.photo.key, class: "avatar-small mr-2", data: { toggle: 'tooltip' }, title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
           <% end %>

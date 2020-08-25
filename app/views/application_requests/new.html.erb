@@ -31,8 +31,8 @@
           </div>
         </div>
 
-        <div>
-         <div class="card-roles">
+        <div  class="container form-apply mb-3">
+         <div class="card-roles mt-3">
             <% @project.roles.each do |role| %>
               <% if role.open? %>
                 <div class="card clickable-card" data-target="<%= role.id %>" data-delete="<%= role.id %>">
@@ -49,7 +49,7 @@
                       <% end %>
                     <p class="card-text mt-4"><%= role.description %></p>
                     <% if role.application_requests.any? { |application| application.user != current_user } %>
-                      <button class="btn btn-apply btn-primary"> <i class="fas fa-plus-circle primary "></i>Aplicar</button>
+                      <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i>Aplicar</button>
                     <% else %>
                       <div class="text-muted position-absolute mb-3 fixed-bottom">¡Ya aplicaste a este rol!</div>
                     <% end %>
@@ -58,17 +58,23 @@
               <% end %>
               <% end %>
           </div>
-          <%= simple_form_for [@project, @application] do |f| %>
-            <div class='file-container mt-2 ml-2'>
+
+            <%= simple_form_for [@project, @application] do |f| %>
+            <input type="" hidden="true" name='role_id' value="role" class="role_field">
+            <div class='file-container text-light mt-4 '>
               <h5>Subir archivos de propuesta</h5>
               <%= f.input :file, label: "Adjuntar archivo pdf", as: :file %>
             </div>
-            <div class="input mb-4 text-left">
-              <input type="" hidden="true" name='role_id' value="role" class="role_field">
-                <%= f.input :about_me %>
+            <div class="text-light mb-4 text-left">
+              <div class=" text-left">
+                <%= f.input :about_me, placeholder: "Escribe una descripción sobre ti mismo" %>
                 <%= f.submit class: "btn btn-primary"%>
+            </div>
               </div>
+
           <% end %>
+
+
         </div>
       </div>
   </div>
