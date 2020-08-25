@@ -70,7 +70,7 @@
     </div>
     <div>
       <%= simple_form_for [ @chatroom, @message ], remote: true, html: { class: "d-flex ml-3 my-3 chatroom-form" } do |f| %>
-        <%= f.input :content, label: false, placeholder: "Envia un mensaje...", wrapper_html: { class: 'w-100 mb-0' }, class: "form-control w-100 mb-0 chatroom.input" %>
+        <%= f.input :content, label: false, placeholder: "Envia un mensaje...", wrapper_html: { class: 'w-100 mb-0 chatroom-input' }, class: "form-control w-100 mb-0" %>
         <button type="submit" class="btn btn-primary mx-2 px-3">
           <i class="far fa-paper-plane"></i>
         </button>
