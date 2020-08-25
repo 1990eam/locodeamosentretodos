@@ -25,6 +25,8 @@ class ProjectsController < ApplicationController
       @projects = Project.with_open_positions
     elsif params[:skill_match]
       @projects = Project.that_match_my_skills(current_user)
+    elsif params[:single_skill_match]
+      @projects = Project.that_match_single_skill(params[:skill_name])
     end
 
   end

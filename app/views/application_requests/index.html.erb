@@ -1,5 +1,5 @@
-<div class="container px-0 my-3">
-    <h1 class="mb-5">Proyectos a los que aplicaste</h1>
+<div class="container my-2">
+    <h2>Proyectos a los que aplicaste</h1>
 
     <% @applications.each do |application| %>
     <div class="row justify-content-around">
@@ -47,7 +47,7 @@
                 <a class="project-link" href="http://www.<%= application.project.link_1 %>">
                 <p class="project-link text-center text-warning flex-grow-0 align-items-center m-0 w-100 mx-auto rounded text-white py-1 px-3 mt-2">Link del proyecto</p>
                 </a>
-                <% if application.status == "pending" || application.status == "pending response from applicant" %>
+                <% if application.status == "pending" || application.status == "pending response from applicant" || application.status == "accepted" %>
                   <%= link_to "Contacta al project owner", application_request_chatroom_path(application.id) %>
                 <% end %>
                 </div>

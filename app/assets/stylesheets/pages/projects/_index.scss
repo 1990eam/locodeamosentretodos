@@ -1,44 +1,101 @@
 .my-feed {
-  background-color: #E6E6E6;
+  background-color: white;
   border-radius: 5px;
   height: fit-content;
   position: sticky;
-  top: 12vh;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  top: 52vh;
   padding: 0;
   z-index: 1;
-  grid-column: 1;
   text-align: center;
+}
+
+.logo-concat {
+  grid-column: 2;
+  grid-row: 1;
+  height: 100px;
+}
+
+.my-profile {
+  background-color: white;
+  border-radius: 5px;
+  height: fit-content;
+  position: sticky;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  top: 4vh;
+  z-index: 1;
+  text-align: center;
+}
+
+.floating-sidebar {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 2;
+  grid-row-end: end;
+  bottom: 108px;
+  position: relative;
 }
 
 .index-projects {
   grid-column: 2;
 }
 
+.my-feed-header {
+ height: 40px;
+ color: $mint-cream;
+}
 
 .grid-index-container {
   display: grid;
   grid-gap: 16px;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 3fr;
+}
+
+.index-logo {
+  width: 110px;
+}
+
+.logo-text {
+  font-family: $logo-font !important;
+  font-size: 48px;
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
-  .my-feed {
+  .floating-sidebar {
     display: none;
   }
   .grid-index-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  .index-project-card {
+    grid-row-start: 2;
   }
   .index-projects {
-    grid-column: 1;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .logo-concat {
+    display: none !important;
   }
 }
 
 @media (min-width: 576px) and (max-width: 768px) {
-  .my-feed {
+  .floating-sidebar {
     display: none;
   }
   .grid-index-container {
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  .index-project-card {
+    grid-row-start: 2;
+  }
+  .index-projects {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  .logo-concat {
+    display: none !important;
   }
 }
 

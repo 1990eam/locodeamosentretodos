@@ -8,6 +8,7 @@ puts "Creating Users..."
 pablo = User.create!(first_name: "Pablo",
                     last_name: "Andrizzi",
                     email: "test@test.com",
+                    description: "Analista de Procurement/Automation. Buscando expandir conocimientos y experiencia para poder desenvolverme como developer freelance en el exterior.",
                     password:"test1234", admin: true)
 pablo.photo.attach(io:URI.open("https://avatars1.githubusercontent.com/u/61561129?s=460&u=6e2ed6bcc6469699e7f7952b0c38cdd5a9373699&v=4"),
                   filename: "#{pablo.first_name}.png",
@@ -16,6 +17,7 @@ pablo.photo.attach(io:URI.open("https://avatars1.githubusercontent.com/u/6156112
 amy = User.create!(first_name: "Amy",
                     last_name: "Camacho",
                     email: "test2@test.com",
+                    description: "Psicóloga Clinica, Maestria en Psico-oncología. Con mucho interés en el mundo de la tecnología y muchas ganas de aprender.",
                     password:"test1234")
 amy.photo.attach(io:URI.open("https://avatars1.githubusercontent.com/u/61168741?s=460&u=ed128ee2185429d93df7b91cbd30b2aea0c61947&v=4"),
                   filename: "#{amy.first_name}.png",
@@ -24,6 +26,7 @@ amy.photo.attach(io:URI.open("https://avatars1.githubusercontent.com/u/61168741?
 tomas = User.create!(first_name: "Tomas",
                     last_name: "Hergott",
                     email: "test3@test.com",
+                    description: "I'm passionate about technology, education and business!",
                     password:"test1234")
 tomas.photo.attach(io: File.open("app/assets/images/foto-tomy.jpg"),
                   filename: "#{tomas.first_name}.jpeg",
@@ -32,6 +35,7 @@ tomas.photo.attach(io: File.open("app/assets/images/foto-tomy.jpg"),
 elian = User.create!(first_name: "Elián",
                     last_name: "Magni",
                     email: "test4@test.com",
+                    description: "Buenos Aires, Argentina | Ingeniería UNTREF | LeWagon Batch #384 | Estudiante de Ingeniería, intentando cambiar de trabajo y enfrentar nuevos desafíos.",
                     password:"test1234")
 elian.photo.attach(io:URI.open("https://avatars2.githubusercontent.com/u/46629749?s=460&u=23951b92127ebdc8cdac564a824ca0f262a85645&v=4"),
                   filename: "#{elian.first_name}.png",
@@ -40,6 +44,7 @@ elian.photo.attach(io:URI.open("https://avatars2.githubusercontent.com/u/4662974
 nadia = User.create!(first_name: "Nadia",
                     last_name: "Salmen",
                     email: "test5@test.com",
+                    description: "Industrial engineer experienced in supply chain, logistics and business planning.",
                     password:"test1234")
 nadia.photo.attach(io:URI.open("https://avatars1.githubusercontent.com/u/60677572?s=400&u=340d262a796f1ebb274beedb339b3d1e05bd28ee&v=4"),
                   filename: "#{nadia.first_name}.png",
@@ -48,6 +53,7 @@ nadia.photo.attach(io:URI.open("https://avatars1.githubusercontent.com/u/6067757
 armando = User.create!(first_name: "Armando",
                     last_name: "Terán",
                     email: "test6@test.com",
+                    description: "I am an English teacher and would like to take my lessons to the next level. I would like to give foreign language students tools to motivate them and guide them through their learning journey.",
                     password:"test1234")
 armando.photo.attach(io:URI.open("https://avatars2.githubusercontent.com/u/61909748?s=460&u=b04a687a319bd95e2a847db72904de04bab75c10&v=4"),
                   filename: "#{armando.first_name}.png",
@@ -56,6 +62,7 @@ armando.photo.attach(io:URI.open("https://avatars2.githubusercontent.com/u/61909
 juanpablo = User.create!(first_name: "Juan Pablo",
                     last_name: "Castiglioni",
                     email: "test7@test.com",
+                    description: "Working in engineering, and wanting to improve and expand my programming capabilities, to use in my current work and to expand my career options.",
                     password:"test1234")
 juanpablo.photo.attach(io:URI.open("https://avatars0.githubusercontent.com/u/31377374?s=400&u=137efe0bc4787436000d81dc2272ec5c9f761daf&v=4"),
                   filename: "#{juanpablo.first_name}.png",
@@ -64,6 +71,7 @@ juanpablo.photo.attach(io:URI.open("https://avatars0.githubusercontent.com/u/313
 mauricio = User.create!(first_name: "Mauricio",
                     last_name: "Mas",
                     email: "test8@test.com",
+                    description: "Ingeniero químico apasionado por la tecnología. Experiencia en procesos productivos y mejora continua. Actualmente desarrollando actividades en la industria de manufactura con deseo de hacer un cambio de carrera hacia lo tecnológico.",
                     password:"test1234")
 mauricio.photo.attach(io:URI.open("https://avatars0.githubusercontent.com/u/57006186?s=400&u=42a27c233467761a58f34f4c5646c855cc98be96&v=4"),
                   filename: "#{mauricio.first_name}.jpg",
@@ -72,6 +80,7 @@ mauricio.photo.attach(io:URI.open("https://avatars0.githubusercontent.com/u/5700
 ernesto = User.create!(first_name: "Ernesto",
                     last_name: "Alvarado",
                     email: "test9@test.com",
+                    description: "Soy Ingeniero Electromecánico con ganas de aprender a codificar para mejorar mi perfil profesional y combinar la ingeniería con la programación.",
                     password:"test1234")
 ernesto.photo.attach(io:URI.open("https://avatars1.githubusercontent.com/u/59773487?s=460&u=960111d7bdda6a2cbb104246cb0ea6f83cbe0b76&v=4"),
                   filename: "#{ernesto.first_name}.png",
@@ -80,6 +89,7 @@ ernesto.photo.attach(io:URI.open("https://avatars1.githubusercontent.com/u/59773
 juan = User.create!(first_name: "Juan",
                     last_name: "Ceschin",
                     email: "test10@test.com",
+                    description: "Industrial Engineer with more than 2 years of experience in Management Consulting. Gaining technical skills in order to build products that improve people´s life.",
                     password:"test1234")
 juan.photo.attach(io:URI.open("https://avatars3.githubusercontent.com/u/61086902?s=400&u=bb015c5b7472efccee958e9e65900bd64e61a945&v=4"),
                   filename: "#{juan.first_name}.png",

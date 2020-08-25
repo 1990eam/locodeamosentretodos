@@ -1,0 +1,37 @@
+<% array = [] %>
+<% project.application_requests.select { |application| application.status == "accepted" }.each do |application| %>
+  <% array << application %>
+<% end %>
+<% project.suggestions.each do |suggestion| %>
+  <% array << suggestion %>
+<% end %>
+
+<div class="px-3">
+  <% array.sort { |a, b| a.created_at <=> b.created_at }.each do |element| %>
+    <% if element.class == ApplicationRequest %>
+      <div class="d-flex justify-content-between align-items-center p-3 mt-3 border rounded shadow-blue-bg">
+        <div>
+          <div class="d-flex align-items-center position-relative">
+            <%= cl_image_tag element.user.photo.key, class: "avatar mr-3" %>
+            <i class="fas fa-user-check position-absolute new-collaborator-icon d-flex justify-content-center align-items-center"></i>
+            <div>
+              <small class="mint-cream"><%= l(element.created_at.getlocal, format: :long) %></small>
+              <p class="mb-1"><strong><%= element.user.first_name %></strong> se unió como <%= element.role.name %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="d-flex justify-content-between align-items-center p-3 mt-3 border rounded shadow-blue-bg">
+        <div class="d-flex align-items-center position-relative">
+          <%= cl_image_tag element.collaborator.user.photo.key, class: "avatar mr-3" %>
+          <i class="fas fa-lightbulb position-absolute new-suggestion-icon d-flex justify-content-center align-items-center"></i>
+          <div>
+            <small class="mint-cream"><%= l(element.created_at.getlocal, format: :long) %></small>
+            <p class="mb-1"><strong><%= element.collaborator.user.first_name %></strong> hizo una sugerencia: <%= element.description %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
