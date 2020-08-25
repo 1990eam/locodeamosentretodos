@@ -9,7 +9,6 @@
   margin-top: 16px;
   h2 {
     font-size: 1.5rem;
-    width: 15ch;
   }
   h3 {
     font-size: 0.9rem;
@@ -60,6 +59,9 @@
     p {
       font-size: 0.7rem;
     }
+    h2 {
+      width: 12ch;
+    }
   }
 }
 
@@ -83,6 +85,9 @@
   .index-project-card {
     p {
       font-size: 0.8rem;
+    }
+    h2 {
+      width: 21ch;
     }
   }
 }

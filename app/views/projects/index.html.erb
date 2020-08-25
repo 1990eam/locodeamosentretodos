@@ -1,10 +1,18 @@
 <%= render "shared/add_skill_modal" %>
+
+
 <div class="container mt-3">
   <div class="grid-index-container mt-3">
-    <div class="my-feed p-3">
-      <h6 style="text-align: center;">Filtrar proyectos</h6>
-      <p><%= link_to "Con posiciones abiertas", projects_path(:with_open_roles => "true"), class:"btn btn-primary" %></p>
-      <p><%= link_to "Que coinciden con mis skills", projects_path(:skill_match => "true"), class:"btn btn-primary" %></p>
+    <div class="floating-sidebar">
+      <%= render "projects/my_profile_partial" %>
+      <%= render "projects/my_feed_partial" %>
+    </div>
+    <div class="d-flex align-items-center justify-content-center logo-concat">
+      <%= image_tag "logo.png", class: "index-logo" %>
+      <div class="ml-1">
+        <p class="mb-0 logo-text">TeamAppsis</p>
+        <p class="mb-0">Transformando islas en archipiélagos</p>
+      </div>
     </div>
     <div class="index-projects">
       <% @projects.each do |project| %>

@@ -2,19 +2,78 @@
 
 
 <div class="container">
-
-  <%= simple_form_for [ @user, @skill ] do |f| %>
-    <p>Seleccionar Tecnología</p>
-    <div>
-      <%= f.collection_select :technology_id, @techs, :id, :name%>
+  <h2> Mis skills 🏅</h2>
+  <div class="row">
+    <div class="skill-card col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="skill-content add-skill-card">
+        <h5>Agregar Skill</h5>
+        <%= simple_form_for [ @user, @skill ] do |f| %>
+        <p>Seleccionar tecnología</p>
+          <%= f.collection_select :technology_id, @techs, :id, :name%>
+        <p>Seleccionar nivel</p>
+          <%= f.collection_select :level_id, @levels, :id, :name%>
+          <br>
+          <%= f.submit "Agregar", class: "btn btn-primary skill-submit-btn mt-4" %>
+        <% end %>
+      </div>
     </div>
-    <p>Seleccionar nivel</p>
-    <div>
-      <%= f.collection_select :level_id, @levels, :id, :name%>
-    </div>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  <% end %>
-
-
+  </div>
 </div>
 
+<style>
+  .skill-card {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 100%;
+  }
+  .skill-title {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    width: 200px;
+    margin: auto;
+    margin-bottom: 25px;
+  }
+
+  .skill-content {
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 16px;
+    text-align: center;
+    margin-right: 25px;
+    margin-left: 25px;
+    box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
+  }
+
+  .add-skill-card {
+    height: 260px;
+  }
+  .add-skill-card p {
+    margin-top: 22px;
+    margin-bottom: 0px;
+  }
+
+  h2 {
+    margin-top: 25px;
+    margin-bottom: 50px;
+
+  }
+
+  .add-skill-card h5 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 184px;
+    border-bottom: 1px solid black;
+    /* text-align: center; */
+    margin-left: auto;
+    margin-right: auto
+  }
+
+
+  body > div.container > div > div > div > div > i {
+    font-size: 130px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+  }
+</style>
