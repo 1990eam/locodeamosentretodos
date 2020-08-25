@@ -1,4 +1,5 @@
 <div class="container">
+  <h2 class="tab-title">Aplicaciones de usuarios</h2>
   <% @project.application_requests.each do |application| %>
     <%= render "application_requests/application_request_partial", application: application %>
   <% end %>
