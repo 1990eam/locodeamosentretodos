@@ -1,5 +1,20 @@
-<%= simple_form_for [ @project, @role ] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
-<% end %>
+<div id="new-role-form" class="card-role edit-role-container">
+  <div class="card-body text-center">
+    <h5 class="card-title">Nuevo rol</h5>
+    <div class="container">
+
+      <%= simple_form_for([ @role ], remote: true) do |f| %>
+        <%= simple_fields_for :requirement do |ff| %>
+          <%= ff.input :technology_id, collection: Technology.all, label:false, prompt: "Tecnología" %>
+          <%= ff.input :level_id, collection: Level.all, label:false, prompt: "Nivel" %>
+        <% end %>
+
+        <%= f.input :name, label:false, placeholder: "Nombre del rol" %>
+        <%= f.input :description, label:false, placeholder: "Descripción" %>
+        <%= f.submit "Enviar", class: "btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
