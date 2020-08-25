@@ -2,7 +2,7 @@
   <% if apprequest == @chatroom %>
     <div class="d-flex align-items-start border-bottom p-3 sidebar-selected">
   <% else %>
-    <div class="d-flex align-items-start border-bottom p-3">
+    <div class="d-flex align-items-start border-bottom p-3 sidebar-nonselected">
   <% end %>
         <%= cl_image_tag apprequest.messages.last.user.photo.key, class: "avatar mr-3" %>
       <div class="flex-grow-1">
