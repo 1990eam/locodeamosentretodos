@@ -49,7 +49,7 @@
                       <% end %>
                     <p class="card-text mt-4"><%= role.description %></p>
                     <% if role.application_requests.any? { |application| application.user != current_user } %>
-                      <button class="btn btn-primary"> <i class="fas fa-plus-circle primary "></i>Aplicar</button>
+                      <button class="btn btn-primary"> <i class="fas fa-plus-circle primary mr-1"></i>Aplicar</button>
                     <% else %>
                       <div class="text-muted position-absolute mb-3 fixed-bottom">¡Ya aplicaste a este rol!</div>
                     <% end %>
@@ -62,13 +62,13 @@
             <%= simple_form_for [@project, @application] do |f| %>
             <input type="" hidden="true" name='role_id' value="role" class="role_field">
             <div class='file-container text-light mt-4 '>
-              <h5>Subir archivos de propuesta</h5>
+              <h5>Sube tu CV</h5>
               <%= f.input :file, label: "Adjuntar archivo pdf", as: :file %>
             </div>
             <div class="text-light mb-4 text-left">
               <div class=" text-left">
-                <%= f.input :about_me, placeholder: "Escribe una descripción sobre ti mismo" %>
-                <%= f.submit class: "btn btn-primary"%>
+                <%= f.input :about_me, placeholder: "Cuéntanos por qué deberíamos sumarte al equipo :)", label: "Acerca de mí" %>
+                <%= f.submit "Enviar solicitud", class: "btn btn-primary"%>
             </div>
               </div>
 
