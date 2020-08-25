@@ -36,8 +36,8 @@
             <p class="card-text"><%= role.description %></p>
           </div>
           <div class="edit-delete-role d-flex justify-content-center">
-            <p><%= link_to "", edit_project_role_path(@project, role), data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "Editar Role", class:"fas fa-edit", style:"text-decoration: none;"%> </p>
-            <p><%= link_to "", role_path(role), data: { toggle: 'tooltip', confirm: "¿Estás seguro?" }, method: :delete, class: "avatar dropdown-toggle", title: "Borrar Role", class:"fas fa-trash", style:"text-decoration: none;" %> </p>
+            <p><%= link_to "", edit_project_role_path(@project, role), data: { toggle: 'tooltip' }, title: "Editar Role", class:"fas fa-edit mr-1", style:"text-decoration: none;"%> </p>
+            <p><%= link_to "", role_path(role), data: { toggle: 'tooltip', confirm: "¿Estás seguro?" }, method: :delete, title: "Borrar Role", class:"fas fa-trash", style:"text-decoration: none;" %> </p>
 
           </div>
         </div>
