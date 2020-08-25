@@ -61,8 +61,9 @@
     <div class="new-suggestion-card">
       <p class="feature-title">Nueva Feature</p>
       <%= simple_form_for [ @project, @suggestion ], remote: true do |f| %>
-      <%= f.input :description, label: "Explica brevemente la idea a implementar:" %>
-      <%= f.submit "Enviar", class: "btn btn-primary" %>
+      <%= f.input :description, :maxlength => 100, label: "Explica brevemente la idea a implementar:" %>
+      <p style="font-size: smaller">Máximo 100 caracteres</p>
+      <%= f.submit "Enviar", class: "btn btn-primary d-flex mx-auto" %>
       <% end %>
 
 
@@ -71,3 +72,8 @@
   </div>
 
 </div>
+
+
+<style>
+
+</style>
