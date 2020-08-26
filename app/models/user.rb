@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validate :photo_present
 
   def photo_present
-    unless photo.attached?
+    unless photo.attached? || github_picture_url
       photo.attach(io: File.open(Dir.getwd + "/app/assets/images/default-user-img.png"), filename: "default.png", content_type: 'image/png')
     end
   end
