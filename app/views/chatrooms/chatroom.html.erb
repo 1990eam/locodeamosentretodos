@@ -15,15 +15,14 @@
     </div>
     <div class="sidebar-section mt-3">
       <p class="pl-3 mb-0 pb-3 border-bottom">Conversaciones con aplicantes</p>
+      <% if current_user.projects.count { |project| project.chatrooms.select { |chatroom| chatroom.messages.count > 0 }.empty? } == 0  %>
+        <div class="d-flex align-items-start border-bottom p-3 mint-cream">
+          No hay conversaciones aún :(
+        </div>
+      <% end %>
       <% current_user.projects.each do |project| %>
-        <% if project.chatrooms.select { |x| x.messages.count > 0 }.empty? %>
-          <div class="d-flex align-items-start border-bottom p-3 mint-cream">
-            No hay conversaciones aún :(
-          </div>
-        <% else %>
-          <% project.chatrooms.select { |x| x.messages.count > 0 }.each do |apprequest| %>
-            <%= render "chatrooms/sidebar_message", apprequest: apprequest %>
-          <% end %>
+        <% project.chatrooms.select { |x| x.messages.count > 0 }.each do |apprequest| %>
+          <%= render "chatrooms/sidebar_message", apprequest: apprequest %>
         <% end %>
       <% end %>
     </div>
