@@ -13,7 +13,7 @@ const showModal = () => {
 };
 
 const clickableIndexCard = () => {
-  const indexCards = document.querySelectorAll('.index-project-card');
+  const indexCards = document.querySelectorAll('.index-project-card-clickable');
   const linkCards = document.querySelectorAll('.link-z-index');
   if (indexCards) {
       indexCards.forEach(item => {

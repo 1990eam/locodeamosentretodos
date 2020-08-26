@@ -1,6 +1,5 @@
-
 <% path = project.user == current_user || project.collaborators.any? { |collaborator| collaborator.user == current_user } ?  project_url(project) : new_project_application_request_url(project) %>
-<div class="index-project-card border rounded" data-target-url="<%= path %>">
+<div class="index-project-card index-project-card-clickable border rounded" data-target-url="<%= path %>">
   <div class="d-flex">
     <%= cl_image_tag project.photo.key, alt: "alttext", width: 300, height: 300, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
     <div>
