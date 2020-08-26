@@ -19,7 +19,7 @@
       <h3>Links</h3>
       <div>
         <% if project.link_1 != nil && project.link_1 != "" %>
-          <%= link_to "http://#{project.link_1}", class: "zindex-dropdown" do %>
+          <%= link_to "http://#{project.link_1}", class: "link-z-index" do %>
             <div class="d-flex align-items-center mb-2">
               <%= sanitize pick_url_icon(project.link_1) %>
               <div class="d-inline ml-1">
@@ -29,7 +29,7 @@
           <% end %>
         <% end %>
         <% if project.link_2 != nil && project.link_2 != "" %>
-          <%= link_to "http://#{project.link_2}", class: "zindex-dropdown" do %>
+          <%= link_to "http://#{project.link_2}", class: "link-z-index" do %>
             <div class="d-flex align-items-center mb-2">
               <%= sanitize pick_url_icon(project.link_2) %>
               <div class="d-inline ml-1">
@@ -65,7 +65,7 @@
       <div class="mt-2">
         <h3>Colaboradores <span class="badge badge-pill badge-light"><%= project.collaborators.count { |x| x.status = "active" } %></span></h3>
           <% project.collaborators.each do |collaborator| %>
-            <%= cl_image_tag collaborator.user.photo.key, class: "avatar-small mr-2", data: { toggle: 'tooltip' }, title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
+            <%= avatar_fixer(collaborator.user, class: "avatar-small mr-2", data: { toggle: 'tooltip' }, title: "#{collaborator.user.first_name} / #{collaborator.role.name}") %>
           <% end %>
       </div>
     </div>

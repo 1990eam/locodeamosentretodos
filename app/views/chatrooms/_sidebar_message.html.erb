@@ -4,7 +4,7 @@
   <% else %>
     <div class="d-flex align-items-start border-bottom p-3 sidebar-nonselected">
   <% end %>
-        <%= cl_image_tag apprequest.messages.last.user.photo.key, class: "avatar mr-3" %>
+      <%= avatar_fixer(apprequest.messages.last.user, class: "avatar mr-3") %>
       <div class="flex-grow-1">
         <div class="d-flex align-items-center">
           <p class="mr-2 mb-0"><strong><%= apprequest.messages.last.user.first_name %></strong><small class="text-muted"> - <%= truncate(apprequest.application_request.project.name, length: 50) %></small></p>

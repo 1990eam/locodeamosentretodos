@@ -34,7 +34,7 @@
         <% if @chatroom.application_request.user != current_user %>
           <div>
             <div class="d-flex align-items-center px-3 mt-2">
-              <%= cl_image_tag @chatroom.application_request.user.photo.key, class: "avatar-large mr-3" %>
+              <%= avatar_fixer(@chatroom.application_request.user, class: "avatar-large mr-3" ) %>
               <div class="flex-grow-1">
                 <div class="d-flex align-items-center">
                     <p class="mr-2 mb-0"><strong><%= @chatroom.application_request.user.first_name %> <%= @chatroom.application_request.user.last_name %></strong></p>
@@ -49,7 +49,7 @@
         <% else %>
           <div>
             <div class="d-flex align-items-center px-3 mt-2">
-              <%= cl_image_tag @chatroom.application_request.project.user.photo.key, class: "avatar-large mr-3" %>
+              <%= avatar_fixer(@chatroom.application_request.project.user, class: "avatar-large mr-3" ) %>
               <div class="flex-grow-1">
                 <div class="d-flex align-items-center">
                     <p class="mr-2 mb-0"><strong><%= @chatroom.application_request.project.user.first_name %> <%= @chatroom.application_request.project.user.last_name %></strong></p>

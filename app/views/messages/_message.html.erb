@@ -30,7 +30,7 @@
 
 <% if previous_message.nil? || @chatroom.messages.find(message.id).user != previous_message.user || previous_message == @chatroom.messages.first || previous_message.created_at.getlocal.to_date.end_of_day - message.created_at.getlocal.to_date.end_of_day < 0 %>
   <div class="chat-message d-flex align-items-start px-3 mt-2 rounded" id="message-<%= message.id %>">
-    <%= cl_image_tag message.user.photo.key, class: "avatar mr-3" %>
+    <%= avatar_fixer(message.user, class: "avatar mr-3") %>
     <div class="flex-grow-1">
       <div class="d-flex align-items-center">
         <p class="mr-2"><strong><%= message.user.first_name %></strong></p>
