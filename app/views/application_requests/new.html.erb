@@ -5,6 +5,11 @@
       <div class='grid-solicitudes'>
         <div class='card-project'>
           <div>
+            <% if @project.photo.attached? %>
+            <%= cl_image_tag @project.photo.key, alt: "alttext", crop: :fill,  class:"project-image" %>
+            <% else %>
+            <%= image_tag "project-default", class:"project-image" %>
+            <% end %>
             <h5 class='text-center'>Información sobre el proyecto</h5>
               <div class="mx-4">
                 <div>
