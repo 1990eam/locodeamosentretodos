@@ -38,7 +38,7 @@
       </div>
       <div class="links">
         <% if @project.link_1 %>
-          <h5>Links y archivos</h5>
+          <h5>Links</h5>
           <p><a href="<%= @project.link_1 %>"><%= sanitize pick_url_icon(@project.link_1) %> <%= @project.link_1 %></a></p>
         <% end %>
         <% if @project.link_2 %>
