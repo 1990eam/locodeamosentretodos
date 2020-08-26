@@ -9,3 +9,28 @@
     text-decoration: none;
   }
 }
+
+.index-application-card {
+  position: relative;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 16px;
+  min-height: 220px;
+  width: 100%;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  transition: ease 0.5s;
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+.index-application-card a:hover {
+  text-decoration: none;
+}
