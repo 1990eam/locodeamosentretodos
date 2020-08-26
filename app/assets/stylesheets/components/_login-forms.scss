@@ -15,3 +15,22 @@
     margin-bottom: 20px
   }
 }
+
+.btn-github {
+  color: #fff;
+  background-color: #24292E;
+  border-color: #fff;
+
+  i{
+
+    color: white;
+  }
+}
+
+/* line 13, node_modules/bootstrap/scss/mixins/_hover.scss */
+.btn-github:hover {
+  color: #fff;
+  background-color: #3f4449;
+  border-color: #fff;
+}
+
