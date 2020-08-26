@@ -309,3 +309,11 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 end
+
+Devise.setup do |config|
+  config.omniauth :github, ENV["GIT_ID"], ENV["GIT_SECRET"],
+    scope: 'user:email',
+    info_fields: 'email, first_name, last_name',
+    image_size: 'square',  # 50x50, guaranteed ratio
+    secure_image_url: true
+end
