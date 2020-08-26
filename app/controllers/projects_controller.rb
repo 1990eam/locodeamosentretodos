@@ -25,6 +25,8 @@ class ProjectsController < ApplicationController
       @projects = Project.with_open_positions
     elsif params[:skill_match]
       @projects = Project.that_match_my_skills(current_user)
+    elsif params[:single_skill_match]
+      @projects = Project.that_match_single_skill(params[:skill_name])
     end
 
   end
@@ -45,6 +47,13 @@ class ProjectsController < ApplicationController
     authorize @project
     authorize @role
     if @role.save && @project.save
+      # los skills de un rol no son propios del role sino que estan asociados a un requirement
+      @requirement = Requirement.new(requirement_params)
+      authorize @requirement
+      @requirement.role = @role
+      @requirement.save
+
+
       @collaborator = Collaborator.new(status: "active")
       @collaborator.role = @role
       @collaborator.user = current_user
@@ -100,12 +109,16 @@ class ProjectsController < ApplicationController
   end
 
   def role_params
-    params.require(:role).permit(:name, :description)
+    params.require(:role).permit(:name, :description, :technology_id, :level_id)
   end
 
   def set_project
     @project = Project.find(params[:id])
     authorize @project
+  end
+
+  def requirement_params
+    params.require(:requirement).permit(:technology_id, :level_id)
   end
 
 end

@@ -1,3 +1,5 @@
+
+
 <div class='project-container mr-5'>
   <div class='project-overview mx-3'>
     <%= image_tag "project-default", class:"project-image" %>
@@ -20,31 +22,45 @@
       <div class="project-collaborators text-center">
         <h5>Colaboradores</h5>
         <div>
-          <% @project.collaborators.each do |collaborator| %>
+          <% if @project.collaborators.first.user.photo.attached? %>
+            <%= cl_image_tag @project.collaborators.first.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar-bordered mx-2", title: "#{@project.collaborators.first.user.first_name} / #{@project.collaborators.first.role.name} [Fundador]" %>
+          <% else %>
+            <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar-bordered mx-2" %>
+          <% end %>
+          <% @project.collaborators.drop(1).each do |collaborator| %>
             <% if collaborator.user.photo.attached? %>
-              <%= cl_image_tag collaborator.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle mx-2", title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
+              <%= cl_image_tag collaborator.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar mx-2", title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
             <% else %>
-              <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle mx-2" %>
+              <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar mx-2" %>
             <% end %>
           <% end %>
-          </div>
+        </div>
+      </div>
+      <div class="links">
+        <% if @project.link_1 %>
+          <h5>Links y archivos</h5>
+          <p><a href="<%= @project.link_1 %>"><%= sanitize pick_url_icon(@project.link_1) %> <%= @project.link_1 %></a></p>
+        <% end %>
+        <% if @project.link_2 %>
+          <p><a href="<%= @project.link_2 %>"><%= sanitize pick_url_icon(@project.link_2) %> <%= @project.link_2 %></a></p>
+        <% end %>
       </div>
     </div>
   </div>
-    <div class="tabs-container" >
+    <div class="tabs-container border rounded" >
       <!-- Tabs https://getbootstrap.com/docs/4.0/components/navs/#javascript-behavior-->
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link <%= params[:tab] == nil ? "active" : "" %> " id="applications-tab" data-toggle="tab" href="#applications" role="tab" aria-controls="applications" aria-selected="true">Applications</a>
+          <a class="nav-link <%= params[:tab] == nil ? "active" : "" %> " id="applications-tab" data-toggle="tab" href="#applications" role="tab" aria-controls="applications" aria-selected="true">Aplicaciones</a>
         </li>
         <li class="nav-item">
           <a class="nav-link <%= params[:tab] == "roles" ? "active" : "" %> " id="roles-tab" data-toggle="tab" href="#roles" role="tab" aria-controls="roles" aria-selected="false">Roles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <%= params[:tab] == "suggestions" ? "active" : "" %>" id="suggestions-tab" data-toggle="tab" href="#suggestions" role="tab" aria-controls="suggestions" aria-selected="false">Suggestions</a>
+          <a class="nav-link <%= params[:tab] == "suggestions" ? "active" : "" %>" id="suggestions-tab" data-toggle="tab" href="#suggestions" role="tab" aria-controls="suggestions" aria-selected="false">Sugerencias</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <%= params[:tab] == "evolution" ? "active" : "" %>" id="evolution-tab" data-toggle="tab" href="#evolution" role="tab" aria-controls="evolution" aria-selected="false">Evolution</a>
+          <a class="nav-link <%= params[:tab] == "evolution" ? "active" : "" %>" id="evolution-tab" data-toggle="tab" href="#evolution" role="tab" aria-controls="evolution" aria-selected="false">Historial</a>
         </li>
       </ul>
 
@@ -53,24 +69,17 @@
         <div class="tab-pane fade <%= params[:tab] == nil ? "show active" : "" %>" id="applications" role="tabpanel" aria-labelledby="home-tab">
           <%= render "shared/applications_show" %>
         </div>
-
         <div class="tab-pane fade  <%= params[:tab] == "roles" ? "show active" : "" %>" id="roles" role="tabpanel" aria-labelledby="roles-tab">
           <%= render "shared/roles_show_new" %>
         </div>
-
-         <div class="<%= params[:tab] == "evolution" ? "show active" : "" %> tab-pane fade" id="evolution" role="tabpanel" aria-labelledby="evolution-tab">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div class="<%= params[:tab] == "evolution" ? "show active" : "" %> tab-pane fade" id="evolution" role="tabpanel" aria-labelledby="evolution-tab">
+          <%= render "history_partial", project: @project %>
         </div>
-
         <div class="<%= params[:tab] == "suggestions" ? "show active" : "" %> tab-pane fade" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab">
           <%= render "suggestions/index" %>
         </div>
       </div>
     </div>
 </div>
+
 

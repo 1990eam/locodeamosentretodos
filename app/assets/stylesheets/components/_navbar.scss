@@ -24,8 +24,15 @@
   height: 86px;
 }
 
-.navbar-brand {
+.navbar-logo-text {
   color: $mint-cream !important;
+  font-family: $logo-font !important;
+  font-size: 24px;
+  transition: ease 0.5s;
+}
+
+.navbar-logo-text:hover {
+  opacity: 0.7;
 }
 
 .navbar-search {

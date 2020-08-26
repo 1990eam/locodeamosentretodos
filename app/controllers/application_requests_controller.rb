@@ -31,8 +31,8 @@ class ApplicationRequestsController < ApplicationController
   end
 
   def accept
-    @project = @application.project
     @application = ApplicationRequest.find(params[:application_id])
+    @project = @application.project
     authorize @application
     if current_user == @application.user
       @application.update(status: "accepted")
@@ -44,8 +44,8 @@ class ApplicationRequestsController < ApplicationController
   end
 
   def decline
-    @project = @application.project
     @application = ApplicationRequest.find(params[:application_id])
+    @project = @application.project
     authorize @application
     if current_user == @application.user
       @application.update(status: "declined by user")

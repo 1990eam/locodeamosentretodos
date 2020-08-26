@@ -1,0 +1,24 @@
+<div class="my-feed pb-3">
+  <div class="d-flex align-items-center justify-content-center my-feed-header rounded-top shadow-blue-bg mb-3">
+    <strong class="ml-2">Mi Feed</strong>
+  </div>
+  <h6 style="text-align: center;">Filtrar proyectos</h6>
+  <div class="px-3">
+    <p><%= link_to "Con posiciones abiertas", projects_path(:with_open_roles => "true"), class:"btn btn-success btn-sm" %></p>
+    <% if user_signed_in? %>
+      <p><%= link_to "Que coinciden con mis skills", projects_path(:skill_match => "true"), class:"btn btn-success btn-sm" %></p>
+      <h6 style="text-align: center;">Según uno de mis skills</h6>
+      <% if current_user.technologies.empty? %>
+        <p class="mb-0 text-muted">No tienes skills cargados :(</p>
+      <% else %>
+        <div class="d-flex justify-content-center flex-wrap">
+          <% current_user.technologies.each do |technology| %>
+            <p class="mr-3 mb-0" style="font-size: 24px" data-toggle="tooltip" title="<%= technology.name %>">
+               <%= link_to (sanitize pick_tech_icon(technology.name), tags: %w(i), attributes: %w(class style)), projects_path(:single_skill_match => "true", :skill_name => technology.name) %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+  <div class="my-profile pb-3 mb-3">
+    <div class="d-flex align-items-center justify-content-center my-feed-header rounded-top shadow-blue-bg mb-3">
+      <strong class="ml-2">Mi Perfil</strong>
+    </div>
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar-large mb-2" %>
+    <% else %>
+      <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar-large mb-2" %>
+    <% end %>
+    <h6 style="text-align: center;"><strong><%= current_user.first_name %> <%= current_user.last_name %></strong></h6>
+    <p class="mx-2 text-muted"><%= truncate(current_user.description, length: 150) %></p>
+    <%= link_to "Crear Proyecto", new_project_path, class:"btn btn-success" %>
+  </div>
+<% end %>

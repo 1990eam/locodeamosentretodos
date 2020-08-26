@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
     resources :application_requests, only: [:new, :create]
-    resources :roles, only: [:new, :create]
+    resources :roles, only: [:new, :create, :edit, :update]
     resources :suggestions, only: [:index, :new, :create]
     resources :suggestion_votes, only: [:create]
 
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
    resources :collaborators, only: [:destroy]
 
-  resources :roles, only: :destroy
+  resources :roles, only: [:destroy, :update]
 
   resources :chatrooms, only: {} do
     resources :messages, only: :create

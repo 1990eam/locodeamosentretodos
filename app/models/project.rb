@@ -20,28 +20,30 @@ class Project < ApplicationRecord
   #filtro
   def self.with_open_positions
     @projects = []
-
     Project.all.each do |project|
       @projects << project if project.roles.count { |role| role.open? } > 0
     end
     return @projects
   end
 
-
   def self.that_match_my_skills(current_user)
     user = current_user
     @projects = with_open_positions
     @matches = []
-
     @projects.each do |project|
       @matches << project if project.technologies.any? { |project_tech| user.technologies.any? { |user_tech| user_tech == project_tech } }
     end
     return @matches
   end
 
-
-
-
+  def self.that_match_single_skill(skill_name)
+    @projects = with_open_positions
+    @matches = []
+    @projects.each do |project|
+      @matches << project if project.technologies.any? { |project_tech| skill_name == project_tech.name }
+    end
+    return @matches
+  end
 
   def photo_present
     unless photo.attached?

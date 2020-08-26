@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_08_25_035930) do
 
   # These are extensions that must be enabled in order to support this database
@@ -42,6 +43,8 @@ ActiveRecord::Schema.define(version: 2020_08_25_035930) do
     t.string "status", default: "pending"
     t.text "about_me"
     t.string "owner_status", default: "pending"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["role_id"], name: "index_application_requests_on_role_id"
     t.index ["user_id"], name: "index_application_requests_on_user_id"
   end
@@ -170,6 +173,7 @@ ActiveRecord::Schema.define(version: 2020_08_25_035930) do
     t.string "github_picture_url"
     t.string "token"
     t.datetime "token_expiry"
+    t.string "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

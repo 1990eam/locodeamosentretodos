@@ -1,9 +1,11 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&family=Ubuntu:wght@300;400;500;700&display=swap');
 
 // Define fonts for body and headers
 $body-font: "Ubuntu", "sans-serif";
-$headers-font: "Ubuntu", "sans-serif";;
+$headers-font: "Ubuntu", "sans-serif";
+$logo-font: "Ubuntu Mono", "monospace";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

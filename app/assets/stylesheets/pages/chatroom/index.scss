@@ -1,5 +1,5 @@
 .chat-messages {
-  overflow: scroll;
+  overflow-y: auto;
   height: 64.6vh;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .chat-message:hover {
-  background-color: #e8ffe8;
+  background-color: #f4fff4;
   .message-side-timestamp {
     visibility: visible;
   }
@@ -69,3 +69,6 @@
   background-color: azure;
 }
 
+.sidebar-nonselected small {
+  color: azure !important;
+}
