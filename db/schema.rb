@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_08_25_035930) do
+ActiveRecord::Schema.define(version: 2020_08_25_201308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,10 +93,12 @@ ActiveRecord::Schema.define(version: 2020_08_25_035930) do
     t.string "name"
     t.text "description"
     t.bigint "user_id", null: false
-    t.text "link"
+    t.text "links"
     t.boolean "sponsored", default: false
     t.string "link_1"
     t.string "link_2"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -168,12 +169,12 @@ ActiveRecord::Schema.define(version: 2020_08_25_035930) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "admin", default: false
+    t.string "description"
     t.string "provider"
     t.string "uid"
     t.string "github_picture_url"
     t.string "token"
     t.datetime "token_expiry"
-    t.string "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

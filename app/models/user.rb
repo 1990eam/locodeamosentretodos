@@ -14,13 +14,6 @@ class User < ApplicationRecord
   has_many :chatrooms, through: :application_requests
   has_one_attached :photo
   validates :first_name, :last_name, presence: true
-  validate :photo_present
-
-  def photo_present
-    unless photo.attached? || github_picture_url
-      photo.attach(io: File.open(Dir.getwd + "/app/assets/images/default-user-img.png"), filename: "default.png", content_type: 'image/png')
-    end
-  end
 
   def self.find_for_github_oauth(auth)
     full_name_array = auth.info[:name].split
