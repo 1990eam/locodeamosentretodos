@@ -53,15 +53,15 @@
       <div>
         <h3>Tags</h3>
         <div class="d-flex flex-wrap icons-wrapper">
-          <% project.technologies.uniq.each do |technology| %>
-            <p class="mr-2 mb-0" data-toggle="tooltip" title="<%= technology.name %>">
+          <% project.technologies.uniq.take(10).each do |technology| %>
+            <p class="mr-3 mb-2" data-toggle="tooltip" title="<%= technology.name %>">
               <%= sanitize pick_tech_icon(technology.name), tags: %w(i), attributes: %w(class style) %>
             </p>
           <% end %>
         </div>
       </div>
 
-      <div class="mt-2">
+      <div>
         <h3>Colaboradores <span class="badge badge-pill badge-light"><%= project.collaborators.count { |x| x.status = "active" } %></span></h3>
           <% project.collaborators.each do |collaborator| %>
             <%= avatar_fixer(collaborator.user, class: "avatar-small mr-2", data: { toggle: 'tooltip' }, title: "#{collaborator.user.first_name} / #{collaborator.role.name}") %>
