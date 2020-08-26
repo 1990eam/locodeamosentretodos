@@ -7,7 +7,6 @@ const showModal = () => {
       const page = document.getElementsByClassName("index-projects");
         console.log("We are at projects index")
         const skills = document.getElementById("user-skills").innerHTML
-
         if (skills < 1) {
           $(document).ready(function(){
               $("#skillsModal").modal('show');
@@ -15,9 +14,19 @@ const showModal = () => {
         }
     }
   });
-
-
 };
 
-export { showModal};
+const clickableIndexCard = () => {
+  const indexCards = document.querySelectorAll('.index-project-card');
+  if (indexCards) {
+      indexCards.forEach(item => {
+        item.addEventListener('click', event => {
+          console.log(item.dataset.targetUrl);
+          location.replace(item.dataset.targetUrl);
+        });
+      });
+    }
+};
+
+export { showModal, clickableIndexCard };
 

@@ -1,5 +1,6 @@
-<%= link_to (project.user == current_user || project.collaborators.any? { |collaborator| collaborator.user == current_user } ?  project_path(project) : new_project_application_request_path(project)) do %>
-<div class="index-project-card border rounded">
+
+<% path = project.user == current_user || project.collaborators.any? { |collaborator| collaborator.user == current_user } ?  project_url(project) : new_project_application_request_url(project) %>
+<div class="index-project-card border rounded" data-target-url="<%= path %>">
   <div class="d-flex">
     <%= cl_image_tag project.photo.key, alt: "alttext", width: 300, height: 300, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
     <div>
@@ -17,8 +18,8 @@
     <div class="d-flex flex-column justify-content-between w-100 w-lg-50 mr-3">
       <h3>Links</h3>
       <div>
-        <% if project.link_1 != nil %>
-          <%= link_to "http://#{project.link_1}" do %>
+        <% if project.link_1 != nil && project.link_1 != "" %>
+          <%= link_to "http://#{project.link_1}", class: "zindex-dropdown" do %>
             <div class="d-flex align-items-center mb-2">
               <%= sanitize pick_url_icon(project.link_1) %>
               <div class="d-inline ml-1">
@@ -27,8 +28,8 @@
             </div>
           <% end %>
         <% end %>
-        <% if project.link_2 != nil %>
-          <%= link_to "http://#{project.link_2}" do %>
+        <% if project.link_2 != nil && project.link_2 != "" %>
+          <%= link_to "http://#{project.link_2}", class: "zindex-dropdown" do %>
             <div class="d-flex align-items-center mb-2">
               <%= sanitize pick_url_icon(project.link_2) %>
               <div class="d-inline ml-1">
@@ -70,5 +71,5 @@
     </div>
   </div>
 </div>
-<% end %>
+
 
