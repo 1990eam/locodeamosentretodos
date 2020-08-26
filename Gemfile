@@ -23,6 +23,8 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'cloudinary', '~> 1.12.0'
 
+#Gema para loguearse con github
+gem 'omniauth-github'
 
 #renderizar errores
 gem 'turbolinks_render'
