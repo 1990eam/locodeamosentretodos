@@ -36,7 +36,7 @@ class ApplicationRequestsController < ApplicationController
     authorize @application
     if current_user == @application.user
       @application.update(status: "accepted")
-      redirect_to application_requests_path
+      # redirect_to application_requests_path
     else
       @application.update(status: "pending response from applicant")
       redirect_to project_path(@project, tab: "applications")
