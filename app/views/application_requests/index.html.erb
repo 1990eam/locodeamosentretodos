@@ -37,7 +37,7 @@
                   </p>
                   <% end %>
                 </div>
-                <h3 class="h6 m-0 flex-grow-0 d-flex align-items-center my-2">Colaboradores <small class="ml-1 rounded-circle py-1 px-2 bg-danger text-white"><%= application.project.collaborators.count { |x| x.status = "active" } %></small></h3>
+                <h3 class="my-2">Colaboradores <span class="badge badge-pill badge-light"><%= application.project.collaborators.count { |x| x.status = "active" } %></span></h3>
                 <div class="align-items-center">
                   <% if application.status == "accepted" %>
                   <%= link_to "Link del Proyecto", application.project, class: "btn btn-primary mb-3"%>
@@ -50,8 +50,6 @@
             </div>
           </div>
       </div>
-
-     </div>
-
-       <% end %>
+    </div>
+    <% end %>
   </div>

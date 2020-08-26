@@ -6,10 +6,11 @@
     <div class="suggestion-card" data-target="<%= suggestion.id %>">
       <p class="feature-title">Feature</p>
       <p class="suggestion-collaborator">Sugerido por:</p>
-      <div class="suggestion-collaborator">
+      <div class="suggestion-collaborator <%= suggestion.collaborator.user == @project.user ? "avatar-bordered mx-auto" : "" %>">
         <%= avatar_fixer(suggestion.collaborator.user, data: { toggle: 'tooltip' }, class: "suggestion-collaborator avatar dropdown-toggle", title: "#{suggestion.collaborator.user.first_name} / #{suggestion.collaborator.role.name}") %>
       </div>
-      <p class="suggestion-description"><%= suggestion.description %></p>
+      <p class="suggestion-description mt-1"><%= suggestion.description %></p>
+      <div class="ratings">
 
       <div class="current-rating">
         <% if suggestion.average_rating.to_i == 0 %>
@@ -47,6 +48,7 @@
       </div>
 
       <% end %>
+      </div>
 
     </div>
     <% end %>
@@ -54,8 +56,9 @@
     <div class="new-suggestion-card">
       <p class="feature-title">Nueva Feature</p>
       <%= simple_form_for [ @project, @suggestion ], remote: true do |f| %>
-      <%= f.input :description, label: "Explica brevemente la idea a implementar:" %>
-      <%= f.submit "Enviar", class: "btn btn-primary" %>
+      <%= f.input :description, :maxlength => 100, label: "Explica brevemente la idea a implementar:" %>
+      <p style="font-size: smaller">Máximo 100 caracteres</p>
+      <%= f.submit "Enviar", class: "btn btn-primary d-flex mx-auto" %>
       <% end %>
 
 
@@ -64,3 +67,8 @@
   </div>
 
 </div>
+
+
+<style>
+
+</style>
