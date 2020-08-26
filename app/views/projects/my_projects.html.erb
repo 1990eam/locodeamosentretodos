@@ -1,28 +1,79 @@
 <div class="container">
-  <div class="row">
+  <div class="my-projects-cards mt-5">
     <% @projects.each do |project| %>
-    <div class="card-request">
-      <div class="d-flex px-3 pt-3 pb-1">
-        <div>
-          <img src=<%= cl_image_path project.photo.key, alt: "alttext",  width: 150, height:150, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %> >
-       </div>
-         <div class="flex-grow-1 ml-3">
-            <h3 class="ml-2"> <%= project.name %> </h3>
-            <p class="ml-2 text-muted"> <%= project.description %> </p>
-          <div class="flex-container">
-            <div class="d-flex">
-              <p class="btn btn-gradient"><strong><%= link_to "Ver Proyecto", project_path(project) %></strong></p>
-              <p class="btn btn-edit"><strong><%= link_to "Editar Proyecto", edit_project_path(project) %></strong></p>
+     <div class="d-flex">
+    <%= cl_image_tag project.photo.key, alt: "alttext", width: 300, height: 300, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
+    <div>
+      <h2 class="text-left"><%= project.name %></h2>
+      <p class="text-muted"><%= project.description %></p>
+    </div>
+    </div>
+       <div class="d-lg-flex d-block">
+          <div class="d-flex flex-column justify-content-between w-100 w-lg-50 mr-5">
+            <h5>Links</h5>
+            <div>
+              <% if project.link_1 != nil %>
+                <%= link_to "http://#{project.link_1}" do %>
+                  <div class="d-flex align-items-center mb-2">
+                    <%= sanitize pick_url_icon(project.link_1) %>
+                    <div class="d-inline ml-1">
+                      <%= truncate(shorten_url(project.link_1), length: 30)  %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+              <% if project.link_2 != nil %>
+                <%= link_to "http://#{project.link_2}" do %>
+                  <div class="d-flex align-items-center mb-2">
+                    <%= sanitize pick_url_icon(project.link_2) %>
+                    <div class="d-inline ml-1">
+                      <%= truncate(shorten_url(project.link_2), length: 30) %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
             </div>
-            <div class="d-flex">
-                <p class="btn-role"><%= link_to  "Nuevo rol", new_project_role_path(project) %></p>
-                <p class="btn-delete"><%= link_to "Eliminar Proyecto", project_path(project), method: :delete, data: { confirm: 'Eliminar este Proyecto?' } %></p>
+            <% if project.roles.count { |role| role.open? } == 0  %>
+            <div class="no-positions rounded mb-2 mb-lg-0">
+              <p>Todas las posiciones de tu poyecto estan cubiertas <i class="ml-1"></i></p>
+            </div>
+            <% else %>
+            <div class="open-positions rounded mb-2 mb-lg-0">
+              <p><%= pluralize(project.roles.count { |role| role.open? }, "posición por cubrir", plural: "posiciones por cubrir") %></p>
+            </div>
+            <% end %>
+          </div>
+
+          <div class="w-100 w-lg-50">
+            <div>
+              <h5>Tags</h5>
+              <div class="d-flex flex-wrap">
+                <% project.technologies.uniq.each do |technology| %>
+                  <p class="mr-2 mb-0" data-toggle="tooltip" title="<%= technology.name %>">
+                    <%= sanitize pick_tech_icon(technology.name), tags: %w(i), attributes: %w(class style) %>
+                  </p>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="mt-2">
+              <h5>Colaboradores <span class="badge badge-pill badge-light"><%= project.collaborators.count { |x| x.status = "active" } %></span></h5>
+                <% project.collaborators.each do |collaborator| %>
+                  <%= cl_image_tag collaborator.user.photo.key, class: "avatar-small mr-2", data: { toggle: 'tooltip' }, title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
+                <% end %>
             </div>
           </div>
         </div>
 
-      </div>
-  </div>
+          <div class="flex-container">
+            <div class="d-flex mt-3">
+              <p class="btn btn-success mr-3"><strong><%= link_to "Ver Proyecto", project_path(project) %></strong></p>
+              <p class="btn btn-success mr-3"><strong><%= link_to "Editar Proyecto", edit_project_path(project) %></strong></p>
+                <p class="btn btn-success mr-3"><%= link_to  "Nuevo rol", new_project_role_path(project) %></p>
+                <p class="btn btn-danger mr-3"><%= link_to "Eliminar Proyecto", project_path(project), method: :delete, data: { confirm: 'Eliminar este Proyecto?' } %></p>
+            </div>
+          </div>
+        </div>
   <% end %>
   </div>
 </div>
