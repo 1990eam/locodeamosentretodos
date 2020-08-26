@@ -16,16 +16,9 @@
                     <h5 class="ml-0">Colaboradores</h5>
                     <div class="">
                       <% @project.collaborators.each do |collaborator| %>
-                        <h6> <%= collaborator.role.name %></h6>
-                        <% if collaborator.user.photo.attached? %>
-                          <%= cl_image_tag collaborator.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
-                        <% else %>
-                          <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar dropdown-toggle" %>
-                        <% end %>
-                        <p> <%= collaborator.user.first_name %></p>
+                        <%= avatar_fixer(collaborator.user, data: { toggle: 'tooltip' }, class: "avatar ml-2", title: "#{collaborator.user.first_name} / #{collaborator.role.name}") %>
                       <% end %>
                     </div>
-
                   </div>
             </div>
           </div>

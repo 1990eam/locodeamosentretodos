@@ -99,152 +99,265 @@ puts "Done creating Users"
 puts ""
 
 puts "Creating Projects..."
-project = Project.find_or_create_by!(name: "LCET",
-                                     description: "Desarrolla tus skills como developer colaborando con otros, postula tus ideas como project owner o sumate con capital!",
-                                     link_1: "http://github.com/1990eam/locodeamosentretodos",
-                                     link_2: "https://www.lewagon.com", sponsored: true,
-                                     user_id: elian.id)
-
-project = Project.find_or_create_by!(name: "Donde Estan los ATM?",
-                                     description: "Accede a la ubicacion de los cajeros con dinero disponible",
-                                     link_1: "https://github.com/nbouad/atm-repo",
-                                     link_2: "www.loteriadesanluis.com",
-                                     user_id: tomas.id)
-project.photo.attach(io:URI.open("https://www.kindpng.com/picc/m/158-1580128_adobe-type-manager-light-download-windows-version-atm.png"),
-                     filename: "#{project.name}.png",
+lcet = Project.find_or_create_by!(name: "TeamAppsis",
+                                 description: "Desarrolla tus skills como developer colaborando con otros, postula tus ideas como project owner o sumate con capital!",
+                                 link_1: "http://github.com/1990eam/locodeamosentretodos",
+                                 link_2: "https://www.lewagon.com", sponsored: true,
+                                 user_id: elian.id)
+lcet.photo.attach(io: File.open(Dir.pwd + "/app/assets/images/logo.png"),
+                     filename: "#{lcet.name}.png",
                      content_type: 'image/png')
-project.save
+lcet.save
 
-project = Project.find_or_create_by!(name: "La Liga",
-                                     description: "Apreta en las subastas judiciales con nosotros y gana maravillosos premios",
-                                     link_1: "https://www.clarin.com/policiales/videos-hundieron-liga-millonaria-mafia-remates-inmobiliarios_0_f-QbiFIjT.html",
-                                     sponsored: true,
-                                     user_id: amy.id)
-project.photo.attach(io:URI.open("https://infocielo.com/uploads/noticias/imagenes/a/2020/06/20200609161507_grondona.jpg"),
-                     filename: "#{project.name}.png",
+
+atm = Project.find_or_create_by!(name: "Donde Estan los ATM?",
+                                 description: "Accede a la ubicacion de los cajeros con dinero disponible",
+                                 link_1: "https://github.com/nbouad/atm-repo",
+                                 link_2: "www.loteriadesanluis.com",
+                                 user_id: tomas.id)
+atm.photo.attach(io: File.open(Dir.pwd + "/app/assets/images/atm.png"),
+                     filename: "#{atm.name}.png",
                      content_type: 'image/png')
-project.save
+atm.save
 
-project = Project.find_or_create_by!(name: "GreenFreight",
+laliga = Project.find_or_create_by!(name: "La Liga",
+                                   description: "Apreta en las subastas judiciales con nosotros y gana maravillosos premios",
+                                   link_1: "https://www.clarin.com/policiales/videos-hundieron-liga-millonaria-mafia-remates-inmobiliarios_0_f-QbiFIjT.html",
+                                   sponsored: true,
+                                   user_id: amy.id)
+laliga.photo.attach(io:URI.open("https://www.logopik.com/wp-content/uploads/edd/2018/08/Mafia-Logo.png"),
+                     filename: "#{laliga.name}.png",
+                     content_type: 'image/png')
+laliga.save
+
+gfreight = Project.find_or_create_by!(name: "GreenFreight",
                                      description: "Ayudanos a transportar cargas reduciendo la huella de carbono y ahorrando costos a transportistas y clientes",
                                      link_1: "https://en.wikipedia.org/wiki/Hugo_Moyano",
                                      link_2: "https://github.com/getsentry/freight",
                                      user_id: nadia.id)
-project.photo.attach(io:URI.open("https://europeanshippers.eu/wp-content/uploads/2019/09/GFE_logo-271x300.jpg"),
-                     filename: "#{project.name}.png",
-                     content_type: 'image/png')
-project.save
+gfreight.photo.attach(io: File.open(Dir.pwd + "/app/assets/images/greenfreight.jpg"),
+                     filename: "#{gfreight.name}.jpg",
+                     content_type: 'image/jpg')
+gfreight.save
 
-project = Project.find_or_create_by!(name: "Tu Dieta en Piloto Automático",
-                                     description: "Armamos una dieta a tu medida y te ayudamos a prepararla",
-                                     link_1: "https://www.dietascormillot.com",
-                                     link_2: "https://bitbucket.org/nikhilm/rust-diet",
-                                     user_id: juan.id)
-project.photo.attach(io:URI.open("https://recognizeyourworld.com/wp-content/uploads/2016/01/Healthy-Food-Logo.jpg"),
-                     filename: "#{project.name}.png",
+dieta = Project.find_or_create_by!(name: "Tu Dieta en Piloto Automático",
+                                   description: "Armamos una dieta a tu medida y te ayudamos a prepararla",
+                                   link_1: "https://www.dietascormillot.com",
+                                   link_2: "https://bitbucket.org/nikhilm/rust-diet",
+                                   user_id: juan.id)
+dieta.photo.attach(io:URI.open("https://recognizeyourworld.com/wp-content/uploads/2016/01/Healthy-Food-Logo.jpg"),
+                     filename: "#{dieta.name}.png",
                      content_type: 'image/png')
-project.save
+dieta.save
 
-project = Project.find_or_create_by!(name: "Dreschrr",
+dreschrr = Project.find_or_create_by!(name: "Dreschrr",
                                      description: "Tu solución a todos tus problemas hogareños con garantía de confianza, seguridad y responsabilidad social",
                                      link_1: "https://www.linkedin.com/company/nanny-network",
                                      link_2: "https://www.instagram.com/officialfrandrescher", sponsored: true,
                                      user_id: pablo.id)
-project.photo.attach(io:URI.open("https://www.concordmonitor.com/getattachment/5b3199a8-fb92-481e-b95a-d2f0e0e228d2/WORSTMOMENTDRESCHER-cm-04xx20-ph33"),
-                     filename: "#{project.name}.png",
+dreschrr.photo.attach(io:URI.open("https://www.concordmonitor.com/getattachment/5b3199a8-fb92-481e-b95a-d2f0e0e228d2/WORSTMOMENTDRESCHER-cm-04xx20-ph33"),
+                     filename: "#{dreschrr.name}.png",
                      content_type: 'image/png')
-project.save
+dreschrr.save
+
+airtool = Project.find_or_create_by!(name: "AirTool",
+                                     description: "Alquila herramientas para todas tus necesidades hogareñas",
+                                     link_1: "https://www.facebook.com/visiontools",
+                                     link_2: "https://www.linkedin.com/company/rental-tool-company/about", sponsored: true,
+                                     user_id: mauricio.id)
+airtool.photo.attach(io:URI.open("https://thumbs.dreamstime.com/b/design-can-be-used-as-logo-icon-as-complement-to-design-tool-repair-logo-icon-design-127356170.jpg"),
+                     filename: "#{airtool.name}.png",
+                     content_type: 'image/png')
+airtool.save
+
+aquarental = Project.find_or_create_by!(name: "AquaRental",
+                                       description: "Alquila equipamiento acuático para pasar un fin de semana de lujo",
+                                       link_1: "https://www.sportdiver.com",
+                                       user_id: armando.id)
+aquarental.photo.attach(io:URI.open("https://pngimage.net/wp-content/uploads/2018/06/sail-logo-png-1.png"),
+                     filename: "#{aquarental.name}.jpg",
+                     content_type: 'image/png')
+aquarental.save
+
+adventuremap = Project.find_or_create_by!(name: "Adventure Map",
+                                         description: "Conecta con otros usuarios en nuestro mapa interactivo para realizarte recomendaciones y vivir una aventura!",
+                                         link_1: "https://www.adventuremaps.net",
+                                         user_id: juanpablo.id)
+adventuremap.photo.attach(io:URI.open("https://cdn.dribbble.com/users/175784/screenshots/1304076/adventure-map-illustration_1x.png"),
+                     filename: "#{adventuremap.name}.png",
+                     content_type: 'image/png')
+adventuremap.save
+
+uma = Project.find_or_create_by!(name: "Medic!",
+                                 description: "Accede a servicios de salud online para responder todas tus consultas con seguridad, evitando riesgos y con IA",
+                                 link_1: "https://www.linkedin.com/company/umahealth",
+                                 link_2: "https://twitter.com/uma_health",
+                                 sponsored: true,
+                                 user_id: ernesto.id)
+uma.photo.attach(io:URI.open("https://cdn.logojoy.com/wp-content/uploads/2018/05/30162438/361.png"),
+                filename: "#{uma.name}.png",
+                content_type: 'image/png')
+uma.save
+
+
 
 puts "Done creating Projects"
 puts ""
 
-
 puts "Creating Roles..."
 first_role = Role.find_or_create_by!(name: "Back-End Dev",
                         description: "Mantener el Back-End de la plataforma utilizando Rails, JS, Ruby y más",
-                        project_id: Project.first.id)
+                        project_id: lcet.id)
 second_role = Role.find_or_create_by!(name: "Front-End Dev",
                         description: "Diseñador Front-End con conocimientos intermedios de HTML/CSS y básicos de ROR",
-                        project_id: Project.first.id)
-third_role = Role.find_or_create_by!(name: "Front-End Dev",
-                        description: "Diseñador Front-End con conocimientos intermedios de HTML/CSS y básicos de ROR",
-                        project_id: Project.second.id)
+                        project_id: lcet.id)
 fourth_role = Role.find_or_create_by!(name: "Project Manager",
                         description: "Experiencia en Agile, Scrum y conocimientos básicos de Python",
-                        project_id: Project.first.id)
-fifth_role = Role.find_or_create_by!(name: "Project Manager",
-                        description: "Experiencia en Agile, Scrum y conocimientos básicos de Python",
-                        project_id: Project.second.id)
-sixth_role = Role.find_or_create_by!(name: "Seguridad",
-                        description: "Necesaria presencia física para negociaciones difíciles",
-                        project_id: Project.third.id)
-seventh_role = Role.find_or_create_by!(name: "Cobranzas",
-                        description: "Colaborador paciente, creativo y con iniciativa para recuperar capitales difíciles",
-                        project_id: Project.third.id)
-eighth_role = Role.find_or_create_by!(name: "Back-End Dev",
-                        description: "Mantener el Back-End de la plataforma utilizando Rails, JS, Ruby y más",
-                        project_id: Project.fourth.id)
-ninth_role = Role.find_or_create_by!(name: "Front-End Dev Master",
-                        description: "Diseñador Front-End con mucha experiencia en React",
-                        project_id: Project.fourth.id)
-tenth_role = Role.find_or_create_by!(name: "Project Manager",
-                        description: "Experiencia en Agile, Scrum y conocimientos básicos de Java",
-                        project_id: Project.fourth.id)
-eleventh_role = Role.find_or_create_by!(name: "Back and Front-End Dev",
-                        description: "Mantener el Back-End de la plataforma y conocimientos básicos de diseño",
-                        project_id: Project.fifth.id)
-twelfth_role = Role.find_or_create_by!(name: "Nutricionista",
-                        description: "Conocimiento académico para darnos insight acerca de cómo combinar alimentos y comidas",
-                        project_id: Project.fifth.id)
-thirteenth_role = Role.find_or_create_by!(name: "Back and Front-End Dev",
-                        description: "Mantener el Back-End de la plataforma y conocimientos básicos de diseño",
-                        project_id: Project.last.id)
-fourteenth_role = Role.find_or_create_by!(name: "Acompañante Terapéutico",
-                        description: "Insight acerca del cuidado de niños, personas mayores y discapacitados",
-                        project_id: Project.last.id)
-fifteenth_role = Role.find_or_create_by!(name: "AI Specialist",
-                        description: "Experiencia en modelos predictivos, inteligencia artificial y redes neuronales para contribuir con la construcción de las dietas",
-                        project_id: Project.fifth.id)
-sixteenth_role = Role.find_or_create_by!(name: "AI Specialist",
-                        description: "Experiencia en modelos predictivos, inteligencia artificial y logística para ayudar con las rutas de freight",
-                        project_id: Project.fourth.id)
-seventeenth_role = Role.find_or_create_by!(name: "HR Coordinator",
-                        description: "Ayuda entre la coordinación del personal de la plataforma y nuestros clientes",
-                        project_id: Project.last.id)
-eighteenth_role = Role.find_or_create_by!(name: "Data Scientist",
-                        description: "Data scraping global para generar insights dentro de la plataforma",
-                        project_id: Project.second.id)
-nineteenth_role = Role.find_or_create_by!(name: "Project Manager",
-                        description: "Experiencia trabajando y coordinando con clientes difíciles",
-                        project_id: Project.third.id)
-twentieth_role = Role.find_or_create_by!(name: "Back and Front-End Dev",
-                        description: "Mantener el Back-End de la plataforma y conocimientos básicos de diseño",
-                        project_id: Project.third.id)
+                        project_id: lcet.id)
 twentyfirst_role = Role.find_or_create_by!(name: "Investment Management",
                         description: "Manejar las relaciones con nuestros potenciales inversores a futuro",
-                        project_id: Project.first.id)
+                        project_id: lcet.id)
+
+
+third_role = Role.find_or_create_by!(name: "Front-End Dev",
+                        description: "Diseñador Front-End con conocimientos intermedios de HTML/CSS y básicos de ROR",
+                        project_id: atm.id)
+fifth_role = Role.find_or_create_by!(name: "Project Manager",
+                        description: "Experiencia en Agile, Scrum y conocimientos básicos de Python",
+                        project_id: atm.id)
+eighteenth_role = Role.find_or_create_by!(name: "Data Scientist",
+                        description: "Data scraping global para generar insights dentro de la plataforma",
+                        project_id: atm.id)
+
+
+sixth_role = Role.find_or_create_by!(name: "Seguridad",
+                        description: "Necesaria presencia física para negociaciones difíciles",
+                        project_id: laliga.id)
+seventh_role = Role.find_or_create_by!(name: "Cobranzas",
+                        description: "Colaborador paciente, creativo y con iniciativa para recuperar capitales difíciles",
+                        project_id: laliga.id)
+nineteenth_role = Role.find_or_create_by!(name: "Project Manager",
+                        description: "Experiencia trabajando y coordinando con clientes difíciles",
+                        project_id: laliga.id)
+twentieth_role = Role.find_or_create_by!(name: "Back and Front-End Dev",
+                        description: "Mantener el Back-End de la plataforma y conocimientos básicos de diseño",
+                        project_id: laliga.id)
+
+
+eighth_role = Role.find_or_create_by!(name: "Back-End Dev",
+                        description: "Mantener el Back-End de la plataforma utilizando Rails, JS, Ruby y más",
+                        project_id: gfreight.id)
+ninth_role = Role.find_or_create_by!(name: "Front-End Dev Master",
+                        description: "Diseñador Front-End con mucha experiencia en React",
+                        project_id: gfreight.id)
+tenth_role = Role.find_or_create_by!(name: "Project Manager",
+                        description: "Experiencia en Agile, Scrum y conocimientos básicos de Java",
+                        project_id: gfreight.id)
+sixteenth_role = Role.find_or_create_by!(name: "AI Specialist",
+                        description: "Experiencia en modelos predictivos, inteligencia artificial y logística para ayudar con las rutas de freight",
+                        project_id: gfreight.id)
+
+
+eleventh_role = Role.find_or_create_by!(name: "Back and Front-End Dev",
+                        description: "Mantener el Back-End de la plataforma y conocimientos básicos de diseño",
+                        project_id: dieta.id)
+twelfth_role = Role.find_or_create_by!(name: "Nutricionista",
+                        description: "Conocimiento académico para darnos insight acerca de cómo combinar alimentos y comidas",
+                        project_id: dieta.id)
+fifteenth_role = Role.find_or_create_by!(name: "AI Specialist",
+                        description: "Experiencia en modelos predictivos, inteligencia artificial y redes neuronales para contribuir con la construcción de las dietas",
+                        project_id: dieta.id)
+
+
+thirteenth_role = Role.find_or_create_by!(name: "Back and Front-End Dev",
+                        description: "Mantener el Back-End de la plataforma y conocimientos básicos de diseño",
+                        project_id: dreschrr.id)
+fourteenth_role = Role.find_or_create_by!(name: "Acompañante Terapéutico",
+                        description: "Insight acerca del cuidado de niños, personas mayores y discapacitados",
+                        project_id: dreschrr.id)
+seventeenth_role = Role.find_or_create_by!(name: "HR Coordinator",
+                        description: "Ayuda entre la coordinación del personal de la plataforma y nuestros clientes",
+                        project_id: dreschrr.id)
+
+
+
+twentysecond_role = Role.find_or_create_by!(name: "Project Manager",
+                    description: "Experiencia trabajando y coordinando con clientes difíciles",
+                    project_id: airtool.id)
+twentythird_role = Role.find_or_create_by!(name: "Back-End Dev",
+                    description: "Mantener el Back-End de la plataforma utilizando Rails, JS, Ruby y más",
+                    project_id: airtool.id)
+twentyfourth_role = Role.find_or_create_by!(name: "Logistics Manager",
+                    description: "Ayuda entre la coordinación del personal de la plataforma y nuestros clientes",
+                    project_id: airtool.id)
+
+
+twentyfifth_role = Role.find_or_create_by!(name: "Logistics Manager",
+                    description: "Ayuda entre la coordinación del personal de la plataforma y nuestros clientes",
+                    project_id: aquarental.id)
+twentysixth_role = Role.find_or_create_by!(name: "Project Manager",
+                    description: "Experiencia trabajando y coordinando con clientes difíciles",
+                    project_id: aquarental.id)
+twentyseventh_role = Role.find_or_create_by!(name: "Back and Front-End Dev",
+                    description: "Mantener el Back-End de la plataforma y conocimientos básicos de diseño",
+                    project_id: aquarental.id)
+
+
+twentyeighth_role = Role.find_or_create_by!(name: "AI Specialist",
+                    description: "Experiencia en modelos predictivos, inteligencia artificial y redes neuronales para contribuir con el mapeo",
+                    project_id: adventuremap.id)
+twentyninth_role = Role.find_or_create_by!(name: "Data Scientist",
+                    description: "Data scraping global para generar insights dentro de la plataforma",
+                    project_id: adventuremap.id)
+thirtieth_role = Role.find_or_create_by!(name: "Back-End Dev",
+                        description: "Mantener el Back-End de la plataforma utilizando Rails, JS, Ruby y más",
+                    project_id: adventuremap.id)
+
+
+thirtyfirst_role = Role.find_or_create_by!(name: "HR Coordinator",
+                    description: "Ayuda entre la coordinación del personal de la plataforma y nuestros clientes",
+                    project_id: uma.id)
+thirtysecond_role = Role.find_or_create_by!(name: "Health Specialist",
+                    description: "Médico certificado para colaborar con conocimientos de medicina certeros a incorporar en modelos predictivos",
+                    project_id: uma.id)
+thirtythird_role = Role.find_or_create_by!(name: "AI Specialist",
+                        description: "Experiencia en modelos predictivos e inteligencia artificial para aportar a los diagnósticos",
+                    project_id: uma.id)
+
 
 puts "Done creating Roles"
 puts ""
 
 puts "Assigning project owners to roles..."
-Collaborator.find_or_create_by!(role_id: Project.find_by_name("LCET").roles.first.id,
-                                user_id: Project.find_by_name("LCET").user.id,
+Collaborator.find_or_create_by!(role_id: lcet.roles.first.id,
+                                user_id: lcet.user.id,
                                 status: "active")
-Collaborator.find_or_create_by!(role_id: Project.find_by_name("Donde Estan los ATM?").roles.first.id,
-                                user_id: Project.find_by_name("Donde Estan los ATM?").user.id,
+Collaborator.find_or_create_by!(role_id: atm.roles.first.id,
+                                user_id: atm.user.id,
                                 status: "active")
-Collaborator.find_or_create_by!(role_id: Project.find_by_name("La Liga").roles.first.id,
-                                user_id: Project.find_by_name("La Liga").user.id,
+Collaborator.find_or_create_by!(role_id: laliga.roles.first.id,
+                                user_id: laliga.user.id,
                                 status: "active")
-Collaborator.find_or_create_by!(role_id: Project.find_by_name("GreenFreight").roles.first.id,
-                                user_id: Project.find_by_name("GreenFreight").user.id,
+Collaborator.find_or_create_by!(role_id: gfreight.roles.first.id,
+                                user_id: gfreight.user.id,
                                 status: "active")
-Collaborator.find_or_create_by!(role_id: Project.find_by_name("Tu Dieta en Piloto Automático").roles.first.id,
-                                user_id: Project.find_by_name("Tu Dieta en Piloto Automático").user.id,
+Collaborator.find_or_create_by!(role_id: dieta.roles.first.id,
+                                user_id: dieta.user.id,
                                 status: "active")
-Collaborator.find_or_create_by!(role_id: Project.find_by_name("Dreschrr").roles.first.id,
-                                user_id: Project.find_by_name("Dreschrr").user.id,
+Collaborator.find_or_create_by!(role_id: dreschrr.roles.first.id,
+                                user_id: dreschrr.user.id,
+                                status: "active")
+Collaborator.find_or_create_by!(role_id: airtool.roles.first.id,
+                                user_id: airtool.user.id,
+                                status: "active")
+Collaborator.find_or_create_by!(role_id: aquarental.roles.first.id,
+                                user_id: aquarental.user.id,
+                                status: "active")
+Collaborator.find_or_create_by!(role_id: adventuremap.roles.first.id,
+                                user_id: adventuremap.user.id,
+                                status: "active")
+Collaborator.find_or_create_by!(role_id: uma.roles.first.id,
+                                user_id: uma.user.id,
                                 status: "active")
 puts "Done assigning"
 puts ""
@@ -256,9 +369,6 @@ ApplicationRequest.find_or_create_by!(status: "accepted", user_id: pablo.id,
 ApplicationRequest.find_or_create_by!(status: "accepted", user_id: tomas.id,
                                       role_id: fourth_role.id,
                                       about_me: "Trabajé mucho en management de proyectos en Somalia")
-ApplicationRequest.find_or_create_by!(status: "pending response from applicant", user_id: ernesto.id,
-                                      role_id: fourth_role.id,
-                                      about_me: "Fui mano derecha de Mark Zuckerberg por tres años")
 ApplicationRequest.find_or_create_by!(status: "accepted", user_id: juanpablo.id,
                                       role_id: fifth_role.id,
                                       about_me: "Certificado como PMI-ACP")
@@ -556,6 +666,112 @@ Requirement.find_or_create_by!(role_id: twentyfirst_role.id,
                                technology_id: data.id,
                                level_id: Level.third.id)
 
+Requirement.find_or_create_by!(role_id: twentysecond_role.id,
+                               technology_id: agile.id,
+                               level_id: Level.fourth.id)
+Requirement.find_or_create_by!(role_id: twentysecond_role.id,
+                               technology_id: scrum.id,
+                               level_id: Level.fourth.id)
+Requirement.find_or_create_by!(role_id: twentysecond_role.id,
+                               technology_id: java.id,
+                               level_id: Level.first.id)
+
+Requirement.find_or_create_by!(role_id: twentythird_role.id,
+                               technology_id: ruby.id,
+                               level_id: Level.second.id)
+Requirement.find_or_create_by!(role_id: twentythird_role.id,
+                               technology_id: rails.id,
+                               level_id: Level.second.id)
+Requirement.find_or_create_by!(role_id: twentythird_role.id,
+                               technology_id: html.id,
+                               level_id: Level.second.id)
+
+Requirement.find_or_create_by!(role_id: twentyfourth_role.id,
+                               technology_id: people.id,
+                               level_id: Level.third.id)
+Requirement.find_or_create_by!(role_id: twentyfourth_role.id,
+                               technology_id: accounting.id,
+                               level_id: Level.second.id)
+Requirement.find_or_create_by!(role_id: twentyfourth_role.id,
+                               technology_id: logistics.id,
+                               level_id: Level.second.id)
+
+Requirement.find_or_create_by!(role_id: twentyfifth_role.id,
+                               technology_id: people.id,
+                               level_id: Level.third.id)
+Requirement.find_or_create_by!(role_id: twentyfifth_role.id,
+                               technology_id: accounting.id,
+                               level_id: Level.second.id)
+Requirement.find_or_create_by!(role_id: twentyfifth_role.id,
+                               technology_id: logistics.id,
+                               level_id: Level.second.id)
+
+Requirement.find_or_create_by!(role_id: twentysixth_role.id,
+                               technology_id: agile.id,
+                               level_id: Level.fourth.id)
+Requirement.find_or_create_by!(role_id: twentysixth_role.id,
+                               technology_id: scrum.id,
+                               level_id: Level.fourth.id)
+Requirement.find_or_create_by!(role_id: twentysixth_role.id,
+                               technology_id: java.id,
+                               level_id: Level.first.id)
+
+Requirement.find_or_create_by!(role_id: twentyseventh_role.id,
+                               technology_id: ruby.id,
+                               level_id: Level.first.id)
+Requirement.find_or_create_by!(role_id: twentyseventh_role.id,
+                               technology_id: rails.id,
+                               level_id: Level.first.id)
+Requirement.find_or_create_by!(role_id: twentyseventh_role.id,
+                               technology_id: css.id,
+                               level_id: Level.second.id)
+Requirement.find_or_create_by!(role_id: twentyseventh_role.id,
+                               technology_id: html.id,
+                               level_id: Level.second.id)
+
+Requirement.find_or_create_by!(role_id: twentyeighth_role.id,
+                               technology_id: brain.id,
+                               level_id: Level.fourth.id)
+
+Requirement.find_or_create_by!(role_id: twentyninth_role.id,
+                               technology_id: data.id,
+                               level_id: Level.third.id)
+Requirement.find_or_create_by!(role_id: twentyninth_role.id,
+                               technology_id: ruby.id,
+                               level_id: Level.second.id)
+
+Requirement.find_or_create_by!(role_id: thirtieth_role.id,
+                               technology_id: ruby.id,
+                               level_id: Level.second.id)
+Requirement.find_or_create_by!(role_id: thirtieth_role.id,
+                               technology_id: rails.id,
+                               level_id: Level.second.id)
+Requirement.find_or_create_by!(role_id: thirtieth_role.id,
+                               technology_id: html.id,
+                               level_id: Level.second.id)
+
+Requirement.find_or_create_by!(role_id: thirtyfirst_role.id,
+                               technology_id: human.id,
+                               level_id: Level.third.id)
+Requirement.find_or_create_by!(role_id: thirtyfirst_role.id,
+                               technology_id: people.id,
+                               level_id: Level.second.id)
+
+Requirement.find_or_create_by!(role_id: thirtythird_role.id,
+                               technology_id: health.id,
+                               level_id: Level.fourth.id)
+
+Requirement.find_or_create_by!(role_id: thirtythird_role.id,
+                               technology_id: brain.id,
+                               level_id: Level.fourth.id)
+Requirement.find_or_create_by!(role_id: thirtythird_role.id,
+                               technology_id: health.id,
+                               level_id: Level.first.id)
+Requirement.find_or_create_by!(role_id: thirtythird_role.id,
+                               technology_id: python.id,
+                               level_id: Level.third.id)
+
+
 puts "Done creating requirements"
 puts ""
 
@@ -645,6 +861,58 @@ Skill.find_or_create_by!(user: juan,
                          level: Level.second)
 Skill.find_or_create_by!(user: juan,
                          technology: data,
+                         level: Level.second)
+
+Skill.find_or_create_by!(user: armando,
+                         technology: ruby,
+                         level: Level.first)
+Skill.find_or_create_by!(user: armando,
+                         technology: react,
+                         level: Level.third)
+Skill.find_or_create_by!(user: armando,
+                         technology: violence,
+                         level: Level.second)
+Skill.find_or_create_by!(user: armando,
+                         technology: human,
+                         level: Level.second)
+
+Skill.find_or_create_by!(user: ernesto,
+                         technology: people,
+                         level: Level.second)
+Skill.find_or_create_by!(user: ernesto,
+                         technology: health,
+                         level: Level.third)
+Skill.find_or_create_by!(user: ernesto,
+                         technology: logistics,
+                         level: Level.second)
+Skill.find_or_create_by!(user: ernesto,
+                         technology: brain,
+                         level: Level.second)
+
+Skill.find_or_create_by!(user: mauricio,
+                         technology: java,
+                         level: Level.fourth)
+Skill.find_or_create_by!(user: mauricio,
+                         technology: python,
+                         level: Level.third)
+Skill.find_or_create_by!(user: mauricio,
+                         technology: rails,
+                         level: Level.second)
+Skill.find_or_create_by!(user: mauricio,
+                         technology: ruby,
+                         level: Level.second)
+
+Skill.find_or_create_by!(user: juanpablo,
+                         technology: java,
+                         level: Level.fourth)
+Skill.find_or_create_by!(user: juanpablo,
+                         technology: accounting,
+                         level: Level.third)
+Skill.find_or_create_by!(user: juanpablo,
+                         technology: data,
+                         level: Level.second)
+Skill.find_or_create_by!(user: juanpablo,
+                         technology: scrum,
                          level: Level.second)
 
 puts "Done creating skills"
