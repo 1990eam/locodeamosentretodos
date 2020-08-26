@@ -1,9 +1,7 @@
 <div class="container my-2">
     <h2>Proyectos a los que aplicaste</h1>
     <% @applications.each do |application| %>
-    <div class="row justify-content-around">
-      <div class="col-6">
-          <div class="index-project-card border rounded" style="width: 700px; background-color: white;">
+          <div class="index-application-card border rounded">
             <div class="d-flex">
               <%= cl_image_tag application.project.photo.key, alt: "alttext", width: 300, height: 300, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
               <div>
@@ -17,7 +15,7 @@
                 </div>
               <% end %>
             </div>
-            <div class="d-flex p-3 pt-0 justify-content-between">
+            <div class="d-flex justify-content-between">
               <div class="d-flex flex-column pr-3">
                 <h4 class="h5 m-0 flex-grow-0 mb-2">Rol aplicado</h4>
                 <div class="flex-grow-1 mb-2">
@@ -29,15 +27,15 @@
                 </div>
               </div>
               <div class="d-flex flex-column pl-3 w-50">
-                <h4 class="h5 m-0 flex-grow-0 mb-2">Tags</h4>
-                <div class="d-flex">
+                <h4 class="h5 flex-grow-0 mb-3">Tags</h4>
+                <div class="d-flex icons-wrapper mb-3">
                   <% application.role.requirements.each do |requirement| %>
-                  <p class="mr-2 mb-0" data-toggle="tooltip" title="<%= requirement.technology.name %>">
-                   <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
-                  </p>
+                    <p class="mr-2 mb-0" data-toggle="tooltip" title="<%= requirement.technology.name %>">
+                     <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
+                    </p>
                   <% end %>
                 </div>
-                <h3 class="h6 m-0 flex-grow-0 d-flex align-items-center my-2">Colaboradores <small class="ml-1 rounded-circle py-1 px-2 bg-danger text-white"><%= application.project.collaborators.count { |x| x.status = "active" } %></small></h3>
+                <h3 class="mb-3">Colaboradores <span class="badge badge-pill badge-light"><%= application.project.collaborators.count { |x| x.status = "active" } %></span></h3>
                 <div class="align-items-center">
                   <% if application.status == "accepted" %>
                   <%= link_to "Link del Proyecto", application.project, class: "btn btn-primary mb-3"%>
@@ -48,10 +46,6 @@
                 </div>
               </div>
             </div>
-          </div>
-      </div>
-
-     </div>
-
-       <% end %>
+    </div>
+    <% end %>
   </div>

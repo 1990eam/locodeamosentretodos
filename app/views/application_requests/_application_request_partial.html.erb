@@ -19,14 +19,14 @@
       <h5 class="mt-3"> Información del candidato</h5>
       <div class="d-flex">
         <div>
-          <%= cl_image_tag application.user.photo.key, class: "avatar mr-2"%>
+          <%= avatar_fixer(application.user, class: "avatar mr-2", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
         </div>
         <p class="ml-2 mt-2"> <strong><%= application.user.first_name %> <%= application.user.last_name %></strong>  </p>
       </div>
       <p> Acerca del candidato: <%= application.about_me %></p>
       <div>
         <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#staticBackdrop_<%= application.id  %>">
-          Explora la propuesta del candidato
+          Ver adjunto del candidato
         </button>
         <%= render "application_requests/modal_file", application: application %>
         <% if current_user == application.project.user && (application.status == "pending" || application.status == "pending response from applicant" || application.status == "accepted") %>
