@@ -1,12 +1,12 @@
 <div class="modal fade" id="staticBackdrop_<%= application.id  %>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-body">
         <div>
           <% if application.file.attached? %>
-          <%= cl_image_tag(application.file.key, :width => 200, :height => 250, :crop => :fill, :page => 1) %>
+            <%= cl_image_tag(application.file.key, format: :jpg) %>
           <% else %>
-           <p>El solicitante no subió ningun archivo</p>
+            <p>El solicitante no subió ningun archivo</p>
           <% end %>
         </div>
       </div>

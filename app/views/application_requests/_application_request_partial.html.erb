@@ -26,7 +26,7 @@
       <p> Acerca del candidato: <%= application.about_me %></p>
       <div>
         <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#staticBackdrop_<%= application.id  %>">
-          Explora la propuesta del candidato
+          Ver adjunto del candidato
         </button>
         <%= render "application_requests/modal_file", application: application %>
         <% if current_user == application.project.user && (application.status == "pending" || application.status == "pending response from applicant" || application.status == "accepted") %>
