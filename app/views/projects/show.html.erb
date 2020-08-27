@@ -2,7 +2,11 @@
 
 <div class='project-container mr-5'>
   <div class='project-overview mx-3'>
+    <% if @project.photo.attached? %>
+    <%= cl_image_tag @project.photo.key, alt: "alttext", crop: :fill,  class:"project-image" %>
+    <% else %>
     <%= image_tag "project-default", class:"project-image" %>
+    <% end %>
     <h4 class='text-center mt-3'> <%= @project.name %></h4>
     <div class="tech-images">
       <% @project.technologies.uniq.each do |technology| %>

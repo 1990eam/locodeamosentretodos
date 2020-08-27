@@ -15,12 +15,12 @@
 
             <!-- si esta vacante -->
           <% else %>
-            <p class="role.status mb-2" style="color: $forest-green;">Esta posición está vacante</p>
+            <p class="role.status mb-2" style="color:  #57A773;">Esta posición está vacante</p>
           <% end %>
-          <div class="skill-level d-flex">
+          <div class="skill-level d-flex justify-content-center">
             <% role.requirements.each do |requirement| %>
-              <div class="d-flex flex-wrap m-0">
-                <p class=" text-left mr-2 mb-0" data-toggle="tooltip" title="<%= requirement.technology.name %> - <%= requirement.level.name.capitalize %>">
+              <div class="d-flex text-center">
+                <p class="mr-2 mb-0" data-toggle="tooltip" title="<%= requirement.technology.name %> - <%= requirement.level.name.capitalize %>">
                   <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
                 </p>
               </div>
@@ -30,8 +30,8 @@
             <h6 class="mb-0 mt-3"> Funciones del puesto </h6>
             <p class="card-text"><%= role.description %></p>
           </div>
-          <div class="edit-delete-role d-flex justify-content-center">
-            <p><%= link_to "", edit_role_path(role), data: { toggle: 'tooltip' }, title: "Editar Role", class:"fas fa-edit mr-1", style:"text-decoration: none;"%> </p>
+          <div class="edit-delete-role d-flex">
+            <p><%= link_to "", edit_role_path(role), data: { toggle: 'tooltip' }, title: "Editar Role", class:"fas fa-edit mr-2", style:"text-decoration: none;"%> </p>
             <p><%= link_to "", role_path(role), data: { toggle: 'tooltip', confirm: "¿Estás seguro?" }, method: :delete, title: "Borrar Role", class:"fas fa-trash", style:"text-decoration: none;" %> </p>
 
           </div>
