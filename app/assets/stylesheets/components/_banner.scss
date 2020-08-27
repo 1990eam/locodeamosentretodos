@@ -1,49 +1,178 @@
-#main-banner {
-  background-size: cover;
-  background-position: center;
+.main-banner {
   display: flex;
   height: 92vh;
-  padding: 150px 0;
 }
 
-#main-banner h1 {
+.carousel-images {
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay h1 {
   margin: 0;
-  color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
 }
 
-#main-banner p {
+.overlay p {
   font-size: 20px;
-  color: white;
-  opacity: .7;
+  opacity: .8;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
+.overlay {
+  color: $mint-cream;
+  position: absolute;
+  z-index: 12;
+  width: auto;
+  text-align: center;
+}
+
+section {
+  width: 100%;
+}
+
+.carousel-caption {
+ position: initial !important;
+}
+
+#banner-buttons-large .btn {
+   white-space: nowrap;
+   text-align: center;
+}
+
+.demo a {
+  position: absolute;
+  bottom: 20px;
+  z-index: 2;
+  display: inline-block;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  color: $mint-cream;
+  font : normal 400 20px/1 'Ubuntu', sans-serif;
+  letter-spacing: .1em;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+.demo a:hover {
+  opacity: .5;
+}
+
+#section01 a {
+  padding-top: 70px;
+}
+#section01 a span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid $mint-cream;
+  border-bottom: 1px solid $mint-cream;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-animation: sdb05 1.5s infinite;
+  animation: sdb05 1.5s infinite;
+  box-sizing: border-box;
+}
+
+
+.second-scroller a {
+  color: $red-salsa !important;
+  bottom: 110px !important;
+}
+
+.second-scroller {
+  padding-top: 70px;
+}
+#section02 a span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid $red-salsa;
+  border-bottom: 1px solid $red-salsa;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -webkit-animation: sdb06 1.5s infinite;
+  animation: sdb06 1.5s infinite;
+  box-sizing: border-box;
+}
+
+@-webkit-keyframes sdb05 {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+@keyframes sdb05 {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes sdb06 {
+  0% {
+    -webkit-transform: rotate(135deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(135deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+@keyframes sdb06 {
+  0% {
+    transform: rotate(135deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(135deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+
+
 
 @media (min-width: 100px) and (max-width: 575px) {
-  #main-banner {
-    padding: 40px 0;
+  .overlay p {
+    font-size: 18px;
   }
-  #main-banner p {
-    font-size: 12px;
-  }
-  #main-banner h1 {
-    font-size: 20px;
-  }
-  #main-banner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .overlay h1 {
+    font-size: 24px;
   }
 }
 
 @media (min-width: 576px) and (max-width: 768px) {
-  #main-banner p {
-    font-size: 18px;
+  .overlay p {
+    font-size: 22px;
   }
-  #main-banner h1 {
+  .overlay h1 {
     font-size: 28px;
   }
 }
@@ -53,10 +182,10 @@
 }
 
 @media (min-width: 1200px) {
-  #main-banner p {
-    font-size: 32px;
+  .overlay p {
+    font-size: 28px;
   }
-  #main-banner h1 {
-    font-size: 44px;
+  .overlay h1 {
+    font-size: 40px;
   }
 }
