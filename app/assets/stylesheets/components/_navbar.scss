@@ -22,6 +22,7 @@
 
 .navbar-invisible-div {
   height: 86px;
+  background-color: $indigo-blue;
 }
 
 .navbar-logo-text {
@@ -45,11 +46,6 @@
 .scrolled-up{
    transform:translateY(0); transition: all 0.3s ease-in-out;
 }
-
-.navbar-invisible-div {
-  background-color: white;
-}
-
 
 .navbar-lewagon .form-control {
   border-radius: 21px;
