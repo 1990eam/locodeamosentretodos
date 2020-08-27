@@ -20,4 +20,8 @@ class ApplicationRequestPolicy < ApplicationPolicy
   def decline?
     record.user
   end
+
+  def destroy?
+    record.user == user
+  end
 end

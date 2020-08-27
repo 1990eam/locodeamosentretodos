@@ -42,7 +42,7 @@
           <% end %>
           <% if application.status == "pending" || application.status == "pending response from applicant" || application.status == "accepted" %>
           <%= link_to "Contacta al project owner", application_request_chatroom_path(application.id),  class: "btn btn-sm btn-primary mb-3"  %>
-          <button class="btn btn-sm btn-danger mb-3">Retirar aplicación</button>
+          <%= link_to "Retirar aplicación", application_request_path(application), method: :delete, data: { confirm: "Estas seguro? El Project Owner dejará de ver tu aplicación" }, class:"btn btn-sm btn-danger mb-3"  %>
           <% end %>
         </div>
       </div>
