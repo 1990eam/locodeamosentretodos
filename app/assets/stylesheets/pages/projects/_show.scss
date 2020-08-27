@@ -18,16 +18,16 @@
   position:relative;
   background-color: white;
   display: flex;
-  height: 350px;
-  width: 250px;
+  height: 364px;
+  width: 280px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
   .edit-delete-role{
-    justify: center;
+    justify-content: center;
     position: absolute;
-    bottom: 10px;
-    right: 100px;
+    bottom: -8px;
+    right: 113px;
   }
 }
 

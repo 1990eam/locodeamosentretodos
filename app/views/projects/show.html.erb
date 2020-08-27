@@ -8,9 +8,8 @@
     <h4 class='text-center mt-3'> <%= @project.name %></h4>
     <div class="tech-images">
       <% @project.technologies.uniq.each do |technology| %>
-      <p class="ml-3 mb-0">
+      <p class="ml-3 mb-0 icons-wrapper" data-toggle="tooltip" title="<%= technology.name %>">
         <%= sanitize pick_tech_icon(technology.name), tags: %w(i), attributes: %w(class style) %>
-        <%= technology.name %>
       </p>
       <% end %>
     </div>
