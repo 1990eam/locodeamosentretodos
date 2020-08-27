@@ -38,7 +38,7 @@
         <% if (current_user.projects.any? {|project| project.application_requests.any? {|app_request| app_request.status == "pending"}})  %>
           <li class="nav-item">
             <%= link_to "Mis Candidatos", my_project_request_path, class: "nav-link" %>
-            <span class="notification-dot">.</span>
+            <span class="notification-dot"></span>
           </li>
           <% else %>
           <li class="nav-item">
