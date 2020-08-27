@@ -30,7 +30,6 @@
 }
 
 section {
-  width: 100%;
 }
 
 .carousel-caption {
@@ -81,13 +80,13 @@ section {
 
 .second-scroller a {
   color: $red-salsa !important;
-  bottom: 110px !important;
+  bottom: 30px !important;
 }
 
 .second-scroller {
   padding-top: 70px;
 }
-#section02 a span {
+.second-scroller a span {
   position: absolute;
   top: 0;
   left: 50%;

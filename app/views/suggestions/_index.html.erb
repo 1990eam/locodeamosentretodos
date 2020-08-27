@@ -4,15 +4,15 @@
     <% @project.suggestions.each do |suggestion| %>
 
     <div class="suggestion-card" data-target="<%= suggestion.id %>">
-      <p class="feature-title">Feature</p>
+      <p class="feature-title mb-3 mt-2">Feature</p>
       <p class="suggestion-collaborator">Sugerido por:</p>
       <div class="suggestion-collaborator <%= suggestion.collaborator.user == @project.user ? "avatar-bordered mx-auto" : "" %>">
         <%= avatar_fixer(suggestion.collaborator.user, data: { toggle: 'tooltip' }, class: "suggestion-collaborator avatar dropdown-toggle", title: "#{suggestion.collaborator.user.first_name} / #{suggestion.collaborator.role.name}") %>
       </div>
-      <p class="suggestion-description mt-1"><%= suggestion.description %></p>
+      <p class="suggestion-description mt-3 px-3 text-center"><%= suggestion.description %></p>
       <div class="ratings">
 
-      <div class="current-rating">
+      <div class="current-rating mb-3">
         <% if suggestion.average_rating.to_i == 0 %>
         <p style="font-size: 0.8rem;" class="text-muted text-center">Nadie ha votado todavía</p>
         <% else %>
@@ -28,7 +28,7 @@
 
       <!-- logica para no permitir votar màs de una vez -->
       <% if suggestion.user_vote(current_user) %>
-      <div class="user-vote">
+      <div class="user-vote mb-3">
         <p class="suggestion-collaborator">Tu voto</p>
         <p>
           <% suggestion.user_vote(current_user).to_i.times do  %>
@@ -53,13 +53,16 @@
     </div>
     <% end %>
 
-    <div class="new-suggestion-card">
+    <div class="new-suggestion-card d-flex flex-column justify-content-between">
       <p class="feature-title">Nueva Feature</p>
-      <%= simple_form_for [ @project, @suggestion ], remote: true do |f| %>
-      <%= f.input :description, :maxlength => 100, label: "Explica brevemente la idea a implementar:" %>
-      <p style="font-size: smaller">Máximo 100 caracteres</p>
-      <%= f.submit "Enviar", class: "btn btn-primary d-flex mx-auto" %>
-      <% end %>
+      <div>
+
+        <%= simple_form_for [ @project, @suggestion ], remote: true do |f| %>
+        <%= f.input :description, :maxlength => 100, label: "Explica brevemente la idea a implementar:" %>
+        <p style="font-size: smaller">Máximo 100 caracteres</p>
+        <%= f.submit "Enviar", class: "btn btn-primary d-flex mx-auto" %>
+        <% end %>
+      </div>
 
 
     </div>
@@ -67,8 +70,3 @@
   </div>
 
 </div>
-
-
-<style>
-
-</style>

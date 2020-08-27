@@ -217,6 +217,9 @@ fourth_role = Role.find_or_create_by!(name: "Project Manager",
 twentyfirst_role = Role.find_or_create_by!(name: "Investment Management",
                         description: "Manejar las relaciones con nuestros potenciales inversores a futuro",
                         project_id: lcet.id)
+thirtyfourth_role = Role.find_or_create_by!(name: "Fullstack Developer",
+                        description: "Buscamos un Dev Jr con ganas de aprender y desarrollarse en el mundo de la programación web",
+                        project_id: lcet.id)
 
 
 third_role = Role.find_or_create_by!(name: "Front-End Dev",
@@ -363,9 +366,6 @@ puts "Done assigning"
 puts ""
 
 puts "Creating applications..."
-ApplicationRequest.find_or_create_by!(status: "accepted", user_id: pablo.id,
-                                      role_id: second_role.id,
-                                      about_me: "Soy el mejor Dev que podes pagar :)")
 ApplicationRequest.find_or_create_by!(status: "accepted", user_id: tomas.id,
                                       role_id: fourth_role.id,
                                       about_me: "Trabajé mucho en management de proyectos en Somalia")
@@ -411,6 +411,10 @@ ApplicationRequest.find_or_create_by!(user_id: ernesto.id,
 ApplicationRequest.find_or_create_by!(status: "accepted", user_id: amy.id,
                                       role_id: twentyfirst_role.id,
                                       about_me: "Ex associate de Y Combinator")
+ApplicationRequest.find_or_create_by!(user_id: juanpablo.id,
+                                      role_id: thirtyfourth_role.id,
+                                      about_me: "Soy recién egresado de LeWagon Batch #384!")
+
 puts "Done creating Applications"
 puts ""
 
@@ -771,6 +775,28 @@ Requirement.find_or_create_by!(role_id: thirtythird_role.id,
                                technology_id: python.id,
                                level_id: Level.third.id)
 
+Requirement.find_or_create_by!(role_id: thirtythird_role.id,
+                               technology_id: brain.id,
+                               level_id: Level.fourth.id)
+Requirement.find_or_create_by!(role_id: thirtythird_role.id,
+                               technology_id: health.id,
+                               level_id: Level.first.id)
+Requirement.find_or_create_by!(role_id: thirtythird_role.id,
+                               technology_id: python.id,
+                               level_id: Level.third.id)
+
+Requirement.find_or_create_by!(role_id: thirtyfourth_role.id,
+                               technology_id: ruby.id,
+                               level_id: Level.second.id)
+Requirement.find_or_create_by!(role_id: thirtyfourth_role.id,
+                               technology_id: rails.id,
+                               level_id: Level.second.id)
+Requirement.find_or_create_by!(role_id: thirtyfourth_role.id,
+                               technology_id: js.id,
+                               level_id: Level.first.id)
+Requirement.find_or_create_by!(role_id: thirtyfourth_role.id,
+                               technology_id: css.id,
+                               level_id: Level.second.id)
 
 puts "Done creating requirements"
 puts ""
@@ -916,3 +942,77 @@ Skill.find_or_create_by!(user: juanpablo,
                          level: Level.second)
 
 puts "Done creating skills"
+puts "..."
+
+
+puts "Creating Suggestions..."
+
+oauth = Suggestion.find_or_create_by!(project: lcet,
+                              collaborator: lcet.collaborators.second,
+                              description: "Implementar OAuth para que se pueda iniciar sesión con GitHub")
+chatroom = Suggestion.find_or_create_by!(project: lcet,
+                              collaborator: lcet.collaborators.first,
+                              description: "Hacemos un Chatroom para comunicar aplicantes y project owners?")
+hiddenmeme = Suggestion.find_or_create_by!(project: lcet,
+                              collaborator: lcet.collaborators.third,
+                              description: "Escondamos un meme en el header total nadie lo va a ver :)")
+
+SuggestionVote.find_or_create_by!(suggestion: oauth,
+                                  collaborator: lcet.collaborators.find_by(user: amy),
+                                  rating: 4)
+SuggestionVote.find_or_create_by!(suggestion: chatroom,
+                                  collaborator: lcet.collaborators.find_by(user: amy),
+                                  rating: 3)
+SuggestionVote.find_or_create_by!(suggestion: hiddenmeme,
+                                  collaborator: lcet.collaborators.find_by(user: amy),
+                                  rating: 5)
+
+SuggestionVote.find_or_create_by!(suggestion: oauth,
+                                  collaborator: lcet.collaborators.find_by(user: elian),
+                                  rating: 2)
+SuggestionVote.find_or_create_by!(suggestion: chatroom,
+                                  collaborator: lcet.collaborators.find_by(user: elian),
+                                  rating: 2)
+SuggestionVote.find_or_create_by!(suggestion: hiddenmeme,
+                                  collaborator: lcet.collaborators.find_by(user: elian),
+                                  rating: 5)
+
+SuggestionVote.find_or_create_by!(suggestion: oauth,
+                                  collaborator: lcet.collaborators.find_by(user: tomas),
+                                  rating: 5)
+SuggestionVote.find_or_create_by!(suggestion: chatroom,
+                                  collaborator: lcet.collaborators.find_by(user: tomas),
+                                  rating: 5)
+SuggestionVote.find_or_create_by!(suggestion: hiddenmeme,
+                                  collaborator: lcet.collaborators.find_by(user: tomas),
+                                  rating: 5)
+
+fotos = Suggestion.find_or_create_by!(project: gfreight,
+                              collaborator: gfreight.collaborators.second,
+                              description: "Pongamos fotos de los camiones para que los users vean que son nuevos!")
+cargas = Suggestion.find_or_create_by!(project: gfreight,
+                              collaborator: gfreight.collaborators.first,
+                              description: "Podríamos especificar el tipo de carga para evitar sorpresas.")
+
+SuggestionVote.find_or_create_by!(suggestion: fotos,
+                                  collaborator: gfreight.collaborators.find_by(user: nadia),
+                                  rating: 4)
+SuggestionVote.find_or_create_by!(suggestion: cargas,
+                                  collaborator: gfreight.collaborators.find_by(user: nadia),
+                                  rating: 4)
+
+SuggestionVote.find_or_create_by!(suggestion: fotos,
+                                  collaborator: gfreight.collaborators.find_by(user: ernesto),
+                                  rating: 1)
+SuggestionVote.find_or_create_by!(suggestion: cargas,
+                                  collaborator: gfreight.collaborators.find_by(user: ernesto),
+                                  rating: 1)
+
+SuggestionVote.find_or_create_by!(suggestion: fotos,
+                                  collaborator: gfreight.collaborators.find_by(user: mauricio),
+                                  rating: 2)
+SuggestionVote.find_or_create_by!(suggestion: cargas,
+                                  collaborator: gfreight.collaborators.find_by(user: mauricio),
+                                  rating: 5)
+
+puts "Done!"

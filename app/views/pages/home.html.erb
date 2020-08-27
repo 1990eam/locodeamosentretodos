@@ -27,68 +27,70 @@
 </div>
 
 <section id="section02" class="mt-4">
-  <div class="container home-container mb-3 mt-4">
+  <div class="container mb-3 mt-4">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="home-text-container">
+          <div class="border-bottom my-3">
+            <div class="d-flex align-items-center justify-content-center logo-concat">
+              <h3 class="text-center mt-3">Somos</h3>
+              <%= image_tag "logo.png", class: "index-logo", style: "width: 70px;" %>
+              <h3 class="text-center mt-3"><div class="logo-text" style="font-size: 1.75rem;">TeamAppsis</div></h3>
+            </div>
+            <p style="line-height: 2;">Esta idea surge a partir de la necesidad latente de nuevos y jóvenes profesionales por insertarse en el ámbito laboral, ganar experiencia en la resolución de problemas y trabajar en equipo en el ecosistema tech.</p>
+          </div>
 
-    <div class="text-container">
-      <div class="border-bottom my-3">
-        <div class="d-flex align-items-center justify-content-center logo-concat">
-          <h3 class="text-center mt-3">Somos</h3>
-          <%= image_tag "logo.png", class: "index-logo", style: "width: 70px;" %>
-          <h3 class="text-center mt-3"><div class="logo-text" style="font-size: 1.75rem;">TeamAppsis</div></h3>
-        </div>
-        <p style="line-height: 2;">Esta idea surge a partir de la necesidad latente de nuevos y jóvenes profesionales por insertarse en el ámbito laboral, ganar experiencia en la resolución de problemas y trabajar en equipo en el ecosistema tech.</p>
-      </div>
+          <div class="border-bottom my-3">
+            <h3 class="text-center mt-3">Nuestros objetivos</h3>
 
-      <div class="border-bottom my-3">
-        <h3 class="text-center mt-3">Nuestros objetivos</h3>
+            <div class="d-flex">
+              <%= image_tag "scrum.svg", class: "mr-3", style: "width: 40%;" %>
+              <p class="mt-3" style="line-height: 2;">Queremos generar un espacio de encuentro entre emprendedores y profesionales que busquen transformar ideas en proyectos y usar nuestra plataforma para atraer sponsors.</p>
+            </div>
+          </div>
 
-        <div class="d-flex">
-          <%= image_tag "scrum.svg", class: "mr-3", style: "width: 40%;" %>
-          <p class="mt-3" style="line-height: 2;">Queremos generar un espacio de encuentro entre emprendedores y profesionales que busquen transformar ideas en proyectos y usar nuestra plataforma para atraer sponsors.</p>
-        </div>
-      </div>
+          <div class="my-3 border-bottom">
+            <h3 class="text-center mt-3">Colabora remotamente</h3>
+            <div class="d-flex">
+              <%= image_tag "remote.svg", class: "mr-3", style: "width: 40%;" %>
+              <p class="mt-3" style="line-height: 2;">Organiza tu disponibilidad horaria y haz un uso óptimo del tiempo, realizando tareas especificas según tus habilidades.</p>
+            </div>
+          </div>
 
-      <div class="my-3 border-bottom">
-        <h3 class="text-center mt-3">Colabora remotamente</h3>
-        <div class="d-flex">
-          <%= image_tag "remote.svg", class: "mr-3", style: "width: 40%;" %>
-          <p class="mt-3" style="line-height: 2;">Organiza tu disponibilidad horaria y haz un uso óptimo del tiempo, realizando tareas especificas según tus habilidades.</p>
-        </div>
-      </div>
-
-      <div class="my-3">
-        <h3 class="text-center mt-3">Encuentra proyectos a tu medida</h3>
-        <div class="d-flex">
-          <%= image_tag "predictive.svg", class: "mr-3", style: "width: 40%;" %>
-          <p class="mt-3" style="line-height: 2;">Carga tus skills para que podamos recomendarte proyectos que buscan colaboradores con tus habilidades.</p>
-        </div>
-      </div>
-
-
-    </div>
-
-    <div class="cards-container">
-      <div class="container home-card-container my-4">
-        <div class="home-first-card">
-          <%= render "projects/index-card", project: @projects.fourth %>
+          <div class="my-3">
+            <h3 class="text-center mt-3">Encuentra proyectos a tu medida</h3>
+            <div class="d-flex">
+              <%= image_tag "predictive.svg", class: "mr-3", style: "width: 40%;" %>
+              <p class="mt-3" style="line-height: 2;">Carga tus skills para que podamos recomendarte proyectos que buscan colaboradores con tus habilidades.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="container home-card-container my-4">
-        <div class="home-second-card">
-          <%= render "projects/index-card", project: @projects.second %>
+
+      <div class="col-md-6 col-lg-8">
+        <div class="cards-container">
+          <div class="container home-card-container my-4">
+            <div class="home-first-card">
+              <%= render "projects/index-card", project: @projects.fourth %>
+            </div>
+          </div>
+          <div class="container home-card-container my-4">
+            <div class="home-second-card">
+              <%= render "projects/index-card", project: @projects.second %>
+            </div>
+          </div>
+          <div class="container home-card-container my-4">
+            <div class="home-third-card">
+              <%= render "projects/index-card", project: @projects.first %>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="container home-card-container my-4">
-        <div class="home-third-card">
-          <%= render "projects/index-card", project: @projects.first %>
+        <div class="demo second-scroller d-flex justify-content-start">
+          <a href="#section01" class="red-salsa"><span></span>Comienza a explorar o crea un proyecto</a>
         </div>
       </div>
     </div>
   </div>
-    <div class="demo second-scroller d-flex justify-content-center">
-     <a href="#section01" class="red-salsa"><span></span>Comienza a explorar o crea un proyecto</a>
-    </div>
-
-
 </section>
+
 

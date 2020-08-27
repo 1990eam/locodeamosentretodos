@@ -14,15 +14,13 @@ class SuggestionVotesController < ApplicationController
       flash[:notice] = "Votaste correctamente"
       redirect_to project_path(@project, tab: "suggestions", anchor: "suggestion-#{params[:suggestion_id]}")
     else
-      flash[:alert] = "Algo salio mal"
+      flash[:alert] = "Algo salió mal :("
     end
   end
-
 
   private
 
   def vote_params
     params.require(:suggestion_vote).permit(:rating, :suggestion_id)
   end
-
 end

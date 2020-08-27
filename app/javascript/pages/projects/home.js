@@ -1,7 +1,6 @@
 const scrollingCards = () => {
-  const scrollingcard = document.querySelector('.home-card-container');
   setTimeout(function () {
-    if (scrollingcard) {
+    if(document.querySelector('.main-banner')) {
       cardScroller('.home-first-card');
       cardScroller('.home-second-card');
       cardScroller('.home-third-card');
