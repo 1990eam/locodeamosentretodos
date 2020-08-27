@@ -1,6 +1,9 @@
 <div class="container">
-  <h2 class="mt-3">Mis proyectos</h2>
-  <div class="mt-5">
+  <h3>Mis Proyectos</h3>
+  <% if @projects == [] %>
+  <h5> Todavía no creaste ningún Proyecto  </h5>
+  <%= link_to "Crear Proyecto", new_project_path, class: "btn-sm btn btn-success mb-3 btn-lg" %>
+  <% else %>
     <% @projects.each do |project| %>
     <div class="index-project-card border rounded">
     <div class="d-flex">
@@ -76,4 +79,5 @@
 
   <% end %>
   </div>
+<% end %>
 </div>

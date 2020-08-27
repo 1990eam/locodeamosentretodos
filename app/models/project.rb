@@ -8,9 +8,8 @@ class Project < ApplicationRecord
   has_many :application_requests, through: :roles
   has_many :chatrooms, through: :application_requests
   has_one_attached :photo
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :description, presence: true, length: { in: 6..500 }
-  validates :name, uniqueness: true
   validate :photo_present
   validate :links_with_httpwww_removed
 
