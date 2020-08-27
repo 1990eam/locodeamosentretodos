@@ -13,7 +13,7 @@
             <h5>Links</h5>
             <div>
               <% if project.link_1 != nil %>
-                <%= link_to "http://#{project.link_1}" do %>
+                <%= link_to "http://#{project.link_1}", target: "_blank" do %>
                   <div class="d-flex align-items-center mb-2">
                     <%= sanitize pick_url_icon(project.link_1) %>
                     <div class="d-inline ml-1">
@@ -23,7 +23,7 @@
                 <% end %>
               <% end %>
               <% if project.link_2 != nil %>
-                <%= link_to "http://#{project.link_2}" do %>
+                <%= link_to "http://#{project.link_2}", target: "_blank" do %>
                   <div class="d-flex align-items-center mb-2">
                     <%= sanitize pick_url_icon(project.link_2) %>
                     <div class="d-inline ml-1">

@@ -49,18 +49,17 @@ import { scrollingCards } from '../pages/projects/home';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  AOS.init();
+  initUpdateNavbarOnScroll();
   showModal();
   avatarTooltips(); // dejar dentro y fuera de turbolinks load
   clickableCard();
   initStarRating();
   initChatroomCable();
   submitForm();
-  initUpdateNavbarOnScroll();
   clickableIndexCard();
   bannerScroll();
   scrollingCards();
 });
   avatarTooltips(); // dejar dentro y fuera de turbolinks load
-
+  initUpdateNavbarOnScroll();
 
