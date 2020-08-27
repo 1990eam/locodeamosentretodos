@@ -46,7 +46,7 @@
                      </div>
                       <% end %>
                     <p class="card-text mt-4"><%= role.description %></p>
-                    <% if role.application_requests.any? { |application| application.user != current_user } %>
+                    <% if role.application_requests.any? { |application| application.user != current_user } || role.application_requests.empty? %>
                       <button class="btn btn-primary"> <i class="fas fa-plus-circle primary mr-1"></i>Aplicar</button>
                     <% else %>
                       <div class="text-muted position-absolute mb-3 fixed-bottom">¡Ya aplicaste a este rol!</div>
