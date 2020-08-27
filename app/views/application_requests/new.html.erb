@@ -59,6 +59,11 @@
               <% end %>
           </div>
 
+          <% if @project.roles.count { |role| role.open? } == 0  %>
+          <div class="no-positions rounded mb-2 mb-lg-0">
+            <p>Este proyecto está cubierto <i class="fas fa-heart-broken ml-1"></i></p>
+          </div>
+          <% else %>
             <%= simple_form_for [@project, @application] do |f| %>
             <input type="" hidden="true" name='role_id' value="role" class="role_field">
             <div class='file-container text-light mt-4 '>
@@ -68,13 +73,13 @@
             <div class="text-light mb-4 text-left">
               <div class=" text-left">
                 <%= f.input :about_me, placeholder: "Cuéntanos por qué deberíamos sumarte al equipo :)", label: "Acerca de mí" %>
+
                 <%= f.submit "Enviar solicitud", class: "btn btn-primary"%>
-            </div>
               </div>
+            </div>
 
           <% end %>
-
-
+        <% end %>
         </div>
       </div>
   </div>
