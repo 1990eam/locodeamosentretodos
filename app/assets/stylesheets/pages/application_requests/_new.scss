@@ -11,12 +11,13 @@
 }
 
 .card-project {
-  height: 80vh;
+  height: 100vh;
   position: sticky;
   top: 20px;
   grid-row: 1/2;
   background-color: $white;
   border-radius: 8px;
+  margin-bottom: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
