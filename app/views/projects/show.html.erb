@@ -59,7 +59,7 @@
 
       <!-- Tab content -->
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade <%= params[:tab] == nil ? "show active" : "" %>" id="applications" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade <%= params[:tab] == nil ? "show active" : "show active" %>" id="applications" role="tabpanel" aria-labelledby="home-tab">
           <%= render "shared/applications_show" %>
         </div>
         <div class="tab-pane fade  <%= params[:tab] == "roles" ? "show active" : "" %>" id="roles" role="tabpanel" aria-labelledby="roles-tab">

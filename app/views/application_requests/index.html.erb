@@ -1,54 +1,54 @@
 <div class="container my-2">
-    <h2>Proyectos a los que aplicaste</h1>
+  <h2>Proyectos a los que aplicaste</h1>
     <% @applications.order("created_at DESC").each do |application| %>
-          <div class="index-application-card border rounded" id="<%= application.id %>">
-            <div class="d-flex">
-              <%= cl_image_tag application.project.photo.key, alt: "alttext", width: 300, height: 300, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
-              <div>
-                <h2 class="text-left"><%= application.project.name %></h2>
-                <p class="text-muted"><%= application.project.description %></p>
-              </div>
-              <% if application.project.sponsored %>
-                <div class="badge badge-pill badge-warning project-card-sponsored d-flex justify-content-between">
-                  <i class="fa fa-heart" aria-hidden="true" style="color: #da64ab;"></i>
-                  <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block ml-1">Sponsoreado</div>
-                </div>
-              <% end %>
-            </div>
-            <div class="d-flex justify-content-between">
-              <div class="d-flex flex-column pr-3">
-                <h4 class="h5 m-0 flex-grow-0 mb-2">Rol aplicado</h4>
-                <div class="flex-grow-1 mb-2">
-                <%= application.role.name %>
-                </div>
-                <h4 class="h6 m-0 flex-grow-0 mb-2">Estado</h4>
-                <div class="flex-grow-1">
-                  <%= render "application_requests/index_case", application: application %>
-                </div>
-              </div>
-              <div class="d-flex flex-column pl-3 w-50">
-                <h4 class="h5 flex-grow-0 mb-3">Tags</h4>
-                <div class="d-flex icons-wrapper mb-3">
-                  <% application.role.requirements.each do |requirement| %>
-                    <p class="mr-2 mb-0" data-toggle="tooltip" title="<%= requirement.technology.name %>">
-                     <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
-                    </p>
-                  <% end %>
-                </div>
-                <h3 class="mb-3">Colaboradores <span class="badge badge-pill badge-light"><%= application.project.collaborators.count { |x| x.status = "active" } %></span></h3>
-                <div class="align-items-center">
-                  <% if application.status == "accepted" %>
-                  <%= link_to "Link del Proyecto", application.project, class: "btn btn-primary mb-3"%>
-                  <% end %>
-                <% if application.status == "pending" || application.status == "pending response from applicant" || application.status == "accepted" %>
-                  <%= link_to "Contacta al project owner", application_request_chatroom_path(application.id),  class: "btn btn-sm btn-primary mb-3"  %>
-                  <button class="btn btn-sm btn-danger">Retirar aplicación</button>
-                <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="index-application-card border rounded" id="<%= application.id %>">
+      <div class="d-flex">
+        <%= cl_image_tag application.project.photo.key, alt: "alttext", width: 300, height: 300, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
+        <div>
+          <h2 class="text-left"><%= application.project.name %></h2>
+          <p class="text-muted"><%= application.project.description %></p>
+        </div>
+        <% if application.project.sponsored %>
+        <div class="badge badge-pill badge-warning project-card-sponsored d-flex justify-content-between">
+          <i class="fa fa-heart" aria-hidden="true" style="color: #da64ab;"></i>
+          <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block ml-1">Sponsoreado</div>
+        </div>
+        <% end %>
       </div>
-     </div>
-    <% end %>
+      <div class="d-flex justify-content-between">
+        <div class="d-flex flex-column pr-3">
+          <h4 class="h5 m-0 flex-grow-0 mb-2">Rol aplicado</h4>
+          <div class="flex-grow-1 mb-2">
+            <%= application.role.name %>
+          </div>
+          <h4 class="h6 m-0 flex-grow-0 mb-2">Estado</h4>
+          <div class="flex-grow-1">
+            <%= render "application_requests/index_case", application: application %>
+          </div>
+        </div>
+        <div class="d-flex flex-column pl-3 w-50">
+          <h4 class="h5 flex-grow-0 mb-3">Tags</h4>
+          <div class="d-flex icons-wrapper mb-3">
+            <% application.role.requirements.each do |requirement| %>
+            <p class="mr-2 mb-0" data-toggle="tooltip" title="<%= requirement.technology.name %>">
+             <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
+           </p>
+           <% end %>
+         </div>
+         <h3 class="mb-3">Colaboradores <span class="badge badge-pill badge-light"><%= application.project.collaborators.count { |x| x.status = "active" } %></span></h3>
+         <div class="align-items-center">
+          <% if application.status == "accepted" %>
+          <%= link_to "Link del Proyecto", application.project, class: "btn btn-primary mb-3"%>
+          <% end %>
+          <% if application.status == "pending" || application.status == "pending response from applicant" || application.status == "accepted" %>
+          <%= link_to "Contacta al project owner", application_request_chatroom_path(application.id),  class: "btn btn-sm btn-primary mb-3"  %>
+          <%= link_to "Retirar aplicación", application_request_path(application), method: :delete, data: { confirm: "Estas seguro? El Project Owner dejará de ver tu aplicación" }, class:"btn btn-sm btn-danger mb-3"  %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
+  <% end %>
+</div>
+</div>
+</div>

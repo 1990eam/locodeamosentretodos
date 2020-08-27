@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 
   resources :collaborators, only: [:destroy]
 
+  resources :application_requests, only: [:destroy]
+
   resources :roles, only: [:destroy, :update, :edit]
 
   resources :chatrooms, only: {} do

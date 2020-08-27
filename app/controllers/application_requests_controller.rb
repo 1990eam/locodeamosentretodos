@@ -57,6 +57,13 @@ class ApplicationRequestsController < ApplicationController
     end
   end
 
+  def destroy
+    @application = ApplicationRequest.find(params[:id])
+    authorize @application
+    @application.destroy
+    redirect_to application_requests_path
+  end
+
   private
 
   def application_params
