@@ -2,7 +2,11 @@
 
 <div class='project-container mr-5'>
   <div class='project-overview mx-3'>
+    <% if @project.photo.attached? %>
+    <%= cl_image_tag @project.photo.key, alt: "alttext", crop: :fill,  class:"project-image" %>
+    <% else %>
     <%= image_tag "project-default", class:"project-image" %>
+    <% end %>
     <h4 class='text-center mt-3'> <%= @project.name %></h4>
     <div class="tech-images">
       <% @project.technologies.uniq.each do |technology| %>
@@ -22,27 +26,19 @@
       <div class="project-collaborators text-center">
         <h5>Colaboradores</h5>
         <div>
-          <% if @project.collaborators.first.user.photo.attached? %>
-            <%= cl_image_tag @project.collaborators.first.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar-bordered mx-2", title: "#{@project.collaborators.first.user.first_name} / #{@project.collaborators.first.role.name} [Fundador]" %>
-          <% else %>
-            <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar-bordered mx-2" %>
-          <% end %>
+          <%= avatar_fixer(@project.collaborators.first.user, data: { toggle: 'tooltip' }, class: "avatar-bordered mx-2", title: "#{@project.collaborators.first.user.first_name} / #{@project.collaborators.first.role.name} [Fundador]") %>
           <% @project.collaborators.drop(1).each do |collaborator| %>
-            <% if collaborator.user.photo.attached? %>
-              <%= cl_image_tag collaborator.user.photo.key, data: { toggle: 'tooltip' }, class: "avatar mx-2", title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
-            <% else %>
-              <%= image_tag "https://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg", class: "avatar mx-2" %>
-            <% end %>
+            <%= avatar_fixer(collaborator.user, data: { toggle: 'tooltip' }, class: "avatar mx-2", title: "#{collaborator.user.first_name} / #{collaborator.role.name}") %>
           <% end %>
         </div>
       </div>
       <div class="links">
-        <% if @project.link_1 %>
+        <% if @project.link_1 != nil && @project.link_1 != "" %>
           <h5>Links y archivos</h5>
-          <p><a href="<%= @project.link_1 %>"><%= sanitize pick_url_icon(@project.link_1) %> <%= @project.link_1 %></a></p>
+          <p><a href="http://<%= @project.link_1 %>", class="text-decoration-none"><%= sanitize pick_url_icon(@project.link_1) %> <%= shorten_url(@project.link_1) %></a></p>
         <% end %>
-        <% if @project.link_2 %>
-          <p><a href="<%= @project.link_2 %>"><%= sanitize pick_url_icon(@project.link_2) %> <%= @project.link_2 %></a></p>
+        <% if @project.link_2 != nil && @project.link_2 != "" %>
+          <p><a href="http://<%= @project.link_2 %>", class="text-decoration-none"><%= sanitize pick_url_icon(@project.link_2) %> <%= shorten_url(@project.link_2) %></a></p>
         <% end %>
       </div>
     </div>

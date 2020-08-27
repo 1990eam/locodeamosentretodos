@@ -5,7 +5,6 @@ const clickableCard = () => {
     const role_id_field = document.querySelector('.role_field')
 
       clickables.forEach((element) => {
-       // console.log(element.dataset.target)
        element.addEventListener('click', event => {
         role_id_field.value = element.dataset.target;
         clickables.forEach((card) => {

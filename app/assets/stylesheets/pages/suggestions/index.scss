@@ -7,8 +7,8 @@
 }
 
 .suggestion-card {
-  padding: 0.2rem;
-  position: relative;
+  display: flex;
+  flex-direction: column;
   padding: 0.2rem;
   background-color: white;
   h5{
@@ -33,11 +33,18 @@
   text-align: center;
 }
 
+.suggestion-description{
+
+  margin-top: 1rem;
+
+}
+
 .suggestion-collaborator {
+  // display: flex;
+  // align-self: center;
   text-align: center;
   font-size: 10px;
   font-weight: lighter;
-  text-align: center;
 }
 
 .input {
@@ -73,17 +80,9 @@
 
 }
 
-.current-rating {
+.ratings {
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    margin-top: auto;
+    text-align: center;
 
-}
-
-.user-vote {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }

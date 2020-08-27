@@ -7,19 +7,33 @@
   width: 100%;
   margin-bottom: 16px;
   margin-top: 16px;
+  transition: ease 0.5s;
   h2 {
     font-size: 1.5rem;
   }
   h3 {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   p {
     font-size: 0.9rem;
   }
 }
 
+.index-project-card:hover {
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba($red-salsa,0.6);
+}
+
 .index-project-card a:hover {
   text-decoration: none;
+}
+
+.icons-wrapper i {
+  font-size: 1.4rem !important;
+}
+
+.link-z-index {
+ z-index: 4;
 }
 
 .project-card-logo {

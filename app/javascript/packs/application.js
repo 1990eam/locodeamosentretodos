@@ -35,13 +35,16 @@ import '../pages/projects/index.js';
 import '../pages/application_requests/new.js';
 import '../shared/avatar_tooltips.js';
 
-import { showModal } from '../pages/projects/index.js';
+import { showModal, clickableIndexCard } from '../pages/projects/index.js';
 import { avatarTooltips } from '../shared/avatar_tooltips.js';
 import { clickableCard } from '../pages/application_requests/new.js';
 import { initStarRating } from '../plugins/init_star_rating';
 import { initChatroomCable } from '../channels/chatroom_channel.js';
 import { submitForm } from '../components/chatroom-form.js';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
+import { bannerScroll } from '../components/banner';
+import { scrollingCards } from '../pages/projects/home';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -54,6 +57,9 @@ document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
   submitForm();
   initUpdateNavbarOnScroll();
+  clickableIndexCard();
+  bannerScroll();
+  scrollingCards();
 });
   avatarTooltips(); // dejar dentro y fuera de turbolinks load
 

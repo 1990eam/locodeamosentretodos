@@ -34,9 +34,10 @@ class ApplicationRequestsController < ApplicationController
     @application = ApplicationRequest.find(params[:application_id])
     @project = @application.project
     authorize @application
+
     if current_user == @application.user
       @application.update(status: "accepted")
-      redirect_to application_requests_path
+      redirect_to application_requests_path, anchor: "application-#{@application.id}"
     else
       @application.update(status: "pending response from applicant")
       redirect_to project_path(@project, tab: "applications")

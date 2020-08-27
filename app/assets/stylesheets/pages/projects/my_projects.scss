@@ -1,72 +1,18 @@
 .my-projects-cards {
   padding: 10px;
-  display: grid;
-  grid-row: 1 / 4;
-  width: 500px;
+  position: absolute;
+  align-items-center: center;
+  width: 80%;
   background-color: $white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-  .btn-gradient {
+.btn {
+  a {
     color: white;
-    padding: 8px 24px;
-    border-radius: 4px;
-    font-weight: bold;
-    background: linear-gradient(#167FFB, #0F60C4);
-    transition: background 0.3s ease;
-    border: 1px solid #0F60C4;
-    margin-right: 16px;
+    text-decoration: none;
   }
+}
 
-  .btn-gradient:hover {
-    background: linear-gradient(#147EFF, #0F67DA);
-    color: white;
-  }
-
-  .btn-edit {
-    color: blue;
-    padding: 8px 24px;
-    border-radius: 8px;
-    font-weight: bold;
-    background: #7A93AC;
-    transition: background 0.3s ease;
-    border: 1px;
-  }
-
-  .btn-edit:hover {
-    background: #617992;
-    color: gray;
-  }
-
-  .btn-role {
-    color: blue;
-    padding: 8px 24px;
-    border-radius: 8px;
-    font-weight: bold;
-    background: #7A93AC;
-    border: 1px;
-    margin-right: 16px;
-  }
-
-  .btn-role:hover {
-    background: #617992;
-    color: gray;
-  }
-
-  .btn-delete {
-    color: blue;
-    padding: 8px 24px;
-    border-radius: 8px;
-    font-weight: bold;
-    background:  #EA5455;
-    transition: background 0.3s ease;
-    border: 1px;
-    margin-right: 16px;
-  }
-
-  .btn-delete:hover {
-    background: #e24d4e;
-    color: #ff5f40;
-  }
 

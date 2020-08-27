@@ -13,6 +13,8 @@ class RequirementPolicy < ApplicationPolicy
     new?
   end
 
-
+  def update?
+    true
+  end
 
 end

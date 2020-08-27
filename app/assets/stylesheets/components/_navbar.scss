@@ -22,6 +22,7 @@
 
 .navbar-invisible-div {
   height: 86px;
+  background-color: $indigo-blue;
 }
 
 .navbar-logo-text {
@@ -45,11 +46,6 @@
 .scrolled-up{
    transform:translateY(0); transition: all 0.3s ease-in-out;
 }
-
-.navbar-invisible-div {
-  background-color: white;
-}
-
 
 .navbar-lewagon .form-control {
   border-radius: 21px;
@@ -96,4 +92,28 @@
   .navbar-search {
     width: 80% !important;
   }
+}
+
+
+.notification-dot{
+
+
+
+}
+
+// notifications
+.notification-dot {
+  position: relative;
+}
+
+.notification-dot:after {
+  content: attr(data-notifications);
+  position: absolute;
+  background: $red-salsa;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 0.3em;
+  color: #f2f2f2;
+  right: -120px;
+  top: -34px;
 }
