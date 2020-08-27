@@ -50,7 +50,7 @@ class ApplicationRequestsController < ApplicationController
     authorize @application
     if current_user == @application.user
       @application.update(status: "declined by user")
-     redirect_to application_requests_path, anchor: "#{@application.id}"
+     redirect_to application_requests_path(:anchor => @application.id)
     else
       @application.update(status: "declined by owner")
       redirect_to project_path(@project, tab: "applications")
