@@ -37,10 +37,9 @@
                   <div class="card-body text-center">
                     <h5 class="card-title"><%= role.name %></h5>
                      <% role.requirements.each do |requirement|%>
-                     <div class="d-flex flex-wrap m-0">
-                      <p class=" text-left mr-2 mb-0">
+                     <div class="d-flex flex-wrap m-0 icons-wrapper">
+                      <p class=" text-left mr-2 mb-0" data-toggle="tooltip" title="<%= requirement.technology.name %>">
                         <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
-                        <%= requirement.technology.name %>
                       </p>
                       <p class='mb-0'><%= requirement.level.name %></p>
                      </div>

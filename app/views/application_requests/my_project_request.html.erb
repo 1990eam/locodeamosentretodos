@@ -1,9 +1,13 @@
 <div class="container my-2">
   <h2>Mis solicitudes</h2>
-    <% @projects.each do |project| %>
+  <% if @projects.select { |project| project.application_requests.count > 0 } == 0 %>
+    <p>No tienes solicitudes aún :(</p>
+  <% else %>
+    <% @projects.select { |project| project.application_requests.count > 0 }.each do |project| %>
       <h3 class="ml-2">Candidatos a <%= project.name %> </h3>
         <% project.application_requests.each do |application| %>
             <%= render "application_requests/application_request_partial", application: application %>
         <% end %>
+    <% end %>
   <% end %>
 </div>

@@ -1,7 +1,9 @@
 <div class="container">
-  <div class="my-projects-cards mt-5">
+  <h2 class="mt-3">Mis proyectos</h2>
+  <div class="mt-5">
     <% @projects.each do |project| %>
-     <div class="d-flex">
+    <div class="index-project-card border rounded">
+    <div class="d-flex">
     <%= cl_image_tag project.photo.key, alt: "alttext", width: 100, height: 100, crop: :fill%>
     <div class="ml-2">
       <h2 class="text-left"><%= project.name %></h2>
@@ -12,8 +14,8 @@
           <div class="d-flex flex-column justify-content-between w-100 w-lg-50 mr-5">
             <h5>Links</h5>
             <div>
-              <% if project.link_1 != nil %>
-                <%= link_to "http://#{project.link_1}", target: "_blank" do %>
+              <% if project.link_1 != nil && project.link_1 != "" %>
+                <%= link_to "http://#{project.link_1}", class: "link-z-index" do %>
                   <div class="d-flex align-items-center mb-2">
                     <%= sanitize pick_url_icon(project.link_1) %>
                     <div class="d-inline ml-1">
@@ -22,8 +24,8 @@
                   </div>
                 <% end %>
               <% end %>
-              <% if project.link_2 != nil %>
-                <%= link_to "http://#{project.link_2}", target: "_blank" do %>
+              <% if project.link_2 != nil && project.link_2 != "" %>
+                <%= link_to "http://#{project.link_2}", class: "link-z-index" do %>
                   <div class="d-flex align-items-center mb-2">
                     <%= sanitize pick_url_icon(project.link_2) %>
                     <div class="d-inline ml-1">
@@ -35,7 +37,7 @@
             </div>
             <% if project.roles.count { |role| role.open? } == 0  %>
             <div class="no-positions mb-2 mb-lg-0">
-              <p>Todas las posiciones de tu poyecto estan cubiertas <i class="ml-1"></i></p>
+              <p>Todas las posiciones de tu proyecto estan cubiertas <i class="ml-1"></i></p>
             </div>
             <% else %>
             <div class="open-positions mb-2 mb-lg-0">
@@ -59,17 +61,19 @@
             <div class="mt-2">
               <h5>Colaboradores <span class="badge badge-pill badge-light"><%= project.collaborators.count { |x| x.status = "active" } %></span></h5>
                 <% project.collaborators.each do |collaborator| %>
-                  <%= cl_image_tag collaborator.user.photo.key, class: "avatar-small mr-2", data: { toggle: 'tooltip' }, title: "#{collaborator.user.first_name} / #{collaborator.role.name}" %>
+                  <%= avatar_fixer(collaborator.user, class: "avatar-small mr-2", data: { toggle: 'tooltip' }, title: "#{collaborator.user.first_name} / #{collaborator.role.name}") %>
                 <% end %>
             </div>
           </div>
-          <div class="mr-5">
+          <div class="mr-5 icons-wrapper">
             <p><%= link_to "", project_path(project), data: { toggle: 'tooltip' }, title: "Ver Proyecto", class:"fas fa-project-diagram", style:"text-decoration: none;"%></p>
             <p><%= link_to "", new_project_role_path(project), data: { toggle: 'tooltip' }, title: "Crear nuevo Rol", class:"fas fa-folder-plus", style:"text-decoration: none;"%></p>
             <p><%= link_to "", edit_project_path(project), data: { toggle: 'tooltip' }, title: "Editar Proyecto", class:"fas fa-edit mr-1", style:"text-decoration: none;"%></p>
             <p><%= link_to "", project_path(project), data: { toggle: 'tooltip', confirm: "¿Estás seguro?" }, method: :delete, title: "Eliminar Proyecto", class:"fas fa-trash", style:"text-decoration: none;"  %></p>
           </div>
         </div>
+      </div>
+
   <% end %>
   </div>
 </div>
