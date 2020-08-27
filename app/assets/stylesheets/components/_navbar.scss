@@ -98,6 +98,7 @@
 // notifications
 .notification-dot {
   position: relative;
+  z-index: -1;
 }
 
 .notification-dot:after {
@@ -110,4 +111,5 @@
   color: #f2f2f2;
   left: 114px;
   top: -31px;
+  z-index: -1;
 }
