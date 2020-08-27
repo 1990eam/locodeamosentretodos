@@ -1,7 +1,7 @@
 <div class="container my-2">
     <h2>Proyectos a los que aplicaste</h1>
     <% @applications.each do |application| %>
-          <div class="index-application-card border rounded">
+          <div class="index-application-card border rounded" data-target="<%= application.id %>">
             <div class="d-flex">
               <%= cl_image_tag application.project.photo.key, alt: "alttext", width: 300, height: 300, crop: :fill, class: "project-card-logo mr-3 ml-2 rounded" %>
               <div>
