@@ -9,6 +9,13 @@
           </button>
         </div>
         <div class="modal-body">
+            <p class="mr-3 mb-0" style="font-size: 1.4rem; text-align: center;">
+               <%= link_to (sanitize pick_tech_icon(Technology.first.name), tags: %w(i), attributes: %w(class style)) %>
+               <%= link_to (sanitize pick_tech_icon(Technology.second.name), tags: %w(i), attributes: %w(class style)) %>
+               <%= link_to (sanitize pick_tech_icon(Technology.third.name), tags: %w(i), attributes: %w(class style)) %>
+               <%= link_to (sanitize pick_tech_icon(Technology.fourth.name), tags: %w(i), attributes: %w(class style)) %>
+               <%= link_to (sanitize pick_tech_icon(Technology.fifth.name), tags: %w(i), attributes: %w(class style)) %>
+            </p>
           <p>Los skills te van a permitir aplicar a proyectos y filtrar aquellos a los que puedes aplicar segun sus requerimientos</p>
         </div>
         <div class="modal-footer">
