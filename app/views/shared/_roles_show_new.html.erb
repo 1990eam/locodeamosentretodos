@@ -1,26 +1,24 @@
 <div class="container">
   <h2 class="tab-title">Roles del proyecto</h2>
   <div class="card-wrapper">
-
     <% @project.roles.each do |role| %>
       <div class="card-role">
         <div class="card-body text-center">
-          <h5 class="card-title"><%= role.name %></h5>
+          <h5 class="card-title mb-3"><%= role.name %></h5>
           <!-- logica avatars/mensaje si el role esta ocupado o vacante -->
           <!-- si esta ocupado -->
           <% if !role.open? %>
             <%= avatar_fixer(role.active_collaborator.user, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{role.active_collaborator.user.first_name} / #{role.name}") %>
-            <p class="role.status" style="color: red;">Esta posición está ocupada</p>
-            <%= link_to "Borrar colaborador", collaborator_path(role.active_collaborator), method: :delete, data: { confirm: 'Estas seguro de eliminar a este colaborador?' } %>
-
+            <p class="role-status my-3 red-salsa">Esta posición está ocupada</p>
             <!-- si esta vacante -->
           <% else %>
-            <p class="role.status mb-2" style="color:  #57A773;">Esta posición está vacante</p>
+            <%= image_tag "/assets/default-user-img.png", class: "avatar" %>
+            <p class="role-status my-3 forest-green">Esta posición está vacante</p>
           <% end %>
           <div class="skill-level d-flex justify-content-center">
             <% role.requirements.each do |requirement| %>
-              <div class="d-flex text-center">
-                <p class="mr-2 mb-0" data-toggle="tooltip" title="<%= requirement.technology.name %> - <%= requirement.level.name.capitalize %>">
+              <div class="d-flex text-center icons-wrapper">
+                <p class="mr-2" data-toggle="tooltip" title="<%= requirement.technology.name %> - <%= requirement.level.name.capitalize %>">
                   <%= sanitize pick_tech_icon(requirement.technology.name), tags: %w(i), attributes: %w(class style) %>
                 </p>
               </div>
@@ -29,17 +27,21 @@
           <div>
             <h6 class="mb-0 mt-3"> Funciones del puesto </h6>
             <p class="card-text"><%= role.description %></p>
+              <div class="edit-delete-role text-center d-flex">
+                <p><%= link_to "", edit_role_path(role), data: { toggle: 'tooltip' }, title: "Editar Rol", class:"fas fa-edit mr-2", style:"text-decoration: none;"%> </p>
+                <% if !role.open? %>
+                  <p><%= link_to "", collaborator_path(role.active_collaborator), method: :delete, data: { toggle: 'tooltip', confirm: 'Estas seguro de eliminar a este colaborador?' }, title: "Eliminar Colaborador", class:"fas fa-trash mr-2" %></p>
+                <% else %>
+                  <p><%= link_to "", role_path(role), data: { toggle: 'tooltip', confirm: "¿Estás seguro?" }, method: :delete, title: "Borrar Rol", class:"fas fa-trash mr-2", style:"text-decoration: none;" %> </p>
+                <% end %>
+              </div>
           </div>
-          <div class="edit-delete-role d-flex">
-            <p><%= link_to "", edit_role_path(role), data: { toggle: 'tooltip' }, title: "Editar Role", class:"fas fa-edit mr-2", style:"text-decoration: none;"%> </p>
-            <p><%= link_to "", role_path(role), data: { toggle: 'tooltip', confirm: "¿Estás seguro?" }, method: :delete, title: "Borrar Role", class:"fas fa-trash", style:"text-decoration: none;" %> </p>
 
-          </div>
         </div>
       </div>
       <% end %>
 
-      <div id="new-role-form" class="card-role">
+      <div id="new-role-form" class="card-role mb-3">
         <div class="card-body text-center">
           <h5 class="card-title">Nuevo rol</h5>
           <div class="container">

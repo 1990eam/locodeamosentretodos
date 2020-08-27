@@ -1,6 +1,5 @@
 <div class="d-block d-md-flex">
   <div class="d-none d-md-block sidebar pt-3">
-
     <div class="sidebar-section mt-3">
       <p class="pl-3 mb-0 pb-3 border-bottom">Conversaciones con project owners</p>
       <% if current_user.chatrooms.select { |x| x.messages.count > 0 }.empty? %>
@@ -15,7 +14,7 @@
     </div>
     <div class="sidebar-section mt-3">
       <p class="pl-3 mb-0 pb-3 border-bottom">Conversaciones con aplicantes</p>
-      <% if current_user.projects.count { |project| project.chatrooms.select { |chatroom| chatroom.messages.count > 0 }.any? } < 0  %>
+      <% if current_user.projects.count { |project| project.chatrooms.select { |chatroom| chatroom.messages.count > 0 }.any? } == 0  %>
         <div class="d-flex align-items-start border-bottom p-3 mint-cream">
           No hay conversaciones aún :(
         </div>

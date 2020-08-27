@@ -28,6 +28,8 @@ module IndexCardHelper
     return "" if url.nil?
 
     if url.match?(Regexp.union("github", "facebook", "instagram", "bitbucket", "linkedin", "twitter", "wikipedia"))
+      return url if url.match(/\/(.*)/).nil?
+
       url.match(/\/(.*)/)[1]
     else
       url
