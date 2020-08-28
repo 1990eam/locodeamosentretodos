@@ -968,16 +968,6 @@ SuggestionVote.find_or_create_by!(suggestion: hiddenmeme,
                                   rating: 5)
 
 SuggestionVote.find_or_create_by!(suggestion: oauth,
-                                  collaborator: lcet.collaborators.find_by(user: elian),
-                                  rating: 2)
-SuggestionVote.find_or_create_by!(suggestion: chatroom,
-                                  collaborator: lcet.collaborators.find_by(user: elian),
-                                  rating: 2)
-SuggestionVote.find_or_create_by!(suggestion: hiddenmeme,
-                                  collaborator: lcet.collaborators.find_by(user: elian),
-                                  rating: 5)
-
-SuggestionVote.find_or_create_by!(suggestion: oauth,
                                   collaborator: lcet.collaborators.find_by(user: tomas),
                                   rating: 5)
 SuggestionVote.find_or_create_by!(suggestion: chatroom,
