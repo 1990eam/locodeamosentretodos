@@ -43,7 +43,7 @@ module IndexCardHelper
     when tech_name.match?(/Ruby/i)
       "<i class='fab fa-sketch red'style='color: red;'></i>"
     when tech_name.match?(/Javascript/i)
-      "<i class='fab fa-js-square'style='color:teal;'></i>"
+      "<i class='fab fa-js-square'style='color: gold;'></i>"
     when tech_name.match?(/CSS/i)
       "<i class='fab fa-css3-alt' style='color: blue;'></i>"
     when tech_name.match?(/HTML/i)
