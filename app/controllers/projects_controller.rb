@@ -7,7 +7,6 @@ class ProjectsController < ApplicationController
     if user_signed_in?
       @user = current_user
     end
-
     if params[:query].present?
         sql_query = " \
         projects.name @@ :query \
@@ -17,7 +16,7 @@ class ProjectsController < ApplicationController
 
       @projects = policy_scope(Project).joins(:roles, :technologies).where(sql_query, query: "%#{params[:query]}%").uniq
     else
-      @projects = policy_scope(Project)
+      @projects = policy_scope(Project.order(:id))
     end
 
     #filtros
