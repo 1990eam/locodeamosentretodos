@@ -19,6 +19,8 @@ module IndexCardHelper
       "<i class='fab fa-wikipedia-w'></i>"
     when url.match?(/wagon/i)
       "<i class='fas fa-truck-moving'></i>"
+    when url.match?(/notadogbnb/i)
+      "<i class='fas fa-dog'></i>"
     else
       "<i class='fas fa-globe'></i>"
     end
@@ -80,6 +82,8 @@ module IndexCardHelper
       "<i class='fas fa-users' style='color: limegreen;'></i>"
     when tech_name.match?(/Data Science/i)
       "<i class='fas fa-flask' style='color: purple;'></i>"
+    when tech_name.match?(/Doggo Skills/i)
+      "<i class='fas fa-bone' style='color: orange;'></i>"
     else
       "<i class='fas fa-laptop-code'></i>"
     end
