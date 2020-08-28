@@ -10,6 +10,7 @@
       <h6 style="text-align: center;">Según uno de mis skills</h6>
       <% if current_user.technologies.empty? %>
         <p class="mb-0 text-muted">No tienes skills cargados :(</p>
+        <p><%= link_to "Agregá skills", new_user_skill_path(current_user) %> </p>
       <% else %>
         <div class="d-flex justify-content-center flex-wrap">
           <% current_user.technologies.each do |technology| %>
