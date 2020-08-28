@@ -95,6 +95,15 @@ juan.photo.attach(io:URI.open("https://avatars3.githubusercontent.com/u/61086902
                   filename: "#{juan.first_name}.png",
                   content_type: 'image/png')
 
+samid = User.create!(first_name: "Alberto",
+                    last_name: "Samid",
+                    email: "test11@test.com",
+                    description: "Hincha de Gardel, hincha de Boca, hincha de Ford y le tengo bronca a Mauro Viale",
+                    password:"test1234")
+samid.photo.attach(io: File.open("app/assets/images/elreydelcodeo.png"),
+                  filename: "samid.png",
+                  content_type: 'image/png')
+
 puts "Done creating Users"
 puts ""
 
@@ -199,6 +208,16 @@ uma.photo.attach(io:URI.open("https://cdn.logojoy.com/wp-content/uploads/2018/05
                 content_type: 'image/png')
 uma.save
 
+notdog = Project.find_or_create_by!(name: "NotadogBNB",
+                                 description: "Alguna vez soñaste con pasar la tarde arriba de un manatí en tu pileta? Este emprendimiento es para vos",
+                                 link_1: "https://notadogbnb.herokuapp.com",
+                                 link_2: "https://github.com/1990eam/notadogbnb",
+                                 sponsored: true,
+                                 user_id: samid.id)
+notdog.photo.attach(io:URI.open("https://res.cloudinary.com/eliancito/image/upload/c_fill,h_500,w_700/mnikneax2ga3nyx4l8em1blyanqw"),
+                filename: "#{notdog.name}.png",
+                content_type: 'image/png')
+notdog.save
 
 
 puts "Done creating Projects"
@@ -324,8 +343,14 @@ thirtysecond_role = Role.find_or_create_by!(name: "Health Specialist",
                     description: "Médico certificado para colaborar con conocimientos de medicina certeros a incorporar en modelos predictivos",
                     project_id: uma.id)
 thirtythird_role = Role.find_or_create_by!(name: "AI Specialist",
-                        description: "Experiencia en modelos predictivos e inteligencia artificial para aportar a los diagnósticos",
+                    description: "Experiencia en modelos predictivos e inteligencia artificial para aportar a los diagnósticos",
                     project_id: uma.id)
+
+
+thirtyfifth_role = Role.find_or_create_by!(name: "Doggo Master",
+                    description: "Experiencia en Notdogs y Python (pun intended)",
+                    project_id: notdog.id)
+
 
 
 puts "Done creating Roles"
@@ -361,6 +386,9 @@ Collaborator.find_or_create_by!(role_id: adventuremap.roles.first.id,
                                 status: "active")
 Collaborator.find_or_create_by!(role_id: uma.roles.first.id,
                                 user_id: uma.user.id,
+                                status: "active")
+Collaborator.find_or_create_by!(role_id: notdog.roles.first.id,
+                                user_id: notdog.user.id,
                                 status: "active")
 puts "Done assigning"
 puts ""
@@ -449,6 +477,7 @@ brain = Technology.find_or_create_by!(name: "AI")
 logistics = Technology.find_or_create_by!(name: "Logistics")
 human = Technology.find_or_create_by!(name: "HR")
 data = Technology.find_or_create_by!(name: "Data Science")
+doggo = Technology.find_or_create_by(name: "Doggo Skills")
 
 puts "Done creating technologies"
 puts ""
@@ -797,6 +826,13 @@ Requirement.find_or_create_by!(role_id: thirtyfourth_role.id,
 Requirement.find_or_create_by!(role_id: thirtyfourth_role.id,
                                technology_id: css.id,
                                level_id: Level.second.id)
+
+Requirement.find_or_create_by!(role_id: thirtyfifth_role.id,
+                               technology_id: doggo.id,
+                               level_id: Level.fourth.id)
+Requirement.find_or_create_by!(role_id: thirtyfifth_role.id,
+                               technology_id: python.id,
+                               level_id: Level.fourth.id)
 
 puts "Done creating requirements"
 puts ""
