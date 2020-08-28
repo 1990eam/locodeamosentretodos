@@ -8,7 +8,7 @@
     <% elsif message.created_at.getlocal.end_of_day == Date.yesterday.to_time.end_of_day %>
       <div class="btn btn-sm btn-outline-secondary date-float">Ayer</div>
     <% else %>
-      <div class="btn btn-sm btn-outline-secondary date-float"><%= l(message.created_at.getlocal, format: :long) %></div>
+      <div class="btn btn-sm btn-outline-secondary date-float"><%= l(message.created_at.getlocal - 10800, format: :long) %></div>
     <% end %>
   </div>
   <hr>
@@ -20,7 +20,7 @@
       <% elsif message.created_at.getlocal.end_of_day == Date.yesterday.to_time.end_of_day %>
         <div class="btn btn-sm btn-outline-secondary date-float">Ayer</div>
       <% else %>
-        <div class="btn btn-sm btn-outline-secondary date-float"><%= l(message.created_at.getlocal, format: :long) %></div>
+        <div class="btn btn-sm btn-outline-secondary date-float"><%= l(message.created_at.getlocal - 10800, format: :long) %></div>
       <% end %>
     </div>
     <hr>
@@ -34,14 +34,14 @@
     <div class="flex-grow-1">
       <div class="d-flex align-items-center">
         <p class="mr-2"><strong><%= message.user.first_name %></strong></p>
-        <small class="text-nowrap"><%= l(message.created_at.getlocal, format: :only_time) %></small>
+        <small class="text-nowrap"><%= l(message.created_at.getlocal - 10800, format: :only_time) %></small>
       </div>
       <p class="message-content"><%= message.content %></p>
     </div>
   </div>
 <% else %>
   <div class="chat-message d-flex align-items-start rounded" id="message-<%= message.id %>">
-    <small class="text-muted message-side-timestamp ml-2"><%= l(message.created_at.getlocal, format: :only_time) %></small>
+    <small class="text-muted message-side-timestamp ml-2"><%= l(message.created_at.getlocal - 10800, format: :only_time) %></small>
     <div class="flex-grow-1">
       <p class="message-content" style="margin-left: 12px;"><%= message.content %></p>
     </div>
