@@ -44,7 +44,7 @@
       <!-- Tabs https://getbootstrap.com/docs/4.0/components/navs/#javascript-behavior-->
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link <%= params[:tab] == nil ? "active" : "" %> " id="applications-tab" data-toggle="tab" href="#applications" role="tab" aria-controls="applications" aria-selected="true">Aplicaciones</a>
+          <a class="nav-link <%= ["applications", nil].include?(params[:tab]) ? "active" : "" %> " id="applications-tab" data-toggle="tab" href="#applications" role="tab" aria-controls="applications" aria-selected="true">Aplicaciones</a>
         </li>
         <li class="nav-item">
           <a class="nav-link <%= params[:tab] == "roles" ? "active" : "" %> " id="roles-tab" data-toggle="tab" href="#roles" role="tab" aria-controls="roles" aria-selected="false">Roles</a>
@@ -59,7 +59,7 @@
 
       <!-- Tab content -->
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade <%= params[:tab] == nil ? "show active" : "show active" %>" id="applications" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade <%= ["applications", nil].include?(params[:tab]) ? "show active" : "" %>" id="applications" role="tabpanel" aria-labelledby="home-tab">
           <%= render "shared/applications_show" %>
         </div>
         <div class="tab-pane fade  <%= params[:tab] == "roles" ? "show active" : "" %>" id="roles" role="tabpanel" aria-labelledby="roles-tab">
@@ -75,4 +75,4 @@
     </div>
 </div>
 
-
+<%= console %>
