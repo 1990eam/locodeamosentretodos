@@ -3,7 +3,7 @@
     <div class="d-flex flex-column justify-content-between mx-2 w-50">
       <h5> Rol: <%= application.role.name  %></h5>
       <p class="text-muted mb-1"> <%= application.role.description %> </p>
-      <p class="mb-0"> Requisitos:</p>
+      <p class="mb-0"> Requisitos para el puesto:</p>
       <div class="d-flex flex-wrap mb-2">
         <% application.role.requirements.each do |requirement|%>
           <div class="mr-2 mb-1" data-toggle="tooltip" title="<%= requirement.technology.name %> - <%= requirement.level.name.capitalize %>">
@@ -23,7 +23,18 @@
         </div>
         <p class="ml-2 mt-2"> <strong><%= application.user.first_name %> <%= application.user.last_name %></strong>  </p>
       </div>
-      <p> Acerca del candidato: <%= application.about_me %></p>
+      <p class="mb-0"> Acerca del candidato: <%= application.about_me %></p>
+      <div class="d-flex flex-column my-0">
+        <p class="mb-0" style="font-weight: bolder;">Skills 🏅</p>
+        <div class="applicant-skills d-flex">
+          <% application.user.skills.each do |skill| %>
+          <p data-toggle="tooltip" title="<%= skill.technology.name %> - <%= skill.level.name.capitalize %>" class="mx-1"><%= sanitize pick_tech_icon(skill.technology.name), tags: %w(i), attributes: %w(class style) %></p>
+          <% end %>
+
+        </div>
+
+      </div>
+
       <div>
         <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#staticBackdrop_<%= application.id  %>">
           Ver adjunto del candidato
