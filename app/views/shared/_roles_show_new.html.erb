@@ -8,9 +8,15 @@
           <!-- logica avatars/mensaje si el role esta ocupado o vacante -->
           <!-- si esta ocupado -->
           <% if !role.open? %>
-            <%= avatar_fixer(role.active_collaborator.user, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{role.active_collaborator.user.first_name} / #{role.name}") %>
-            <p class="role-status my-3 red-salsa">Esta posición está ocupada</p>
-            <!-- si esta vacante -->
+
+            <% if role == @project.roles[0] %>
+              <%= avatar_fixer(@project.collaborators.first.user, data: { toggle: 'tooltip' }, class: "avatar-bordered mx-2", title: "#{@project.collaborators.first.user.first_name} / #{@project.collaborators.first.role.name} [Fundador]") %>
+              <p class="role-status my-3 red-salsa">Esta posición está ocupada</p>
+            <% else %>
+              <%= avatar_fixer(role.active_collaborator.user, data: { toggle: 'tooltip' }, class: "avatar dropdown-toggle", title: "#{role.active_collaborator.user.first_name} / #{role.name}") %>
+              <p class="role-status my-3 red-salsa">Esta posición está ocupada</p>
+              <!-- si esta vacante -->
+            <% end %>
           <% else %>
             <%= image_tag "/assets/default-user-img.png", class: "avatar" %>
             <p class="role-status my-3 forest-green">Esta posición está vacante</p>

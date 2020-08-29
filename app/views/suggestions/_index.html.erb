@@ -6,8 +6,12 @@
     <div class="suggestion-card" data-target="<%= suggestion.id %>">
       <p class="feature-title mb-3 mt-2">Feature</p>
       <p class="suggestion-collaborator">Sugerido por:</p>
-      <div class="suggestion-collaborator <%= suggestion.collaborator.user == @project.user ? "avatar-bordered mx-auto" : "" %>">
-        <%= avatar_fixer(suggestion.collaborator.user, data: { toggle: 'tooltip' }, class: "suggestion-collaborator avatar dropdown-toggle", title: "#{suggestion.collaborator.user.first_name} / #{suggestion.collaborator.role.name}") %>
+      <div class="suggestion-collaborator">
+        <% if suggestion.collaborator.user == @project.user %>
+          <%= avatar_fixer(suggestion.collaborator.user, data: { toggle: 'tooltip' }, class: "avatar-bordered mx-2", title: "#{@project.collaborators.first.user.first_name} / #{@project.collaborators.first.role.name} [Fundador]") %>
+        <% else %>
+          <%= avatar_fixer(suggestion.collaborator.user, data: { toggle: 'tooltip' }, class: "avatar", title: "#{suggestion.collaborator.user.first_name} / #{suggestion.collaborator.role.name}") %>
+        <% end %>
       </div>
       <p class="suggestion-description mt-3 px-3 text-center"><%= suggestion.description %></p>
       <div class="ratings">
@@ -29,8 +33,8 @@
       <!-- logica para no permitir votar màs de una vez -->
       <% if suggestion.user_vote(current_user) %>
       <div class="user-vote mb-3">
-        <p class="suggestion-collaborator">Tu voto</p>
-        <p>
+        <p class="suggestion-collaborator mt-4 mb-2">Tu voto</p>
+        <p class="pt-1">
           <% suggestion.user_vote(current_user).to_i.times do  %>
           <span class="fas fa-star" style="color: #ede0a3;"></span>
           <% end %>
@@ -39,10 +43,10 @@
       <% else %>
 
       <!-- el suggestion id va a ir en el hidden input como params -->
-      <div id="suggestion-<%= suggestion.id %>" class="input mt-5">
+      <div id="suggestion-<%= suggestion.id %>" class="input">
         <%= simple_form_for [@project, @vote], html: { class: "vote-form form-target#{suggestion.id}" }, remote: :true do |f| %>
         <input type="" hidden="true" name='suggestion_id' value="<%= suggestion.id %>" class="suggestion_field">
-        <%= f.input :rating, collection: (1..5).to_a, label: "Vota esta feature", class:"vote-form", :input_html => { :id => "target_#{suggestion.id}" } %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Vota esta feature", label_html: { class: 'suggestion-collaborator'}, class:"vote-form", :input_html => { :id => "target_#{suggestion.id}" } %>
         <%= f.submit "Votar", class: "btn btn-primary d-none" %>
         <% end %>
       </div>
