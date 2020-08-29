@@ -28,7 +28,7 @@
         <p class="mb-0" style="font-weight: bolder;">Skills 🏅</p>
         <div class="applicant-skills d-flex">
           <% application.user.skills.each do |skill| %>
-          <p data-toggle="tooltip" title="<%= skill.technology.name %>" class="mx-1"><%= sanitize pick_tech_icon(skill.technology.name), tags: %w(i), attributes: %w(class style) %></p>
+          <p data-toggle="tooltip" title="<%= skill.technology.name %> - <%= skill.level.name.capitalize %>" class="mx-1"><%= sanitize pick_tech_icon(skill.technology.name), tags: %w(i), attributes: %w(class style) %></p>
           <% end %>
 
         </div>
