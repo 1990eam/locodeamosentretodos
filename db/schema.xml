@@ -41,7 +41,7 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="349" y="265" name="users">
+</datatypes><table x="394" y="442" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -64,7 +64,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="720" y="37" name="projects">
+<table x="724" y="160" name="projects">
 <row name="user_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
@@ -82,7 +82,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="911" y="469" name="technologies">
+<table x="917" y="625" name="technologies">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -94,7 +94,7 @@
 </key>
 <comment>lenguajes y tecnologias usados en el proyecto</comment>
 </table>
-<table x="938" y="108" name="roles">
+<table x="1004" y="315" name="roles">
 <row name="project_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="projects" row="id" />
@@ -109,7 +109,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="921" y="585" name="level">
+<table x="942" y="739" name="level">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -120,7 +120,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="646" y="543" name="skills">
+<table x="637" y="697" name="skills">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -140,7 +140,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1191" y="298" name="requirements">
+<table x="1210" y="395" name="requirements">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -160,7 +160,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="717" y="355" name="applications">
+<table x="682" y="532" name="application_request">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -179,7 +179,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="718" y="193" name="collaborators">
+<table x="702" y="329" name="collaborators">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -192,6 +192,47 @@
 <default>NULL</default><relation table="users" row="id" />
 </row>
 <row name="status" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="475" y="35" name="suggestions">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="collaborator_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="collaborators" row="id" />
+</row>
+<row name="project_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="projects" row="id" />
+</row>
+<row name="status" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="description" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="228" y="203" name="suggestion_votes">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="suggestion_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="suggestions" row="id" />
+</row>
+<row name="collaborator_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="collaborators" row="id" />
+</row>
+<row name="rating" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
